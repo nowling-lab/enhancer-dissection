@@ -1,0 +1,2920 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -o /home/petersjg/Output/enhancer-dissection-out/fimo_pest/pest_jaspar_motifs /home/petersjg/Windows_Directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt /home/petersjg/Windows_Directory/nardini_reference_sequences.fa</command-line>
+<pattern-file>/home/petersjg/Windows_Directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt</pattern-file>
+<sequence-file>/home/petersjg/Windows_Directory/nardini_reference_sequences.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="MA0206.1" name="abd-A">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0165.1" name="Abd-B">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="910" stop="916" score="10.9901" pvalue="9.66e-05">
+<sequence>TTTATGA</sequence>
+<mem:qvalue>0.761</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="378" stop="384" score="10.9901" pvalue="9.66e-05">
+<sequence>tttatga</sequence>
+<mem:qvalue>0.761</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0207.1" name="achi">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0208.1" name="al">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0166.1" name="Antp">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0209.1" name="ap">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0210.1" name="ara">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0167.1" name="Awh">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0168.1" name="B-H1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0169.1" name="B-H2">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0211.1" name="bap">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0212.1" name="bcd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0529.2" name="BEAF-32">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="1175" stop="1186" score="11.7982" pvalue="4.36e-05">
+<sequence>GCTATCGATGCT</sequence>
+<mem:qvalue>0.341</mem:qvalue>
+</matched-element>
+<matched-element start="1186" stop="1175" score="11.7982" pvalue="4.36e-05">
+<sequence>AGCATCGATAGC</sequence>
+<mem:qvalue>0.341</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0242.1" name="Bgb::run">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="279" stop="287" score="11.0337" pvalue="6.06e-05">
+<sequence>taaccgcta</sequence>
+<mem:qvalue>0.314</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="1093" stop="1085" score="13.0112" pvalue="2.78e-05">
+<sequence>AAACCACAA</sequence>
+<mem:qvalue>0.216</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="297" stop="289" score="15.7978" pvalue="4.03e-06">
+<sequence>TAACCGCAA</sequence>
+<mem:qvalue>0.0626</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0010.1" name="br">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="58" stop="45" score="10.7477" pvalue="9.98e-05">
+<sequence>ATTATAAAAAAATG</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="794" stop="807" score="11.2703" pvalue="6.95e-05">
+<sequence>ATCaaaaaaaaaaC</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+<matched-element start="300" stop="287" score="10.8108" pvalue="9.57e-05">
+<sequence>GAGAAAAACAAAAA</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="594" stop="581" score="12.1351" pvalue="3.6e-05">
+<sequence>GTAAAAAAAAAAAA</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+<matched-element start="572" stop="559" score="11.6667" pvalue="5.25e-05">
+<sequence>CTCATACACAAAAT</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+<matched-element start="228" stop="215" score="10.9369" pvalue="8.86e-05">
+<sequence>ATAATAATCAATTT</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0011.1" name="br(var.2)">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0012.1" name="br(var.3)">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="296" stop="286" score="10.6607" pvalue="7.65e-05">
+<sequence>AAAACAAAAAC</sequence>
+<mem:qvalue>0.3</mem:qvalue>
+</matched-element>
+<matched-element start="1272" stop="1262" score="10.6607" pvalue="7.65e-05">
+<sequence>AAAACAAAAAC</sequence>
+<mem:qvalue>0.3</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="276" stop="266" score="11.9821" pvalue="1.37e-05">
+<sequence>AAAACTAAATG</sequence>
+<mem:qvalue>0.19</mem:qvalue>
+</matched-element>
+<matched-element start="906" stop="896" score="11.6071" pvalue="2.42e-05">
+<sequence>TCAACTAAACG</sequence>
+<mem:qvalue>0.19</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0013.1" name="br(var.4)">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="77" stop="87" score="11.1417" pvalue="7.76e-05">
+<sequence>ctgtaaacgaa</sequence>
+<mem:qvalue>0.344</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="57" stop="47" score="10.9921" pvalue="8.81e-05">
+<sequence>TTATAAAAAAA</sequence>
+<mem:qvalue>0.344</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="1016" stop="1006" score="11.9843" pvalue="3.41e-05">
+<sequence>TAATAAATAAA</sequence>
+<mem:qvalue>0.332</mem:qvalue>
+</matched-element>
+<matched-element start="971" stop="981" score="11.8189" pvalue="4.26e-05">
+<sequence>TTGAAAACaaa</sequence>
+<mem:qvalue>0.332</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0213.1" name="brk">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="618" stop="611" score="13.2936" pvalue="2.29e-05">
+<sequence>GTGGCGCC</sequence>
+<mem:qvalue>0.354</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0214.1" name="bsh">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0443.1" name="btd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0215.1" name="btn">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0170.1" name="C15">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0216.2" name="cad">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="1018" stop="1008" score="11.661" pvalue="6.07e-05">
+<sequence>AGTAATAAATA</sequence>
+<mem:qvalue>0.953</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0217.1" name="caup">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0015.1" name="Cf2">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="164" stop="173" score="10.8571" pvalue="8.44e-05">
+<sequence>ATATATGCAC</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0171.1" name="CG11085">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0172.1" name="CG11294">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0173.1" name="CG11617">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0176.1" name="CG15696-RA">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0177.1" name="CG18599">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0178.1" name="CG32105">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0179.1" name="CG32532">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0444.1" name="CG34031">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0182.1" name="CG4328-RA">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0184.1" name="CG9876">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1700.1" name="Clamp">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="779" stop="766" score="17.1927" pvalue="8.01e-07">
+<sequence>GGGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00607</mem:qvalue>
+</matched-element>
+<matched-element start="781" stop="768" score="16.4679" pvalue="1.4e-06">
+<sequence>GGGGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00637</mem:qvalue>
+</matched-element>
+<matched-element start="1068" stop="1055" score="15.6697" pvalue="2.51e-06">
+<sequence>GAGAGAACGAGAGA</sequence>
+<mem:qvalue>0.00637</mem:qvalue>
+</matched-element>
+<matched-element start="777" stop="764" score="15.4404" pvalue="2.94e-06">
+<sequence>GAGAGAGAGAGAAA</sequence>
+<mem:qvalue>0.00637</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="762" score="12.9817" pvalue="1.39e-05">
+<sequence>GAGAGAGAGAAAGA</sequence>
+<mem:qvalue>0.0175</mem:qvalue>
+</matched-element>
+<matched-element start="945" stop="958" score="12.0183" pvalue="2.4e-05">
+<sequence>CCGTGAGCGAGCGC</sequence>
+<mem:qvalue>0.0242</mem:qvalue>
+</matched-element>
+<matched-element start="1094" stop="1107" score="11.5229" pvalue="3.14e-05">
+<sequence>gtACGAGAGAGTGG</sequence>
+<mem:qvalue>0.028</mem:qvalue>
+</matched-element>
+<matched-element start="1064" stop="1051" score="11.156" pvalue="3.83e-05">
+<sequence>GAACGAGAGAGCTG</sequence>
+<mem:qvalue>0.0322</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="760" score="10.156" pvalue="6.45e-05">
+<sequence>GAGAGAGAAAGACA</sequence>
+<mem:qvalue>0.0466</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="1001" stop="1014" score="14.0183" pvalue="7.38e-06">
+<sequence>TCGCGAGCGAGATC</sequence>
+<mem:qvalue>0.0125</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="101" stop="88" score="10.3394" pvalue="5.87e-05">
+<sequence>ACGAGAACGAGACA</sequence>
+<mem:qvalue>0.0445</mem:qvalue>
+</matched-element>
+<matched-element start="188" stop="175" score="9.68807" pvalue="8.15e-05">
+<sequence>GGGCGAACGAGTTG</sequence>
+<mem:qvalue>0.0534</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="490" stop="477" score="17.2936" pvalue="7.48e-07">
+<sequence>GAGCGAGAGAGATG</sequence>
+<mem:qvalue>0.00607</mem:qvalue>
+</matched-element>
+<matched-element start="355" stop="342" score="15.9174" pvalue="2.11e-06">
+<sequence>GCGTGAGAGAGAGG</sequence>
+<mem:qvalue>0.00637</mem:qvalue>
+</matched-element>
+<matched-element start="347" stop="334" score="15.6422" pvalue="2.55e-06">
+<sequence>GAGAGGGCGAGAGG</sequence>
+<mem:qvalue>0.00637</mem:qvalue>
+</matched-element>
+<matched-element start="468" stop="455" score="13.9358" pvalue="7.76e-06">
+<sequence>GAGCGAAAGAGAGA</sequence>
+<mem:qvalue>0.0125</mem:qvalue>
+</matched-element>
+<matched-element start="494" stop="481" score="13.844" pvalue="8.22e-06">
+<sequence>TAAAGAGCGAGAGA</sequence>
+<mem:qvalue>0.0125</mem:qvalue>
+</matched-element>
+<matched-element start="472" stop="459" score="13.1009" pvalue="1.29e-05">
+<sequence>AAGAGAGCGAAAGA</sequence>
+<mem:qvalue>0.0175</mem:qvalue>
+</matched-element>
+<matched-element start="353" stop="340" score="12.4128" pvalue="1.92e-05">
+<sequence>GTGAGAGAGAGGGC</sequence>
+<mem:qvalue>0.0211</mem:qvalue>
+</matched-element>
+<matched-element start="351" stop="338" score="12.3853" pvalue="1.95e-05">
+<sequence>GAGAGAGAGGGCGA</sequence>
+<mem:qvalue>0.0211</mem:qvalue>
+</matched-element>
+<matched-element start="349" stop="336" score="11.633" pvalue="2.97e-05">
+<sequence>GAGAGAGGGCGAGA</sequence>
+<mem:qvalue>0.028</mem:qvalue>
+</matched-element>
+<matched-element start="357" stop="344" score="10.6697" pvalue="4.96e-05">
+<sequence>TAGCGTGAGAGAGA</sequence>
+<mem:qvalue>0.0396</mem:qvalue>
+</matched-element>
+<matched-element start="466" stop="453" score="9.88073" pvalue="7.42e-05">
+<sequence>GCGAAAGAGAGATA</sequence>
+<mem:qvalue>0.0511</mem:qvalue>
+</matched-element>
+<matched-element start="492" stop="479" score="9.61468" pvalue="8.45e-05">
+<sequence>AAGAGCGAGAGAGA</sequence>
+<mem:qvalue>0.0534</mem:qvalue>
+</matched-element>
+<matched-element start="476" stop="463" score="9.48624" pvalue="9.01e-05">
+<sequence>GGGAAAGAGAGCGA</sequence>
+<mem:qvalue>0.0547</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0530.1" name="cnc::maf-S">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0218.1" name="ct">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0531.1" name="CTCF">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="521" stop="507" score="13.8103" pvalue="1.02e-05">
+<sequence>ATGGCAGATGGCGCG</sequence>
+<mem:qvalue>0.159</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0445.1" name="D">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="984" stop="974" score="11" pvalue="9.11e-05">
+<sequence>TTTTTTGTTTT</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0174.1" name="Dbx">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0185.1" name="Deaf1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0186.1" name="Dfd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0022.1" name="dl">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0023.1" name="dl(var.2)">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="1169" stop="1160" score="11.789" pvalue="4.71e-05">
+<sequence>CGGGTTTCCC</sequence>
+<mem:qvalue>0.741</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0187.1" name="Dll">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1455.1" name="dmrt99B">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="559" stop="575" score="11.129" pvalue="4e-05">
+<sequence>CAGTGACAGTGTAGCAT</sequence>
+<mem:qvalue>0.601</mem:qvalue>
+</matched-element>
+<matched-element start="575" stop="559" score="9.83871" pvalue="7.69e-05">
+<sequence>ATGCTACACTGTCACTG</sequence>
+<mem:qvalue>0.601</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0188.1" name="Dr">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1456.1" name="Dref">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="1175" stop="1184" score="13.8448" pvalue="1.83e-05">
+<sequence>GCTATCGATG</sequence>
+<mem:qvalue>0.289</mem:qvalue>
+</matched-element>
+<matched-element start="442" stop="433" score="11.2414" pvalue="9.16e-05">
+<sequence>TTTATCGAAA</sequence>
+<mem:qvalue>0.721</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0915.1" name="dve">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="66" stop="59" score="13.1148" pvalue="1.47e-05">
+<sequence>CTAATCCG</sequence>
+<mem:qvalue>0.231</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="25" stop="18" score="12.4426" pvalue="4.72e-05">
+<sequence>CTAATCCC</sequence>
+<mem:qvalue>0.372</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0189.1" name="E5">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0534.1" name="EcR::usp">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="569" stop="555" score="10.0526" pvalue="9.73e-05">
+<sequence>CCGTTTGTTGTCTTT</sequence>
+<mem:qvalue>0.763</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="60" stop="74" score="11.0921" pvalue="6.27e-05">
+<sequence>GGATTAGATGAACTA</sequence>
+<mem:qvalue>0.763</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0026.1" name="Eip74EF">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="327" stop="321" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.17</mem:qvalue>
+</matched-element>
+<matched-element start="344" stop="350" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.17</mem:qvalue>
+</matched-element>
+<matched-element start="811" stop="817" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.17</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="867" stop="873" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.17</mem:qvalue>
+</matched-element>
+<matched-element start="905" stop="899" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.216</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="536" stop="542" score="11.3878" pvalue="9.74e-05">
+<sequence>ccggaaa</sequence>
+<mem:qvalue>0.216</mem:qvalue>
+</matched-element>
+<matched-element start="740" stop="746" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.216</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0219.1" name="ems">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0220.1" name="en">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0916.1" name="Ets21C">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="327" stop="320" score="15.0899" pvalue="1.21e-05">
+<sequence>CCGGAAGT</sequence>
+<mem:qvalue>0.114</mem:qvalue>
+</matched-element>
+<matched-element start="811" stop="818" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.114</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="867" stop="874" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.114</mem:qvalue>
+</matched-element>
+<matched-element start="905" stop="898" score="13.809" pvalue="3.66e-05">
+<sequence>CCGGAAAT</sequence>
+<mem:qvalue>0.126</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="536" stop="543" score="12.7865" pvalue="4.87e-05">
+<sequence>ccggaaac</sequence>
+<mem:qvalue>0.126</mem:qvalue>
+</matched-element>
+<matched-element start="740" stop="747" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.126</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0221.1" name="eve">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="129" stop="123" score="10.8119" pvalue="7.93e-05">
+<sequence>CTAATGA</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0222.1" name="exd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="1058" stop="1065" score="12.2755" pvalue="2.18e-05">
+<sequence>TTTTGACA</sequence>
+<mem:qvalue>0.172</mem:qvalue>
+</matched-element>
+<matched-element start="770" stop="777" score="11.6837" pvalue="9.72e-05">
+<sequence>TTTTGACG</sequence>
+<mem:qvalue>0.255</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="126" stop="133" score="12.2755" pvalue="2.18e-05">
+<sequence>TTTTGACA</sequence>
+<mem:qvalue>0.172</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="830" stop="837" score="12.2347" pvalue="5.75e-05">
+<sequence>CTTTGACA</sequence>
+<mem:qvalue>0.25</mem:qvalue>
+</matched-element>
+<matched-element start="1044" stop="1037" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.25</mem:qvalue>
+</matched-element>
+<matched-element start="1162" stop="1155" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.25</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0224.1" name="exex">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0446.1" name="fkh">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="638" stop="628" score="13.8587" pvalue="7.62e-06">
+<sequence>TGTTTGCTTAG</sequence>
+<mem:qvalue>0.119</mem:qvalue>
+</matched-element>
+<matched-element start="694" stop="704" score="12.087" pvalue="4.78e-05">
+<sequence>TGTTTGCAGAA</sequence>
+<mem:qvalue>0.374</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="942" stop="952" score="11.2609" pvalue="8.01e-05">
+<sequence>TGTTTGCTTGA</sequence>
+<mem:qvalue>0.418</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0225.1" name="ftz">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0917.1" name="gcm2">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="758" stop="751" score="11.3279" pvalue="9.13e-05">
+<sequence>ATGCTGGT</sequence>
+<mem:qvalue>0.7</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="834" stop="827" score="11.3279" pvalue="9.13e-05">
+<sequence>ATGCTGGT</sequence>
+<mem:qvalue>0.7</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1457.1" name="grh">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="1128" stop="1140" score="15.8699" pvalue="1.56e-06">
+<sequence>GAAACCGGTTTCT</sequence>
+<mem:qvalue>0.0151</mem:qvalue>
+</matched-element>
+<matched-element start="1139" stop="1127" score="15.6829" pvalue="1.94e-06">
+<sequence>GAAACCGGTTTCA</sequence>
+<mem:qvalue>0.0151</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="78" stop="90" score="10.1951" pvalue="9.92e-05">
+<sequence>TAAACCGGTCTGT</sequence>
+<mem:qvalue>0.515</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0190.1" name="Gsc">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0447.1" name="gt">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0449.1" name="h">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="961" stop="970" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCATGCGCC</sequence>
+<mem:qvalue>0.276</mem:qvalue>
+</matched-element>
+<matched-element start="970" stop="961" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCGCATGCC</sequence>
+<mem:qvalue>0.276</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0448.1" name="H2.0">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0049.1" name="hb">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="162" stop="171" score="12.1089" pvalue="2.26e-05">
+<sequence>ccacaaaaaa</sequence>
+<mem:qvalue>0.114</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="623" stop="632" score="12.2376" pvalue="1.92e-05">
+<sequence>CCaaaaaaaa</sequence>
+<mem:qvalue>0.114</mem:qvalue>
+</matched-element>
+<matched-element start="624" stop="633" score="11.5347" pvalue="4.46e-05">
+<sequence>Caaaaaaaaa</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+<matched-element start="622" stop="631" score="10.9406" pvalue="8.41e-05">
+<sequence>CCCaaaaaaa</sequence>
+<mem:qvalue>0.213</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="796" stop="805" score="11.5347" pvalue="4.46e-05">
+<sequence>Caaaaaaaaa</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="339" stop="330" score="13.2376" pvalue="3.28e-06">
+<sequence>CCATAAAAAA</sequence>
+<mem:qvalue>0.0499</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0226.1" name="hbn">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0191.1" name="HGTX">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0183.1" name="HHEX">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="942" stop="949" score="10.25" pvalue="8.53e-05">
+<sequence>ttcaatta</sequence>
+<mem:qvalue>0.672</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="1060" stop="1067" score="10.4674" pvalue="5.88e-05">
+<sequence>TTGAATTA</sequence>
+<mem:qvalue>0.672</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0450.1" name="hkb">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="856" stop="864" score="13.9213" pvalue="1.74e-05">
+<sequence>GGGGCGGGA</sequence>
+<mem:qvalue>0.27</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0192.1" name="Hmx">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1458.1" name="Hsf">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="570" stop="581" score="12.2764" pvalue="4.37e-05">
+<sequence>gattcgagaaaa</sequence>
+<mem:qvalue>0.684</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0227.1" name="hth">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0228.1" name="ind">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0229.1" name="inv">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0451.1" name="kni">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="474" stop="463" score="11.0337" pvalue="7.33e-05">
+<sequence>AATGTGGGTCAG</sequence>
+<mem:qvalue>0.576</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="697" stop="686" score="11.2472" pvalue="6.52e-05">
+<sequence>AATTTAGATCAT</sequence>
+<mem:qvalue>0.576</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0452.2" name="Kr">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="761" stop="774" score="10.3607" pvalue="9e-05">
+<sequence>CTCACCCCCTCTTT</sequence>
+<mem:qvalue>0.465</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="313" stop="326" score="15.7049" pvalue="3.01e-06">
+<sequence>TTTACCCCTTTCGT</sequence>
+<mem:qvalue>0.0467</mem:qvalue>
+</matched-element>
+<matched-element start="312" stop="325" score="10.6066" pvalue="8.08e-05">
+<sequence>TTTTACCCCTTTCG</sequence>
+<mem:qvalue>0.465</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0230.1" name="lab">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0231.1" name="lbe">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0232.1" name="lbl">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0194.1" name="Lim1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0195.1" name="Lim3">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0175.1" name="lms">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1459.1" name="M1BP">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="1146" stop="1163" score="11.5281" pvalue="2.63e-05">
+<sequence>cccacagtcacacaGACA</sequence>
+<mem:qvalue>0.412</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="772" stop="755" score="9.1573" pvalue="8.01e-05">
+<sequence>TAAATTGCCACACTGCTA</sequence>
+<mem:qvalue>0.627</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0535.1" name="Mad">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="193" stop="207" score="11.1341" pvalue="6.89e-05">
+<sequence>CACGCGAGACCGGCC</sequence>
+<mem:qvalue>0.377</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="725" stop="711" score="11.5244" pvalue="5.62e-05">
+<sequence>CTCGCGCGAACGGAC</sequence>
+<mem:qvalue>0.377</mem:qvalue>
+</matched-element>
+<matched-element start="830" stop="816" score="10.4268" pvalue="9.64e-05">
+<sequence>GCGACGAGACGGCAA</sequence>
+<mem:qvalue>0.377</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="1518" stop="1532" score="10.3659" pvalue="9.91e-05">
+<sequence>TCGGCGTCGGGGTGG</sequence>
+<mem:qvalue>0.377</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0233.1" name="mirr">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0196.1" name="NK7.1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0197.2" name="nub">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="954" stop="965" score="14.9451" pvalue="4.65e-06">
+<sequence>TATGTAAATAAT</sequence>
+<mem:qvalue>0.073</mem:qvalue>
+</matched-element>
+<matched-element start="160" stop="149" score="11.1758" pvalue="6e-05">
+<sequence>AATGCAAATTTT</sequence>
+<mem:qvalue>0.471</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0234.1" name="oc">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0454.1" name="odd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="869" stop="879" score="8.90816" pvalue="4.28e-05">
+<sequence>AACAGCAGCAG</sequence>
+<mem:qvalue>0.663</mem:qvalue>
+</matched-element>
+<matched-element start="1351" stop="1341" score="7.69388" pvalue="9.15e-05">
+<sequence>TACAGCAGCAG</sequence>
+<mem:qvalue>0.709</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0198.1" name="OdsH">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0235.1" name="onecut">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="1289" stop="1295" score="11.6531" pvalue="9.66e-05">
+<sequence>TTGATTT</sequence>
+<mem:qvalue>0.761</mem:qvalue>
+</matched-element>
+<matched-element start="479" stop="473" score="11.6531" pvalue="9.66e-05">
+<sequence>TTGATTT</sequence>
+<mem:qvalue>0.761</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0456.1" name="opa">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="545" stop="556" score="12.1224" pvalue="2.21e-05">
+<sequence>ccccccccACCG</sequence>
+<mem:qvalue>0.342</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="65" stop="76" score="9.82653" pvalue="7.02e-05">
+<sequence>GATGCCCCGCTA</sequence>
+<mem:qvalue>0.542</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0199.1" name="Optix">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0236.1" name="otp">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0126.1" name="ovo">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="1030" stop="1038" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0237.2" name="pan">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="285" stop="272" score="9.60976" pvalue="9.47e-05">
+<sequence>GCGGTTATTTGCTT</sequence>
+<mem:qvalue>0.487</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="150" stop="137" score="11.9756" pvalue="4.12e-05">
+<sequence>TCGGTGCGTTGAGT</sequence>
+<mem:qvalue>0.487</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="1253" stop="1240" score="10.561" pvalue="7.2e-05">
+<sequence>TCGCACACTTTGTT</sequence>
+<mem:qvalue>0.487</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0238.1" name="pb">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1702.1" name="Pdp1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="395" stop="384" score="14.6434" pvalue="4.23e-06">
+<sequence>CGTTATGCAATT</sequence>
+<mem:qvalue>0.0663</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="1459" stop="1448" score="12.7273" pvalue="2.8e-05">
+<sequence>TATTATGTAAAA</sequence>
+<mem:qvalue>0.22</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0457.1" name="PHDP">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1460.1" name="pho">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="935" stop="925" score="10.3333" pvalue="8.02e-05">
+<sequence>GGATGGCAGCC</sequence>
+<mem:qvalue>0.63</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="125" stop="115" score="10.8298" pvalue="5.91e-05">
+<sequence>TGATGGCTGCC</sequence>
+<mem:qvalue>0.63</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0536.1" name="pnr">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="1184" stop="1174" score="13.8689" pvalue="1.44e-05">
+<sequence>CATCGATAGCG</sequence>
+<mem:qvalue>0.227</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0200.1" name="Pph13">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0239.1" name="prd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="1030" stop="1038" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0201.1" name="Ptx1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0240.1" name="repo">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0241.1" name="ro">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0202.1" name="Rx">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0193.1" name="schlank">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0203.1" name="Scr">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0243.1" name="sd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="428" stop="417" score="10.297" pvalue="7.3e-05">
+<sequence>AACATTTCTCAC</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0204.1" name="Six4">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0244.1" name="slbo">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="39" stop="32" score="10.2411" pvalue="7.22e-05">
+<sequence>ATGGCAAA</sequence>
+<mem:qvalue>0.277</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="243" stop="250" score="11.5357" pvalue="3.96e-05">
+<sequence>attgcaaa</sequence>
+<mem:qvalue>0.277</mem:qvalue>
+</matched-element>
+<matched-element start="39" stop="46" score="10.2411" pvalue="7.22e-05">
+<sequence>ATGGCAAA</sequence>
+<mem:qvalue>0.277</mem:qvalue>
+</matched-element>
+<matched-element start="1156" stop="1149" score="10.2411" pvalue="7.22e-05">
+<sequence>ATGGCAAA</sequence>
+<mem:qvalue>0.277</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0245.1" name="slou">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0458.1" name="slp1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="446" stop="456" score="11.7222" pvalue="6.26e-05">
+<sequence>GTGTTTTTGCT</sequence>
+<mem:qvalue>0.486</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="1260" stop="1270" score="12.1333" pvalue="4.42e-05">
+<sequence>GTGTTTTTGTT</sequence>
+<mem:qvalue>0.486</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0086.2" name="sna">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="1000" stop="988" score="10.3333" pvalue="8.65e-05">
+<sequence>TCGACAAGTGGTA</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0246.1" name="so">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0532.1" name="Stat92E">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="547" stop="533" score="10.0263" pvalue="9.34e-05">
+<sequence>ATCAGTTTCCGGAAT</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0085.1" name="Su(H)">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="910" stop="925" score="7.57798" pvalue="9.47e-05">
+<sequence>GCGTGAAAAACGGTAG</sequence>
+<mem:qvalue>0.735</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="415" stop="430" score="13.6697" pvalue="1.16e-05">
+<sequence>CTGTGAGAAATGTTGT</sequence>
+<mem:qvalue>0.18</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0533.1" name="su(Hw)">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="752" stop="772" score="8.70408" pvalue="9.55e-05">
+<sequence>ACAGAAAAAGAGGCATCACAA</sequence>
+<mem:qvalue>0.744</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="553" stop="533" score="8.97959" pvalue="8.39e-05">
+<sequence>GCACAAAAGGTCGCAACAATA</sequence>
+<mem:qvalue>0.744</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1461.1" name="sv">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="899" stop="883" score="12.6966" pvalue="7.37e-06">
+<sequence>CCCAGCGATGCGAAACG</sequence>
+<mem:qvalue>0.0677</mem:qvalue>
+</matched-element>
+<matched-element start="352" stop="336" score="12.2921" pvalue="8.79e-06">
+<sequence>AGCGCTCAAGCGAAACG</sequence>
+<mem:qvalue>0.0677</mem:qvalue>
+</matched-element>
+<matched-element start="187" stop="203" score="6.68539" pvalue="7.72e-05">
+<sequence>TTTATCCACGCGAGACC</sequence>
+<mem:qvalue>0.397</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0247.2" name="tin">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="917" stop="926" score="13.5303" pvalue="2.34e-05">
+<sequence>CTTCAAGTGG</sequence>
+<mem:qvalue>0.184</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="998" stop="989" score="13.9697" pvalue="1.61e-05">
+<sequence>TTTCGAGTGC</sequence>
+<mem:qvalue>0.184</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0459.1" name="tll">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="1205" stop="1214" score="11.6629" pvalue="4.6e-05">
+<sequence>AAAAGTCATC</sequence>
+<mem:qvalue>0.24</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="682" stop="673" score="12.427" pvalue="3.21e-05">
+<sequence>AAACGTCAAA</sequence>
+<mem:qvalue>0.24</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="869" stop="878" score="12.4831" pvalue="2.67e-05">
+<sequence>GGAAGTCAAA</sequence>
+<mem:qvalue>0.24</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0205.2" name="Trl">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="777" stop="766" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00545</mem:qvalue>
+</matched-element>
+<matched-element start="779" stop="768" score="16.6122" pvalue="7.09e-07">
+<sequence>GGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00545</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="764" score="15.449" pvalue="2.95e-06">
+<sequence>GAGAGAGAGAAA</sequence>
+<mem:qvalue>0.0133</mem:qvalue>
+</matched-element>
+<matched-element start="1072" stop="1061" score="11.7245" pvalue="4.65e-05">
+<sequence>AACAGAGAGAAC</sequence>
+<mem:qvalue>0.0715</mem:qvalue>
+</matched-element>
+<matched-element start="1096" stop="1107" score="11.7245" pvalue="4.65e-05">
+<sequence>ACGAGAGAGTGG</sequence>
+<mem:qvalue>0.0715</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="762" score="10.9082" pvalue="7.1e-05">
+<sequence>GAGAGAGAAAGA</sequence>
+<mem:qvalue>0.0993</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+<matched-element start="474" stop="463" score="15.2653" pvalue="3.58e-06">
+<sequence>GAAAGAGAGCGA</sequence>
+<mem:qvalue>0.0133</mem:qvalue>
+</matched-element>
+<matched-element start="353" stop="342" score="15.0714" pvalue="4.32e-06">
+<sequence>GTGAGAGAGAGG</sequence>
+<mem:qvalue>0.0133</mem:qvalue>
+</matched-element>
+<matched-element start="464" stop="453" score="14.5" pvalue="7.27e-06">
+<sequence>GAAAGAGAGATA</sequence>
+<mem:qvalue>0.0186</mem:qvalue>
+</matched-element>
+<matched-element start="488" stop="477" score="12.8367" pvalue="2.46e-05">
+<sequence>GCGAGAGAGATG</sequence>
+<mem:qvalue>0.0539</mem:qvalue>
+</matched-element>
+<matched-element start="351" stop="340" score="12.1735" pvalue="3.62e-05">
+<sequence>GAGAGAGAGGGC</sequence>
+<mem:qvalue>0.0696</mem:qvalue>
+</matched-element>
+<matched-element start="355" stop="344" score="10.6429" pvalue="7.97e-05">
+<sequence>GCGTGAGAGAGA</sequence>
+<mem:qvalue>0.102</mem:qvalue>
+</matched-element>
+<matched-element start="494" stop="483" score="10.3061" pvalue="9.38e-05">
+<sequence>TAAAGAGCGAGA</sequence>
+<mem:qvalue>0.111</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0460.1" name="ttk">
+<scanned-sequence accession="KLF" name="KLF">
+<matched-element start="392" stop="400" score="13.5204" pvalue="2.47e-05">
+<sequence>GAGGATAAT</sequence>
+<mem:qvalue>0.389</mem:qvalue>
+</matched-element>
+<matched-element start="108" stop="116" score="11.3061" pvalue="8.13e-05">
+<sequence>aaggataaa</sequence>
+<mem:qvalue>0.501</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="1099" stop="1107" score="10.6122" pvalue="9.55e-05">
+<sequence>AAGGATTAT</sequence>
+<mem:qvalue>0.501</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0248.1" name="tup">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0249.2" name="twi">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+<matched-element start="1155" stop="1145" score="11.935" pvalue="5.52e-05">
+<sequence>ACACACATGAT</sequence>
+<mem:qvalue>0.463</mem:qvalue>
+</matched-element>
+<matched-element start="839" stop="849" score="11.8537" pvalue="5.92e-05">
+<sequence>CAACACATGCC</sequence>
+<mem:qvalue>0.463</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0094.2" name="Ubx">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0250.1" name="unc-4">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0251.1" name="unpg">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0016.1" name="usp">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1462.1" name="vfl">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+<matched-element start="720" stop="731" score="12.4587" pvalue="4.13e-05">
+<sequence>CGGCAGGTAaca</sequence>
+<mem:qvalue>0.318</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+<matched-element start="57" stop="46" score="12.578" pvalue="3.51e-05">
+<sequence>AATCAGGTAGGT</sequence>
+<mem:qvalue>0.318</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0252.1" name="vis">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0253.1" name="vnd">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="180" stop="172" score="11.3265" pvalue="9.85e-05">
+<sequence>TCTGAAGTA</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0181.1" name="Vsx1">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0180.1" name="Vsx2">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0254.1" name="vvl">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0255.1" name="z">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="301" stop="292" score="10.6222" pvalue="8.51e-05">
+<sequence>TTGAGTCATT</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0256.1" name="zen">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+<matched-element start="129" stop="123" score="12.2277" pvalue="7.93e-05">
+<sequence>CTAATGA</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0257.1" name="zen2">
+<scanned-sequence accession="KLF" name="KLF">
+</scanned-sequence>
+<scanned-sequence accession="LRIM" name="LRIM">
+</scanned-sequence>
+<scanned-sequence accession="ACE1" name="ACE1">
+</scanned-sequence>
+<scanned-sequence accession="RDL" name="RDL">
+</scanned-sequence>
+<scanned-sequence accession="APT2" name="APT2">
+</scanned-sequence>
+<scanned-sequence accession="OVO" name="OVO">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>
