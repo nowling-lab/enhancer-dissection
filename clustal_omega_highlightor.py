@@ -92,29 +92,26 @@ def generate_html(motif_dict1, motif_dict2, seq_dict, indel_dict):
 def combine_indels(indel_dict):
     new_indel_dict = {}
     keys = list(indel_dict.keys())
-    indel_width = 1
+    indel_width = 0
     for key in keys:
         new_indel_dict[key] = []
         indel_list = indel_dict[key]
-        for index, location in enumerate(key):
-            if indel_width > 1:
-                indel_width -= 1
-                continue
-
-            jump = False
-            temp_index = index + 1
-
-            while not jump:
-                if int(indel_list[temp_index]) - int(indel_list[temp_index-1]) == 1:
-                    temp_index += 1
+        start_location = None
+        if key == 'LRIM_ECO2Fd03_3_A':
+            print(indel_list)
+        for index, location in enumerate(indel_list):
+            if indel_width == 0:
+                indel_width += 1
+                start_location = indel_list[index]
+            elif int(indel_list[index]) - int(indel_list[index-1]) == 1:
                     indel_width += 1
-                else:
-                    jump = True
-            indel_string = ""
-            for x in range(indel_width):
-                indel_string += "-"
-            new_indel_dict[key].append((indel_list[index], indel_string))
-        
+            elif indel_width > 0:
+                indel_string = ""
+                for x in range(indel_width):
+                    indel_string += "-"
+                new_indel_dict[key].append((start_location, indel_string))
+                indel_width = 0
+                    
     new_keys = list(new_indel_dict.keys())
     print(new_indel_dict)
 
