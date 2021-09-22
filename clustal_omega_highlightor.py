@@ -2,16 +2,16 @@ def main():
     fasta = read_fasta_file('temp_files_pre_params/fasta_files/nardini_luciferase_fragments.fasta', True)
     seq_with_indels = read_fasta_file('temp_files_pre_params/fasta_files/nardini_A_only_with_indels.fa', False)
 
-    #motif_dict = read_fimo_file('./temp_files_pre_params/fimo_pest/pest_streme_motifs/fimo.tsv')
-    #motif_dict2 = read_fimo_file('./temp_files_pre_params/fimo_pest/pest_jaspar_motifs/fimo.tsv')
-    #seq_dict = read_fasta_file('./temp_files_pre_params/fasta_files/nardini_reference_sequences.fa', False)
-    #html_string = generate_html(motif_dict, motif_dict2, seq_dict)
-
     indel_locations = generate_indel_locals(seq_with_indels)
     new_indel_list = combine_indels(indel_locations)
-    #print(indel_locations)
 
-   # html_string_to_output(html_string, './test.html')
+
+    motif_dict = read_fimo_file('./temp_files_pre_params/fimo_pest/pest_streme_motifs/fimo.tsv')
+    motif_dict2 = read_fimo_file('./temp_files_pre_params/fimo_pest/pest_jaspar_motifs/fimo.tsv')
+    seq_dict = read_fasta_file('./temp_files_pre_params/fasta_files/nardini_luciferase_fragments_A_only.fasta', False)
+    html_string = generate_html(motif_dict, motif_dict2, seq_dict, new_indel_list)
+
+    html_string_to_output(html_string, './test.html')
 
     return
 
@@ -44,6 +44,7 @@ def generate_html(motif_dict1, motif_dict2, seq_dict, indel_dict):
             dynamic_html_string += """<p style="font-family:'Courier New'; word-wrap: break-word; width: 75%">"""
         dynamic_html_string += ">" + str(key) + "<br>"
 
+        print(seq_dict)
         indel_list = indel_dict[key] #??? get the keys to match I guess.. Think about it later.
 
         sequence = seq_dict[key]
@@ -65,8 +66,9 @@ def generate_html(motif_dict1, motif_dict2, seq_dict, indel_dict):
             else:
                 color = "none"
 
-            #if index_1_based in indel_dict: #look if indel is here
-                
+            if index_1_based in indel_dict: #look if indel is here
+                indel_str = indel_list[index_1_based] 
+                dynamic_html_string += indel_str
 
             if color == "purple":
                 dynamic_html_string += '<span style="background:Plum;">'
@@ -97,8 +99,6 @@ def combine_indels(indel_dict):
         new_indel_dict[key] = []
         indel_list = indel_dict[key]
         start_location = None
-        if key == 'LRIM_ECO2Fd03_3_A':
-            print(indel_list)
         for index, location in enumerate(indel_list):
             if indel_width == 0:
                 indel_width += 1
@@ -112,8 +112,7 @@ def combine_indels(indel_dict):
                 new_indel_dict[key].append((start_location, indel_string))
                 indel_width = 0
                     
-    new_keys = list(new_indel_dict.keys())
-    print(new_indel_dict)
+    return new_indel_dict
 
 def generate_indel_locals(seqs_with_indels):
     keys = list(seqs_with_indels.keys())
