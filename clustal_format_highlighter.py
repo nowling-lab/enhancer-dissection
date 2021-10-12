@@ -20,18 +20,19 @@ def main():
 
     pfin_with_indels = read_fasta_file(pfin1_7051_indels, False)
     pfin_indel_locations = generate_indel_locals(pfin_with_indels)
-    new_indel_list = combine_indels(pfin_indel_locations)
+    new_indel_dict = combine_indels(pfin_indel_locations)
 
     motif_dict = read_fimo_file('/home/petersjg/Windows_Directory/7051_Pfin1_fimo/streme/fimo.tsv')
     motif_dict2 = read_fimo_file('/home/petersjg/Windows_Directory/7051_Pfin1_fimo/jaspar/fimo.tsv')
 
     seq_dict = read_fasta_file(pfin1_7051, False)
-    html_string = generate_html(motif_dict, motif_dict2, seq_dict, new_indel_list)
+    combined_dict = combine_dictionaries(motif_dict, motif_dict2, seq_dict, new_indel_dict)
+    html_string = generate_html(combined_dict)
 
     html_string_to_output(html_string, './highlights.html')
     return    
 
-def generate_html(motif_dict1, motif_dict2, seq_dict, indel_dict):
+def generate_html(combined_dict):
     html_string = """
     <!DOCTYPE html>
     <html lang="en-US">
@@ -51,17 +52,94 @@ def generate_html(motif_dict1, motif_dict2, seq_dict, indel_dict):
     <div style="background:Plum; width:75%"> This is for when those highlighted motifs overlap </div>
     <div style=width:75%; word-wrap: break-word;> Colored &#8209;'s indicate that the indel is within a single motif. If they are not colored, then that means the indel is between two of the same (JASPAR or streme) motif </div>
      """
-    dynamic_html_string = None
+    dynamic_html_string = ""
+    motif_keys = list(combined_dict.keys())
+    motif_keys.sort()
+
+    matched_sequences = {}
+    first_part_key = ''
+    for key in motif_keys:
+        key_split = key.split('_')
+        first_part_key = key_split[0]
+
+        if len(matched_sequences) > 0:
+            last_key = list(matched_sequences.keys())[-1]
+            last_list = list(matched_sequences[last_key])
+            if key in last_list:
+                continue
+
+        matched_sequences[first_part_key] = set()
+        setty = matched_sequences[first_part_key]
+        for key2 in motif_keys:
+            if first_part_key in key2:
+                setty.add(key2)
+
+    chars_to_print = 70
+    for key_to_list in matched_sequences:
+        key_list = list(matched_sequences[key_to_list])
+        
+        lengths = []
+        for key in key_list:
+            lengths.append(len(combined_dict[key]))
+        max_len = max(lengths)
+
+        for x in range(max_len):
+            if x != 0 and x % 70 == 0:
+                dynamic_html_string += '<br>'
+
+        for key in key_list:
+            combined_list = combined_dict[key]
+            dynamic_html_string += """<p style="font-family:'Courier New'; word-wrap: break-word; width: 75%; white-space: normal">"""
+            dynamic_html_string += key + ": "
+            index = chars_to_print - 70
+            
+            """
+            so how this works is that I need to loop the bottom code
+            replace char, color in combined_list with a while loop
+            which will continue on until I run out of indecies for either item
+            in the list, and if one is longer than the other
+            just print it with blanks under it? I'm not sure,
+            though like this is actually really fucking complicated
+
+            HINT: just go through, save a line of html and then interweve the lines?
+            Or just get the stirngs and interleave the lines with the html by going by char
+            or something. Or make them a bunch of lists of 70 in length. Doing this
+            would make it SOOO much easier. Do this tomorrow...
+            """
+
+            for char, color in combined_list:
+                if index == chars_to_print:
+                    chars_to_print += 70
+                    dynamic_html_string += "</p>"
+                    break
+                else:
+                    if color == "purple":
+                        dynamic_html_string += '<span style="background:Plum;">'
+                        dynamic_html_string += char
+                        dynamic_html_string += "</span>"
+                    elif color == "red" or color == "redx":
+                        dynamic_html_string += '<span style="background:PaleVioletRed;">'
+                        dynamic_html_string += char
+                        dynamic_html_string += "</span>"
+                    elif color == "blue" or color ==  "bluex":
+                        dynamic_html_string += '<span style="background:Aqua;">'
+                        dynamic_html_string += char
+                        dynamic_html_string += "</span>"
+                    else:
+                        dynamic_html_string += char.upper()
+                index += 1
+
+    html_string += dynamic_html_string
+    html_string += '\n</body>'
+    return html_string
+
+def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
     motif_keys = list(motif_dict1.keys())
     motif_keys.sort()
-    
+    combined_dict = {}
+
     for key in motif_keys:
-        if dynamic_html_string == None:
-            dynamic_html_string = """<p style="font-family:'Courier New'; word-wrap: break-word; width: 75%; white-space: normal">"""
-        else:
-            dynamic_html_string += """<p style="font-family:'Courier New'; word-wrap: break-word; width: 75%; white-space: normal">"""
-        dynamic_html_string += ">" + str(key) + "<br>"
-        
+        combined_list = []        
         if indel_dict != None:
             indel_list = indel_dict[key]
         else:
@@ -91,47 +169,45 @@ def generate_html(motif_dict1, motif_dict2, seq_dict, indel_dict):
                     if (index_1_based - 1) in overlap_dict and (index_1_based) in overlap_dict:
                         prev_color = overlap_dict[index_1_based - 1]
                         if 'x' in prev_color or 'x' in color:
-                            dynamic_html_string += generate_indel_string(indel_str)
+                            add_indel_string_to_list(indel_str, combined_list, 'none')
                             continue                
                         if color == "purple":
-                            dynamic_html_string += '<span style="background:Plum;">'
-                            dynamic_html_string += generate_indel_string(indel_str)
-                            dynamic_html_string += "</span>"
+                            add_indel_string_to_list(indel_str, combined_list, 'purple')
                         elif color == "red":
-                            dynamic_html_string += '<span style="background:PaleVioletRed;">'
-                            dynamic_html_string += generate_indel_string(indel_str)
-                            dynamic_html_string += "</span>"
+                            add_indel_string_to_list(indel_str, combined_list, 'red')
                         elif color == "blue":
-                            dynamic_html_string += '<span style="background:Aqua;">'
-                            dynamic_html_string += generate_indel_string(indel_str)
-                            dynamic_html_string += "</span>"       
+                            add_indel_string_to_list(indel_str, combined_list, 'blue')     
                     else:
-                        dynamic_html_string += generate_indel_string(indel_str)                    
+                        add_indel_string_to_list(indel_str, combined_list, 'none')                    
                     break                    
 
             if color == "purple":
-                dynamic_html_string += '<span style="background:Plum;">'
-                dynamic_html_string += char.upper()
-                dynamic_html_string += "</span>"
+                combined_list.append((char.upper(), 'purple'))
             elif color == "red" or color == "redx":
-                dynamic_html_string += '<span style="background:PaleVioletRed;">'
-                dynamic_html_string += char.upper()
-                dynamic_html_string += "</span>"
+                if color == 'redx':
+                    combined_list.append((char.upper(), 'redx'))
+                else:
+                    combined_list.append((char.upper(), 'red'))
             elif color == "blue" or color ==  "bluex":
-                dynamic_html_string += '<span style="background:Aqua;">'
-                dynamic_html_string += char.upper()
-                dynamic_html_string += "</span>"
+                if color == 'bluex':
+                    combined_list.append((char.upper(), 'bluex'))
+                else:
+                    combined_list.append((char.upper(), 'blue'))
             else:
-                dynamic_html_string += char.upper()
+                combined_list.append((char.upper(), 'none'))
             
             if index_1_based == len(sequence) and indel_list[-1][0] == len(sequence):
-                dynamic_html_string += generate_indel_string(indel_list[-1][1])
+                add_indel_string_to_list(indel_list[-1][1], combined_list, 'none')
+            
+        combined_dict[key] = combined_list
 
-        dynamic_html_string += "\n</p>"
+    combined_dict[motif_keys[-1]] = combined_list
 
-    html_string += dynamic_html_string
-    html_string += '\n</body>'
-    return html_string
+    return combined_dict
+
+def add_indel_string_to_list(indel_string, combined_list, color):
+    for char in indel_string:
+        combined_list.append(('&#8209;', color))
 
 def generate_indel_string(indel_string):
     return_string = ""
@@ -188,6 +264,9 @@ def create_add_indel(new_indel_dict, key, start_location, indel_width):
     for x in range(indel_width):
         indel_string += "-"
     new_indel_dict[key].append((start_location, indel_string))
+    #print(start_location, indel_string, indel_width)
+    #if key == 'ACE1_Fd33_9_A':
+        #print(start_location, indel_string, indel_width)
 
 def generate_indel_locals(seqs_with_indels):
     keys = list(seqs_with_indels.keys())
