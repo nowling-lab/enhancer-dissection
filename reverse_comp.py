@@ -5,8 +5,6 @@ def main():
     seq_dict = read_fasta_file(nardini_fasta_all, False)
     seq_dict = reverse_compliment_B_seqs(seq_dict)
     
-    
-
     return
 
 def reverse_compliment_B_seqs(seq_dict):

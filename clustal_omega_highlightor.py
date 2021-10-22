@@ -136,7 +136,7 @@ def generate_html(motif_dict1, motif_dict2, seq_dict, indel_dict):
 def generate_indel_string(indel_string):
     return_string = ""
     for char in indel_string:
-        return_string += '&#8209;'
+        return_string += '-'
     return return_string
 
 def combine_indels(indel_dict):

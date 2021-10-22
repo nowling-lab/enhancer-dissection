@@ -1,3 +1,7 @@
+from os import read
+from typing import Literal
+
+
 def main():
     ### INDEL FILE PATHS
     ACE1_A_indels = '/home/petersjg/Windows_Directory/indel-fasta-files/ACE1_A_Indels.fa'
@@ -18,19 +22,44 @@ def main():
     nardini_fasta_all = './temp_files_pre_params/fasta_files/nardini_luciferase_fragments.fasta'
     nardini_a_only_fasta = './temp_files_pre_params/fasta_files/nardini_luciferase_fragments_A_only.fasta'
 
-    pfin_with_indels = read_fasta_file(pfin1_7051_indels, False)
-    pfin_indel_locations = generate_indel_locals(pfin_with_indels)
-    new_indel_dict = combine_indels(pfin_indel_locations)
+    ### Fimo file paths
+    streme_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_streme_a_only/fimo.tsv'
+    jaspar_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_jaspar_a_only/fimo.tsv'
+    streme_motifs_pfin1 = '/home/petersjg/Windows_Directory/7051_Pfin1_fimo/streme/fimo.tsv'
+    jaspar_motifs_pfin1 = '/home/petersjg/Windows_Directory/7051_Pfin1_fimo/jaspar/fimo.tsv'
 
-    motif_dict = read_fimo_file('/home/petersjg/Windows_Directory/7051_Pfin1_fimo/streme/fimo.tsv')
-    motif_dict2 = read_fimo_file('/home/petersjg/Windows_Directory/7051_Pfin1_fimo/jaspar/fimo.tsv')
+    output_path = '/home/petersjg/Windows_Directory'
+    output_file_path = output_path + '/nardini_highlights.html'
 
-    seq_dict = read_fasta_file(pfin1_7051, False)
-    combined_dict = combine_dictionaries(motif_dict, motif_dict2, seq_dict, new_indel_dict)
-    html_string = generate_html(combined_dict)
+    #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
 
-    html_string_to_output(html_string, './highlights.html')
+    main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
     return    
+
+def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path):
+    """This method abstracts the main method so other users don't need to remember which order to call functions in
+
+    Args:
+        indel_fasta_path (string): Path to the clustal omega indel file in fasta format
+        a_only_bool (boolean): True or False in order to only capture A only sequences in fasta files
+        streme_tsv_path (string): Path to Fimo output from running sequences with the streme motif file
+        jaspar_tsv_path (string): Path to Fimo output from running sequences with the Jaspar motif file
+        sequences_fasta_path (string): Path to the sequences file in fasta format
+        output_path (string): Path to output file. Note this must go to a .html file: ~/highlights.html as an example
+    """
+    indel_fasta = read_fasta_file(indel_fasta_path, a_only_bool)
+    indel_dict = generate_indel_locals(indel_fasta)
+    combined_indel_dict = combine_indels(indel_dict)
+
+    streme_motifs = read_fimo_file(streme_tsv_path)
+    jaspar_motifs = read_fimo_file(jaspar_tsv_path)
+
+    sequence_dict = read_fasta_file(sequences_fasta_path, a_only_bool)
+    combined_dicts = combine_dictionaries(streme_motifs, jaspar_motifs, sequence_dict, combined_indel_dict)
+    html_output = generate_html(combined_dicts)
+
+    html_string_to_output(html_output, output_path)
+    return
 
 def generate_html(combined_dict):
     html_string = """
@@ -52,13 +81,14 @@ def generate_html(combined_dict):
     <div style="background:Plum; width:75%"> This is for when those highlighted motifs overlap </div>
     <div style=width:75%; word-wrap: break-word;> Colored &#8209;'s indicate that the indel is within a single motif. If they are not colored, then that means the indel is between two of the same (JASPAR or streme) motif </div>
      """
-    dynamic_html_string = ""
+     # Large HTML header up top, then adds to it below with dynamic_html_string
+    dynamic_html_string = "<br>"
     motif_keys = list(combined_dict.keys())
     motif_keys.sort()
 
     matched_sequences = {}
     first_part_key = ''
-    for key in motif_keys:
+    for key in motif_keys: #Loop through all of the sequences
         key_split = key.split('_')
         first_part_key = key_split[0]
 
@@ -66,89 +96,148 @@ def generate_html(combined_dict):
             last_key = list(matched_sequences.keys())[-1]
             last_list = list(matched_sequences[last_key])
             if key in last_list:
-                continue
+                continue #If this key was already done
+            #we don't want to do it again so we skip. This is a clustal
+            #omega format thing since we include multiple sequences 
+            #per block
 
         matched_sequences[first_part_key] = set()
         setty = matched_sequences[first_part_key]
         for key2 in motif_keys:
             if first_part_key in key2:
                 setty.add(key2)
+                #finds all the like-keys. So all the KLF ones ect
 
-    chars_to_print = 70
     for key_to_list in matched_sequences:
+        dynamic_html_string += "<br> <span> New Sequence </span>"
         key_list = list(matched_sequences[key_to_list])
-        
-        lengths = []
-        for key in key_list:
-            lengths.append(len(combined_dict[key]))
-        max_len = max(lengths)
+        #This is the start of a new sequence in the output
+        list_of_lines = []
 
-        for x in range(max_len):
-            if x != 0 and x % 70 == 0:
+        for key in key_list:
+            line_list = [] #loops through all the keys
+            combined_list = combined_dict[key]
+            line = []
+            for index, char_color in enumerate(combined_list):
+                char, color = char_color
+                if index % 70 == 0 and index != 0:
+                    line_list.append(line.copy())
+                    line.clear()
+                line.append((char, color))
+            line_list.append(line.copy())
+            line.clear()
+            list_of_lines.append((key, line_list.copy()))
+            line_list.clear()
+            #This essentially just splits the whole massive sequence into
+            #Multiple 70-length sequences for clustal format
+
+
+        stop = len(list_of_lines[0][1])
+        counter = 0
+        while counter < stop: #Loop through however many lines we got
+            keys_lengths = []
+            for key, row in list_of_lines:
+                keys_lengths.append(len(key)) 
+            
+            max_len = max(keys_lengths) 
+            #this last loop is to find the longest key so we can add
+            #white space to other keys to make it line up properly
+
+            dynamic_html_string += '<pre>'
+            rows_to_compare = []
+            for key, row in list_of_lines:
+                rows_to_compare.append(row[counter])
+                padding_str = generate_padding_string(max_len, key)
+                #For every key that like, as in for all KLF's,
+                #Grab the row and print them 
+                #also adds to the rows_to_compare for when I do star comparisons 
+                dynamic_html_string +=  key + padding_str + ": " 
+                dynamic_html_string += convert_line_to_html(row[counter])
                 dynamic_html_string += '<br>'
 
-        for key in key_list:
-            combined_list = combined_dict[key]
-            dynamic_html_string += """<p style="font-family:'Courier New'; word-wrap: break-word; width: 75%; white-space: normal">"""
-            dynamic_html_string += key + ": "
-            index = chars_to_print - 70
-            
-            """
-            so how this works is that I need to loop the bottom code
-            replace char, color in combined_list with a while loop
-            which will continue on until I run out of indecies for either item
-            in the list, and if one is longer than the other
-            just print it with blanks under it? I'm not sure,
-            though like this is actually really fucking complicated
-
-            HINT: just go through, save a line of html and then interweve the lines?
-            Or just get the stirngs and interleave the lines with the html by going by char
-            or something. Or make them a bunch of lists of 70 in length. Doing this
-            would make it SOOO much easier. Do this tomorrow...
-            """
-
-            for char, color in combined_list:
-                if index == chars_to_print:
-                    chars_to_print += 70
-                    dynamic_html_string += "</p>"
-                    break
-                else:
-                    if color == "purple":
-                        dynamic_html_string += '<span style="background:Plum;">'
-                        dynamic_html_string += char
-                        dynamic_html_string += "</span>"
-                    elif color == "red" or color == "redx":
-                        dynamic_html_string += '<span style="background:PaleVioletRed;">'
-                        dynamic_html_string += char
-                        dynamic_html_string += "</span>"
-                    elif color == "blue" or color ==  "bluex":
-                        dynamic_html_string += '<span style="background:Aqua;">'
-                        dynamic_html_string += char
-                        dynamic_html_string += "</span>"
-                    else:
-                        dynamic_html_string += char.upper()
-                index += 1
+            padding = generate_padding_string(max_len, 'Stars')
+            dynamic_html_string += 'stars' + padding + ': '
+            dynamic_html_string += generate_continuity_stars(rows_to_compare)
+            dynamic_html_string += '<br>' 
+            dynamic_html_string += '</pre>' #this is the last block since it's excluded
+            counter += 1 #From the list. 
 
     html_string += dynamic_html_string
     html_string += '\n</body>'
     return html_string
 
+def generate_padding_string(max_len, key):
+    ##Pads out the keys so it lines everything up properly
+    padding_str = " "
+    if max_len > len(key):
+        padding = max_len - len(key) 
+        for x in range(padding):
+            padding_str += " "
+    return padding_str 
+
+def generate_continuity_stars(row_list):
+    #Generates the stars for a list of 70 length strings
+    star_string = ""
+    for index, char in enumerate(row_list[-1]):
+        chars_at_index = set()
+        #Add all the characters at a single index to a set
+        for row in row_list:
+            chars_at_index.add(row[index][0])
+            #If we have multiple chars at an index then we want empty
+        if len(chars_at_index) > 1:
+            star_string += ' '
+        else: #else put a star there
+            star_string += "*"
+
+    return star_string
+
+def convert_line_to_html(line):
+    html_out = ""
+    for char, color in line:
+        if color == "purple":
+            html_out += '<span style="background:Plum;">'
+            html_out += char
+            html_out += "</span>"
+        elif color == "red" or color == "redx":
+            html_out += '<span style="background:PaleVioletRed;">'
+            html_out += char
+            html_out += "</span>"
+        elif color == "blue" or color ==  "bluex":
+            html_out += '<span style="background:Aqua;">'
+            html_out += char
+            html_out += "</span>"
+        else:
+            html_out += char.upper()
+    #Just generates the proper HTML styling for a given char and its color
+    return html_out
+
+def return_sequences(line):
+    #Just some translating stuff from non-pre tags to pre-tags. 
+    return_string = ""
+    for char, color in line:
+        if 'pre' in char:
+            return_string += "-"
+        else:
+            return_string += char
+    return return_string
+
 def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
+    #Combines all the dictionaries and indels into one single one.
     motif_keys = list(motif_dict1.keys())
     motif_keys.sort()
     combined_dict = {}
 
-    for key in motif_keys:
+    for key in motif_keys: #Go for all keys
         combined_list = []        
         if indel_dict != None:
             indel_list = indel_dict[key]
         else:
-            indel_list = {}
+            indel_list = {} #if not there make it 
 
         sequence = seq_dict[key]
         highlight_list = motif_dict1[key]
         highlight_list = sorted(highlight_list, key=lambda x: x[0])
-        overlap_dict = {}
+        overlap_dict = {} #getting the sequences
         
         highlight_overlaps(highlight_list, overlap_dict, "blue")
 
@@ -156,6 +245,7 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
         highlight_list2 = sorted(highlight_list2, key=lambda x: x[0])
         
         highlight_overlaps(highlight_list2, overlap_dict, "red")
+        #adding all the highlighting to the proper lists
 
         for index, char in enumerate(sequence):
             index_1_based = index + 1
@@ -163,8 +253,12 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
                 color = overlap_dict[index_1_based]
             else:
                 color = "none"
+                #if there is no color then put none there 
             
             for pos, indel_str in indel_list:
+                #This loop colors the indels properly
+                #just does logic to check if it's the same motif
+                #and some other stuff to see if the indel is colored
                 if pos == index:
                     if (index_1_based - 1) in overlap_dict and (index_1_based) in overlap_dict:
                         prev_color = overlap_dict[index_1_based - 1]
@@ -180,7 +274,9 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
                     else:
                         add_indel_string_to_list(indel_str, combined_list, 'none')                    
                     break                    
-
+                
+            #Adding tupules of character.upper() and its color to a combined list
+            #This is so I can then split it up for clustal later
             if color == "purple":
                 combined_list.append((char.upper(), 'purple'))
             elif color == "red" or color == "redx":
@@ -196,8 +292,9 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
             else:
                 combined_list.append((char.upper(), 'none'))
             
-            if index_1_based == len(sequence) and indel_list[-1][0] == len(sequence):
-                add_indel_string_to_list(indel_list[-1][1], combined_list, 'none')
+            if len(indel_list) > 0:
+                if index_1_based == len(sequence) and indel_list[-1][0] == len(sequence):
+                    add_indel_string_to_list(indel_list[-1][1], combined_list, 'none')
             
         combined_dict[key] = combined_list
 
@@ -206,28 +303,45 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
     return combined_dict
 
 def add_indel_string_to_list(indel_string, combined_list, color):
+    #makes indels tupoles with colors and adds them to combined list
     for char in indel_string:
-        combined_list.append(('&#8209;', color))
+        combined_list.append(('-', color))
+
 
 def generate_indel_string(indel_string):
+    #This used to help with HTML formatting, but now it's 
+    #Just an abstraction. I could get rid of it but it makes it a
+    #little more readable with calling a method for it so it'll stay
     return_string = ""
     for char in indel_string:
-        return_string += '&#8209;'
+        return_string += '-'
+
     return return_string
 
 def combine_indels(indel_dict):
+    #Indels start out as an index -> indel basis, this makes it
+    #start index -> bunch of indels basis
+    #This also properly finds the index where the indel needs to go in a
+    #sequence where there are no indels since the indecies don't overlap
     new_indel_dict = {}
     keys = list(indel_dict.keys())
-    for key in keys:
+    for key in keys: #for all the keys with indels
         new_indel_dict[key] = []
         indel_list = indel_dict[key]
+        
         if len(indel_list) == 0:
             continue
         start_location = indel_list[0]
         indel_width = 1
-        for index, location in enumerate(indel_list):
+        
+        for index, location in enumerate(indel_list): #then for the sequence associated to that key
             if index + 1 >= len(indel_list):
-                break
+                if indel_width == 1:
+                    start_location = location
+                break #do a bunch of logic lmao it jut looks through and combines
+            #the indels into one string, calibrates the start location and
+            #then makes that into a new indel dict that has 
+            #start_index -> ------ instead of index -> - in there...
             elif int(indel_list[index + 1]) - int(indel_list[index]) == 1:
                     if indel_width == 1:
                         start_location = location
@@ -238,7 +352,6 @@ def combine_indels(indel_dict):
                 start_location = calibrate_start_location(start_location, new_indel_dict, key)
                 create_add_indel(new_indel_dict, key, start_location - 1, indel_width)                
                 indel_width = 1
-
         indel_list = new_indel_dict[key]
         if indel_width > 0 and len(indel_list) == 0:
             start_location = calibrate_start_location(start_location, new_indel_dict, key)
@@ -246,10 +359,11 @@ def combine_indels(indel_dict):
         elif indel_list[-1][0] != start_location:
             start_location = calibrate_start_location(start_location, new_indel_dict, key)
             create_add_indel(new_indel_dict, key, start_location - 1, indel_width)
-        
     return new_indel_dict
 
 def calibrate_start_location(start_location, new_indel_dict, key):
+    #just subtracts the previous indels from the length of the list 
+    #and then makes that the new index
     indels_in_key = new_indel_dict[key]
     total_length_of_indels = 0
     for indel in indels_in_key:
@@ -261,14 +375,13 @@ def calibrate_start_location(start_location, new_indel_dict, key):
 
 def create_add_indel(new_indel_dict, key, start_location, indel_width):
     indel_string = ""
+    #given an indel of length x, generate a string of that many -'s
     for x in range(indel_width):
         indel_string += "-"
     new_indel_dict[key].append((start_location, indel_string))
-    #print(start_location, indel_string, indel_width)
-    #if key == 'ACE1_Fd33_9_A':
-        #print(start_location, indel_string, indel_width)
 
 def generate_indel_locals(seqs_with_indels):
+    #inital generations of index -> location list
     keys = list(seqs_with_indels.keys())
     indel_locations = {}
     for key in keys:
@@ -283,11 +396,13 @@ def generate_indel_locals(seqs_with_indels):
     return indel_locations
 
 def html_string_to_output(html_string, outputdir):
+    #just writes the html string to out
     output = open(outputdir, 'w')
     output.write(html_string)
     output.close
 
 def output_A_seqs(fasta, output, keys):
+    #output but with sequences that have A only
     for key in keys:
         seq = fasta[key]
         temp_output_string = ">" + key + "\n"
@@ -302,6 +417,7 @@ def output_A_seqs(fasta, output, keys):
     output.close()
 
 def read_fasta_file(file_path, only_A):
+    #Reads in a fasta file. Standard stuff
     sequence_dictionary = {}
     sequence = None
     sequence_name = None
@@ -331,6 +447,7 @@ def read_fasta_file(file_path, only_A):
     return sequence_dictionary
 
 def read_fimo_file(file_path):
+    #Reads in a fimo file, standard stuff
     sequence_name_dict = {}
     with open(file_path) as f:
             header = f.readline() #to get rid of it
@@ -349,6 +466,9 @@ def read_fimo_file(file_path):
     return sequence_name_dict
 
 def highlight_overlaps(highlight_list, overlap_dict, color):
+    #highlights the overlaps between the two motif files output
+    #so generates the purple and colorx codes so that I know
+    #where different motifs overlap essentially 
     for highlight in highlight_list:
             start, end = highlight
             for x in range(int(start), int(end) + 1):
