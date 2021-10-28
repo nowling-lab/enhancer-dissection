@@ -5,7 +5,38 @@ def main():
     seq_dict = read_fasta_file(nardini_fasta_all, False)
     seq_dict = reverse_compliment_B_seqs(seq_dict)
     
+    separate_key_types = {}
+    for key in seq_dict:
+        split_key = key.split('_')
+        group = split_key[0]
+        if group in separate_key_types:
+            separate_key_types[group].append(key)
+        else:
+            separate_key_types[group] = [key]
+    
+    for group in separate_key_types:
+        print_key_group(group, separate_key_types[group], seq_dict)
+    
+    
+        
     return
+
+def print_key_group(group, keys, sequence_dictionary):
+    output_file = '/home/petersjg/windows_directory/nardini_groups/' + group + ".fa"
+    file = open(output_file, 'w')
+    output_string = ""
+    for key in keys:
+        new_key = ""
+        if '_B' in key:
+            new_key += key[:-1]
+            new_key += 'A'
+        else:
+            new_key = key
+        output_string += '>' + new_key + '\n'
+        output_string += sequence_dictionary[key] + '\n\n'
+    
+    file.write(str(output_string))
+        
 
 def reverse_compliment_B_seqs(seq_dict):
     keys = list(seq_dict.keys())
@@ -15,7 +46,7 @@ def reverse_compliment_B_seqs(seq_dict):
         seq = seq_dict[key]
         if '_B' in key or '_b' in key:
             seq = Seq(seq)
-            seq = seq.complement()
+            seq = seq.reverse_complement()
         new_seq_dict[key] = seq
     return new_seq_dict
 

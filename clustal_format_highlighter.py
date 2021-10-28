@@ -6,34 +6,53 @@ def main():
     ### INDEL FILE PATHS
     ACE1_A_indels = '/home/petersjg/Windows_Directory/indel-fasta-files/ACE1_A_Indels.fa'
     APT2_A_indels = '/home/petersjg/Windows_Directory/indel-fasta-files/APT2_A_Indels.fa'
-    KLF_A_indels = '/home/petersjg/Windows_Directory/indel-fasta-files/KLF_A_Indels.fa'
-    LRIM_A_indels = '/home/petersjg/Windows_Directory/indel-fasta-files/LRIM_A_Indels.fa'
+    KLF_A_indels = '/home/petersjg/windows_directory/indel-fasta-files/KLF_A_Indels.fa'
+    LRIM_A_indels = '/home/petersjg/windows_directory/indel-fasta-files/LRIM_A_Indels.fa'
     all_indels_merged = './a_only_indels/indel-fasta-files/nardini_a_only_merged.fa'
-    pfin1_7051_indels = '/home/petersjg/Windows_Directory/7051_Pfin1_aligned.fasta'
+    pfin1_7051_indels = '/home/petersjg/windows_directory/7051_Pfin1_aligned.fasta'
+    pfin_haplotype_indels = '/home/petersjg/windows_directory/Pfin1_with_1000genomes_haplotypes_clustal_omega.fa'
+    nardini_all_b_to_a_indels = '/home/petersjg/windows_directory/nardini_groups/clustal_results/nardini_b_to_a_clustal.fa'
+    
     
     ### WITHOUT INDELS FILE PATHS
-    ACE1_A = '/home/petersjg/Windows_Directory/a-only-fasta-files/ACE1_A.fa'
-    APT2_A = '/home/petersjg/Windows_Directory/a-only-fasta-files/APT2_A.fa'
-    KLF_A = '/home/petersjg/Windows_Directory/a-only-fasta-files/KLF_A.fa'
-    LRIM_A = '/home/petersjg/Windows_Directory/a-only-fasta-files/LRIM_A.fa'
-    pfin1_7051 = '/home/petersjg/Windows_Directory/7051_Pfin1_sequences.txt' 
+    ACE1_A = '/home/petersjg/windows_directory/a-only-fasta-files/ACE1_A.fa'
+    APT2_A = '/home/petersjg/windows_directory/a-only-fasta-files/APT2_A.fa'
+    KLF_A = '/home/petersjg/windows_directory/a-only-fasta-files/KLF_A.fa'
+    LRIM_A = '/home/petersjg/windows_directory/a-only-fasta-files/LRIM_A.fa'
+    pfin1_7051 = '/home/petersjg/windows_directory/7051_Pfin1_sequences.txt' 
+    pfin_haplotypes = '/home/petersjg/windows_directory/Pfin1_with_1000genomes_haplotypes.fa'
+    enhancers_16 = './temp_files_pre_params/fasta_files/16_enhancers.fa'
+    
 
     ### Nardini luciferase fragments
     nardini_fasta_all = './temp_files_pre_params/fasta_files/nardini_luciferase_fragments.fasta'
     nardini_a_only_fasta = './temp_files_pre_params/fasta_files/nardini_luciferase_fragments_A_only.fasta'
+    nardini_a_to_b_all = '/home/petersjg/windows_directory/nardini_groups/nardini_all_a_to_b.fa'
 
     ### Fimo file paths
     streme_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_streme_a_only/fimo.tsv'
     jaspar_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_jaspar_a_only/fimo.tsv'
-    streme_motifs_pfin1 = '/home/petersjg/Windows_Directory/7051_Pfin1_fimo/streme/fimo.tsv'
-    jaspar_motifs_pfin1 = '/home/petersjg/Windows_Directory/7051_Pfin1_fimo/jaspar/fimo.tsv'
+    streme_motifs_pfin1 = '/home/petersjg/windows_directory/7051_Pfin1_fimo/streme/fimo.tsv'
+    jaspar_motifs_pfin1 = '/home/petersjg/windows_directory/7051_Pfin1_fimo/jaspar/fimo.tsv'
+    streme_motifs_haplotypes = '/home/petersjg/windows_directory/haplotypes_fimo/streme/fimo.tsv'
+    jaspar_motifs_haplotypes = '/home/petersjg/windows_directory/haplotypes_fimo/jaspar/fimo.tsv'
+    streme_motfs_16_enhancers = './temp_files_pre_params/enhancer-dissection-out/FIMO_16_enhancers/fimo.tsv'
+    jaspar_motifs_16_enhancers = './temp_files_pre_params/enhancer-dissection-out/FIMO_16_JASPAR/fimo.tsv'
+    streme_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/streme/fimo.tsv'
+    jaspar_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/jaspar/fimo.tsv'
 
-    output_path = '/home/petersjg/Windows_Directory'
-    output_file_path = output_path + '/nardini_highlights.html'
+    output_path = '/home/petersjg/windows_directory'
+    output_file_path = output_path + '/nardini_all_b_a_highlights.html'
+
+    main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
+
+    #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
+    
+    #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
 
     #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
 
-    main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
+    #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
     return    
 
 def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path):
@@ -73,13 +92,60 @@ def generate_html(combined_dict):
         content="HTML">
         <meta name="Description"
           content="This is a highlighted FIMO output thingy">
+          
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- JavaScript Bundle with Popper -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <style>
+        .clear{
+            background:white;
+        }
+        .blue{
+            background:Aqua;
+        }
+        .red{
+            background:PaleVioletRed;
+        }
+        .purple{
+            background:Plum;
+        }
+        .heading{
+            width: 75%;
+        }
+        .clearv2{
+            background:white;
+        }
+    </style>
     </head>
     <body>
     <h> Legend: </h>
-    <div style="background:Aqua; width:75%;"> This is for fimo run with streme.txt as the motif file </div>
-    <div style="background:PaleVioletRed; width:75%"> This is for fimo run with JASPAR as the motif file </div>
-    <div style="background:Plum; width:75%"> This is for when those highlighted motifs overlap </div>
-    <div style=width:75%; word-wrap: break-word;> Colored &#8209;'s indicate that the indel is within a single motif. If they are not colored, then that means the indel is between two of the same (JASPAR or streme) motif </div>
+    <div class = "blue heading"> This is for fimo run with streme.txt as the motif file </div>
+    <div class = "red heading"> This is for fimo run with JASPAR as the motif file </div>
+    <div class = "purple heading"> This is for when those highlighted motifs overlap </div>
+    <div class = "clear" style="width:75%; word-wrap: break-word;"> Colored &#8209;'s indicate that the indel is within a single motif. If they are not colored, then that means the indel is between two of the same (JASPAR or streme) motif </div>
+    <span>
+    <button id="toggle_blue" type="button" class="btn" style="background:Aqua">Toggle Blue</button>
+    <button id="toggle_red" type="button" class="btn" style="background:PaleVioletRed">Toggle Red</button>
+    <button id="toggle_purple" type="button" class="btn" style="background:Plum">Toggle Purple</button>
+    </span>
+    <script type="text/javascript">
+    $(document).ready(function () {   
+      $('[data-toggle="tooltip"]').tooltip(); 
+            
+      $('#toggle_blue').click(function() {
+          $( "span.blue" ).toggleClass( "clearv2" );
+      });
+      
+      $('#toggle_red').click(function(){
+          $( "span.red" ).toggleClass( "clearv2" );
+      });
+      
+      $('#toggle_purple').click(function(){
+          $( "span.purple" ).toggleClass( "clearv2" );
+      });
+    });
+    </script>
      """
      # Large HTML header up top, then adds to it below with dynamic_html_string
     dynamic_html_string = "<br>"
@@ -104,9 +170,17 @@ def generate_html(combined_dict):
         matched_sequences[first_part_key] = set()
         setty = matched_sequences[first_part_key]
         for key2 in motif_keys:
-            if first_part_key in key2:
+            is_int = True
+            try:
+                int(first_part_key)
+            except:
+                is_int = False
+            
+            if first_part_key in key2 and not is_int:
                 setty.add(key2)
                 #finds all the like-keys. So all the KLF ones ect
+        if len(setty) == 0:
+            setty.add(key)
 
     for key_to_list in matched_sequences:
         dynamic_html_string += "<br> <span> New Sequence </span>"
@@ -118,12 +192,12 @@ def generate_html(combined_dict):
             line_list = [] #loops through all the keys
             combined_list = combined_dict[key]
             line = []
-            for index, char_color in enumerate(combined_list):
-                char, color = char_color
+            for index, char_color in enumerate(combined_list):                
                 if index % 70 == 0 and index != 0:
                     line_list.append(line.copy())
                     line.clear()
-                line.append((char, color))
+ 
+                line.append(char_color)
             line_list.append(line.copy())
             line.clear()
             list_of_lines.append((key, line_list.copy()))
@@ -131,13 +205,17 @@ def generate_html(combined_dict):
             #This essentially just splits the whole massive sequence into
             #Multiple 70-length sequences for clustal format
 
-
-        stop = len(list_of_lines[0][1])
+        if(len(list_of_lines) == 0):
+            stop = 1
+        else:
+            stop = len(list_of_lines[0][1])
         counter = 0
         while counter < stop: #Loop through however many lines we got
             keys_lengths = []
             for key, row in list_of_lines:
                 keys_lengths.append(len(key)) 
+            
+            keys_lengths.append(len('stars'))
             
             max_len = max(keys_lengths) 
             #this last loop is to find the longest key so we can add
@@ -157,7 +235,11 @@ def generate_html(combined_dict):
 
             padding = generate_padding_string(max_len, 'Stars')
             dynamic_html_string += 'stars' + padding + ': '
-            dynamic_html_string += generate_continuity_stars(rows_to_compare)
+            check_list = set()
+            for index, rows in enumerate(rows_to_compare):
+                check_list.add(len(rows))
+            if len(rows_to_compare) > 0:
+                dynamic_html_string += generate_continuity_stars(rows_to_compare)
             dynamic_html_string += '<br>' 
             dynamic_html_string += '</pre>' #this is the last block since it's excluded
             counter += 1 #From the list. 
@@ -193,21 +275,34 @@ def generate_continuity_stars(row_list):
 
 def convert_line_to_html(line):
     html_out = ""
-    for char, color in line:
-        if color == "purple":
-            html_out += '<span style="background:Plum;">'
-            html_out += char
-            html_out += "</span>"
-        elif color == "red" or color == "redx":
-            html_out += '<span style="background:PaleVioletRed;">'
-            html_out += char
-            html_out += "</span>"
-        elif color == "blue" or color ==  "bluex":
-            html_out += '<span style="background:Aqua;">'
+    for item in line:
+        char = None
+        color = None
+        tooltip_str = None
+        class_color = ""
+        if len(item) == 3:
+            char, color, tooltip_str = item
+            if 'x' in color:
+                class_color = color[:-1]
+            else:
+                class_color = color
+            html_out += '<span class="' + class_color + '" data-toggle="tooltip" data-animation="false" title = "' + tooltip_str + '"'
+        else:
+            char, color = item
+            if 'x' in color:
+                class_color = color[:-1]
+            else:
+                class_color = color
+            
+        if '-' in char and 'none' not in color:
+            html_out += '</span class="' + class_color + '"' 
+            
+        if 'none' not in color:
+            html_out += '>'
             html_out += char
             html_out += "</span>"
         else:
-            html_out += char.upper()
+            html_out += char
     #Just generates the proper HTML styling for a given char and its color
     return html_out
 
@@ -250,7 +345,7 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
         for index, char in enumerate(sequence):
             index_1_based = index + 1
             if index_1_based in overlap_dict:
-                color = overlap_dict[index_1_based]
+                color, tooltip_str = overlap_dict[index_1_based]
             else:
                 color = "none"
                 #if there is no color then put none there 
@@ -278,17 +373,17 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
             #Adding tupules of character.upper() and its color to a combined list
             #This is so I can then split it up for clustal later
             if color == "purple":
-                combined_list.append((char.upper(), 'purple'))
+                combined_list.append((char.upper(), 'purple', tooltip_str))
             elif color == "red" or color == "redx":
                 if color == 'redx':
-                    combined_list.append((char.upper(), 'redx'))
+                    combined_list.append((char.upper(), 'redx', tooltip_str))
                 else:
-                    combined_list.append((char.upper(), 'red'))
+                    combined_list.append((char.upper(), 'red', tooltip_str))
             elif color == "blue" or color ==  "bluex":
                 if color == 'bluex':
-                    combined_list.append((char.upper(), 'bluex'))
+                    combined_list.append((char.upper(), 'bluex', tooltip_str))
                 else:
-                    combined_list.append((char.upper(), 'blue'))
+                    combined_list.append((char.upper(), 'blue', tooltip_str))
             else:
                 combined_list.append((char.upper(), 'none'))
             
@@ -458,32 +553,47 @@ def read_fimo_file(file_path):
                 seq_name = line_split[2]
                 start = int(line_split[3])
                 stop = int(line_split[4])
+                motif_alt_id = line_split[1]
+
                 if seq_name not in sequence_name_dict:
                     sequence_name_dict[seq_name] = []
-                    sequence_name_dict[seq_name].append((start, stop))
+                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id))
                 else:
-                    sequence_name_dict[seq_name].append((start, stop))  
+                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id))  
     return sequence_name_dict
 
 def highlight_overlaps(highlight_list, overlap_dict, color):
     #highlights the overlaps between the two motif files output
-    #so generates the purple and colorx codes so that I know
-    #where different motifs overlap essentially 
+    #also highlights the base given color as well (color) for
+    #streme and jaspar. 
+    #so generates the colors per positoin so that I know
+    #where motifs are and where they overlap essentially 
     for highlight in highlight_list:
-            start, end = highlight
+            start, end, alt_motif_id = highlight
             for x in range(int(start), int(end) + 1):
                 if x in overlap_dict:
-                    ch_color = overlap_dict[x]
+                    ch_color = overlap_dict[x][0]
                     
                     if 'x' in ch_color:
                         ch_color = ch_color[:-1]
 
                     if color != ch_color:
-                        overlap_dict[x] = "purple"
+                        old_color, alt_id = overlap_dict[x]
+                        if 'x' in old_color:
+                            old_color = old_color[:-1]
+                            
+                        tooltip_str = ""
+                        if 'red' in old_color:
+                            tooltip_str = 'Jaspar is: ' + alt_id + ', Streme is ' + alt_motif_id
+                        elif 'blue' in old_color:
+                            tooltip_str = 'Streme is: ' + alt_id + '. Jaspar is ' + alt_motif_id
+                        overlap_dict[x] = ("purple", tooltip_str)
                     elif color == ch_color:
-                        overlap_dict[x] = color + 'x'
+                        old_color, alt_id = overlap_dict[x]
+                        tooltip_str = alt_id + ", " + alt_motif_id
+                        overlap_dict[x] = (color + 'x', tooltip_str)
                 else:
-                    overlap_dict[x] = color
+                    overlap_dict[x] = (color, alt_motif_id)
 
 
 main()
