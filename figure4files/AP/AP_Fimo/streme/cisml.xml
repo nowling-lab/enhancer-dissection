@@ -1,0 +1,1057 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/AP/AP_Fimo/streme /home/petersjg/windows_directory/enhancer-dissection/streme.txt /home/petersjg/enhancer-dissection/figure4files/AP/AP.fa</command-line>
+<pattern-file>/home/petersjg/windows_directory/enhancer-dissection/streme.txt</pattern-file>
+<sequence-file>/home/petersjg/enhancer-dissection/figure4files/AP/AP.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="1-RCCGGAAGYGR" name="STREME-1">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="2-SYGATAAGV" name="STREME-2">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="3-RTTTCCGGT" name="STREME-3">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="4-CGCKMTCGYYC" name="STREME-4">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="701" stop="711" score="14.6515" pvalue="2.63e-06">
+<sequence>CGCGATCGTCG</sequence>
+<mem:qvalue>0.00308</mem:qvalue>
+</matched-element>
+<matched-element start="714" stop="724" score="14.6515" pvalue="2.63e-06">
+<sequence>CGCGATCGTCG</sequence>
+<mem:qvalue>0.00308</mem:qvalue>
+</matched-element>
+<matched-element start="333" stop="343" score="13.1818" pvalue="1.6e-05">
+<sequence>CCCTATCGCCC</sequence>
+<mem:qvalue>0.0125</mem:qvalue>
+</matched-element>
+<matched-element start="717" stop="707" score="12.1818" pvalue="4.02e-05">
+<sequence>CGCGCCCGACG</sequence>
+<mem:qvalue>0.0235</mem:qvalue>
+</matched-element>
+<matched-element start="492" stop="502" score="11.6364" pvalue="6.19e-05">
+<sequence>CTCTCTCGCTC</sequence>
+<mem:qvalue>0.0289</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="696" stop="706" score="14.6515" pvalue="2.63e-06">
+<sequence>CGCGATCGTCG</sequence>
+<mem:qvalue>0.00308</mem:qvalue>
+</matched-element>
+<matched-element start="709" stop="719" score="14.6515" pvalue="2.63e-06">
+<sequence>CGCGATCGTCG</sequence>
+<mem:qvalue>0.00308</mem:qvalue>
+</matched-element>
+<matched-element start="338" stop="348" score="13.3333" pvalue="1.41e-05">
+<sequence>CCCTCTCGCCC</sequence>
+<mem:qvalue>0.0125</mem:qvalue>
+</matched-element>
+<matched-element start="712" stop="702" score="12.1818" pvalue="4.02e-05">
+<sequence>CGCGCCCGACG</sequence>
+<mem:qvalue>0.0235</mem:qvalue>
+</matched-element>
+<matched-element start="491" stop="501" score="11.6364" pvalue="6.19e-05">
+<sequence>CTCTCTCGCTC</sequence>
+<mem:qvalue>0.0289</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="5-CCAGCAGCAGCAGC" name="STREME-5">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="644" stop="657" score="9.87879" pvalue="9.42e-05">
+<sequence>GCGGCAGCATCCAG</sequence>
+<mem:qvalue>0.444</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="6-ACCGGATG" name="STREME-6">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="642" stop="635" score="14.6143" pvalue="1.21e-05">
+<sequence>ACCGGATG</sequence>
+<mem:qvalue>0.0286</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="637" stop="630" score="14.6143" pvalue="1.21e-05">
+<sequence>ACCGGATG</sequence>
+<mem:qvalue>0.0286</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="7-CTTCCGC" name="STREME-7">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="8-ATCGCGCG" name="STREME-8">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="719" stop="712" score="11.28" pvalue="5.38e-05">
+<sequence>ATCGCGCC</sequence>
+<mem:qvalue>0.127</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="714" stop="707" score="11.28" pvalue="5.38e-05">
+<sequence>ATCGCGCC</sequence>
+<mem:qvalue>0.127</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="9-CAKATGGYGCN" name="STREME-9">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="10-CTTCCTGC" name="STREME-10">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="623" stop="630" score="12.9474" pvalue="2.67e-05">
+<sequence>CTTCCTGT</sequence>
+<mem:qvalue>0.0614</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="618" stop="625" score="12.9474" pvalue="2.67e-05">
+<sequence>CTTCCTGT</sequence>
+<mem:qvalue>0.0614</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="11-WCSRSCGSMM" name="STREME-11">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="12-CGTCGTGCG" name="STREME-12">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="707" stop="715" score="13.9737" pvalue="4.06e-06">
+<sequence>CGTCGGGCG</sequence>
+<mem:qvalue>0.00961</mem:qvalue>
+</matched-element>
+<matched-element start="720" stop="728" score="13.7632" pvalue="1.12e-05">
+<sequence>CGTCGTCCG</sequence>
+<mem:qvalue>0.0133</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="702" stop="710" score="13.9737" pvalue="4.06e-06">
+<sequence>CGTCGGGCG</sequence>
+<mem:qvalue>0.00961</mem:qvalue>
+</matched-element>
+<matched-element start="715" stop="723" score="13.7632" pvalue="1.12e-05">
+<sequence>CGTCGTCCG</sequence>
+<mem:qvalue>0.0133</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="13-CCGATAGGCG" name="STREME-13">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="14-CGAGGTAAACGT" name="STREME-14">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="15-AAACGCGCTTGG" name="STREME-15">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="16-GAACTCGATCCT" name="STREME-16">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="17-CATTCGCTTTTA" name="STREME-17">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="18-GATAATCGGTACA" name="STREME-18">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="19-CTTGACGGTCCAA" name="STREME-19">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="20-CTTTTGTGGCAAAC" name="STREME-20">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="21-GTTCTACTTCTATA" name="STREME-21">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="454" stop="467" score="10.1515" pvalue="1.89e-05">
+<sequence>GCTCTCCTTCTATC</sequence>
+<mem:qvalue>0.0773</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="22-AGCAATGTTAGTAAC" name="STREME-22">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="222" stop="208" score="-0.846939" pvalue="1.85e-05">
+<sequence>ATCAATTTGAGTAAC</sequence>
+<mem:qvalue>0.0383</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="227" stop="213" score="-0.846939" pvalue="1.85e-05">
+<sequence>ATCAATTTGAGTAAC</sequence>
+<mem:qvalue>0.0383</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="23-ACAACCGAAACGTGC" name="STREME-23">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="24-GCAGCGAAAACATCG" name="STREME-24">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="25-AACAATGTTACGCTC" name="STREME-25">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="26-CGTTGATAGTTTTTA" name="STREME-26">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="27-TATATCGAAAACACA" name="STREME-27">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="135" stop="121" score="-4.84694" pvalue="3.82e-05">
+<sequence>TATGTCAAAATTACA</sequence>
+<mem:qvalue>0.159</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="28-GSCGCGSC" name="STREME-28">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="29-ACAACCGAAAC" name="STREME-29">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="30-CTCCTCCTCC" name="STREME-30">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="31-CAGTTGTCTAA" name="STREME-31">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="32-GCCGTGGTCTTCT" name="STREME-32">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="33-CATTAAGCGCAAA" name="STREME-33">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="1059" stop="1047" score="8.44242" pvalue="8.89e-05">
+<sequence>CAGTAGGCTCAAA</sequence>
+<mem:qvalue>0.201</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="1019" stop="1007" score="8.44242" pvalue="8.89e-05">
+<sequence>CAGTAGGCTCAAA</sequence>
+<mem:qvalue>0.201</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="34-GCTGATAA" name="STREME-34">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="35-TAAAAACTTGGAC" name="STREME-35">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="316" stop="304" score="1.08163" pvalue="3.59e-05">
+<sequence>TAAAAAGATGCAC</sequence>
+<mem:qvalue>0.0762</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="321" stop="309" score="1.08163" pvalue="3.59e-05">
+<sequence>TAAAAAGATGCAC</sequence>
+<mem:qvalue>0.0762</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="36-GCTCATGAAACAA" name="STREME-36">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="421" stop="409" score="8.65455" pvalue="3.93e-05">
+<sequence>GCACATAAAACTA</sequence>
+<mem:qvalue>0.0883</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="424" stop="412" score="8.65455" pvalue="3.93e-05">
+<sequence>GCACATAAAACTA</sequence>
+<mem:qvalue>0.0883</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="37-CCAKMTGG" name="STREME-37">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="38-CGRCSAG" name="STREME-38">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="39-CCCCCTC" name="STREME-39">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="40-GCGATA" name="STREME-40">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="41-CGACGACGABG" name="STREME-41">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="727" stop="717" score="12.6714" pvalue="1.79e-05">
+<sequence>GGACGACGATC</sequence>
+<mem:qvalue>0.0424</mem:qvalue>
+</matched-element>
+<matched-element start="845" stop="835" score="11.1286" pvalue="6.16e-05">
+<sequence>CGGCGACGAGA</sequence>
+<mem:qvalue>0.0728</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="722" stop="712" score="12.6714" pvalue="1.79e-05">
+<sequence>GGACGACGATC</sequence>
+<mem:qvalue>0.0424</mem:qvalue>
+</matched-element>
+<matched-element start="840" stop="830" score="11.1286" pvalue="6.16e-05">
+<sequence>CGGCGACGAGA</sequence>
+<mem:qvalue>0.0728</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="42-ATCGAGAACAGAAT" name="STREME-42">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="43-GCAGCASC" name="STREME-43">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="44-CGGCGGA" name="STREME-44">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="45-CGMNKCG" name="STREME-45">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="46-ACCAAAAACCTAACC" name="STREME-46">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="47-GATAACGM" name="STREME-47">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="427" stop="420" score="13.2368" pvalue="1.47e-05">
+<sequence>GATAACGC</sequence>
+<mem:qvalue>0.0348</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="430" stop="423" score="13.2368" pvalue="1.47e-05">
+<sequence>GATAACGC</sequence>
+<mem:qvalue>0.0348</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="48-CTTCCCGTC" name="STREME-48">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="79" stop="71" score="10.2927" pvalue="8.6e-05">
+<sequence>CTTCCCCTT</sequence>
+<mem:qvalue>0.203</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="79" stop="71" score="10.2927" pvalue="8.6e-05">
+<sequence>CTTCCCCTT</sequence>
+<mem:qvalue>0.203</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="49-AACAACAACA" name="STREME-49">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="594" stop="585" score="18.7857" pvalue="1.35e-06">
+<sequence>AACAACAACA</sequence>
+<mem:qvalue>0.00297</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="593" stop="584" score="18.7857" pvalue="1.35e-06">
+<sequence>AACAACAACA</sequence>
+<mem:qvalue>0.00297</mem:qvalue>
+</matched-element>
+<matched-element start="596" stop="587" score="9.03061" pvalue="4.06e-05">
+<sequence>AAAAACAACA</sequence>
+<mem:qvalue>0.0597</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="50-ACACACA" name="STREME-50">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="51-CCGTTTCCG" name="STREME-51">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="52-CGCCCG" name="STREME-52">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="53-CACACACACAC" name="STREME-53">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="586" stop="576" score="7.60976" pvalue="1.4e-05">
+<sequence>CACTCATACAC</sequence>
+<mem:qvalue>0.033</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="585" stop="575" score="7.60976" pvalue="1.4e-05">
+<sequence>CACTCATACAC</sequence>
+<mem:qvalue>0.033</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="54-AGCGAACGA" name="STREME-54">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="55-CGCTGC" name="STREME-55">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="56-GCCGGCACT" name="STREME-56">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="57-CAAAACACAAAAAA" name="STREME-57">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="986" stop="999" score="14.6424" pvalue="5.79e-06">
+<sequence>GAAAACAAAAAAAA</sequence>
+<mem:qvalue>0.0116</mem:qvalue>
+</matched-element>
+<matched-element start="954" stop="941" score="9.72121" pvalue="5.6e-05">
+<sequence>CAAAACAAAACAAC</sequence>
+<mem:qvalue>0.0519</mem:qvalue>
+</matched-element>
+<matched-element start="956" stop="943" score="9.72121" pvalue="5.6e-05">
+<sequence>CACAAAACAAAACA</sequence>
+<mem:qvalue>0.0519</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="953" stop="940" score="14.8485" pvalue="5.54e-06">
+<sequence>GCAAACACAAAAAA</sequence>
+<mem:qvalue>0.0116</mem:qvalue>
+</matched-element>
+<matched-element start="951" stop="938" score="9.51515" pvalue="6.46e-05">
+<sequence>AAACACAAAAAAAA</sequence>
+<mem:qvalue>0.0519</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="58-GATACAACAACCCW" name="STREME-58">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="596" stop="583" score="2.05505" pvalue="6.32e-05">
+<sequence>AAAACAACAACACT</sequence>
+<mem:qvalue>0.14</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="595" stop="582" score="2.05505" pvalue="6.32e-05">
+<sequence>AAAACAACAACACT</sequence>
+<mem:qvalue>0.14</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="59-AAGGTCAAGCATTC" name="STREME-59">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="60-GCAGCCACAAAAAA" name="STREME-60">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="961" stop="948" score="10.4545" pvalue="4.01e-05">
+<sequence>GCAAGCACAAAACA</sequence>
+<mem:qvalue>0.09</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="953" stop="940" score="15.6242" pvalue="3.23e-06">
+<sequence>GCAAACACAAAAAA</sequence>
+<mem:qvalue>0.0145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="61-CGCWTCA" name="STREME-61">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="62-CGGAACAG" name="STREME-62">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="63-KCTTATCA" name="STREME-63">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="64-CGGCACACG" name="STREME-64">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="834" stop="826" score="13.0658" pvalue="1.44e-05">
+<sequence>CGGCAAACG</sequence>
+<mem:qvalue>0.0342</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="829" stop="821" score="13.0658" pvalue="1.44e-05">
+<sequence>CGGCAAACG</sequence>
+<mem:qvalue>0.0342</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="65-GCCGCTCTGC" name="STREME-65">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="66-CCCGTTCCMG" name="STREME-66">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="67-CGGWCCG" name="STREME-67">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="68-CAGCTCC" name="STREME-68">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="69-CGCACCACAG" name="STREME-69">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="70-CTGCGCG" name="STREME-70">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="71-GCACGCG" name="STREME-71">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="662" stop="668" score="10.8171" pvalue="7.21e-05">
+<sequence>GCACGGG</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="657" stop="663" score="10.8171" pvalue="7.21e-05">
+<sequence>GCACGGG</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="72-GCACACACA" name="STREME-72">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="73-GCGCGAG" name="STREME-73">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="732" stop="738" score="13.3537" pvalue="3.6e-05">
+<sequence>GCGCGAG</sequence>
+<mem:qvalue>0.084</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="727" stop="733" score="13.3537" pvalue="3.6e-05">
+<sequence>GCGCGAG</sequence>
+<mem:qvalue>0.084</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="74-CTCTCTTTC" name="STREME-74">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="464" stop="472" score="16.7683" pvalue="4.03e-06">
+<sequence>CTCTCTTTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="474" stop="482" score="16.7683" pvalue="4.03e-06">
+<sequence>CTCTCTTTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="343" stop="351" score="15.7439" pvalue="7.34e-06">
+<sequence>CTCTCTCTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="345" stop="353" score="15.7439" pvalue="7.34e-06">
+<sequence>CTCTCTCTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="347" stop="355" score="15.7439" pvalue="7.34e-06">
+<sequence>CTCTCTCTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="349" stop="357" score="15.7439" pvalue="7.34e-06">
+<sequence>CTCTCTCTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="351" stop="359" score="15.7439" pvalue="7.34e-06">
+<sequence>CTCTCTCTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="488" stop="496" score="15.7439" pvalue="7.34e-06">
+<sequence>CTCTCTCTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="490" stop="498" score="15.7439" pvalue="7.34e-06">
+<sequence>CTCTCTCTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="452" stop="460" score="12.4634" pvalue="2.88e-05">
+<sequence>CTCTCATTC</sequence>
+<mem:qvalue>0.0096</mem:qvalue>
+</matched-element>
+<matched-element start="494" stop="502" score="11.061" pvalue="5.23e-05">
+<sequence>CTCTCGCTC</sequence>
+<mem:qvalue>0.0153</mem:qvalue>
+</matched-element>
+<matched-element start="460" stop="468" score="10.4146" pvalue="6.24e-05">
+<sequence>CTATCTCTC</sequence>
+<mem:qvalue>0.0162</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="350" stop="358" score="16.7683" pvalue="4.03e-06">
+<sequence>CTCTCTTTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="467" stop="475" score="16.7683" pvalue="4.03e-06">
+<sequence>CTCTCTTTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="477" stop="485" score="16.7683" pvalue="4.03e-06">
+<sequence>CTCTCTTTC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="455" stop="463" score="13.7927" pvalue="1.47e-05">
+<sequence>CTCTCCTTC</sequence>
+<mem:qvalue>0.00527</mem:qvalue>
+</matched-element>
+<matched-element start="493" stop="501" score="11.061" pvalue="5.23e-05">
+<sequence>CTCTCGCTC</sequence>
+<mem:qvalue>0.0153</mem:qvalue>
+</matched-element>
+<matched-element start="463" stop="471" score="10.4146" pvalue="6.24e-05">
+<sequence>CTATCTCTC</sequence>
+<mem:qvalue>0.0162</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="75-CGKCAC" name="STREME-75">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="76-GGGCAAGA" name="STREME-76">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="73" stop="80" score="13.2022" pvalue="3.62e-05">
+<sequence>GGGGAAGA</sequence>
+<mem:qvalue>0.0857</mem:qvalue>
+</matched-element>
+<matched-element start="484" stop="477" score="11.2472" pvalue="8.27e-05">
+<sequence>GGGAAAGA</sequence>
+<mem:qvalue>0.098</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="73" stop="80" score="13.2022" pvalue="3.62e-05">
+<sequence>GGGGAAGA</sequence>
+<mem:qvalue>0.0857</mem:qvalue>
+</matched-element>
+<matched-element start="487" stop="480" score="11.2472" pvalue="8.27e-05">
+<sequence>GGGAAAGA</sequence>
+<mem:qvalue>0.098</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="77-CGGATGTRH" name="STREME-77">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="78-CTTTATC" name="STREME-78">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="79-CACCACCACC" name="STREME-79">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="769" stop="760" score="10.7545" pvalue="6.81e-05">
+<sequence>TACCACTACC</sequence>
+<mem:qvalue>0.161</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="764" stop="755" score="10.7545" pvalue="6.81e-05">
+<sequence>TACCACTACC</sequence>
+<mem:qvalue>0.161</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="80-CAGACGGC" name="STREME-80">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="838" stop="831" score="13.0337" pvalue="2.97e-05">
+<sequence>GAGACGGC</sequence>
+<mem:qvalue>0.0704</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="833" stop="826" score="13.0337" pvalue="2.97e-05">
+<sequence>GAGACGGC</sequence>
+<mem:qvalue>0.0704</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="81-AGCGAAACGGAAA" name="STREME-81">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="475" stop="463" score="16.0361" pvalue="1.84e-06">
+<sequence>AGCGAAAGAGAGA</sequence>
+<mem:qvalue>0.00403</mem:qvalue>
+</matched-element>
+<matched-element start="453" stop="441" score="13.2048" pvalue="1.14e-05">
+<sequence>AGCAAAACGGAAG</sequence>
+<mem:qvalue>0.0107</mem:qvalue>
+</matched-element>
+<matched-element start="501" stop="489" score="12.747" pvalue="1.47e-05">
+<sequence>AGCGAGAGAGAGA</sequence>
+<mem:qvalue>0.0107</mem:qvalue>
+</matched-element>
+<matched-element start="356" stop="344" score="9.68675" pvalue="7.49e-05">
+<sequence>AGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.032</mem:qvalue>
+</matched-element>
+<matched-element start="358" stop="346" score="9.68675" pvalue="7.49e-05">
+<sequence>AGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.032</mem:qvalue>
+</matched-element>
+<matched-element start="350" stop="338" score="9.48193" pvalue="8.24e-05">
+<sequence>AGAGAGAGGGCGA</sequence>
+<mem:qvalue>0.032</mem:qvalue>
+</matched-element>
+<matched-element start="900" stop="888" score="9.18072" pvalue="9.52e-05">
+<sequence>CGCAAAACGAAGA</sequence>
+<mem:qvalue>0.032</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="478" stop="466" score="16.0361" pvalue="1.84e-06">
+<sequence>AGCGAAAGAGAGA</sequence>
+<mem:qvalue>0.00403</mem:qvalue>
+</matched-element>
+<matched-element start="456" stop="444" score="13.2048" pvalue="1.14e-05">
+<sequence>AGCAAAACGGAAG</sequence>
+<mem:qvalue>0.0107</mem:qvalue>
+</matched-element>
+<matched-element start="361" stop="349" score="12.9759" pvalue="1.3e-05">
+<sequence>AGAGAAAGAGAGA</sequence>
+<mem:qvalue>0.0107</mem:qvalue>
+</matched-element>
+<matched-element start="188" stop="200" score="10.241" pvalue="5.72e-05">
+<sequence>AGAAAAAGGAAAA</sequence>
+<mem:qvalue>0.032</mem:qvalue>
+</matched-element>
+<matched-element start="355" stop="343" score="9.48193" pvalue="8.24e-05">
+<sequence>AGAGAGAGGGCGA</sequence>
+<mem:qvalue>0.032</mem:qvalue>
+</matched-element>
+<matched-element start="895" stop="883" score="9.18072" pvalue="9.52e-05">
+<sequence>CGCAAAACGAAGA</sequence>
+<mem:qvalue>0.032</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="82-GGCAAAGGAAG" name="STREME-82">
+<scanned-sequence accession="APT2_Ng1_A" name="APT2_Ng1_A">
+<matched-element start="633" stop="623" score="9.0102" pvalue="5.62e-05">
+<sequence>GGGACAGGAAG</sequence>
+<mem:qvalue>0.132</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="APT2_Ng4_A" name="APT2_Ng4_A">
+<matched-element start="628" stop="618" score="9.0102" pvalue="5.62e-05">
+<sequence>GGGACAGGAAG</sequence>
+<mem:qvalue>0.132</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

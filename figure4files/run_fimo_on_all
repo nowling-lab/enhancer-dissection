@@ -1,0 +1,28 @@
+#!/bin/sh
+
+cd /home/petersjg/meme-suite/meme-5.4.1/src
+
+streme="/home/petersjg/windows_directory/enhancer-dissection/streme.txt"
+jaspar="/home/petersjg/windows_directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt"
+script_directory="/home/petersjg/enhancer-dissection/figure4files"
+
+./fimo -oc $script_directory/ACE1/ACE1_Fimo/streme $streme $script_directory/ACE1/ACE1.fa
+./fimo -oc $script_directory/ACE1/ACE1_Fimo/jaspar $jaspar $script_directory/ACE1/ACE1.fa
+
+./fimo -oc $script_directory/AP/AP_Fimo/streme $streme $script_directory/AP/AP.fa
+./fimo -oc $script_directory/AP/AP_Fimo/jaspar $jaspar $script_directory/AP/AP.fa
+
+./fimo -oc $script_directory/KLF/KLF_Fimo/streme $streme $script_directory/KLF/KLF.fa
+./fimo -oc $script_directory/KLF/KLF_Fimo/jaspar $jaspar $script_directory/KLF/KLF.fa
+
+./fimo -oc $script_directory/LRIM1/LRIM1_Fimo/streme $streme $script_directory/LRIM1/LRIM1.fa
+./fimo -oc $script_directory/LRIM1/LRIM1_Fimo/jaspar $jaspar $script_directory/LRIM1/LRIM1.fa
+
+./fimo -oc $script_directory/OVO/OVO_Fimo/streme $streme $script_directory/OVO/OVO.fa
+./fimo -oc $script_directory/OVO/OVO_Fimo/jaspar $jaspar $script_directory/OVO/OVO.fa
+
+./fimo -oc $script_directory/RDL/RDL_Fimo/streme $streme $script_directory/RDL/RDL.fa
+./fimo -oc $script_directory/RDL/RDL_Fimo/jaspar $jaspar $script_directory/RDL/RDL.fa
+
+unset streme
+unset jaspar

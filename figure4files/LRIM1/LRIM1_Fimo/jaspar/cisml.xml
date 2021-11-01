@@ -1,0 +1,1630 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/LRIM1/LRIM1_Fimo/jaspar /home/petersjg/windows_directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt /home/petersjg/enhancer-dissection/figure4files/LRIM1/LRIM1.fa</command-line>
+<pattern-file>/home/petersjg/windows_directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt</pattern-file>
+<sequence-file>/home/petersjg/enhancer-dissection/figure4files/LRIM1/LRIM1.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="MA0206.1" name="abd-A">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0165.1" name="Abd-B">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0207.1" name="achi">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0208.1" name="al">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0166.1" name="Antp">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0209.1" name="ap">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0210.1" name="ara">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0167.1" name="Awh">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0168.1" name="B-H1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0169.1" name="B-H2">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0211.1" name="bap">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0212.1" name="bcd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0529.2" name="BEAF-32">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0242.1" name="Bgb::run">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0010.1" name="br">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0011.1" name="br(var.2)">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0012.1" name="br(var.3)">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0013.1" name="br(var.4)">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="523" stop="513" score="11.2441" pvalue="7.66e-05">
+<sequence>TTGTAAACATT</sequence>
+<mem:qvalue>0.617</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0213.1" name="brk">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0214.1" name="bsh">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0443.1" name="btd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1193" stop="1202" score="10.8315" pvalue="8.72e-05">
+<sequence>TATGGGCGGT</sequence>
+<mem:qvalue>0.338</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1194" stop="1203" score="10.8315" pvalue="8.72e-05">
+<sequence>TATGGGCGGT</sequence>
+<mem:qvalue>0.338</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0215.1" name="btn">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0170.1" name="C15">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0216.2" name="cad">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0217.1" name="caup">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0015.1" name="Cf2">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="164" stop="173" score="10.8571" pvalue="8.44e-05">
+<sequence>ATATATGCAC</sequence>
+<mem:qvalue>0.227</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="164" stop="173" score="10.8571" pvalue="8.44e-05">
+<sequence>ATATATGCAC</sequence>
+<mem:qvalue>0.227</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="164" stop="173" score="10.8571" pvalue="8.44e-05">
+<sequence>ATATATGCAC</sequence>
+<mem:qvalue>0.227</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0171.1" name="CG11085">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0172.1" name="CG11294">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0173.1" name="CG11617">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0176.1" name="CG15696-RA">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0177.1" name="CG18599">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0178.1" name="CG32105">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0179.1" name="CG32532">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0444.1" name="CG34031">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0182.1" name="CG4328-RA">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0184.1" name="CG9876">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1700.1" name="Clamp">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="999" stop="1012" score="14.0183" pvalue="7.38e-06">
+<sequence>TCGCGAGCGAGATC</sequence>
+<mem:qvalue>0.0185</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="998" stop="1011" score="14.0183" pvalue="7.38e-06">
+<sequence>TCGCGAGCGAGATC</sequence>
+<mem:qvalue>0.0185</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="999" stop="1012" score="14.0183" pvalue="7.38e-06">
+<sequence>TCGCGAGCGAGATC</sequence>
+<mem:qvalue>0.0185</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0530.1" name="cnc::maf-S">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0218.1" name="ct">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0531.1" name="CTCF">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="738" stop="724" score="10.2586" pvalue="7.41e-05">
+<sequence>CCGATAGAGGGTGTG</sequence>
+<mem:qvalue>0.591</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0445.1" name="D">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0174.1" name="Dbx">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0185.1" name="Deaf1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0186.1" name="Dfd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0022.1" name="dl">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0023.1" name="dl(var.2)">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1167" stop="1158" score="11.789" pvalue="4.71e-05">
+<sequence>CGGGTTTCCC</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1166" stop="1157" score="11.789" pvalue="4.71e-05">
+<sequence>CGGGTTTCCC</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1167" stop="1158" score="11.789" pvalue="4.71e-05">
+<sequence>CGGGTTTCCC</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0187.1" name="Dll">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1455.1" name="dmrt99B">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0188.1" name="Dr">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1456.1" name="Dref">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0915.1" name="dve">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0189.1" name="E5">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0534.1" name="EcR::usp">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0026.1" name="Eip74EF">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0219.1" name="ems">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0220.1" name="en">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0916.1" name="Ets21C">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0221.1" name="eve">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0222.1" name="exd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0224.1" name="exex">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0446.1" name="fkh">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0225.1" name="ftz">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0917.1" name="gcm2">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1457.1" name="grh">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0190.1" name="Gsc">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0447.1" name="gt">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0449.1" name="h">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="959" stop="968" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCATGCGCC</sequence>
+<mem:qvalue>0.041</mem:qvalue>
+</matched-element>
+<matched-element start="968" stop="959" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCGCATGCC</sequence>
+<mem:qvalue>0.041</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="958" stop="967" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCATGCGCC</sequence>
+<mem:qvalue>0.041</mem:qvalue>
+</matched-element>
+<matched-element start="967" stop="958" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCGCATGCC</sequence>
+<mem:qvalue>0.041</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="959" stop="968" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCATGCGCC</sequence>
+<mem:qvalue>0.041</mem:qvalue>
+</matched-element>
+<matched-element start="968" stop="959" score="11.6205" pvalue="3.65e-05">
+<sequence>GGCGCATGCC</sequence>
+<mem:qvalue>0.041</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0448.1" name="H2.0">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0049.1" name="hb">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="453" stop="444" score="12.9208" pvalue="8.27e-06">
+<sequence>GCAAAAAAAA</sequence>
+<mem:qvalue>0.0659</mem:qvalue>
+</matched-element>
+<matched-element start="546" stop="555" score="12.2178" pvalue="2.12e-05">
+<sequence>GAAAAAAAAA</sequence>
+<mem:qvalue>0.0846</mem:qvalue>
+</matched-element>
+<matched-element start="452" stop="443" score="11.5347" pvalue="4.46e-05">
+<sequence>CAAAAAAAAA</sequence>
+<mem:qvalue>0.113</mem:qvalue>
+</matched-element>
+<matched-element start="783" stop="774" score="11.2277" pvalue="6.8e-05">
+<sequence>GCAGAAAAAA</sequence>
+<mem:qvalue>0.113</mem:qvalue>
+</matched-element>
+<matched-element start="455" stop="446" score="11.2079" pvalue="7.07e-05">
+<sequence>GAGCAAAAAA</sequence>
+<mem:qvalue>0.113</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0226.1" name="hbn">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0191.1" name="HGTX">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0183.1" name="HHEX">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0450.1" name="hkb">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0192.1" name="Hmx">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1458.1" name="Hsf">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0227.1" name="hth">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0228.1" name="ind">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0229.1" name="inv">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0451.1" name="kni">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0452.2" name="Kr">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="763" stop="776" score="10.3607" pvalue="9e-05">
+<sequence>CTCACCCCCTCTTT</sequence>
+<mem:qvalue>0.723</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0230.1" name="lab">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0231.1" name="lbe">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0232.1" name="lbl">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0194.1" name="Lim1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0195.1" name="Lim3">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0175.1" name="lms">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1459.1" name="M1BP">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0535.1" name="Mad">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="193" stop="207" score="11.1341" pvalue="6.89e-05">
+<sequence>CACGCGAGACCGGCC</sequence>
+<mem:qvalue>0.154</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="193" stop="207" score="11.1341" pvalue="6.89e-05">
+<sequence>CACGCGAGACCGGCC</sequence>
+<mem:qvalue>0.154</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="193" stop="207" score="11.1341" pvalue="6.89e-05">
+<sequence>CACGCGAGACCGGCC</sequence>
+<mem:qvalue>0.154</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0233.1" name="mirr">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0196.1" name="NK7.1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0197.2" name="nub">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0234.1" name="oc">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0454.1" name="odd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1346" stop="1336" score="7.69388" pvalue="9.15e-05">
+<sequence>TACAGCAGCAG</sequence>
+<mem:qvalue>0.14</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="866" stop="876" score="8.90816" pvalue="4.28e-05">
+<sequence>AACAGCAGCAG</sequence>
+<mem:qvalue>0.14</mem:qvalue>
+</matched-element>
+<matched-element start="1346" stop="1336" score="7.69388" pvalue="9.15e-05">
+<sequence>TACAGCAGCAG</sequence>
+<mem:qvalue>0.14</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="867" stop="877" score="8.90816" pvalue="4.28e-05">
+<sequence>AACAGCAGCAG</sequence>
+<mem:qvalue>0.14</mem:qvalue>
+</matched-element>
+<matched-element start="1347" stop="1337" score="7.69388" pvalue="9.15e-05">
+<sequence>TACAGCAGCAG</sequence>
+<mem:qvalue>0.14</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0198.1" name="OdsH">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0235.1" name="onecut">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0456.1" name="opa">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="863" stop="852" score="10.7653" pvalue="4.61e-05">
+<sequence>GCCCCCCCTCCA</sequence>
+<mem:qvalue>0.335</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0199.1" name="Optix">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0236.1" name="otp">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0126.1" name="ovo">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1028" stop="1036" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>0.24</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1027" stop="1035" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>0.24</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1028" stop="1036" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>0.24</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0237.2" name="pan">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="150" stop="137" score="10.6098" pvalue="7.09e-05">
+<sequence>TCGGAGCGTTGAGT</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="150" stop="137" score="11.9756" pvalue="4.12e-05">
+<sequence>TCGGTGCGTTGAGT</sequence>
+<mem:qvalue>0.163</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="150" stop="137" score="11.9756" pvalue="4.12e-05">
+<sequence>TCGGTGCGTTGAGT</sequence>
+<mem:qvalue>0.163</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0238.1" name="pb">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1702.1" name="Pdp1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="397" stop="386" score="14.6434" pvalue="4.23e-06">
+<sequence>CGTTATGCAATT</sequence>
+<mem:qvalue>0.0113</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="395" stop="384" score="14.6434" pvalue="4.23e-06">
+<sequence>CGTTATGCAATT</sequence>
+<mem:qvalue>0.0113</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="395" stop="384" score="14.6434" pvalue="4.23e-06">
+<sequence>CGTTATGCAATT</sequence>
+<mem:qvalue>0.0113</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0457.1" name="PHDP">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1460.1" name="pho">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0536.1" name="pnr">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0200.1" name="Pph13">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0239.1" name="prd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1028" stop="1036" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>0.238</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1027" stop="1035" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>0.238</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1028" stop="1036" score="10.8163" pvalue="9.02e-05">
+<sequence>TGTAACCGA</sequence>
+<mem:qvalue>0.238</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0201.1" name="Ptx1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0240.1" name="repo">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0241.1" name="ro">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0202.1" name="Rx">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0193.1" name="schlank">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0203.1" name="Scr">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0243.1" name="sd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0204.1" name="Six4">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0244.1" name="slbo">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0245.1" name="slou">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0458.1" name="slp1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="443" stop="453" score="11.7222" pvalue="6.26e-05">
+<sequence>GTGTTTTTGCT</sequence>
+<mem:qvalue>0.25</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="443" stop="453" score="11.7222" pvalue="6.26e-05">
+<sequence>GTGTTTTTGCT</sequence>
+<mem:qvalue>0.25</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0086.2" name="sna">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="998" stop="986" score="10.3333" pvalue="8.65e-05">
+<sequence>TCGACAAGTGGTA</sequence>
+<mem:qvalue>0.224</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="997" stop="985" score="10.3333" pvalue="8.65e-05">
+<sequence>TCGACAAGTGGTA</sequence>
+<mem:qvalue>0.224</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="998" stop="986" score="10.3333" pvalue="8.65e-05">
+<sequence>TCGACAAGTGGTA</sequence>
+<mem:qvalue>0.224</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0246.1" name="so">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0532.1" name="Stat92E">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0085.1" name="Su(H)">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0533.1" name="su(Hw)">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1461.1" name="sv">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="897" stop="881" score="12.6966" pvalue="7.37e-06">
+<sequence>CCCAGCGATGCGAAACG</sequence>
+<mem:qvalue>0.011</mem:qvalue>
+</matched-element>
+<matched-element start="354" stop="338" score="12.2921" pvalue="8.79e-06">
+<sequence>AGCGCTCAAGCGAAACG</sequence>
+<mem:qvalue>0.011</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="896" stop="880" score="12.6966" pvalue="7.37e-06">
+<sequence>CCCAGCGATGCGAAACG</sequence>
+<mem:qvalue>0.011</mem:qvalue>
+</matched-element>
+<matched-element start="352" stop="336" score="12.2921" pvalue="8.79e-06">
+<sequence>AGCGCTCAAGCGAAACG</sequence>
+<mem:qvalue>0.011</mem:qvalue>
+</matched-element>
+<matched-element start="187" stop="203" score="6.68539" pvalue="7.72e-05">
+<sequence>TTTATCCACGCGAGACC</sequence>
+<mem:qvalue>0.0728</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="897" stop="881" score="12.6966" pvalue="7.37e-06">
+<sequence>CCCAGCGATGCGAAACG</sequence>
+<mem:qvalue>0.011</mem:qvalue>
+</matched-element>
+<matched-element start="352" stop="336" score="12.2921" pvalue="8.79e-06">
+<sequence>AGCGCTCAAGCGAAACG</sequence>
+<mem:qvalue>0.011</mem:qvalue>
+</matched-element>
+<matched-element start="187" stop="203" score="6.68539" pvalue="7.72e-05">
+<sequence>TTTATCCACGCGAGACC</sequence>
+<mem:qvalue>0.0728</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0247.2" name="tin">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0459.1" name="tll">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0205.2" name="Trl">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0460.1" name="ttk">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0248.1" name="tup">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0249.2" name="twi">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1153" stop="1143" score="11.935" pvalue="5.52e-05">
+<sequence>ACACACATGAT</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1248" stop="1258" score="13.0244" pvalue="2.16e-05">
+<sequence>ATACACATGGT</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+<matched-element start="1152" stop="1142" score="11.935" pvalue="5.52e-05">
+<sequence>ACACACATGAT</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+<matched-element start="841" stop="851" score="11.8537" pvalue="5.92e-05">
+<sequence>CAACACATGCC</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1153" stop="1143" score="11.935" pvalue="5.52e-05">
+<sequence>ACACACATGAT</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+<matched-element start="841" stop="851" score="11.8537" pvalue="5.92e-05">
+<sequence>CAACACATGCC</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0094.2" name="Ubx">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0250.1" name="unc-4">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0251.1" name="unpg">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0016.1" name="usp">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1462.1" name="vfl">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0252.1" name="vis">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0253.1" name="vnd">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0181.1" name="Vsx1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0180.1" name="Vsx2">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0254.1" name="vvl">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0255.1" name="z">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0256.1" name="zen">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0257.1" name="zen2">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

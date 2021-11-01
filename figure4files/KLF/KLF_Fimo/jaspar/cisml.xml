@@ -1,0 +1,2662 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/KLF/KLF_Fimo/jaspar /home/petersjg/windows_directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt /home/petersjg/enhancer-dissection/figure4files/KLF/KLF.fa</command-line>
+<pattern-file>/home/petersjg/windows_directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt</pattern-file>
+<sequence-file>/home/petersjg/enhancer-dissection/figure4files/KLF/KLF.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="MA0206.1" name="abd-A">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0165.1" name="Abd-B">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0207.1" name="achi">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0208.1" name="al">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0166.1" name="Antp">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0209.1" name="ap">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0210.1" name="ara">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0167.1" name="Awh">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0168.1" name="B-H1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0169.1" name="B-H2">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0211.1" name="bap">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0212.1" name="bcd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0529.2" name="BEAF-32">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0242.1" name="Bgb::run">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="236" stop="244" score="11.0337" pvalue="6.06e-05">
+<sequence>TAACCGCTA</sequence>
+<mem:qvalue>0.145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="238" stop="246" score="11.0337" pvalue="6.06e-05">
+<sequence>TAACCGCTA</sequence>
+<mem:qvalue>0.145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="228" stop="236" score="11.0337" pvalue="6.06e-05">
+<sequence>TAACCGCTA</sequence>
+<mem:qvalue>0.145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="238" stop="246" score="11.0337" pvalue="6.06e-05">
+<sequence>TAACCGCTA</sequence>
+<mem:qvalue>0.145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="228" stop="236" score="11.0337" pvalue="6.06e-05">
+<sequence>TAACCGCTA</sequence>
+<mem:qvalue>0.145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0010.1" name="br">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="102" stop="115" score="11.6577" pvalue="5.28e-05">
+<sequence>AGCAAAAACAAAAG</sequence>
+<mem:qvalue>0.318</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="102" stop="115" score="11.6577" pvalue="5.28e-05">
+<sequence>AGCAAAAACAAAAG</sequence>
+<mem:qvalue>0.318</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0011.1" name="br(var.2)">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0012.1" name="br(var.3)">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="106" stop="116" score="10.6875" pvalue="7.44e-05">
+<sequence>AAAACAAAAGG</sequence>
+<mem:qvalue>0.449</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="106" stop="116" score="10.6875" pvalue="7.44e-05">
+<sequence>AAAACAAAAGG</sequence>
+<mem:qvalue>0.449</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0013.1" name="br(var.4)">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="76" stop="86" score="11.1417" pvalue="7.76e-05">
+<sequence>CTGTAAACGAA</sequence>
+<mem:qvalue>0.467</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="76" stop="86" score="11.1417" pvalue="7.76e-05">
+<sequence>CTGTAAACGAA</sequence>
+<mem:qvalue>0.467</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0213.1" name="brk">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="589" stop="582" score="13.2936" pvalue="2.29e-05">
+<sequence>GTGGCGCC</sequence>
+<mem:qvalue>0.0508</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="595" stop="588" score="13.2936" pvalue="2.29e-05">
+<sequence>GTGGCGCC</sequence>
+<mem:qvalue>0.0508</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="587" stop="580" score="13.2936" pvalue="2.29e-05">
+<sequence>GTGGCGCC</sequence>
+<mem:qvalue>0.0508</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="595" stop="588" score="13.2936" pvalue="2.29e-05">
+<sequence>GTGGCGCC</sequence>
+<mem:qvalue>0.0508</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="587" stop="580" score="13.2936" pvalue="2.29e-05">
+<sequence>GTGGCGCC</sequence>
+<mem:qvalue>0.0508</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0214.1" name="bsh">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0443.1" name="btd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0215.1" name="btn">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0170.1" name="C15">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0216.2" name="cad">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0217.1" name="caup">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0015.1" name="Cf2">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0171.1" name="CG11085">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0172.1" name="CG11294">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0173.1" name="CG11617">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0176.1" name="CG15696-RA">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0177.1" name="CG18599">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0178.1" name="CG32105">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0179.1" name="CG32532">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0444.1" name="CG34031">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0182.1" name="CG4328-RA">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0184.1" name="CG9876">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1700.1" name="Clamp">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="756" stop="743" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="758" stop="745" score="17.1927" pvalue="8.01e-07">
+<sequence>GGGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000498</mem:qvalue>
+</matched-element>
+<matched-element start="754" stop="741" score="16.8257" pvalue="1.07e-06">
+<sequence>GAGAGAGAGAGACA</sequence>
+<mem:qvalue>0.000521</mem:qvalue>
+</matched-element>
+<matched-element start="1039" stop="1026" score="15.6697" pvalue="2.51e-06">
+<sequence>GAGAGAACGAGAGA</sequence>
+<mem:qvalue>0.000934</mem:qvalue>
+</matched-element>
+<matched-element start="916" stop="929" score="13.3119" pvalue="1.13e-05">
+<sequence>CGGTGAGCGAGCGG</sequence>
+<mem:qvalue>0.0041</mem:qvalue>
+</matched-element>
+<matched-element start="1069" stop="1082" score="13.1743" pvalue="1.23e-05">
+<sequence>GTGAGAGTGAGTGA</sequence>
+<mem:qvalue>0.00431</mem:qvalue>
+</matched-element>
+<matched-element start="760" stop="747" score="12.7982" pvalue="1.54e-05">
+<sequence>TGGGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00492</mem:qvalue>
+</matched-element>
+<matched-element start="1073" stop="1086" score="12.156" pvalue="2.22e-05">
+<sequence>GAGTGAGTGAGTGG</sequence>
+<mem:qvalue>0.00688</mem:qvalue>
+</matched-element>
+<matched-element start="1035" stop="1022" score="11.156" pvalue="3.83e-05">
+<sequence>GAACGAGAGAGCTG</sequence>
+<mem:qvalue>0.00874</mem:qvalue>
+</matched-element>
+<matched-element start="920" stop="933" score="10.5321" pvalue="5.33e-05">
+<sequence>GAGCGAGCGGGTAC</sequence>
+<mem:qvalue>0.0119</mem:qvalue>
+</matched-element>
+<matched-element start="1063" stop="1076" score="10.1284" pvalue="6.55e-05">
+<sequence>ACGAGAGTGAGAGT</sequence>
+<mem:qvalue>0.0144</mem:qvalue>
+</matched-element>
+<matched-element start="1065" stop="1078" score="9.52294" pvalue="8.85e-05">
+<sequence>GAGAGTGAGAGTGA</sequence>
+<mem:qvalue>0.019</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="754" stop="741" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="756" stop="743" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="758" stop="745" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="760" stop="747" score="17.1927" pvalue="8.01e-07">
+<sequence>GGGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000498</mem:qvalue>
+</matched-element>
+<matched-element start="752" stop="739" score="16.8257" pvalue="1.07e-06">
+<sequence>GAGAGAGAGAGACA</sequence>
+<mem:qvalue>0.000521</mem:qvalue>
+</matched-element>
+<matched-element start="1041" stop="1028" score="15.6697" pvalue="2.51e-06">
+<sequence>GAGAGAACGAGAGA</sequence>
+<mem:qvalue>0.000934</mem:qvalue>
+</matched-element>
+<matched-element start="762" stop="749" score="12.7982" pvalue="1.54e-05">
+<sequence>TGGGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00492</mem:qvalue>
+</matched-element>
+<matched-element start="1071" stop="1084" score="11.9725" pvalue="2.46e-05">
+<sequence>GAGTGAGTGAGGGG</sequence>
+<mem:qvalue>0.00688</mem:qvalue>
+</matched-element>
+<matched-element start="918" stop="931" score="11.7523" pvalue="2.79e-05">
+<sequence>CGGTGAGCGAGCGC</sequence>
+<mem:qvalue>0.00742</mem:qvalue>
+</matched-element>
+<matched-element start="1037" stop="1024" score="11.156" pvalue="3.83e-05">
+<sequence>GAACGAGAGAGCTG</sequence>
+<mem:qvalue>0.00874</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="742" stop="729" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="744" stop="731" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="746" stop="733" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="748" stop="735" score="17.1927" pvalue="8.01e-07">
+<sequence>GGGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000498</mem:qvalue>
+</matched-element>
+<matched-element start="740" stop="727" score="16.8257" pvalue="1.07e-06">
+<sequence>GAGAGAGAGAGACA</sequence>
+<mem:qvalue>0.000521</mem:qvalue>
+</matched-element>
+<matched-element start="750" stop="737" score="16.4679" pvalue="1.4e-06">
+<sequence>GGGGGAGAGAGAGA</sequence>
+<mem:qvalue>0.000625</mem:qvalue>
+</matched-element>
+<matched-element start="1037" stop="1024" score="15.6697" pvalue="2.51e-06">
+<sequence>GAGAGAACGAGAGA</sequence>
+<mem:qvalue>0.000934</mem:qvalue>
+</matched-element>
+<matched-element start="914" stop="927" score="12.0183" pvalue="2.4e-05">
+<sequence>CCGTGAGCGAGCGC</sequence>
+<mem:qvalue>0.00688</mem:qvalue>
+</matched-element>
+<matched-element start="1061" stop="1074" score="11.5229" pvalue="3.14e-05">
+<sequence>GTACGAGAGAGTGG</sequence>
+<mem:qvalue>0.008</mem:qvalue>
+</matched-element>
+<matched-element start="1033" stop="1020" score="11.156" pvalue="3.83e-05">
+<sequence>GAACGAGAGAGCTG</sequence>
+<mem:qvalue>0.00874</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="754" stop="741" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="756" stop="743" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="758" stop="745" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="760" stop="747" score="17.1927" pvalue="8.01e-07">
+<sequence>GGGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000498</mem:qvalue>
+</matched-element>
+<matched-element start="752" stop="739" score="16.8257" pvalue="1.07e-06">
+<sequence>GAGAGAGAGAGACA</sequence>
+<mem:qvalue>0.000521</mem:qvalue>
+</matched-element>
+<matched-element start="1041" stop="1028" score="15.6697" pvalue="2.51e-06">
+<sequence>GAGAGAACGAGAGA</sequence>
+<mem:qvalue>0.000934</mem:qvalue>
+</matched-element>
+<matched-element start="762" stop="749" score="12.7982" pvalue="1.54e-05">
+<sequence>TGGGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00492</mem:qvalue>
+</matched-element>
+<matched-element start="1071" stop="1084" score="11.9725" pvalue="2.46e-05">
+<sequence>GAGTGAGTGAGGGG</sequence>
+<mem:qvalue>0.00688</mem:qvalue>
+</matched-element>
+<matched-element start="918" stop="931" score="11.7523" pvalue="2.79e-05">
+<sequence>CGGTGAGCGAGCGC</sequence>
+<mem:qvalue>0.00742</mem:qvalue>
+</matched-element>
+<matched-element start="1037" stop="1024" score="11.156" pvalue="3.83e-05">
+<sequence>GAACGAGAGAGCTG</sequence>
+<mem:qvalue>0.00874</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="742" stop="729" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="744" stop="731" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="746" stop="733" score="18.4128" pvalue="3.03e-07">
+<sequence>GAGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000261</mem:qvalue>
+</matched-element>
+<matched-element start="748" stop="735" score="17.1927" pvalue="8.01e-07">
+<sequence>GGGAGAGAGAGAGA</sequence>
+<mem:qvalue>0.000498</mem:qvalue>
+</matched-element>
+<matched-element start="740" stop="727" score="16.8257" pvalue="1.07e-06">
+<sequence>GAGAGAGAGAGACA</sequence>
+<mem:qvalue>0.000521</mem:qvalue>
+</matched-element>
+<matched-element start="750" stop="737" score="16.4679" pvalue="1.4e-06">
+<sequence>GGGGGAGAGAGAGA</sequence>
+<mem:qvalue>0.000625</mem:qvalue>
+</matched-element>
+<matched-element start="1037" stop="1024" score="15.6697" pvalue="2.51e-06">
+<sequence>GAGAGAACGAGAGA</sequence>
+<mem:qvalue>0.000934</mem:qvalue>
+</matched-element>
+<matched-element start="914" stop="927" score="12.0183" pvalue="2.4e-05">
+<sequence>CCGTGAGCGAGCGC</sequence>
+<mem:qvalue>0.00688</mem:qvalue>
+</matched-element>
+<matched-element start="1061" stop="1074" score="11.5229" pvalue="3.14e-05">
+<sequence>GTACGAGAGAGTGG</sequence>
+<mem:qvalue>0.008</mem:qvalue>
+</matched-element>
+<matched-element start="1033" stop="1020" score="11.156" pvalue="3.83e-05">
+<sequence>GAACGAGAGAGCTG</sequence>
+<mem:qvalue>0.00874</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0530.1" name="cnc::maf-S">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0218.1" name="ct">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0531.1" name="CTCF">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0445.1" name="D">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="116" stop="106" score="13.5111" pvalue="1.54e-05">
+<sequence>CCTTTTGTTTT</sequence>
+<mem:qvalue>0.0926</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="116" stop="106" score="13.5111" pvalue="1.54e-05">
+<sequence>CCTTTTGTTTT</sequence>
+<mem:qvalue>0.0926</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0174.1" name="Dbx">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0185.1" name="Deaf1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0186.1" name="Dfd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0022.1" name="dl">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0023.1" name="dl(var.2)">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0187.1" name="Dll">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1455.1" name="dmrt99B">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0188.1" name="Dr">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1456.1" name="Dref">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0915.1" name="dve">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0189.1" name="E5">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0534.1" name="EcR::usp">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0026.1" name="Eip74EF">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="284" stop="278" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="301" stop="307" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="789" stop="795" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="286" stop="280" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="303" stop="309" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="791" stop="797" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="276" stop="270" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="293" stop="299" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="780" stop="786" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="286" stop="280" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="303" stop="309" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="791" stop="797" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="276" stop="270" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="293" stop="299" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+<matched-element start="780" stop="786" score="12.6633" pvalue="4.39e-05">
+<sequence>CCGGAAG</sequence>
+<mem:qvalue>0.034</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0219.1" name="ems">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0220.1" name="en">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0916.1" name="Ets21C">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="284" stop="277" score="15.0899" pvalue="1.21e-05">
+<sequence>CCGGAAGT</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="301" stop="308" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="789" stop="796" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="286" stop="279" score="15.0899" pvalue="1.21e-05">
+<sequence>CCGGAAGT</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="303" stop="310" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="791" stop="798" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="276" stop="269" score="15.0899" pvalue="1.21e-05">
+<sequence>CCGGAAGT</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="293" stop="300" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="780" stop="787" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="286" stop="279" score="15.0899" pvalue="1.21e-05">
+<sequence>CCGGAAGT</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="303" stop="310" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="791" stop="798" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="276" stop="269" score="15.0899" pvalue="1.21e-05">
+<sequence>CCGGAAGT</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="293" stop="300" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+<matched-element start="780" stop="787" score="14.0674" pvalue="2.2e-05">
+<sequence>CCGGAAGC</sequence>
+<mem:qvalue>0.0171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0221.1" name="eve">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0222.1" name="exd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0224.1" name="exex">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0446.1" name="fkh">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0225.1" name="ftz">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0917.1" name="gcm2">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1457.1" name="grh">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0190.1" name="Gsc">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0447.1" name="gt">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0449.1" name="h">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0448.1" name="H2.0">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0049.1" name="hb">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="103" stop="112" score="12.9208" pvalue="8.27e-06">
+<sequence>GCAAAAAAAA</sequence>
+<mem:qvalue>0.0534</mem:qvalue>
+</matched-element>
+<matched-element start="104" stop="113" score="11.5347" pvalue="4.46e-05">
+<sequence>CAAAAAAAAA</sequence>
+<mem:qvalue>0.0879</mem:qvalue>
+</matched-element>
+<matched-element start="101" stop="110" score="11.2079" pvalue="7.07e-05">
+<sequence>GAGCAAAAAA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="167" stop="176" score="12.1089" pvalue="2.26e-05">
+<sequence>CCACAAAAAA</sequence>
+<mem:qvalue>0.0534</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="161" stop="170" score="12.1089" pvalue="2.26e-05">
+<sequence>CCACAAAAAA</sequence>
+<mem:qvalue>0.0534</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="167" stop="176" score="12.1089" pvalue="2.26e-05">
+<sequence>CCACAAAAAA</sequence>
+<mem:qvalue>0.0534</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="161" stop="170" score="12.1089" pvalue="2.26e-05">
+<sequence>CCACAAAAAA</sequence>
+<mem:qvalue>0.0534</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0226.1" name="hbn">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0191.1" name="HGTX">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0183.1" name="HHEX">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0450.1" name="hkb">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="825" stop="833" score="13.9213" pvalue="1.74e-05">
+<sequence>GGGGCGGGA</sequence>
+<mem:qvalue>0.0962</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="825" stop="833" score="13.9213" pvalue="1.74e-05">
+<sequence>GGGGCGGGA</sequence>
+<mem:qvalue>0.0962</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0192.1" name="Hmx">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1458.1" name="Hsf">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0227.1" name="hth">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0228.1" name="ind">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0229.1" name="inv">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0451.1" name="kni">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0452.2" name="Kr">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="694" stop="707" score="10.3279" pvalue="9.12e-05">
+<sequence>GGGACCCCTTTTTG</sequence>
+<mem:qvalue>0.35</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="692" stop="705" score="10.3279" pvalue="9.12e-05">
+<sequence>GGGACCCCTTTTTG</sequence>
+<mem:qvalue>0.35</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="692" stop="705" score="10.3279" pvalue="9.12e-05">
+<sequence>GGGACCCCTTTTTG</sequence>
+<mem:qvalue>0.35</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0230.1" name="lab">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0231.1" name="lbe">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0232.1" name="lbl">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0194.1" name="Lim1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0195.1" name="Lim3">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0175.1" name="lms">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1459.1" name="M1BP">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0535.1" name="Mad">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0233.1" name="mirr">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0196.1" name="NK7.1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0197.2" name="nub">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0234.1" name="oc">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0454.1" name="odd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0198.1" name="OdsH">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0235.1" name="onecut">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0456.1" name="opa">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="516" stop="527" score="12.1224" pvalue="2.21e-05">
+<sequence>CCCCCCCCACCG</sequence>
+<mem:qvalue>0.0792</mem:qvalue>
+</matched-element>
+<matched-element start="648" stop="659" score="11.2347" pvalue="3.49e-05">
+<sequence>CCCACCCCGCAG</sequence>
+<mem:qvalue>0.0936</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="522" stop="533" score="9.04082" pvalue="9.6e-05">
+<sequence>CCCCCCCCATCG</sequence>
+<mem:qvalue>0.172</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="514" stop="525" score="12.3469" pvalue="1.97e-05">
+<sequence>CACCCCCCACCG</sequence>
+<mem:qvalue>0.0792</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="522" stop="533" score="9.04082" pvalue="9.6e-05">
+<sequence>CCCCCCCCATCG</sequence>
+<mem:qvalue>0.172</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="514" stop="525" score="12.3469" pvalue="1.97e-05">
+<sequence>CACCCCCCACCG</sequence>
+<mem:qvalue>0.0792</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0199.1" name="Optix">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0236.1" name="otp">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0126.1" name="ovo">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0237.2" name="pan">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="242" stop="229" score="9.60976" pvalue="9.47e-05">
+<sequence>GCGGTTATTTGCTT</sequence>
+<mem:qvalue>0.223</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="244" stop="231" score="9.60976" pvalue="9.47e-05">
+<sequence>GCGGTTATTTGCTT</sequence>
+<mem:qvalue>0.223</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="234" stop="221" score="9.60976" pvalue="9.47e-05">
+<sequence>GCGGTTATTTGCTT</sequence>
+<mem:qvalue>0.223</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="244" stop="231" score="9.60976" pvalue="9.47e-05">
+<sequence>GCGGTTATTTGCTT</sequence>
+<mem:qvalue>0.223</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="234" stop="221" score="9.60976" pvalue="9.47e-05">
+<sequence>GCGGTTATTTGCTT</sequence>
+<mem:qvalue>0.223</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0238.1" name="pb">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1702.1" name="Pdp1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0457.1" name="PHDP">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1460.1" name="pho">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="906" stop="896" score="10.3333" pvalue="8.02e-05">
+<sequence>GGATGGCAGCC</sequence>
+<mem:qvalue>0.174</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="908" stop="898" score="10.3333" pvalue="8.02e-05">
+<sequence>GGATGGCAGCC</sequence>
+<mem:qvalue>0.174</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="904" stop="894" score="10.3333" pvalue="8.02e-05">
+<sequence>GGATGGCAGCC</sequence>
+<mem:qvalue>0.174</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="908" stop="898" score="10.3333" pvalue="8.02e-05">
+<sequence>GGATGGCAGCC</sequence>
+<mem:qvalue>0.174</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="904" stop="894" score="10.3333" pvalue="8.02e-05">
+<sequence>GGATGGCAGCC</sequence>
+<mem:qvalue>0.174</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0536.1" name="pnr">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0200.1" name="Pph13">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0239.1" name="prd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0201.1" name="Ptx1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0240.1" name="repo">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0241.1" name="ro">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0202.1" name="Rx">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0193.1" name="schlank">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="715" stop="709" score="11.4388" pvalue="5.35e-05">
+<sequence>CCACCAA</sequence>
+<mem:qvalue>0.215</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="713" stop="707" score="11.4388" pvalue="5.35e-05">
+<sequence>CCACCAA</sequence>
+<mem:qvalue>0.215</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="713" stop="707" score="11.4388" pvalue="5.35e-05">
+<sequence>CCACCAA</sequence>
+<mem:qvalue>0.215</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0203.1" name="Scr">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0243.1" name="sd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0204.1" name="Six4">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0244.1" name="slbo">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0245.1" name="slou">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0458.1" name="slp1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="112" stop="102" score="11.6333" pvalue="6.67e-05">
+<sequence>TTGTTTTTGCT</sequence>
+<mem:qvalue>0.399</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="112" stop="102" score="11.6333" pvalue="6.67e-05">
+<sequence>TTGTTTTTGCT</sequence>
+<mem:qvalue>0.399</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0086.2" name="sna">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0246.1" name="so">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0532.1" name="Stat92E">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0085.1" name="Su(H)">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0533.1" name="su(Hw)">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1461.1" name="sv">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0247.2" name="tin">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="888" stop="897" score="13.5303" pvalue="2.34e-05">
+<sequence>CTTCAAGTGG</sequence>
+<mem:qvalue>0.0561</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="890" stop="899" score="13.5303" pvalue="2.34e-05">
+<sequence>CTTCAAGTGG</sequence>
+<mem:qvalue>0.0561</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="886" stop="895" score="13.5303" pvalue="2.34e-05">
+<sequence>CTTCAAGTGG</sequence>
+<mem:qvalue>0.0561</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="890" stop="899" score="13.5303" pvalue="2.34e-05">
+<sequence>CTTCAAGTGG</sequence>
+<mem:qvalue>0.0561</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="886" stop="895" score="13.5303" pvalue="2.34e-05">
+<sequence>CTTCAAGTGG</sequence>
+<mem:qvalue>0.0561</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0459.1" name="tll">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0205.2" name="Trl">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="754" stop="743" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="756" stop="745" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="758" stop="747" score="16.6122" pvalue="7.09e-07">
+<sequence>GGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="752" stop="741" score="14.1327" pvalue="9.91e-06">
+<sequence>GAGAGAGAGACA</sequence>
+<mem:qvalue>0.00413</mem:qvalue>
+</matched-element>
+<matched-element start="1043" stop="1032" score="12.2857" pvalue="3.42e-05">
+<sequence>GACAGAGAGAAC</sequence>
+<mem:qvalue>0.0129</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="752" stop="741" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="754" stop="743" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="756" stop="745" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="758" stop="747" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="760" stop="749" score="16.6122" pvalue="7.09e-07">
+<sequence>GGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="750" stop="739" score="14.1327" pvalue="9.91e-06">
+<sequence>GAGAGAGAGACA</sequence>
+<mem:qvalue>0.00413</mem:qvalue>
+</matched-element>
+<matched-element start="1045" stop="1034" score="12.2857" pvalue="3.42e-05">
+<sequence>GACAGAGAGAAC</sequence>
+<mem:qvalue>0.0129</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="740" stop="729" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="742" stop="731" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="744" stop="733" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="746" stop="735" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="748" stop="737" score="16.6122" pvalue="7.09e-07">
+<sequence>GGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="738" stop="727" score="14.1327" pvalue="9.91e-06">
+<sequence>GAGAGAGAGACA</sequence>
+<mem:qvalue>0.00413</mem:qvalue>
+</matched-element>
+<matched-element start="1063" stop="1074" score="11.7245" pvalue="4.65e-05">
+<sequence>ACGAGAGAGTGG</sequence>
+<mem:qvalue>0.0165</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="752" stop="741" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="754" stop="743" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="756" stop="745" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="758" stop="747" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="760" stop="749" score="16.6122" pvalue="7.09e-07">
+<sequence>GGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="750" stop="739" score="14.1327" pvalue="9.91e-06">
+<sequence>GAGAGAGAGACA</sequence>
+<mem:qvalue>0.00413</mem:qvalue>
+</matched-element>
+<matched-element start="1045" stop="1034" score="12.2857" pvalue="3.42e-05">
+<sequence>GACAGAGAGAAC</sequence>
+<mem:qvalue>0.0129</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="740" stop="729" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="742" stop="731" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="744" stop="733" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="746" stop="735" score="16.7449" pvalue="5.6e-07">
+<sequence>GAGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="748" stop="737" score="16.6122" pvalue="7.09e-07">
+<sequence>GGGAGAGAGAGA</sequence>
+<mem:qvalue>0.00036</mem:qvalue>
+</matched-element>
+<matched-element start="738" stop="727" score="14.1327" pvalue="9.91e-06">
+<sequence>GAGAGAGAGACA</sequence>
+<mem:qvalue>0.00413</mem:qvalue>
+</matched-element>
+<matched-element start="1063" stop="1074" score="11.7245" pvalue="4.65e-05">
+<sequence>ACGAGAGAGTGG</sequence>
+<mem:qvalue>0.0165</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0460.1" name="ttk">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="363" stop="371" score="13.5204" pvalue="2.47e-05">
+<sequence>GAGGATAAT</sequence>
+<mem:qvalue>0.0599</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+<matched-element start="365" stop="373" score="13.5204" pvalue="2.47e-05">
+<sequence>GAGGATAAT</sequence>
+<mem:qvalue>0.0599</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+<matched-element start="356" stop="364" score="13.5204" pvalue="2.47e-05">
+<sequence>GAGGATAAT</sequence>
+<mem:qvalue>0.0599</mem:qvalue>
+</matched-element>
+<matched-element start="107" stop="115" score="11.3061" pvalue="8.13e-05">
+<sequence>AAGGATAAA</sequence>
+<mem:qvalue>0.141</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+<matched-element start="365" stop="373" score="13.5204" pvalue="2.47e-05">
+<sequence>GAGGATAAT</sequence>
+<mem:qvalue>0.0599</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+<matched-element start="356" stop="364" score="13.5204" pvalue="2.47e-05">
+<sequence>GAGGATAAT</sequence>
+<mem:qvalue>0.0599</mem:qvalue>
+</matched-element>
+<matched-element start="107" stop="115" score="11.3061" pvalue="8.13e-05">
+<sequence>AAGGATAAA</sequence>
+<mem:qvalue>0.141</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0248.1" name="tup">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0249.2" name="twi">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0094.2" name="Ubx">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0250.1" name="unc-4">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0251.1" name="unpg">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0016.1" name="usp">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1462.1" name="vfl">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0252.1" name="vis">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0253.1" name="vnd">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0181.1" name="Vsx1">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0180.1" name="Vsx2">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0254.1" name="vvl">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0255.1" name="z">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+<matched-element start="1075" stop="1084" score="11.1" pvalue="4.7e-05">
+<sequence>GTGAGTGAGT</sequence>
+<mem:qvalue>0.531</mem:qvalue>
+</matched-element>
+<matched-element start="1079" stop="1088" score="10.6111" pvalue="8.86e-05">
+<sequence>GTGAGTGGTT</sequence>
+<mem:qvalue>0.531</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0256.1" name="zen">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0257.1" name="zen2">
+<scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

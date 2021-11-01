@@ -1,0 +1,1661 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/LRIM1/LRIM1_Fimo/streme /home/petersjg/windows_directory/enhancer-dissection/streme.txt /home/petersjg/enhancer-dissection/figure4files/LRIM1/LRIM1.fa</command-line>
+<pattern-file>/home/petersjg/windows_directory/enhancer-dissection/streme.txt</pattern-file>
+<sequence-file>/home/petersjg/enhancer-dissection/figure4files/LRIM1/LRIM1.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="1-RCCGGAAGYGR" name="STREME-1">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="2-SYGATAAGV" name="STREME-2">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="3-RTTTCCGGT" name="STREME-3">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="4-CGCKMTCGYYC" name="STREME-4">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="810" stop="820" score="14.3939" pvalue="3.9e-06">
+<sequence>CGCGATCGGCC</sequence>
+<mem:qvalue>0.00905</mem:qvalue>
+</matched-element>
+<matched-element start="1003" stop="993" score="11.5606" pvalue="6.48e-05">
+<sequence>CGCGATCGACA</sequence>
+<mem:qvalue>0.0752</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="809" stop="819" score="14.3939" pvalue="3.9e-06">
+<sequence>CGCGATCGGCC</sequence>
+<mem:qvalue>0.00905</mem:qvalue>
+</matched-element>
+<matched-element start="1002" stop="992" score="11.5606" pvalue="6.48e-05">
+<sequence>CGCGATCGACA</sequence>
+<mem:qvalue>0.0752</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="809" stop="819" score="14.3939" pvalue="3.9e-06">
+<sequence>CGCGATCGGCC</sequence>
+<mem:qvalue>0.00905</mem:qvalue>
+</matched-element>
+<matched-element start="1003" stop="993" score="11.5606" pvalue="6.48e-05">
+<sequence>CGCGATCGACA</sequence>
+<mem:qvalue>0.0752</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="5-CCAGCAGCAGCAGC" name="STREME-5">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="271" stop="284" score="21.3636" pvalue="1.09e-08">
+<sequence>GCAGCAGCAGCAGC</sequence>
+<mem:qvalue>3.92e-05</mem:qvalue>
+</matched-element>
+<matched-element start="274" stop="287" score="21.3636" pvalue="1.09e-08">
+<sequence>GCAGCAGCAGCAGC</sequence>
+<mem:qvalue>3.92e-05</mem:qvalue>
+</matched-element>
+<matched-element start="277" stop="290" score="18.3485" pvalue="2.23e-07">
+<sequence>GCAGCAGCAGCAGA</sequence>
+<mem:qvalue>0.00028</mem:qvalue>
+</matched-element>
+<matched-element start="1345" stop="1332" score="17.9848" pvalue="3.14e-07">
+<sequence>ACAGCAGCAGCAAC</sequence>
+<mem:qvalue>0.00028</mem:qvalue>
+</matched-element>
+<matched-element start="1342" stop="1329" score="16.5455" pvalue="1.02e-06">
+<sequence>GCAGCAGCAACAAC</sequence>
+<mem:qvalue>0.000814</mem:qvalue>
+</matched-element>
+<matched-element start="25" stop="38" score="15.803" pvalue="1.83e-06">
+<sequence>TCGGCAGCAGCAAC</sequence>
+<mem:qvalue>0.00131</mem:qvalue>
+</matched-element>
+<matched-element start="268" stop="281" score="14.3333" pvalue="5.6e-06">
+<sequence>GGTGCAGCAGCAGC</sequence>
+<mem:qvalue>0.00308</mem:qvalue>
+</matched-element>
+<matched-element start="22" stop="35" score="13.7273" pvalue="8.47e-06">
+<sequence>CAATCGGCAGCAGC</sequence>
+<mem:qvalue>0.00433</mem:qvalue>
+</matched-element>
+<matched-element start="819" stop="832" score="12.3939" pvalue="2.06e-05">
+<sequence>CCAGCATTAGCAGC</sequence>
+<mem:qvalue>0.00701</mem:qvalue>
+</matched-element>
+<matched-element start="28" stop="41" score="11.8788" pvalue="2.88e-05">
+<sequence>GCAGCAGCAACGAA</sequence>
+<mem:qvalue>0.0091</mem:qvalue>
+</matched-element>
+<matched-element start="1308" stop="1295" score="10.9697" pvalue="5.01e-05">
+<sequence>CAAGCAGCGTCATC</sequence>
+<mem:qvalue>0.0128</mem:qvalue>
+</matched-element>
+<matched-element start="1339" stop="1326" score="10.9697" pvalue="5.01e-05">
+<sequence>GCAGCAACAACAAC</sequence>
+<mem:qvalue>0.0128</mem:qvalue>
+</matched-element>
+<matched-element start="280" stop="293" score="10.6515" pvalue="6.04e-05">
+<sequence>GCAGCAGCAGACAG</sequence>
+<mem:qvalue>0.0139</mem:qvalue>
+</matched-element>
+<matched-element start="637" stop="624" score="9.90909" pvalue="9.27e-05">
+<sequence>ACAGCGGGAGCAGC</sequence>
+<mem:qvalue>0.0195</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="272" stop="285" score="18.2879" pvalue="2.39e-07">
+<sequence>GCAGCAGCAACAGC</sequence>
+<mem:qvalue>0.00028</mem:qvalue>
+</matched-element>
+<matched-element start="1345" stop="1332" score="17.9848" pvalue="3.14e-07">
+<sequence>ACAGCAGCAGCAAC</sequence>
+<mem:qvalue>0.00028</mem:qvalue>
+</matched-element>
+<matched-element start="1342" stop="1329" score="14.8939" pvalue="3.74e-06">
+<sequence>GCAGCAGCAACGAC</sequence>
+<mem:qvalue>0.00223</mem:qvalue>
+</matched-element>
+<matched-element start="275" stop="288" score="12.7727" pvalue="1.61e-05">
+<sequence>GCAGCAACAGCAGA</sequence>
+<mem:qvalue>0.00701</mem:qvalue>
+</matched-element>
+<matched-element start="269" stop="282" score="12.5909" pvalue="1.83e-05">
+<sequence>GGTGCAGCAGCAAC</sequence>
+<mem:qvalue>0.00701</mem:qvalue>
+</matched-element>
+<matched-element start="818" stop="831" score="12.3939" pvalue="2.06e-05">
+<sequence>CCAGCATTAGCAGC</sequence>
+<mem:qvalue>0.00701</mem:qvalue>
+</matched-element>
+<matched-element start="864" stop="877" score="11.7727" pvalue="3.05e-05">
+<sequence>GCAACAGCAGCAGA</sequence>
+<mem:qvalue>0.0091</mem:qvalue>
+</matched-element>
+<matched-element start="1307" stop="1294" score="10.9697" pvalue="5.01e-05">
+<sequence>CAAGCAGCGTCATC</sequence>
+<mem:qvalue>0.0128</mem:qvalue>
+</matched-element>
+<matched-element start="867" stop="880" score="10.8333" pvalue="5.42e-05">
+<sequence>ACAGCAGCAGACCC</sequence>
+<mem:qvalue>0.0129</mem:qvalue>
+</matched-element>
+<matched-element start="637" stop="624" score="9.90909" pvalue="9.27e-05">
+<sequence>ACAGCGGGAGCAGC</sequence>
+<mem:qvalue>0.0195</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="272" stop="285" score="18.2879" pvalue="2.39e-07">
+<sequence>GCAGCAGCAACAGC</sequence>
+<mem:qvalue>0.00028</mem:qvalue>
+</matched-element>
+<matched-element start="1346" stop="1333" score="17.9848" pvalue="3.14e-07">
+<sequence>ACAGCAGCAGCAAC</sequence>
+<mem:qvalue>0.00028</mem:qvalue>
+</matched-element>
+<matched-element start="1343" stop="1330" score="14.8939" pvalue="3.74e-06">
+<sequence>GCAGCAGCAACGAC</sequence>
+<mem:qvalue>0.00223</mem:qvalue>
+</matched-element>
+<matched-element start="275" stop="288" score="12.7727" pvalue="1.61e-05">
+<sequence>GCAGCAACAGCAGA</sequence>
+<mem:qvalue>0.00701</mem:qvalue>
+</matched-element>
+<matched-element start="269" stop="282" score="12.5909" pvalue="1.83e-05">
+<sequence>GGTGCAGCAGCAAC</sequence>
+<mem:qvalue>0.00701</mem:qvalue>
+</matched-element>
+<matched-element start="818" stop="831" score="12.3939" pvalue="2.06e-05">
+<sequence>CCAGCATTAGCAGC</sequence>
+<mem:qvalue>0.00701</mem:qvalue>
+</matched-element>
+<matched-element start="865" stop="878" score="11.7727" pvalue="3.05e-05">
+<sequence>GCAACAGCAGCAGA</sequence>
+<mem:qvalue>0.0091</mem:qvalue>
+</matched-element>
+<matched-element start="1308" stop="1295" score="10.9697" pvalue="5.01e-05">
+<sequence>CAAGCAGCGTCATC</sequence>
+<mem:qvalue>0.0128</mem:qvalue>
+</matched-element>
+<matched-element start="868" stop="881" score="10.8333" pvalue="5.42e-05">
+<sequence>ACAGCAGCAGACCC</sequence>
+<mem:qvalue>0.0129</mem:qvalue>
+</matched-element>
+<matched-element start="637" stop="624" score="9.90909" pvalue="9.27e-05">
+<sequence>ACAGCGGGAGCAGC</sequence>
+<mem:qvalue>0.0195</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="6-ACCGGATG" name="STREME-6">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="7-CTTCCGC" name="STREME-7">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="8-ATCGCGCG" name="STREME-8">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="815" stop="808" score="11.552" pvalue="3.4e-05">
+<sequence>ATCGCGCA</sequence>
+<mem:qvalue>0.0824</mem:qvalue>
+</matched-element>
+<matched-element start="970" stop="977" score="11.24" pvalue="6.59e-05">
+<sequence>ATCGCACG</sequence>
+<mem:qvalue>0.0824</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="814" stop="807" score="11.552" pvalue="3.4e-05">
+<sequence>ATCGCGCA</sequence>
+<mem:qvalue>0.0824</mem:qvalue>
+</matched-element>
+<matched-element start="969" stop="976" score="11.24" pvalue="6.59e-05">
+<sequence>ATCGCACG</sequence>
+<mem:qvalue>0.0824</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="814" stop="807" score="11.552" pvalue="3.4e-05">
+<sequence>ATCGCGCA</sequence>
+<mem:qvalue>0.0824</mem:qvalue>
+</matched-element>
+<matched-element start="970" stop="977" score="11.24" pvalue="6.59e-05">
+<sequence>ATCGCACG</sequence>
+<mem:qvalue>0.0824</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="9-CAKATGGYGCN" name="STREME-9">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="225" stop="235" score="13.2143" pvalue="3.49e-05">
+<sequence>CAGCTGGTCCC</sequence>
+<mem:qvalue>0.0882</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="225" stop="235" score="13.2143" pvalue="3.49e-05">
+<sequence>CAGCTGGTCCC</sequence>
+<mem:qvalue>0.0882</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="225" stop="235" score="13.2143" pvalue="3.49e-05">
+<sequence>CAGCTGGTCCC</sequence>
+<mem:qvalue>0.0882</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="10-CTTCCTGC" name="STREME-10">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="11-WCSRSCGSMM" name="STREME-11">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="12-CGTCGTGCG" name="STREME-12">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1280" stop="1272" score="11.9342" pvalue="3.74e-05">
+<sequence>CGACGTTCG</sequence>
+<mem:qvalue>0.151</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1281" stop="1273" score="11.9342" pvalue="3.74e-05">
+<sequence>CGACGTTCG</sequence>
+<mem:qvalue>0.151</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="13-CCGATAGGCG" name="STREME-13">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="14-CGAGGTAAACGT" name="STREME-14">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="339" stop="328" score="1.27551" pvalue="5.96e-05">
+<sequence>CGCCGTAAACGC</sequence>
+<mem:qvalue>0.157</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="337" stop="326" score="1.27551" pvalue="5.96e-05">
+<sequence>CGCCGTAAACGC</sequence>
+<mem:qvalue>0.157</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="337" stop="326" score="1.27551" pvalue="5.96e-05">
+<sequence>CGCCGTAAACGC</sequence>
+<mem:qvalue>0.157</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="15-AAACGCGCTTGG" name="STREME-15">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="16-GAACTCGATCCT" name="STREME-16">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="622" stop="611" score="3.90816" pvalue="1.47e-05">
+<sequence>GAACTCGATCAC</sequence>
+<mem:qvalue>0.0372</mem:qvalue>
+</matched-element>
+<matched-element start="405" stop="416" score="3.71429" pvalue="2.78e-05">
+<sequence>GACGTCGATCCT</sequence>
+<mem:qvalue>0.0372</mem:qvalue>
+</matched-element>
+<matched-element start="1295" stop="1284" score="0.418367" pvalue="8.81e-05">
+<sequence>CAACTCGATCGA</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="622" stop="611" score="3.90816" pvalue="1.47e-05">
+<sequence>GAACTCGATCAC</sequence>
+<mem:qvalue>0.0372</mem:qvalue>
+</matched-element>
+<matched-element start="403" stop="414" score="3.71429" pvalue="2.78e-05">
+<sequence>GACGTCGATCCT</sequence>
+<mem:qvalue>0.0372</mem:qvalue>
+</matched-element>
+<matched-element start="1294" stop="1283" score="0.418367" pvalue="8.81e-05">
+<sequence>CAACTCGATCGA</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="622" stop="611" score="3.90816" pvalue="1.47e-05">
+<sequence>GAACTCGATCAC</sequence>
+<mem:qvalue>0.0372</mem:qvalue>
+</matched-element>
+<matched-element start="403" stop="414" score="3.71429" pvalue="2.78e-05">
+<sequence>GACGTCGATCCT</sequence>
+<mem:qvalue>0.0372</mem:qvalue>
+</matched-element>
+<matched-element start="1295" stop="1284" score="0.418367" pvalue="8.81e-05">
+<sequence>CAACTCGATCGA</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="17-CATTCGCTTTTA" name="STREME-17">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="18-GATAATCGGTACA" name="STREME-18">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="19-CTTGACGGTCCAA" name="STREME-19">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="20-CTTTTGTGGCAAAC" name="STREME-20">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="21-GTTCTACTTCTATA" name="STREME-21">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="880" stop="867" score="10.1515" pvalue="1.89e-05">
+<sequence>GGTCTGCTGCTATA</sequence>
+<mem:qvalue>0.152</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="22-AGCAATGTTAGTAAC" name="STREME-22">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="511" stop="525" score="-0.663265" pvalue="1.52e-05">
+<sequence>GGCAATGTTTATAAC</sequence>
+<mem:qvalue>0.0609</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="511" stop="525" score="-0.663265" pvalue="1.52e-05">
+<sequence>GGCAATGTTTATAAC</sequence>
+<mem:qvalue>0.0609</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="23-ACAACCGAAACGTGC" name="STREME-23">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="184" stop="170" score="0.94898" pvalue="1e-05">
+<sequence>ACGAGTGAAAAGTGC</sequence>
+<mem:qvalue>0.0247</mem:qvalue>
+</matched-element>
+<matched-element start="658" stop="644" score="-0.397959" pvalue="1.6e-05">
+<sequence>AGAACGGGAACGTGC</sequence>
+<mem:qvalue>0.0247</mem:qvalue>
+</matched-element>
+<matched-element start="459" stop="473" score="-8.47959" pvalue="9.88e-05">
+<sequence>ATACCTGAACCCTGA</sequence>
+<mem:qvalue>0.128</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="658" stop="644" score="-0.397959" pvalue="1.6e-05">
+<sequence>AGAACGGGAACGTGC</sequence>
+<mem:qvalue>0.0247</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="184" stop="170" score="0.94898" pvalue="1e-05">
+<sequence>ACGAGTGAAAAGTGC</sequence>
+<mem:qvalue>0.0247</mem:qvalue>
+</matched-element>
+<matched-element start="658" stop="644" score="-0.397959" pvalue="1.6e-05">
+<sequence>AGAACGGGAACGTGC</sequence>
+<mem:qvalue>0.0247</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="24-GCAGCGAAAACATCG" name="STREME-24">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1305" stop="1291" score="-2.97753" pvalue="3.95e-05">
+<sequence>GCAGCGTCATCAACT</sequence>
+<mem:qvalue>0.0562</mem:qvalue>
+</matched-element>
+<matched-element start="1339" stop="1325" score="-3.24719" pvalue="4.3e-05">
+<sequence>GCAGCAACAACAACA</sequence>
+<mem:qvalue>0.0562</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1304" stop="1290" score="-2.97753" pvalue="3.95e-05">
+<sequence>GCAGCGTCATCAACT</sequence>
+<mem:qvalue>0.0562</mem:qvalue>
+</matched-element>
+<matched-element start="1336" stop="1322" score="-3.24719" pvalue="4.3e-05">
+<sequence>GCAACGACAACAACA</sequence>
+<mem:qvalue>0.0562</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1305" stop="1291" score="-2.97753" pvalue="3.95e-05">
+<sequence>GCAGCGTCATCAACT</sequence>
+<mem:qvalue>0.0562</mem:qvalue>
+</matched-element>
+<matched-element start="1337" stop="1323" score="-3.24719" pvalue="4.3e-05">
+<sequence>GCAACGACAACAACA</sequence>
+<mem:qvalue>0.0562</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="25-AACAATGTTACGCTC" name="STREME-25">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="26-CGTTGATAGTTTTTA" name="STREME-26">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="27-TATATCGAAAACACA" name="STREME-27">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="168" stop="154" score="-5.21429" pvalue="4.76e-05">
+<sequence>TATATGAGAAATACA</sequence>
+<mem:qvalue>0.382</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="28-GSCGCGSC" name="STREME-28">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="29-ACAACCGAAAC" name="STREME-29">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="349" stop="339" score="10.1333" pvalue="9.03e-05">
+<sequence>TCAAGCGAAAC</sequence>
+<mem:qvalue>0.237</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="347" stop="337" score="10.1333" pvalue="9.03e-05">
+<sequence>TCAAGCGAAAC</sequence>
+<mem:qvalue>0.237</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="347" stop="337" score="10.1333" pvalue="9.03e-05">
+<sequence>TCAAGCGAAAC</sequence>
+<mem:qvalue>0.237</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="30-CTCCTCCTCC" name="STREME-30">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="864" stop="855" score="12.4868" pvalue="2.76e-05">
+<sequence>CCCCCCCTCC</sequence>
+<mem:qvalue>0.0679</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="862" stop="853" score="12.4868" pvalue="2.76e-05">
+<sequence>CCCCCCCTCC</sequence>
+<mem:qvalue>0.0679</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="862" stop="853" score="12.4868" pvalue="2.76e-05">
+<sequence>CCCCCCCTCC</sequence>
+<mem:qvalue>0.0679</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="31-CAGTTGTCTAA" name="STREME-31">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="32-GCCGTGGTCTTCT" name="STREME-32">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="33-CATTAAGCGCAAA" name="STREME-33">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="34-GCTGATAA" name="STREME-34">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="35-TAAAAACTTGGAC" name="STREME-35">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="36-GCTCATGAAACAA" name="STREME-36">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="37-CCAKMTGG" name="STREME-37">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="38-CGRCSAG" name="STREME-38">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="816" stop="822" score="11.7439" pvalue="7.21e-05">
+<sequence>CGGCCAG</sequence>
+<mem:qvalue>0.19</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="815" stop="821" score="11.7439" pvalue="7.21e-05">
+<sequence>CGGCCAG</sequence>
+<mem:qvalue>0.19</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="815" stop="821" score="11.7439" pvalue="7.21e-05">
+<sequence>CGGCCAG</sequence>
+<mem:qvalue>0.19</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="39-CCCCCTC" name="STREME-39">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="862" stop="856" score="13.2778" pvalue="3.6e-05">
+<sequence>CCCCCTC</sequence>
+<mem:qvalue>0.0708</mem:qvalue>
+</matched-element>
+<matched-element start="767" stop="773" score="13.2778" pvalue="3.6e-05">
+<sequence>CCCCCTC</sequence>
+<mem:qvalue>0.0708</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="860" stop="854" score="13.2778" pvalue="3.6e-05">
+<sequence>CCCCCTC</sequence>
+<mem:qvalue>0.0708</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="860" stop="854" score="13.2778" pvalue="3.6e-05">
+<sequence>CCCCCTC</sequence>
+<mem:qvalue>0.0708</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="40-GCGATA" name="STREME-40">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="41-CGACGACGABG" name="STREME-41">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="42-ATCGAGAACAGAAT" name="STREME-42">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="43-GCAGCASC" name="STREME-43">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="28" stop="35" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="271" stop="278" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="274" stop="281" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="277" stop="284" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="280" stop="287" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="1342" stop="1335" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="1345" stop="1338" score="11.7763" pvalue="6.37e-05">
+<sequence>ACAGCAGC</sequence>
+<mem:qvalue>0.03</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="272" stop="279" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="1342" stop="1335" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="867" stop="874" score="11.7763" pvalue="6.37e-05">
+<sequence>ACAGCAGC</sequence>
+<mem:qvalue>0.03</mem:qvalue>
+</matched-element>
+<matched-element start="1345" stop="1338" score="11.7763" pvalue="6.37e-05">
+<sequence>ACAGCAGC</sequence>
+<mem:qvalue>0.03</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="272" stop="279" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="1343" stop="1336" score="13.6316" pvalue="1.98e-05">
+<sequence>GCAGCAGC</sequence>
+<mem:qvalue>0.014</mem:qvalue>
+</matched-element>
+<matched-element start="868" stop="875" score="11.7763" pvalue="6.37e-05">
+<sequence>ACAGCAGC</sequence>
+<mem:qvalue>0.03</mem:qvalue>
+</matched-element>
+<matched-element start="1346" stop="1339" score="11.7763" pvalue="6.37e-05">
+<sequence>ACAGCAGC</sequence>
+<mem:qvalue>0.03</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="44-CGGCGGA" name="STREME-44">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="34" stop="28" score="12.0526" pvalue="6.57e-05">
+<sequence>CGGCGGC</sequence>
+<mem:qvalue>0.249</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="34" stop="28" score="12.0526" pvalue="6.57e-05">
+<sequence>CGGCGGC</sequence>
+<mem:qvalue>0.249</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="45-CGMNKCG" name="STREME-45">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="46-ACCAAAAACCTAACC" name="STREME-46">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1061" stop="1047" score="-6.86735" pvalue="6.21e-05">
+<sequence>ACCCAGAACCTACCA</sequence>
+<mem:qvalue>0.493</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="47-GATAACGM" name="STREME-47">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1295" stop="1302" score="11.8158" pvalue="8.34e-05">
+<sequence>GATGACGC</sequence>
+<mem:qvalue>0.211</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1294" stop="1301" score="11.8158" pvalue="8.34e-05">
+<sequence>GATGACGC</sequence>
+<mem:qvalue>0.211</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1295" stop="1302" score="11.8158" pvalue="8.34e-05">
+<sequence>GATGACGC</sequence>
+<mem:qvalue>0.211</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="48-CTTCCCGTC" name="STREME-48">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="753" stop="745" score="10.5488" pvalue="8e-05">
+<sequence>CTCCCCGTT</sequence>
+<mem:qvalue>0.203</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="753" stop="745" score="10.5488" pvalue="8e-05">
+<sequence>CTCCCCGTT</sequence>
+<mem:qvalue>0.203</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="753" stop="745" score="10.5488" pvalue="8e-05">
+<sequence>CTCCCCGTT</sequence>
+<mem:qvalue>0.203</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="49-AACAACAACA" name="STREME-49">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1331" stop="1322" score="18.7857" pvalue="1.35e-06">
+<sequence>AACAACAACA</sequence>
+<mem:qvalue>0.00537</mem:qvalue>
+</matched-element>
+<matched-element start="1334" stop="1325" score="18.7857" pvalue="1.35e-06">
+<sequence>AACAACAACA</sequence>
+<mem:qvalue>0.00537</mem:qvalue>
+</matched-element>
+<matched-element start="1337" stop="1328" score="9.2551" pvalue="3.07e-05">
+<sequence>AGCAACAACA</sequence>
+<mem:qvalue>0.0323</mem:qvalue>
+</matched-element>
+<matched-element start="1328" stop="1319" score="9.03061" pvalue="4.06e-05">
+<sequence>AACAACAAAA</sequence>
+<mem:qvalue>0.0323</mem:qvalue>
+</matched-element>
+<matched-element start="553" stop="562" score="6.53061" pvalue="9.52e-05">
+<sequence>AAAGACAACA</sequence>
+<mem:qvalue>0.0583</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1334" stop="1325" score="16.2857" pvalue="3.56e-06">
+<sequence>AACGACAACA</sequence>
+<mem:qvalue>0.00709</mem:qvalue>
+</matched-element>
+<matched-element start="1331" stop="1322" score="9.2551" pvalue="3.07e-05">
+<sequence>GACAACAACA</sequence>
+<mem:qvalue>0.0323</mem:qvalue>
+</matched-element>
+<matched-element start="1328" stop="1319" score="9.03061" pvalue="4.06e-05">
+<sequence>AACAACAAAA</sequence>
+<mem:qvalue>0.0323</mem:qvalue>
+</matched-element>
+<matched-element start="1337" stop="1328" score="7.77551" pvalue="6.02e-05">
+<sequence>AGCAACGACA</sequence>
+<mem:qvalue>0.0399</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1335" stop="1326" score="16.2857" pvalue="3.56e-06">
+<sequence>AACGACAACA</sequence>
+<mem:qvalue>0.00709</mem:qvalue>
+</matched-element>
+<matched-element start="1332" stop="1323" score="9.2551" pvalue="3.07e-05">
+<sequence>GACAACAACA</sequence>
+<mem:qvalue>0.0323</mem:qvalue>
+</matched-element>
+<matched-element start="1329" stop="1320" score="9.03061" pvalue="4.06e-05">
+<sequence>AACAACAAAA</sequence>
+<mem:qvalue>0.0323</mem:qvalue>
+</matched-element>
+<matched-element start="1338" stop="1329" score="7.77551" pvalue="6.02e-05">
+<sequence>AGCAACGACA</sequence>
+<mem:qvalue>0.0399</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="50-ACACACA" name="STREME-50">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="419" stop="425" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="421" stop="427" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="423" stop="429" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="717" stop="723" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="719" stop="725" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="721" stop="727" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="1153" stop="1147" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="417" stop="423" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="419" stop="425" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="717" stop="723" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="719" stop="725" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="721" stop="727" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="1152" stop="1146" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="417" stop="423" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="419" stop="425" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="717" stop="723" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="719" stop="725" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="721" stop="727" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+<matched-element start="1153" stop="1147" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.0272</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="51-CCGTTTCCG" name="STREME-51">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="749" stop="741" score="13.5132" pvalue="1.1e-05">
+<sequence>CCGTTTCCT</sequence>
+<mem:qvalue>0.0267</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="749" stop="741" score="13.5132" pvalue="1.1e-05">
+<sequence>CCGTTTCCT</sequence>
+<mem:qvalue>0.0267</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="749" stop="741" score="13.5132" pvalue="1.1e-05">
+<sequence>CCGTTTCCT</sequence>
+<mem:qvalue>0.0267</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="52-CGCCCG" name="STREME-52">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="53-CACACACACAC" name="STREME-53">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="718" stop="728" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>0.000522</mem:qvalue>
+</matched-element>
+<matched-element start="1244" stop="1254" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>0.000579</mem:qvalue>
+</matched-element>
+<matched-element start="720" stop="730" score="9.2439" pvalue="8.26e-06">
+<sequence>CACACACACCC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+<matched-element start="1246" stop="1256" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+<matched-element start="418" stop="428" score="8.70732" pvalue="1.27e-05">
+<sequence>AACACACACAC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+<matched-element start="420" stop="430" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+<matched-element start="716" stop="726" score="8.70732" pvalue="1.27e-05">
+<sequence>AACACACACAC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="718" stop="728" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>0.000522</mem:qvalue>
+</matched-element>
+<matched-element start="1243" stop="1253" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>0.000579</mem:qvalue>
+</matched-element>
+<matched-element start="720" stop="730" score="9.30488" pvalue="8.1e-06">
+<sequence>CACACACACTC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+<matched-element start="716" stop="726" score="8.70732" pvalue="1.27e-05">
+<sequence>AACACACACAC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="718" stop="728" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>0.000522</mem:qvalue>
+</matched-element>
+<matched-element start="1244" stop="1254" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>0.000579</mem:qvalue>
+</matched-element>
+<matched-element start="720" stop="730" score="9.30488" pvalue="8.1e-06">
+<sequence>CACACACACTC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+<matched-element start="1246" stop="1256" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+<matched-element start="716" stop="726" score="8.70732" pvalue="1.27e-05">
+<sequence>AACACACACAC</sequence>
+<mem:qvalue>0.00606</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="54-AGCGAACGA" name="STREME-54">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="55-CGCTGC" name="STREME-55">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="56-GCCGGCACT" name="STREME-56">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="512" stop="504" score="12.5395" pvalue="2.74e-05">
+<sequence>GCCGGTACG</sequence>
+<mem:qvalue>0.0672</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="513" stop="505" score="12.5395" pvalue="2.74e-05">
+<sequence>GCCGGTACG</sequence>
+<mem:qvalue>0.0672</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="513" stop="505" score="12.5395" pvalue="2.74e-05">
+<sequence>GCCGGTACG</sequence>
+<mem:qvalue>0.0672</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="57-CAAAACACAAAAAA" name="STREME-57">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="452" stop="439" score="9.51515" pvalue="6.46e-05">
+<sequence>CAAAAAAAAAAACA</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="450" stop="437" score="20.1091" pvalue="2.86e-07">
+<sequence>AAAAACACAAAAAA</sequence>
+<mem:qvalue>0.00114</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="450" stop="437" score="20.1091" pvalue="2.86e-07">
+<sequence>AAAAACACAAAAAA</sequence>
+<mem:qvalue>0.00114</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="58-GATACAACAACCCW" name="STREME-58">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="59-AAGGTCAAGCATTC" name="STREME-59">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="60-GCAGCCACAAAAAA" name="STREME-60">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1339" stop="1326" score="10.7273" pvalue="2.31e-05">
+<sequence>GCAGCAACAACAAC</sequence>
+<mem:qvalue>0.0773</mem:qvalue>
+</matched-element>
+<matched-element start="248" stop="261" score="6.0303" pvalue="4.66e-05">
+<sequence>GCTGCCACACATTA</sequence>
+<mem:qvalue>0.0773</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="249" stop="262" score="6.0303" pvalue="4.66e-05">
+<sequence>GCTGCCACACATTA</sequence>
+<mem:qvalue>0.0773</mem:qvalue>
+</matched-element>
+<matched-element start="28" stop="41" score="5.8303" pvalue="5.88e-05">
+<sequence>GCCGCCGCAACGAA</sequence>
+<mem:qvalue>0.0773</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="249" stop="262" score="6.0303" pvalue="4.66e-05">
+<sequence>GCTGCCACACATTA</sequence>
+<mem:qvalue>0.0773</mem:qvalue>
+</matched-element>
+<matched-element start="28" stop="41" score="5.8303" pvalue="5.88e-05">
+<sequence>GCCGCCGCAACGAA</sequence>
+<mem:qvalue>0.0773</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="61-CGCWTCA" name="STREME-61">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="62-CGGAACAG" name="STREME-62">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="863" stop="870" score="10.7667" pvalue="9.52e-05">
+<sequence>CGCAACAG</sequence>
+<mem:qvalue>0.36</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="864" stop="871" score="10.7667" pvalue="9.52e-05">
+<sequence>CGCAACAG</sequence>
+<mem:qvalue>0.36</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="63-KCTTATCA" name="STREME-63">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="64-CGGCACACG" name="STREME-64">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="65-GCCGCTCTGC" name="STREME-65">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="703" stop="694" score="11.6951" pvalue="4.22e-05">
+<sequence>GCTGTTCTGC</sequence>
+<mem:qvalue>0.112</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="703" stop="694" score="11.6951" pvalue="4.22e-05">
+<sequence>GCTGTTCTGC</sequence>
+<mem:qvalue>0.112</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="703" stop="694" score="11.6951" pvalue="4.22e-05">
+<sequence>GCTGTTCTGC</sequence>
+<mem:qvalue>0.112</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="66-CCCGTTCCMG" name="STREME-66">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="645" stop="654" score="10.8429" pvalue="9.4e-05">
+<sequence>CACGTTCCCG</sequence>
+<mem:qvalue>0.22</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="645" stop="654" score="10.8429" pvalue="9.4e-05">
+<sequence>CACGTTCCCG</sequence>
+<mem:qvalue>0.22</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="645" stop="654" score="10.8429" pvalue="9.4e-05">
+<sequence>CACGTTCCCG</sequence>
+<mem:qvalue>0.22</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="67-CGGWCCG" name="STREME-67">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="68-CAGCTCC" name="STREME-68">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="69-CGCACCACAG" name="STREME-69">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="70-CTGCGCG" name="STREME-70">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="71-GCACGCG" name="STREME-71">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="973" stop="979" score="13.4146" pvalue="3.6e-05">
+<sequence>GCACGCG</sequence>
+<mem:qvalue>0.0871</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="972" stop="978" score="13.4146" pvalue="3.6e-05">
+<sequence>GCACGCG</sequence>
+<mem:qvalue>0.0871</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="973" stop="979" score="13.4146" pvalue="3.6e-05">
+<sequence>GCACGCG</sequence>
+<mem:qvalue>0.0871</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="72-GCACACACA" name="STREME-72">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="1155" stop="1147" score="12.7556" pvalue="2.67e-05">
+<sequence>GTACACACA</sequence>
+<mem:qvalue>0.0705</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="1154" stop="1146" score="12.7556" pvalue="2.67e-05">
+<sequence>GTACACACA</sequence>
+<mem:qvalue>0.0705</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="1155" stop="1147" score="12.7556" pvalue="2.67e-05">
+<sequence>GTACACACA</sequence>
+<mem:qvalue>0.0705</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="73-GCGCGAG" name="STREME-73">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="74-CTCTCTTTC" name="STREME-74">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="728" stop="736" score="13.9634" pvalue="1.14e-05">
+<sequence>CTCTCTATC</sequence>
+<mem:qvalue>0.0455</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="728" stop="736" score="13.9634" pvalue="1.14e-05">
+<sequence>CTCTCTATC</sequence>
+<mem:qvalue>0.0455</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="75-CGKCAC" name="STREME-75">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="76-GGGCAAGA" name="STREME-76">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="77-CGGATGTRH" name="STREME-77">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="574" stop="582" score="12.5658" pvalue="2.54e-05">
+<sequence>CGGATGCGT</sequence>
+<mem:qvalue>0.0651</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="574" stop="582" score="12.5658" pvalue="2.54e-05">
+<sequence>CGGATGCGT</sequence>
+<mem:qvalue>0.0651</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="574" stop="582" score="12.5658" pvalue="2.54e-05">
+<sequence>CGGATGCGT</sequence>
+<mem:qvalue>0.0651</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="78-CTTTATC" name="STREME-78">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="186" stop="192" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.318</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="186" stop="192" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.318</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="79-CACCACCACC" name="STREME-79">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="80-CAGACGGC" name="STREME-80">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="81-AGCGAAACGGAAA" name="STREME-81">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+<matched-element start="320" stop="308" score="12.3855" pvalue="1.8e-05">
+<sequence>AAAGAAACAGAAA</sequence>
+<mem:qvalue>0.0239</mem:qvalue>
+</matched-element>
+<matched-element start="346" stop="334" score="12.3494" pvalue="1.83e-05">
+<sequence>AGCGAAACGCCGT</sequence>
+<mem:qvalue>0.0239</mem:qvalue>
+</matched-element>
+<matched-element start="567" stop="579" score="9.74699" pvalue="7.28e-05">
+<sequence>AGCCAAACGGATG</sequence>
+<mem:qvalue>0.0634</mem:qvalue>
+</matched-element>
+<matched-element start="454" stop="442" score="9.25301" pvalue="9.19e-05">
+<sequence>AGCAAAAAAAAAA</sequence>
+<mem:qvalue>0.072</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+<matched-element start="318" stop="306" score="12.3855" pvalue="1.8e-05">
+<sequence>AAAGAAACAGAAA</sequence>
+<mem:qvalue>0.0239</mem:qvalue>
+</matched-element>
+<matched-element start="344" stop="332" score="12.3494" pvalue="1.83e-05">
+<sequence>AGCGAAACGCCGT</sequence>
+<mem:qvalue>0.0239</mem:qvalue>
+</matched-element>
+<matched-element start="567" stop="579" score="9.74699" pvalue="7.28e-05">
+<sequence>AGCCAAACGGATG</sequence>
+<mem:qvalue>0.0634</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+<matched-element start="318" stop="306" score="12.3855" pvalue="1.8e-05">
+<sequence>AAAGAAACAGAAA</sequence>
+<mem:qvalue>0.0239</mem:qvalue>
+</matched-element>
+<matched-element start="344" stop="332" score="12.3494" pvalue="1.83e-05">
+<sequence>AGCGAAACGCCGT</sequence>
+<mem:qvalue>0.0239</mem:qvalue>
+</matched-element>
+<matched-element start="567" stop="579" score="9.74699" pvalue="7.28e-05">
+<sequence>AGCCAAACGGATG</sequence>
+<mem:qvalue>0.0634</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="82-GGCAAAGGAAG" name="STREME-82">
+<scanned-sequence accession="LRIM_Fd03_3_A" name="LRIM_Fd03_3_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd05_1_A" name="LRIM_Fd05_1_A">
+</scanned-sequence>
+<scanned-sequence accession="LRIM_Fd09_3_A" name="LRIM_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

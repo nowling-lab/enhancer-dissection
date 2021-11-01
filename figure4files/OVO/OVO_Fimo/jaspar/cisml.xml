@@ -1,0 +1,1594 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/OVO/OVO_Fimo/jaspar /home/petersjg/windows_directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt /home/petersjg/enhancer-dissection/figure4files/OVO/OVO.fa</command-line>
+<pattern-file>/home/petersjg/windows_directory/enhancer-dissection/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt</pattern-file>
+<sequence-file>/home/petersjg/enhancer-dissection/figure4files/OVO/OVO.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="MA0206.1" name="abd-A">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0165.1" name="Abd-B">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="378" stop="384" score="10.9901" pvalue="9.66e-05">
+<sequence>TTTATGA</sequence>
+<mem:qvalue>0.43</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="450" stop="456" score="10.9901" pvalue="9.66e-05">
+<sequence>TTTATGA</sequence>
+<mem:qvalue>0.43</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0207.1" name="achi">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0208.1" name="al">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0166.1" name="Antp">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0209.1" name="ap">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0210.1" name="ara">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0167.1" name="Awh">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0168.1" name="B-H1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0169.1" name="B-H2">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0211.1" name="bap">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0212.1" name="bcd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0529.2" name="BEAF-32">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0242.1" name="Bgb::run">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="297" stop="289" score="15.7978" pvalue="4.03e-06">
+<sequence>TAACCGCAA</sequence>
+<mem:qvalue>0.0178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="369" stop="361" score="15.7978" pvalue="4.03e-06">
+<sequence>TAACCGCAA</sequence>
+<mem:qvalue>0.0178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0010.1" name="br">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0011.1" name="br(var.2)">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0012.1" name="br(var.3)">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0013.1" name="br(var.4)">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="1001" stop="991" score="11.1181" pvalue="8.07e-05">
+<sequence>AAGTGAACAAA</sequence>
+<mem:qvalue>0.718</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0213.1" name="brk">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0214.1" name="bsh">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0443.1" name="btd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0215.1" name="btn">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0170.1" name="C15">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0216.2" name="cad">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0217.1" name="caup">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0015.1" name="Cf2">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0171.1" name="CG11085">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0172.1" name="CG11294">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0173.1" name="CG11617">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0176.1" name="CG15696-RA">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0177.1" name="CG18599">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0178.1" name="CG32105">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0179.1" name="CG32532">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0444.1" name="CG34031">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0182.1" name="CG4328-RA">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0184.1" name="CG9876">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1700.1" name="Clamp">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0530.1" name="cnc::maf-S">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0218.1" name="ct">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0531.1" name="CTCF">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0445.1" name="D">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0174.1" name="Dbx">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0185.1" name="Deaf1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0186.1" name="Dfd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0022.1" name="dl">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0023.1" name="dl(var.2)">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0187.1" name="Dll">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1455.1" name="dmrt99B">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0188.1" name="Dr">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1456.1" name="Dref">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0915.1" name="dve">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="25" stop="18" score="12.4426" pvalue="4.72e-05">
+<sequence>CTAATCCC</sequence>
+<mem:qvalue>0.137</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="25" stop="18" score="12.4426" pvalue="4.72e-05">
+<sequence>CTAATCCC</sequence>
+<mem:qvalue>0.137</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="25" stop="18" score="12.4426" pvalue="4.72e-05">
+<sequence>CTAATCCC</sequence>
+<mem:qvalue>0.137</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0189.1" name="E5">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0534.1" name="EcR::usp">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0026.1" name="Eip74EF">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="536" stop="542" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+<matched-element start="740" stop="746" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="232" stop="238" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+<matched-element start="436" stop="442" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="491" stop="485" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+<matched-element start="650" stop="656" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+<matched-element start="851" stop="857" score="11.3878" pvalue="9.74e-05">
+<sequence>CCGGAAA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0219.1" name="ems">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0220.1" name="en">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0916.1" name="Ets21C">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="536" stop="543" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.06</mem:qvalue>
+</matched-element>
+<matched-element start="740" stop="747" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.06</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="232" stop="239" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.06</mem:qvalue>
+</matched-element>
+<matched-element start="436" stop="443" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.06</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="491" stop="484" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.06</mem:qvalue>
+</matched-element>
+<matched-element start="650" stop="657" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.06</mem:qvalue>
+</matched-element>
+<matched-element start="851" stop="858" score="12.7865" pvalue="4.87e-05">
+<sequence>CCGGAAAC</sequence>
+<mem:qvalue>0.06</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0221.1" name="eve">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0222.1" name="exd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="830" stop="837" score="12.2347" pvalue="5.75e-05">
+<sequence>CTTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+<matched-element start="1044" stop="1037" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+<matched-element start="1119" stop="1112" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="526" stop="533" score="12.2347" pvalue="5.75e-05">
+<sequence>CTTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+<matched-element start="741" stop="734" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+<matched-element start="859" stop="852" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="941" stop="948" score="12.2347" pvalue="5.75e-05">
+<sequence>CTTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+<matched-element start="1155" stop="1148" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+<matched-element start="1253" stop="1246" score="11.949" pvalue="7.93e-05">
+<sequence>ATTTGACA</sequence>
+<mem:qvalue>0.0785</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0224.1" name="exex">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0446.1" name="fkh">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0225.1" name="ftz">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0917.1" name="gcm2">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1457.1" name="grh">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1063" stop="1075" score="12.3984" pvalue="3.01e-05">
+<sequence>GAGACCAGTTTTG</sequence>
+<mem:qvalue>0.129</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1197" stop="1209" score="12.3984" pvalue="3.01e-05">
+<sequence>GAGACCAGTTTTG</sequence>
+<mem:qvalue>0.129</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0190.1" name="Gsc">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0447.1" name="gt">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0449.1" name="h">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0448.1" name="H2.0">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0049.1" name="hb">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="339" stop="330" score="13.2376" pvalue="3.28e-06">
+<sequence>CCATAAAAAA</sequence>
+<mem:qvalue>0.0146</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="411" stop="402" score="13.2376" pvalue="3.28e-06">
+<sequence>CCATAAAAAA</sequence>
+<mem:qvalue>0.0146</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0226.1" name="hbn">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0191.1" name="HGTX">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0183.1" name="HHEX">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0450.1" name="hkb">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0192.1" name="Hmx">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1458.1" name="Hsf">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="570" stop="581" score="14.4959" pvalue="7.38e-06">
+<sequence>GATTCCAGAAAA</sequence>
+<mem:qvalue>0.0315</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="684" stop="695" score="14.8293" pvalue="2.6e-06">
+<sequence>AATTCCAGAAAA</sequence>
+<mem:qvalue>0.0222</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0227.1" name="hth">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0228.1" name="ind">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0229.1" name="inv">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0451.1" name="kni">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="697" stop="686" score="11.2472" pvalue="6.52e-05">
+<sequence>AATTTAGATCAT</sequence>
+<mem:qvalue>0.184</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="393" stop="382" score="11.2472" pvalue="6.52e-05">
+<sequence>AATTTAGATCAT</sequence>
+<mem:qvalue>0.184</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="808" stop="797" score="11.2472" pvalue="6.52e-05">
+<sequence>AATTTAGATCAT</sequence>
+<mem:qvalue>0.184</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0452.2" name="Kr">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0230.1" name="lab">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0231.1" name="lbe">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0232.1" name="lbl">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0194.1" name="Lim1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0195.1" name="Lim3">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0175.1" name="lms">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1459.1" name="M1BP">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0535.1" name="Mad">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0233.1" name="mirr">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0196.1" name="NK7.1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0197.2" name="nub">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0234.1" name="oc">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0454.1" name="odd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0198.1" name="OdsH">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0235.1" name="onecut">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1272" stop="1278" score="11.6531" pvalue="9.66e-05">
+<sequence>TTGATTT</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+<matched-element start="479" stop="473" score="11.6531" pvalue="9.66e-05">
+<sequence>TTGATTT</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="1012" stop="1018" score="11.6531" pvalue="9.66e-05">
+<sequence>TTGATTT</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1406" stop="1412" score="11.6531" pvalue="9.66e-05">
+<sequence>TTGATTT</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+<matched-element start="593" stop="587" score="11.6531" pvalue="9.66e-05">
+<sequence>TTGATTT</sequence>
+<mem:qvalue>0.171</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0456.1" name="opa">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0199.1" name="Optix">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0236.1" name="otp">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0126.1" name="ovo">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0237.2" name="pan">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0238.1" name="pb">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1702.1" name="Pdp1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1442" stop="1431" score="12.7273" pvalue="2.8e-05">
+<sequence>TATTATGTAAAA</sequence>
+<mem:qvalue>0.0829</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="1182" stop="1171" score="12.7273" pvalue="2.8e-05">
+<sequence>TATTATGTAAAA</sequence>
+<mem:qvalue>0.0829</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1576" stop="1565" score="12.7273" pvalue="2.8e-05">
+<sequence>TATTATGTAAAA</sequence>
+<mem:qvalue>0.0829</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0457.1" name="PHDP">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1460.1" name="pho">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0536.1" name="pnr">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0200.1" name="Pph13">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0239.1" name="prd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0201.1" name="Ptx1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0240.1" name="repo">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0241.1" name="ro">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0202.1" name="Rx">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0193.1" name="schlank">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0203.1" name="Scr">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0243.1" name="sd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0204.1" name="Six4">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0244.1" name="slbo">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0245.1" name="slou">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0458.1" name="slp1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0086.2" name="sna">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0246.1" name="so">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0532.1" name="Stat92E">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="547" stop="533" score="10.0263" pvalue="9.34e-05">
+<sequence>ATCAGTTTCCGGAAT</sequence>
+<mem:qvalue>0.199</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="282" stop="268" score="10.0921" pvalue="9.07e-05">
+<sequence>CGCAGTTTTCTGAAA</sequence>
+<mem:qvalue>0.199</mem:qvalue>
+</matched-element>
+<matched-element start="243" stop="229" score="10.0263" pvalue="9.34e-05">
+<sequence>ATCAGTTTCCGGAAT</sequence>
+<mem:qvalue>0.199</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="661" stop="647" score="10.0263" pvalue="9.34e-05">
+<sequence>ATCAGTTTCCGGAAT</sequence>
+<mem:qvalue>0.199</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0085.1" name="Su(H)">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0533.1" name="su(Hw)">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1461.1" name="sv">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0247.2" name="tin">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0459.1" name="tll">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="869" stop="878" score="12.4831" pvalue="2.67e-05">
+<sequence>GGAAGTCAAA</sequence>
+<mem:qvalue>0.0782</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="565" stop="574" score="12.4831" pvalue="2.67e-05">
+<sequence>GGAAGTCAAA</sequence>
+<mem:qvalue>0.0782</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="980" stop="989" score="12.4831" pvalue="2.67e-05">
+<sequence>GGAAGTCAAA</sequence>
+<mem:qvalue>0.0782</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0205.2" name="Trl">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0460.1" name="ttk">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0248.1" name="tup">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0249.2" name="twi">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0094.2" name="Ubx">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0250.1" name="unc-4">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0251.1" name="unpg">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0016.1" name="usp">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA1462.1" name="vfl">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="57" stop="46" score="12.578" pvalue="3.51e-05">
+<sequence>AATCAGGTAGGT</sequence>
+<mem:qvalue>0.312</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0252.1" name="vis">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0253.1" name="vnd">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0181.1" name="Vsx1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0180.1" name="Vsx2">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0254.1" name="vvl">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0255.1" name="z">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0256.1" name="zen">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="MA0257.1" name="zen2">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

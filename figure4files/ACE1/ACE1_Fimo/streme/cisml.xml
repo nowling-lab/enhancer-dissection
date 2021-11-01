@@ -1,0 +1,4181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/ACE1/ACE1_Fimo/streme /home/petersjg/windows_directory/enhancer-dissection/streme.txt /home/petersjg/enhancer-dissection/figure4files/ACE1/ACE1.fa</command-line>
+<pattern-file>/home/petersjg/windows_directory/enhancer-dissection/streme.txt</pattern-file>
+<sequence-file>/home/petersjg/enhancer-dissection/figure4files/ACE1/ACE1.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="1-RCCGGAAGYGR" name="STREME-1">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="2-SYGATAAGV" name="STREME-2">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="3-RTTTCCGGT" name="STREME-3">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="516" stop="508" score="10.4286" pvalue="9e-05">
+<sequence>GGTTCCGTT</sequence>
+<mem:qvalue>1</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="4-CGCKMTCGYYC" name="STREME-4">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="382" stop="392" score="12.2273" pvalue="3.94e-05">
+<sequence>CCCTGTCGCCC</sequence>
+<mem:qvalue>0.0867</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="397" stop="407" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="397" stop="407" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="397" stop="407" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="395" stop="405" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="394" stop="404" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="398" stop="408" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="410" stop="420" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="396" stop="406" score="12.5455" pvalue="2.98e-05">
+<sequence>CCCTGTCGTCC</sequence>
+<mem:qvalue>0.0737</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="5-CCAGCAGCAGCAGC" name="STREME-5">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="305" stop="318" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="320" stop="333" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="320" stop="333" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="320" stop="333" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="318" stop="331" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="317" stop="330" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="321" stop="334" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="333" stop="346" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="319" stop="332" score="12.5" pvalue="1.93e-05">
+<sequence>CCGGCAGCTACGGC</sequence>
+<mem:qvalue>0.0421</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="6-ACCGGATG" name="STREME-6">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="7-CTTCCGC" name="STREME-7">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="8-ATCGCGCG" name="STREME-8">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="593" stop="600" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="225" stop="218" score="11.24" pvalue="6.59e-05">
+<sequence>ATCGCACG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+<matched-element start="614" stop="621" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="225" stop="218" score="11.24" pvalue="6.59e-05">
+<sequence>ATCGCACG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+<matched-element start="614" stop="621" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="225" stop="218" score="11.24" pvalue="6.59e-05">
+<sequence>ATCGCACG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+<matched-element start="614" stop="621" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="223" stop="216" score="11.24" pvalue="6.59e-05">
+<sequence>ATCGCACG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+<matched-element start="612" stop="619" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="611" stop="618" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="615" stop="622" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="628" stop="635" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="613" stop="620" score="11.184" pvalue="7.58e-05">
+<sequence>ATGGCGCG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="9-CAKATGGYGCN" name="STREME-9">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="590" stop="600" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="611" stop="621" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="611" stop="621" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="611" stop="621" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="609" stop="619" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="608" stop="618" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="612" stop="622" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="625" stop="635" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="610" stop="620" score="16.2" pvalue="1.38e-07">
+<sequence>CAGATGGCGCG</sequence>
+<mem:qvalue>0.000309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="10-CTTCCTGC" name="STREME-10">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="1101" stop="1094" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1123" stop="1116" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1123" stop="1116" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1123" stop="1116" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1121" stop="1114" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1120" stop="1113" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1128" stop="1121" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1144" stop="1137" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="48" stop="55" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+<matched-element start="1124" stop="1117" score="10.8026" pvalue="9.01e-05">
+<sequence>CTTCCAGC</sequence>
+<mem:qvalue>0.105</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="11-WCSRSCGSMM" name="STREME-11">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="129" stop="138" score="12.9545" pvalue="1.09e-05">
+<sequence>ACGAGCGCAC</sequence>
+<mem:qvalue>0.0425</mem:qvalue>
+</matched-element>
+<matched-element start="250" stop="241" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="603" stop="594" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="142" stop="151" score="12.9545" pvalue="1.09e-05">
+<sequence>ACGAGCGCAC</sequence>
+<mem:qvalue>0.0425</mem:qvalue>
+</matched-element>
+<matched-element start="265" stop="256" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="624" stop="615" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="142" stop="151" score="12.9545" pvalue="1.09e-05">
+<sequence>ACGAGCGCAC</sequence>
+<mem:qvalue>0.0425</mem:qvalue>
+</matched-element>
+<matched-element start="265" stop="256" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="624" stop="615" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="142" stop="151" score="12.9545" pvalue="1.09e-05">
+<sequence>ACGAGCGCAC</sequence>
+<mem:qvalue>0.0425</mem:qvalue>
+</matched-element>
+<matched-element start="265" stop="256" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="624" stop="615" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="140" stop="149" score="12.9545" pvalue="1.09e-05">
+<sequence>ACGAGCGCAC</sequence>
+<mem:qvalue>0.0425</mem:qvalue>
+</matched-element>
+<matched-element start="263" stop="254" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="622" stop="613" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="262" stop="253" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="621" stop="612" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="266" stop="257" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="625" stop="616" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="278" stop="269" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="638" stop="629" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="264" stop="255" score="11.7727" pvalue="8.07e-05">
+<sequence>ACGAGCGCAA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+<matched-element start="623" stop="614" score="11.6818" pvalue="9.11e-05">
+<sequence>ACCCGCGCCA</sequence>
+<mem:qvalue>0.0776</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="12-CGTCGTGCG" name="STREME-12">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="13-CCGATAGGCG" name="STREME-13">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="14-CGAGGTAAACGT" name="STREME-14">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="15-AAACGCGCTTGG" name="STREME-15">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="16-GAACTCGATCCT" name="STREME-16">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="17-CATTCGCTTTTA" name="STREME-17">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="697" stop="708" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="718" stop="729" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="718" stop="729" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="718" stop="729" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="716" stop="727" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="715" stop="726" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="719" stop="730" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="732" stop="743" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="717" stop="728" score="11.6303" pvalue="3.91e-05">
+<sequence>CATTCCCATTTA</sequence>
+<mem:qvalue>0.0872</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="18-GATAATCGGTACA" name="STREME-18">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="41" stop="53" score="0.285714" pvalue="5.35e-05">
+<sequence>GATAATCTTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="41" stop="53" score="0.255102" pvalue="5.41e-05">
+<sequence>GATAATCCTTCCA</sequence>
+<mem:qvalue>0.12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="19-CTTGACGGTCCAA" name="STREME-19">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="20-CTTTTGTGGCAAAC" name="STREME-20">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="21-GTTCTACTTCTATA" name="STREME-21">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="22-AGCAATGTTAGTAAC" name="STREME-22">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="23-ACAACCGAAACGTGC" name="STREME-23">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="24-GCAGCGAAAACATCG" name="STREME-24">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="25-AACAATGTTACGCTC" name="STREME-25">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="26-CGTTGATAGTTTTTA" name="STREME-26">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="27-TATATCGAAAACACA" name="STREME-27">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="947" stop="961" score="-9.4898" pvalue="7.44e-05">
+<sequence>TATCTCGAGTACTCA</sequence>
+<mem:qvalue>0.294</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="947" stop="961" score="-9.4898" pvalue="7.44e-05">
+<sequence>TATCTCGAGTACTCA</sequence>
+<mem:qvalue>0.294</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="947" stop="961" score="-9.4898" pvalue="7.44e-05">
+<sequence>TATCTCGAGTACTCA</sequence>
+<mem:qvalue>0.294</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="945" stop="959" score="-9.4898" pvalue="7.44e-05">
+<sequence>TATCTCGAGTACTCA</sequence>
+<mem:qvalue>0.294</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="944" stop="958" score="-9.4898" pvalue="7.44e-05">
+<sequence>TATCTCGAGTACTCA</sequence>
+<mem:qvalue>0.294</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="28-GSCGCGSC" name="STREME-28">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="29-ACAACCGAAAC" name="STREME-29">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="30-CTCCTCCTCC" name="STREME-30">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="31-CAGTTGTCTAA" name="STREME-31">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="787" stop="797" score="10.0788" pvalue="5.46e-05">
+<sequence>CAGTTGTCGCA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="810" stop="820" score="10.0788" pvalue="5.46e-05">
+<sequence>CAGTTGTCGCA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="810" stop="820" score="10.0788" pvalue="5.46e-05">
+<sequence>CAGTTGTCGCA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="810" stop="820" score="10.0788" pvalue="5.46e-05">
+<sequence>CAGTTGTCGCA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="808" stop="818" score="10.0788" pvalue="5.46e-05">
+<sequence>CAGTTGTCGCA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="807" stop="817" score="10.0788" pvalue="5.46e-05">
+<sequence>CAGTTGTCGCA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="809" stop="819" score="10.1455" pvalue="3.74e-05">
+<sequence>CAGTTGTCACA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="826" stop="836" score="10.1455" pvalue="3.74e-05">
+<sequence>CAGTTGTCACA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="811" stop="821" score="10.0788" pvalue="5.46e-05">
+<sequence>CAGTTGTCGCA</sequence>
+<mem:qvalue>0.122</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="32-GCCGTGGTCTTCT" name="STREME-32">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="33-CATTAAGCGCAAA" name="STREME-33">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="494" stop="482" score="8.3697" pvalue="9.6e-05">
+<sequence>GATGAAGCGCGAA</sequence>
+<mem:qvalue>0.384</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="494" stop="482" score="8.3697" pvalue="9.6e-05">
+<sequence>GATGAAGCGCGAA</sequence>
+<mem:qvalue>0.384</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="494" stop="482" score="8.3697" pvalue="9.6e-05">
+<sequence>GATGAAGCGCGAA</sequence>
+<mem:qvalue>0.384</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="492" stop="480" score="8.3697" pvalue="9.6e-05">
+<sequence>GATGAAGCGCGAA</sequence>
+<mem:qvalue>0.384</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="491" stop="479" score="8.3697" pvalue="9.6e-05">
+<sequence>GATGAAGCGCGAA</sequence>
+<mem:qvalue>0.384</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="34-GCTGATAA" name="STREME-34">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="655" stop="648" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="518" stop="525" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="676" stop="669" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="538" stop="545" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="676" stop="669" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="538" stop="545" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="676" stop="669" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="538" stop="545" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="674" stop="667" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="536" stop="543" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="673" stop="666" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="535" stop="542" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="677" stop="670" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="539" stop="546" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="690" stop="683" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="552" stop="559" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="675" stop="668" score="14.9024" pvalue="1.79e-05">
+<sequence>GCTGATAA</sequence>
+<mem:qvalue>0.0398</mem:qvalue>
+</matched-element>
+<matched-element start="537" stop="544" score="11.439" pvalue="6.9e-05">
+<sequence>ACTGATAA</sequence>
+<mem:qvalue>0.0769</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="35-TAAAAACTTGGAC" name="STREME-35">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="36-GCTCATGAAACAA" name="STREME-36">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="37-CCAKMTGG" name="STREME-37">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="38-CGRCSAG" name="STREME-38">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="610" stop="604" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="631" stop="625" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="631" stop="625" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="631" stop="625" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="629" stop="623" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="628" stop="622" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="632" stop="626" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="645" stop="639" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="630" stop="624" score="12.6707" pvalue="3.6e-05">
+<sequence>CGGCGAG</sequence>
+<mem:qvalue>0.0784</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="39-CCCCCTC" name="STREME-39">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="40-GCGATA" name="STREME-40">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="41-CGACGACGABG" name="STREME-41">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="873" stop="863" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="876" stop="866" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="895" stop="885" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="898" stop="888" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="895" stop="885" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="898" stop="888" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="895" stop="885" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="898" stop="888" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="893" stop="883" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="896" stop="886" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="892" stop="882" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="895" stop="885" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="916" stop="906" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="919" stop="909" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="896" stop="886" score="11.3714" pvalue="5.6e-05">
+<sequence>CGACTATGATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+<matched-element start="899" stop="889" score="11.2714" pvalue="5.81e-05">
+<sequence>CGACGACTATG</sequence>
+<mem:qvalue>0.0729</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="42-ATCGAGAACAGAAT" name="STREME-42">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="43-GCAGCASC" name="STREME-43">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="44-CGGCGGA" name="STREME-44">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="45-CGMNKCG" name="STREME-45">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="46-ACCAAAAACCTAACC" name="STREME-46">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="47-GATAACGM" name="STREME-47">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="48-CTTCCCGTC" name="STREME-48">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="49-AACAACAACA" name="STREME-49">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="50-ACACACA" name="STREME-50">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="113" stop="119" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="121" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="117" stop="123" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="125" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="127" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="282" stop="288" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="284" stop="290" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="751" stop="745" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="753" stop="747" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="116" stop="122" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="124" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="126" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="128" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="130" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="132" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="134" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="136" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="138" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="134" stop="140" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="136" stop="142" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="299" stop="305" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="772" stop="766" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="774" stop="768" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="776" stop="770" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="116" stop="122" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="124" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="126" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="128" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="130" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="132" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="134" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="136" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="138" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="134" stop="140" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="136" stop="142" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="299" stop="305" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="772" stop="766" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="774" stop="768" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="776" stop="770" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="116" stop="122" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="124" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="126" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="128" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="130" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="132" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="134" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="136" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="138" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="134" stop="140" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="136" stop="142" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="299" stop="305" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="772" stop="766" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="774" stop="768" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="776" stop="770" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="116" stop="122" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="124" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="126" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="128" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="130" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="132" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="134" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="136" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="138" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="134" stop="140" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="297" stop="303" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="770" stop="764" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="772" stop="766" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="774" stop="768" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="109" stop="115" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="111" stop="117" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="113" stop="119" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="121" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="117" stop="123" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="125" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="127" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="129" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="131" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="133" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="135" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="137" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="139" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="135" stop="141" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="769" stop="763" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="771" stop="765" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="767" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="109" stop="115" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="111" stop="117" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="113" stop="119" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="121" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="117" stop="123" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="125" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="127" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="129" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="131" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="133" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="135" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="137" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="139" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="135" stop="141" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="137" stop="143" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="139" stop="145" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="767" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="769" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="113" stop="119" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="121" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="117" stop="123" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="125" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="127" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="129" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="131" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="133" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="135" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="137" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="139" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="143" stop="149" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="145" stop="151" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="147" stop="153" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="149" stop="155" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="151" stop="157" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="780" stop="774" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="782" stop="776" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="784" stop="778" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="786" stop="780" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="788" stop="782" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="790" stop="784" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="792" stop="786" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="113" stop="119" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="121" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="117" stop="123" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="125" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="127" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="129" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="131" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="133" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="135" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="137" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="139" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="135" stop="141" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="137" stop="143" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="767" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="769" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+<matched-element start="777" stop="771" score="13.2061" pvalue="6.51e-05">
+<sequence>ACACACA</sequence>
+<mem:qvalue>0.00913</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="51-CCGTTTCCG" name="STREME-51">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="52-CGCCCG" name="STREME-52">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="53-CACACACACAC" name="STREME-53">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="114" stop="124" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="116" stop="126" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="281" stop="291" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="750" stop="740" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="283" stop="293" score="9.30488" pvalue="8.1e-06">
+<sequence>CACACACACTC</sequence>
+<mem:qvalue>0.00148</mem:qvalue>
+</matched-element>
+<matched-element start="748" stop="738" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="112" stop="122" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="128" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="130" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="752" stop="742" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="754" stop="744" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="746" stop="736" score="6.96341" pvalue="2.4e-05">
+<sequence>CATACACACGC</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="740" stop="730" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="742" stop="732" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+<matched-element start="277" stop="287" score="5.53659" pvalue="3.83e-05">
+<sequence>CATCCACACAC</sequence>
+<mem:qvalue>0.00407</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="132" score="5.2439" pvalue="4.38e-05">
+<sequence>CACACATACGA</sequence>
+<mem:qvalue>0.00464</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="117" stop="127" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="129" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="131" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="133" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="135" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="137" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="139" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="141" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="143" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="777" stop="767" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="771" stop="761" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="769" stop="759" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="125" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="296" stop="306" score="8.70732" pvalue="1.27e-05">
+<sequence>CAAACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="763" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="765" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="135" stop="145" score="6.96341" pvalue="2.4e-05">
+<sequence>CACACACACGA</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="767" stop="757" score="6.96341" pvalue="2.4e-05">
+<sequence>CATACACACGC</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="761" stop="751" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="763" stop="753" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="117" stop="127" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="129" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="131" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="133" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="135" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="137" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="139" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="141" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="143" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="777" stop="767" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="771" stop="761" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="769" stop="759" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="125" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="296" stop="306" score="8.70732" pvalue="1.27e-05">
+<sequence>CAAACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="763" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="765" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="135" stop="145" score="6.96341" pvalue="2.4e-05">
+<sequence>CACACACACGA</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="767" stop="757" score="6.96341" pvalue="2.4e-05">
+<sequence>CATACACACGC</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="761" stop="751" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="763" stop="753" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="117" stop="127" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="129" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="131" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="133" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="135" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="137" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="139" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="141" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="143" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="777" stop="767" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="771" stop="761" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="769" stop="759" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="125" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="296" stop="306" score="8.70732" pvalue="1.27e-05">
+<sequence>CAAACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="763" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="765" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="135" stop="145" score="6.96341" pvalue="2.4e-05">
+<sequence>CACACACACGA</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="767" stop="757" score="6.96341" pvalue="2.4e-05">
+<sequence>CATACACACGC</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="761" stop="751" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="763" stop="753" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="117" stop="127" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="129" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="121" stop="131" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="123" stop="133" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="125" stop="135" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="127" stop="137" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="129" stop="139" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="131" stop="141" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="765" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="769" stop="759" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="767" stop="757" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="115" stop="125" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="294" stop="304" score="8.70732" pvalue="1.27e-05">
+<sequence>CAAACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="771" stop="761" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="773" stop="763" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="133" stop="143" score="6.96341" pvalue="2.4e-05">
+<sequence>CACACACACGA</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="765" stop="755" score="6.96341" pvalue="2.4e-05">
+<sequence>CATACACACGC</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="759" stop="749" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="761" stop="751" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="110" stop="120" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="112" stop="122" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="114" stop="124" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="116" stop="126" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="128" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="130" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="132" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="134" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="136" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="138" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="140" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="774" stop="764" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="768" stop="758" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="293" stop="303" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="766" stop="756" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="108" stop="118" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="142" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="770" stop="760" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="772" stop="762" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="764" stop="754" score="6.96341" pvalue="2.4e-05">
+<sequence>CATACACACGC</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="758" stop="748" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="760" stop="750" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="110" stop="120" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="112" stop="122" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="114" stop="124" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="116" stop="126" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="128" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="130" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="132" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="134" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="136" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="138" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="140" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="142" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="134" stop="144" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="772" stop="762" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="297" stop="307" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="770" stop="760" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="108" stop="118" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="136" stop="146" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="774" stop="764" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="776" stop="766" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="768" stop="758" score="6.96341" pvalue="2.4e-05">
+<sequence>CATACACACGC</sequence>
+<mem:qvalue>0.00281</mem:qvalue>
+</matched-element>
+<matched-element start="762" stop="752" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="764" stop="754" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="114" stop="124" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="116" stop="126" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="128" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="130" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="132" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="134" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="136" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="138" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="140" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="142" stop="152" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="144" stop="154" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="146" stop="156" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="783" stop="773" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="785" stop="775" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="787" stop="777" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="789" stop="779" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="791" stop="781" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="793" stop="783" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="781" stop="771" score="19.0488" pvalue="6.22e-07">
+<sequence>CACACACACGC</sequence>
+<mem:qvalue>0.000117</mem:qvalue>
+</matched-element>
+<matched-element start="138" stop="148" score="9.32927" pvalue="7.89e-06">
+<sequence>CACTCACACAC</sequence>
+<mem:qvalue>0.00147</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="142" score="9.30488" pvalue="8.1e-06">
+<sequence>CACACACACTC</sequence>
+<mem:qvalue>0.00148</mem:qvalue>
+</matched-element>
+<matched-element start="136" stop="146" score="9.21951" pvalue="8.47e-06">
+<sequence>CACACTCACAC</sequence>
+<mem:qvalue>0.00154</mem:qvalue>
+</matched-element>
+<matched-element start="134" stop="144" score="8.9878" pvalue="9.5e-06">
+<sequence>CACACACTCAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="140" stop="150" score="8.9878" pvalue="9.5e-06">
+<sequence>CTCACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="309" stop="319" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="112" stop="122" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="148" stop="158" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="775" stop="765" score="6.91463" pvalue="2.56e-05">
+<sequence>CACGCAAACAC</sequence>
+<mem:qvalue>0.00286</mem:qvalue>
+</matched-element>
+<matched-element start="777" stop="767" score="6.46341" pvalue="3.24e-05">
+<sequence>CACACGCAAAC</sequence>
+<mem:qvalue>0.00347</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="114" stop="124" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="116" stop="126" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="118" stop="128" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="120" stop="130" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="122" stop="132" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="124" stop="134" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="126" stop="136" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="128" stop="138" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="130" stop="140" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="132" stop="142" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="778" stop="768" score="20.7927" pvalue="2.05e-07">
+<sequence>CACACACACAC</sequence>
+<mem:qvalue>4.22e-05</mem:qvalue>
+</matched-element>
+<matched-element start="772" stop="762" score="19.0732" pvalue="4.54e-07">
+<sequence>CACACATACAC</sequence>
+<mem:qvalue>8.64e-05</mem:qvalue>
+</matched-element>
+<matched-element start="295" stop="305" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="770" stop="760" score="8.78049" pvalue="1.07e-05">
+<sequence>CACATACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="112" stop="122" score="8.70732" pvalue="1.27e-05">
+<sequence>TACACACACAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="134" stop="144" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="774" stop="764" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACATAC</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+<matched-element start="776" stop="766" score="8.70732" pvalue="1.27e-05">
+<sequence>CACACACACAT</sequence>
+<mem:qvalue>0.00159</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="54-AGCGAACGA" name="STREME-54">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="457" stop="449" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="478" stop="470" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="478" stop="470" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="478" stop="470" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="476" stop="468" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="475" stop="467" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="479" stop="471" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="491" stop="483" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="477" stop="469" score="12.4756" pvalue="3.85e-05">
+<sequence>CGGGAACGA</sequence>
+<mem:qvalue>0.0825</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="55-CGCTGC" name="STREME-55">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="56-GCCGGCACT" name="STREME-56">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="57-CAAAACACAAAAAA" name="STREME-57">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="855" stop="842" score="9.51515" pvalue="6.46e-05">
+<sequence>CAAAAAAAAAGAAA</sequence>
+<mem:qvalue>0.219</mem:qvalue>
+</matched-element>
+<matched-element start="852" stop="839" score="9.24242" pvalue="6.75e-05">
+<sequence>AAAAAAAGAAAAAA</sequence>
+<mem:qvalue>0.219</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="871" stop="858" score="9.51515" pvalue="6.46e-05">
+<sequence>CAAAAAAAAGAAAA</sequence>
+<mem:qvalue>0.219</mem:qvalue>
+</matched-element>
+<matched-element start="869" stop="856" score="9.24242" pvalue="6.75e-05">
+<sequence>AAAAAAAGAAAAAA</sequence>
+<mem:qvalue>0.219</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="851" stop="838" score="9.51515" pvalue="6.46e-05">
+<sequence>CAAAAAAAGAAAAA</sequence>
+<mem:qvalue>0.219</mem:qvalue>
+</matched-element>
+<matched-element start="850" stop="837" score="9.24242" pvalue="6.75e-05">
+<sequence>AAAAAAAGAAAAAA</sequence>
+<mem:qvalue>0.219</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="58-GATACAACAACCCW" name="STREME-58">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="59-AAGGTCAAGCATTC" name="STREME-59">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="60-GCAGCCACAAAAAA" name="STREME-60">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="61-CGCWTCA" name="STREME-61">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="465" stop="471" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="486" stop="492" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+<matched-element start="81" stop="75" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="486" stop="492" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+<matched-element start="81" stop="75" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="486" stop="492" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+<matched-element start="81" stop="75" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="484" stop="490" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+<matched-element start="81" stop="75" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="483" stop="489" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="487" stop="493" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="499" stop="505" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="485" stop="491" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.0819</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="62-CGGAACAG" name="STREME-62">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="504" stop="511" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="504" stop="511" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="504" stop="511" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="502" stop="509" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="501" stop="508" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="505" stop="512" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="518" stop="525" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="503" stop="510" score="11.8889" pvalue="4.65e-05">
+<sequence>CGGAACGG</sequence>
+<mem:qvalue>0.115</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="63-KCTTATCA" name="STREME-63">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="64-CGGCACACG" name="STREME-64">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="341" stop="333" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="356" stop="348" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="356" stop="348" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="356" stop="348" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="354" stop="346" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="353" stop="345" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="357" stop="349" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="369" stop="361" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="355" stop="347" score="12.6711" pvalue="2.53e-05">
+<sequence>CGTCACACG</sequence>
+<mem:qvalue>0.0556</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="65-GCCGCTCTGC" name="STREME-65">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="66-CCCGTTCCMG" name="STREME-66">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="640" stop="631" score="12.8571" pvalue="2.02e-05">
+<sequence>CCCGGCCCCG</sequence>
+<mem:qvalue>0.099</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="662" stop="653" score="12.8571" pvalue="2.02e-05">
+<sequence>CCCGGCCCCG</sequence>
+<mem:qvalue>0.099</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="675" stop="666" score="12.8571" pvalue="2.02e-05">
+<sequence>CCCGGCCCCG</sequence>
+<mem:qvalue>0.099</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="660" stop="651" score="12.8571" pvalue="2.02e-05">
+<sequence>CCCGGCCCCG</sequence>
+<mem:qvalue>0.099</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="67-CGGWCCG" name="STREME-67">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="68-CAGCTCC" name="STREME-68">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="69-CGCACCACAG" name="STREME-69">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="70-CTGCGCG" name="STREME-70">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="71-GCACGCG" name="STREME-71">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="72-GCACACACA" name="STREME-72">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="755" stop="747" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="780" stop="788" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="782" stop="790" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="778" stop="770" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="803" stop="811" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="805" stop="813" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="778" stop="770" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="803" stop="811" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="805" stop="813" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="778" stop="770" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="803" stop="811" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="805" stop="813" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="776" stop="768" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="801" stop="809" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="803" stop="811" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="775" stop="767" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="800" stop="808" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="802" stop="810" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="777" stop="769" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="802" stop="810" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="804" stop="812" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="794" stop="786" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="141" stop="149" score="13.8556" pvalue="1.28e-05">
+<sequence>TCACACACA</sequence>
+<mem:qvalue>0.0254</mem:qvalue>
+</matched-element>
+<matched-element start="819" stop="827" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="821" stop="829" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="779" stop="771" score="17.1" pvalue="3.31e-06">
+<sequence>GCACACACA</sequence>
+<mem:qvalue>0.00732</mem:qvalue>
+</matched-element>
+<matched-element start="804" stop="812" score="10.9444" pvalue="5.24e-05">
+<sequence>TCGCACACA</sequence>
+<mem:qvalue>0.0549</mem:qvalue>
+</matched-element>
+<matched-element start="806" stop="814" score="9.88889" pvalue="8.59e-05">
+<sequence>GCACACAGT</sequence>
+<mem:qvalue>0.061</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="73-GCGCGAG" name="STREME-73">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="74-CTCTCTTTC" name="STREME-74">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="969" stop="977" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="991" stop="999" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="991" stop="999" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="991" stop="999" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="989" stop="997" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="988" stop="996" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="996" stop="1004" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="1012" stop="1020" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="992" stop="1000" score="12.7683" pvalue="2.47e-05">
+<sequence>CTCTCCCTC</sequence>
+<mem:qvalue>0.0544</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="75-CGKCAC" name="STREME-75">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="76-GGGCAAGA" name="STREME-76">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="77-CGGATGTRH" name="STREME-77">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="78-CTTTATC" name="STREME-78">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="857" stop="863" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="879" stop="885" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="879" stop="885" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="879" stop="885" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="877" stop="883" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="876" stop="882" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="884" stop="890" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="900" stop="906" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="880" stop="886" score="12.9333" pvalue="7.93e-05">
+<sequence>CTTTATC</sequence>
+<mem:qvalue>0.178</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="79-CACCACCACC" name="STREME-79">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="80-CAGACGGC" name="STREME-80">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+<matched-element start="590" stop="597" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+<matched-element start="611" stop="618" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+<matched-element start="611" stop="618" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+<matched-element start="611" stop="618" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+<matched-element start="609" stop="616" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+<matched-element start="608" stop="615" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+<matched-element start="612" stop="619" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+<matched-element start="625" stop="632" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+<matched-element start="610" stop="617" score="11.2472" pvalue="8.35e-05">
+<sequence>CAGATGGC</sequence>
+<mem:qvalue>0.187</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="81-AGCGAAACGGAAA" name="STREME-81">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="82-GGCAAAGGAAG" name="STREME-82">
+<scanned-sequence accession="ACE1_Fd03_1_A" name="ACE1_Fd03_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd05_3_A" name="ACE1_Fd05_3_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd09_1_A" name="ACE1_Fd09_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_6_A" name="ACE1_Fd33_6_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_7_A" name="ACE1_Fd33_7_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Fd33_9_A" name="ACE1_Fd33_9_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng3_1_A" name="ACE1_Ng3_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_1_A" name="ACE1_Ng5_1_A">
+</scanned-sequence>
+<scanned-sequence accession="ACE1_Ng5_2_A" name="ACE1_Ng5_2_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

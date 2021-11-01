@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Begin document body -->
+<fimo version="5.4.1" release="Sat Aug 21 19:23:23 2021 -0700">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation=  xmlns:fimo="http://noble.gs.washington.edu/schema/fimo"
+>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/KLF/KLF_Fimo/streme /home/petersjg/windows_directory/enhancer-dissection/streme.txt /home/petersjg/enhancer-dissection/figure4files/KLF/KLF.fa</command-line>
+<settings>
+<setting name="output directory">/home/petersjg/enhancer-dissection/figure4files/KLF/KLF_Fimo/streme</setting>
+<setting name="MEME file name">/home/petersjg/windows_directory/enhancer-dissection/streme.txt</setting>
+<setting name="sequence file name">/home/petersjg/enhancer-dissection/figure4files/KLF/KLF.fa</setting>
+<setting name="background file name">--nrdb--</setting>
+<setting name="allow clobber">true</setting>
+<setting name="compute q-values">true</setting>
+<setting name="parse genomic coord.">false</setting>
+<setting name="text only">false</setting>
+<setting name="scan both strands">true</setting>
+<setting name="output threshold">0.0001</setting>
+<setting name="threshold type">p-value</setting>
+<setting name="max stored scores">100000</setting>
+<setting name="pseudocount">0.1</setting>
+<setting name="verbosity">2</setting>
+</settings>
+<sequence-data num-sequences="5" num-residues="6094" />
+<alphabet name="DNA" like="dna">
+<letter id="A" symbol="A" complement="T" name="Adenine" colour="CC0000"/>
+<letter id="C" symbol="C" complement="G" name="Cytosine" colour="0000CC"/>
+<letter id="G" symbol="G" complement="C" name="Guanine" colour="FFB300"/>
+<letter id="T" symbol="T" aliases="U" complement="A" name="Thymine" colour="008000"/>
+<letter id="N" symbol="N" aliases="X." equals="ACGT" name="Any base"/>
+<letter id="V" symbol="V" equals="ACG" name="Not T"/>
+<letter id="H" symbol="H" equals="ACT" name="Not G"/>
+<letter id="D" symbol="D" equals="AGT" name="Not C"/>
+<letter id="B" symbol="B" equals="CGT" name="Not A"/>
+<letter id="M" symbol="M" equals="AC" name="Amino"/>
+<letter id="R" symbol="R" equals="AG" name="Purine"/>
+<letter id="W" symbol="W" equals="AT" name="Weak"/>
+<letter id="S" symbol="S" equals="CG" name="Strong"/>
+<letter id="Y" symbol="Y" equals="CT" name="Pyrimidine"/>
+<letter id="K" symbol="K" equals="GT" name="Keto"/>
+</alphabet>
+<motif name="1-RCCGGAAGYGR" alt="STREME-1" width="11" best-possible-match="ACCGGAAGCGG"/>
+<motif name="2-SYGATAAGV" alt="STREME-2" width="9" best-possible-match="GCGATAAGC"/>
+<motif name="3-RTTTCCGGT" alt="STREME-3" width="9" best-possible-match="ATTTCCGGT"/>
+<motif name="4-CGCKMTCGYYC" alt="STREME-4" width="11" best-possible-match="CGCGATCGTCC"/>
+<motif name="5-CCAGCAGCAGCAGC" alt="STREME-5" width="14" best-possible-match="CCAGCAGCAGCAGC"/>
+<motif name="6-ACCGGATG" alt="STREME-6" width="8" best-possible-match="ACCGGATG"/>
+<motif name="7-CTTCCGC" alt="STREME-7" width="7" best-possible-match="CTTCCGC"/>
+<motif name="8-ATCGCGCG" alt="STREME-8" width="8" best-possible-match="ATCGCGCG"/>
+<motif name="9-CAKATGGYGCN" alt="STREME-9" width="11" best-possible-match="CATATGGCGCA"/>
+<motif name="10-CTTCCTGC" alt="STREME-10" width="8" best-possible-match="CTTCCTGC"/>
+<motif name="11-WCSRSCGSMM" alt="STREME-11" width="10" best-possible-match="ACCAGCGCCC"/>
+<motif name="12-CGTCGTGCG" alt="STREME-12" width="9" best-possible-match="CGTCGTGCG"/>
+<motif name="13-CCGATAGGCG" alt="STREME-13" width="10" best-possible-match="CCGATAGGCG"/>
+<motif name="14-CGAGGTAAACGT" alt="STREME-14" width="12" best-possible-match="CGAGGTAAACGT"/>
+<motif name="15-AAACGCGCTTGG" alt="STREME-15" width="12" best-possible-match="AAACGCGCTTGG"/>
+<motif name="16-GAACTCGATCCT" alt="STREME-16" width="12" best-possible-match="GAACTCGATCCT"/>
+<motif name="17-CATTCGCTTTTA" alt="STREME-17" width="12" best-possible-match="CATTCGCTTTTA"/>
+<motif name="18-GATAATCGGTACA" alt="STREME-18" width="13" best-possible-match="GATAATCGGTACA"/>
+<motif name="19-CTTGACGGTCCAA" alt="STREME-19" width="13" best-possible-match="CTTGACGGTCCAA"/>
+<motif name="20-CTTTTGTGGCAAAC" alt="STREME-20" width="14" best-possible-match="CTTTTGTGGCAAAC"/>
+<motif name="21-GTTCTACTTCTATA" alt="STREME-21" width="14" best-possible-match="GTTCTACTTCTATA"/>
+<motif name="22-AGCAATGTTAGTAAC" alt="STREME-22" width="15" best-possible-match="AGCAATGTTAGTAAC"/>
+<motif name="23-ACAACCGAAACGTGC" alt="STREME-23" width="15" best-possible-match="ACAACCGAAACGTGC"/>
+<motif name="24-GCAGCGAAAACATCG" alt="STREME-24" width="15" best-possible-match="GCAGCGAAAACATCG"/>
+<motif name="25-AACAATGTTACGCTC" alt="STREME-25" width="15" best-possible-match="AACAATGTTACGCTC"/>
+<motif name="26-CGTTGATAGTTTTTA" alt="STREME-26" width="15" best-possible-match="CGTTGATAGTTTTTA"/>
+<motif name="27-TATATCGAAAACACA" alt="STREME-27" width="15" best-possible-match="TATATCGAAAACACA"/>
+<motif name="28-GSCGCGSC" alt="STREME-28" width="8" best-possible-match="GGCGCGCC"/>
+<motif name="29-ACAACCGAAAC" alt="STREME-29" width="11" best-possible-match="ACAACCGAAAC"/>
+<motif name="30-CTCCTCCTCC" alt="STREME-30" width="10" best-possible-match="CTCCTCCTCC"/>
+<motif name="31-CAGTTGTCTAA" alt="STREME-31" width="11" best-possible-match="CAGTTGTCTAA"/>
+<motif name="32-GCCGTGGTCTTCT" alt="STREME-32" width="13" best-possible-match="GCCGTGGTCTTCT"/>
+<motif name="33-CATTAAGCGCAAA" alt="STREME-33" width="13" best-possible-match="CATTAAGCGCAAA"/>
+<motif name="34-GCTGATAA" alt="STREME-34" width="8" best-possible-match="GCTGATAA"/>
+<motif name="35-TAAAAACTTGGAC" alt="STREME-35" width="13" best-possible-match="TAAAAACTTGGAC"/>
+<motif name="36-GCTCATGAAACAA" alt="STREME-36" width="13" best-possible-match="GCTCATGAAACAA"/>
+<motif name="37-CCAKMTGG" alt="STREME-37" width="8" best-possible-match="CCAGCTGG"/>
+<motif name="38-CGRCSAG" alt="STREME-38" width="7" best-possible-match="CGGCGAG"/>
+<motif name="39-CCCCCTC" alt="STREME-39" width="7" best-possible-match="CCCCCTC"/>
+<motif name="40-GCGATA" alt="STREME-40" width="6" best-possible-match="GCGATA"/>
+<motif name="41-CGACGACGABG" alt="STREME-41" width="11" best-possible-match="CGACGACGATG"/>
+<motif name="42-ATCGAGAACAGAAT" alt="STREME-42" width="14" best-possible-match="ATCGAGAACAGAAT"/>
+<motif name="43-GCAGCASC" alt="STREME-43" width="8" best-possible-match="GCAGCACC"/>
+<motif name="44-CGGCGGA" alt="STREME-44" width="7" best-possible-match="CGGCGGA"/>
+<motif name="45-CGMNKCG" alt="STREME-45" width="7" best-possible-match="CGCTGCG"/>
+<motif name="46-ACCAAAAACCTAACC" alt="STREME-46" width="15" best-possible-match="ACCAAAAACCTAACC"/>
+<motif name="47-GATAACGM" alt="STREME-47" width="8" best-possible-match="GATAACGC"/>
+<motif name="48-CTTCCCGTC" alt="STREME-48" width="9" best-possible-match="CTTCCCGTC"/>
+<motif name="49-AACAACAACA" alt="STREME-49" width="10" best-possible-match="AACAACAACA"/>
+<motif name="50-ACACACA" alt="STREME-50" width="7" best-possible-match="ACACACA"/>
+<motif name="51-CCGTTTCCG" alt="STREME-51" width="9" best-possible-match="CCGTTTCCG"/>
+<motif name="52-CGCCCG" alt="STREME-52" width="6" best-possible-match="CGCCCG"/>
+<motif name="53-CACACACACAC" alt="STREME-53" width="11" best-possible-match="CACACACACAC"/>
+<motif name="54-AGCGAACGA" alt="STREME-54" width="9" best-possible-match="AGCGAACGA"/>
+<motif name="55-CGCTGC" alt="STREME-55" width="6" best-possible-match="CGCTGC"/>
+<motif name="56-GCCGGCACT" alt="STREME-56" width="9" best-possible-match="GCCGGCACT"/>
+<motif name="57-CAAAACACAAAAAA" alt="STREME-57" width="14" best-possible-match="CAAAACACAAAAAA"/>
+<motif name="58-GATACAACAACCCW" alt="STREME-58" width="14" best-possible-match="GATACAACAACCCT"/>
+<motif name="59-AAGGTCAAGCATTC" alt="STREME-59" width="14" best-possible-match="AAGGTCAAGCATTC"/>
+<motif name="60-GCAGCCACAAAAAA" alt="STREME-60" width="14" best-possible-match="GCAGCCACAAAAAA"/>
+<motif name="61-CGCWTCA" alt="STREME-61" width="7" best-possible-match="CGCTTCA"/>
+<motif name="62-CGGAACAG" alt="STREME-62" width="8" best-possible-match="CGGAACAG"/>
+<motif name="63-KCTTATCA" alt="STREME-63" width="8" best-possible-match="GCTTATCA"/>
+<motif name="64-CGGCACACG" alt="STREME-64" width="9" best-possible-match="CGGCACACG"/>
+<motif name="65-GCCGCTCTGC" alt="STREME-65" width="10" best-possible-match="GCCGCTCTGC"/>
+<motif name="66-CCCGTTCCMG" alt="STREME-66" width="10" best-possible-match="CCCGTTCCAG"/>
+<motif name="67-CGGWCCG" alt="STREME-67" width="7" best-possible-match="CGGTCCG"/>
+<motif name="68-CAGCTCC" alt="STREME-68" width="7" best-possible-match="CAGCTCC"/>
+<motif name="69-CGCACCACAG" alt="STREME-69" width="10" best-possible-match="CGCACCACAG"/>
+<motif name="70-CTGCGCG" alt="STREME-70" width="7" best-possible-match="CTGCGCG"/>
+<motif name="71-GCACGCG" alt="STREME-71" width="7" best-possible-match="GCACGCG"/>
+<motif name="72-GCACACACA" alt="STREME-72" width="9" best-possible-match="GCACACACA"/>
+<motif name="73-GCGCGAG" alt="STREME-73" width="7" best-possible-match="GCGCGAG"/>
+<motif name="74-CTCTCTTTC" alt="STREME-74" width="9" best-possible-match="CTCTCTTTC"/>
+<motif name="75-CGKCAC" alt="STREME-75" width="6" best-possible-match="CGGCAC"/>
+<motif name="76-GGGCAAGA" alt="STREME-76" width="8" best-possible-match="GGGCAAGA"/>
+<motif name="77-CGGATGTRH" alt="STREME-77" width="9" best-possible-match="CGGATGTGT"/>
+<motif name="78-CTTTATC" alt="STREME-78" width="7" best-possible-match="CTTTATC"/>
+<motif name="79-CACCACCACC" alt="STREME-79" width="10" best-possible-match="CACCACCACC"/>
+<motif name="80-CAGACGGC" alt="STREME-80" width="8" best-possible-match="CAGACGGC"/>
+<motif name="81-AGCGAAACGGAAA" alt="STREME-81" width="13" best-possible-match="AGCGAAACGGAAA"/>
+<motif name="82-GGCAAAGGAAG" alt="STREME-82" width="11" best-possible-match="GGCAAAGGAAG"/>
+<background source="--nrdb--">
+<value letter="A">0.275</value>
+<value letter="C">0.225</value>
+<value letter="G">0.225</value>
+<value letter="T">0.275</value>
+</background>
+<cisml-file>cisml.xml</cisml-file>
+</fimo>

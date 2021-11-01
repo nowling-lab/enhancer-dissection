@@ -1,0 +1,1081 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc /home/petersjg/enhancer-dissection/figure4files/OVO/OVO_Fimo/streme /home/petersjg/windows_directory/enhancer-dissection/streme.txt /home/petersjg/enhancer-dissection/figure4files/OVO/OVO.fa</command-line>
+<pattern-file>/home/petersjg/windows_directory/enhancer-dissection/streme.txt</pattern-file>
+<sequence-file>/home/petersjg/enhancer-dissection/figure4files/OVO/OVO.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="1-RCCGGAAGYGR" name="STREME-1">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="739" stop="749" score="12.5152" pvalue="3.44e-05">
+<sequence>GCCGGAAACGA</sequence>
+<mem:qvalue>0.0991</mem:qvalue>
+</matched-element>
+<matched-element start="866" stop="876" score="10.6364" pvalue="9.49e-05">
+<sequence>ACAGGAAGTCA</sequence>
+<mem:qvalue>0.137</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="435" stop="445" score="12.5152" pvalue="3.44e-05">
+<sequence>GCCGGAAACGA</sequence>
+<mem:qvalue>0.0991</mem:qvalue>
+</matched-element>
+<matched-element start="562" stop="572" score="10.6364" pvalue="9.49e-05">
+<sequence>ACAGGAAGTCA</sequence>
+<mem:qvalue>0.137</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="850" stop="860" score="12.5152" pvalue="3.44e-05">
+<sequence>GCCGGAAACGA</sequence>
+<mem:qvalue>0.0991</mem:qvalue>
+</matched-element>
+<matched-element start="977" stop="987" score="10.6364" pvalue="9.49e-05">
+<sequence>ACAGGAAGTCA</sequence>
+<mem:qvalue>0.137</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="2-SYGATAAGV" name="STREME-2">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="3-RTTTCCGGT" name="STREME-3">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="543" stop="535" score="12.6" pvalue="3.63e-05">
+<sequence>GTTTCCGGA</sequence>
+<mem:qvalue>0.0615</mem:qvalue>
+</matched-element>
+<matched-element start="747" stop="739" score="12.1143" pvalue="4.9e-05">
+<sequence>GTTTCCGGC</sequence>
+<mem:qvalue>0.0615</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="239" stop="231" score="12.6" pvalue="3.63e-05">
+<sequence>GTTTCCGGA</sequence>
+<mem:qvalue>0.0615</mem:qvalue>
+</matched-element>
+<matched-element start="443" stop="435" score="12.1143" pvalue="4.9e-05">
+<sequence>GTTTCCGGC</sequence>
+<mem:qvalue>0.0615</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="484" stop="492" score="12.6" pvalue="3.63e-05">
+<sequence>GTTTCCGGA</sequence>
+<mem:qvalue>0.0615</mem:qvalue>
+</matched-element>
+<matched-element start="657" stop="649" score="12.6" pvalue="3.63e-05">
+<sequence>GTTTCCGGA</sequence>
+<mem:qvalue>0.0615</mem:qvalue>
+</matched-element>
+<matched-element start="858" stop="850" score="12.1143" pvalue="4.9e-05">
+<sequence>GTTTCCGGC</sequence>
+<mem:qvalue>0.0615</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="4-CGCKMTCGYYC" name="STREME-4">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="5-CCAGCAGCAGCAGC" name="STREME-5">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="672" stop="685" score="10.5909" pvalue="6.26e-05">
+<sequence>CAATCTGCAGCAAC</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+<matched-element start="786" stop="773" score="9.86364" pvalue="9.5e-05">
+<sequence>GGAGCAGCAACTGA</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="368" stop="381" score="10.5909" pvalue="6.26e-05">
+<sequence>CAATCTGCAGCAAC</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+<matched-element start="482" stop="469" score="9.86364" pvalue="9.5e-05">
+<sequence>GGAGCAGCAACTGA</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="783" stop="796" score="10.5909" pvalue="6.26e-05">
+<sequence>CAATCTGCAGCAAC</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+<matched-element start="897" stop="884" score="9.86364" pvalue="9.5e-05">
+<sequence>GGAGCAGCAACTGA</sequence>
+<mem:qvalue>0.136</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="6-ACCGGATG" name="STREME-6">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="7-CTTCCGC" name="STREME-7">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="8-ATCGCGCG" name="STREME-8">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="9-CAKATGGYGCN" name="STREME-9">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1141" stop="1151" score="12.8429" pvalue="4.22e-05">
+<sequence>CAGATCGTACT</sequence>
+<mem:qvalue>0.367</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="10-CTTCCTGC" name="STREME-10">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="873" stop="866" score="12.9474" pvalue="2.67e-05">
+<sequence>CTTCCTGT</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="569" stop="562" score="12.9474" pvalue="2.67e-05">
+<sequence>CTTCCTGT</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="984" stop="977" score="12.9474" pvalue="2.67e-05">
+<sequence>CTTCCTGT</sequence>
+<mem:qvalue>0.0793</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="11-WCSRSCGSMM" name="STREME-11">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="12-CGTCGTGCG" name="STREME-12">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="13-CCGATAGGCG" name="STREME-13">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="14-CGAGGTAAACGT" name="STREME-14">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="15-AAACGCGCTTGG" name="STREME-15">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="331" stop="320" score="3.79592" pvalue="3.35e-05">
+<sequence>AAAGGCGTTTGG</sequence>
+<mem:qvalue>0.145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="403" stop="392" score="3.79592" pvalue="3.35e-05">
+<sequence>AAAGGCGTTTGG</sequence>
+<mem:qvalue>0.145</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="16-GAACTCGATCCT" name="STREME-16">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="17-CATTCGCTTTTA" name="STREME-17">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="18-GATAATCGGTACA" name="STREME-18">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="19-CTTGACGGTCCAA" name="STREME-19">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="20-CTTTTGTGGCAAAC" name="STREME-20">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="21-GTTCTACTTCTATA" name="STREME-21">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="22-AGCAATGTTAGTAAC" name="STREME-22">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="848" stop="834" score="-4.36735" pvalue="3.66e-05">
+<sequence>AGCAATATTCGTGTC</sequence>
+<mem:qvalue>0.108</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="544" stop="530" score="-4.36735" pvalue="3.66e-05">
+<sequence>AGCAATATTCGTGTC</sequence>
+<mem:qvalue>0.108</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="959" stop="945" score="-4.36735" pvalue="3.66e-05">
+<sequence>AGCAATATTCGTGTC</sequence>
+<mem:qvalue>0.108</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="23-ACAACCGAAACGTGC" name="STREME-23">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="24-GCAGCGAAAACATCG" name="STREME-24">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="25-AACAATGTTACGCTC" name="STREME-25">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="26-CGTTGATAGTTTTTA" name="STREME-26">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="27-TATATCGAAAACACA" name="STREME-27">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="28-GSCGCGSC" name="STREME-28">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="29-ACAACCGAAAC" name="STREME-29">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="30-CTCCTCCTCC" name="STREME-30">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="31-CAGTTGTCTAA" name="STREME-31">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="32-GCCGTGGTCTTCT" name="STREME-32">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1235" stop="1223" score="9.07273" pvalue="6.02e-05">
+<sequence>GCCACGGTATTCT</sequence>
+<mem:qvalue>0.534</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="33-CATTAAGCGCAAA" name="STREME-33">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="512" stop="500" score="8.51515" pvalue="6.3e-05">
+<sequence>CAACAAGCACAAA</sequence>
+<mem:qvalue>0.545</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="34-GCTGATAA" name="STREME-34">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="35-TAAAAACTTGGAC" name="STREME-35">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="36-GCTCATGAAACAA" name="STREME-36">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="37-CCAKMTGG" name="STREME-37">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="38-CGRCSAG" name="STREME-38">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="39-CCCCCTC" name="STREME-39">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="40-GCGATA" name="STREME-40">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="41-CGACGACGABG" name="STREME-41">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1509" stop="1499" score="10.2143" pvalue="8.79e-05">
+<sequence>CGACGCCGACA</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="1249" stop="1239" score="10.2143" pvalue="8.79e-05">
+<sequence>CGACGCCGACA</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1643" stop="1633" score="10.2143" pvalue="8.79e-05">
+<sequence>CGACGCCGACA</sequence>
+<mem:qvalue>0.259</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="42-ATCGAGAACAGAAT" name="STREME-42">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="492" stop="479" score="-2.07143" pvalue="4.62e-05">
+<sequence>ATCGACTCCAGAAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="567" stop="580" score="-5.81633" pvalue="7.86e-05">
+<sequence>ATCGATTCCAGAAA</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="110" stop="97" score="-5.84694" pvalue="8.23e-05">
+<sequence>ATCGATTCCAGCAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="534" stop="521" score="-5.84694" pvalue="8.23e-05">
+<sequence>ATCGATTCCGGAAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="263" stop="276" score="-5.78571" pvalue="7.56e-05">
+<sequence>ATCGATTTCAGAAA</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="110" stop="97" score="-5.84694" pvalue="8.23e-05">
+<sequence>ATCGATTCCAGCAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="230" stop="217" score="-5.84694" pvalue="8.23e-05">
+<sequence>ATCGATTCCGGAAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="552" stop="539" score="-2.07143" pvalue="4.62e-05">
+<sequence>ATCGACTCCAGAAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="606" stop="593" score="-2.07143" pvalue="4.62e-05">
+<sequence>ATCGACTCCAGAAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="564" stop="551" score="-5.79592" pvalue="7.65e-05">
+<sequence>ATCGGTTACGGAAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="110" stop="97" score="-5.84694" pvalue="8.23e-05">
+<sequence>ATCGATTCCAGCAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+<matched-element start="648" stop="635" score="-5.84694" pvalue="8.23e-05">
+<sequence>ATCGATTCCGGAAT</sequence>
+<mem:qvalue>0.0584</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="43-GCAGCASC" name="STREME-43">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1324" stop="1331" score="12.7368" pvalue="3.18e-05">
+<sequence>ACAGCACC</sequence>
+<mem:qvalue>0.0932</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="1064" stop="1071" score="12.7368" pvalue="3.18e-05">
+<sequence>ACAGCACC</sequence>
+<mem:qvalue>0.0932</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1458" stop="1465" score="12.7368" pvalue="3.18e-05">
+<sequence>ACAGCACC</sequence>
+<mem:qvalue>0.0932</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="44-CGGCGGA" name="STREME-44">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="45-CGMNKCG" name="STREME-45">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="46-ACCAAAAACCTAACC" name="STREME-46">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="996" stop="982" score="-5.81633" pvalue="4.39e-05">
+<sequence>AACAAAAACGTGGCT</sequence>
+<mem:qvalue>0.379</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="47-GATAACGM" name="STREME-47">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="48-CTTCCCGTC" name="STREME-48">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1514" stop="1506" score="11.6585" pvalue="4.09e-05">
+<sequence>CTTGCCTTC</sequence>
+<mem:qvalue>0.352</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="49-AACAACAACA" name="STREME-49">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="50-ACACACA" name="STREME-50">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="51-CCGTTTCCG" name="STREME-51">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="386" stop="394" score="12.5921" pvalue="2.21e-05">
+<sequence>CCATTTCCG</sequence>
+<mem:qvalue>0.194</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="52-CGCCCG" name="STREME-52">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="53-CACACACACAC" name="STREME-53">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="546" stop="556" score="3.19512" pvalue="8.52e-05">
+<sequence>CACAGCTACAC</sequence>
+<mem:qvalue>0.734</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="54-AGCGAACGA" name="STREME-54">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1153" stop="1145" score="10" pvalue="8.1e-05">
+<sequence>AGAGTACGA</sequence>
+<mem:qvalue>0.354</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1287" stop="1279" score="10" pvalue="8.1e-05">
+<sequence>AGAGTACGA</sequence>
+<mem:qvalue>0.354</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="55-CGCTGC" name="STREME-55">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="56-GCCGGCACT" name="STREME-56">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="57-CAAAACACAAAAAA" name="STREME-57">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="58-GATACAACAACCCW" name="STREME-58">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="1131" stop="1118" score="2.13761" pvalue="5.78e-05">
+<sequence>GATGCAGCAACCTT</sequence>
+<mem:qvalue>0.507</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="59-AAGGTCAAGCATTC" name="STREME-59">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="60-GCAGCCACAAAAAA" name="STREME-60">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="61-CGCWTCA" name="STREME-61">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1526" stop="1520" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.155</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="1266" stop="1260" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.155</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1660" stop="1654" score="13.1939" pvalue="5.35e-05">
+<sequence>CGCTTCA</sequence>
+<mem:qvalue>0.155</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="62-CGGAACAG" name="STREME-62">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="63-KCTTATCA" name="STREME-63">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="64-CGGCACACG" name="STREME-64">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="65-GCCGCTCTGC" name="STREME-65">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="66-CCCGTTCCMG" name="STREME-66">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="67-CGGWCCG" name="STREME-67">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="68-CAGCTCC" name="STREME-68">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="90" stop="84" score="13.7515" pvalue="4.39e-05">
+<sequence>CAGCTCC</sequence>
+<mem:qvalue>0.384</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="69-CGCACCACAG" name="STREME-69">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="1212" stop="1203" score="11.7105" pvalue="4.23e-05">
+<sequence>CGAGCCACAG</sequence>
+<mem:qvalue>0.125</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+<matched-element start="952" stop="943" score="11.7105" pvalue="4.23e-05">
+<sequence>CGAGCCACAG</sequence>
+<mem:qvalue>0.125</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1346" stop="1337" score="11.7105" pvalue="4.23e-05">
+<sequence>CGAGCCACAG</sequence>
+<mem:qvalue>0.125</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="70-CTGCGCG" name="STREME-70">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="71-GCACGCG" name="STREME-71">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="72-GCACACACA" name="STREME-72">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="73-GCGCGAG" name="STREME-73">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="1471" stop="1477" score="10.7073" pvalue="8e-05">
+<sequence>GCGCAAG</sequence>
+<mem:qvalue>0.713</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="74-CTCTCTTTC" name="STREME-74">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="75-CGKCAC" name="STREME-75">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="76-GGGCAAGA" name="STREME-76">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="77-CGGATGTRH" name="STREME-77">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="78-CTTTATC" name="STREME-78">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="79-CACCACCACC" name="STREME-79">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="80-CAGACGGC" name="STREME-80">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="81-AGCGAAACGGAAA" name="STREME-81">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+<matched-element start="853" stop="865" score="10.0964" pvalue="6.12e-05">
+<sequence>AGCGAGACACCAA</sequence>
+<mem:qvalue>0.272</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+<matched-element start="964" stop="976" score="10.0964" pvalue="6.12e-05">
+<sequence>AGCGAGACACCAA</sequence>
+<mem:qvalue>0.272</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="82-GGCAAAGGAAG" name="STREME-82">
+<scanned-sequence accession="OVO_Fd03_8_A" name="OVO_Fd03_8_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd05_4_A" name="OVO_Fd05_4_A">
+</scanned-sequence>
+<scanned-sequence accession="OVO_Fd09_3_A" name="OVO_Fd09_3_A">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

@@ -1,5 +1,6 @@
 from os import read
 from typing import Literal
+import sys
 
 
 def main():
@@ -43,16 +44,23 @@ def main():
 
     output_path = '/home/petersjg/windows_directory'
     output_file_path = output_path + '/nardini_all_b_a_highlights.html'
-
-    main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
-
-    #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
     
-    #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
-
-    #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
-
-    #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
+    if len(sys.argv) == 7:
+        indel_fasta_path = sys.argv[1]
+        a_only_bool = sys.argv[2]
+        streme_tsv_path = sys.argv[3]
+        jaspar_tsv_path = sys.argv[4]
+        sequences_fasta_path = sys.argv[5]
+        output_path = sys.argv[6]
+        main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path)
+    
+    else:
+        main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
+        #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
+        #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
+        #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
+        #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
+    
     return    
 
 def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path):

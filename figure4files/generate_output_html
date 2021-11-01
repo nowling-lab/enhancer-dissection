@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#assumes python script to be 1 directory up
+python_script="../clustal_format_highlighter.py"
+output_directory="/home/petersjg/windows_directory/html_files/"
+
+python ../clustal_format_highlighter.py 
