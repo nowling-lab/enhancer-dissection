@@ -42,8 +42,6 @@ def main():
     streme_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/streme/fimo.tsv'
     jaspar_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/jaspar/fimo.tsv'
 
-    output_path = '/home/petersjg/windows_directory'
-    output_file_path = output_path + '/nardini_all_b_a_highlights.html'
     
     if len(sys.argv) == 7:
         indel_fasta_path = sys.argv[1]
@@ -52,9 +50,13 @@ def main():
         jaspar_tsv_path = sys.argv[4]
         sequences_fasta_path = sys.argv[5]
         output_path = sys.argv[6]
-        main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path)
+        main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path)
     
     else:
+        
+        output_path = '/home/petersjg/windows_directory'
+        output_file_path = output_path + '/nardini_all_b_a_highlights.html'
+    
         main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
         #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
         #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)

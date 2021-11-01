@@ -84,11 +84,11 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="285" stop="275" score="15.5758" pvalue="3.02e-06">
 <sequence>ACCGGAAGTGC</sequence>
-<mem:qvalue>0.00476</mem:qvalue>
+<mem:qvalue>0.00501</mem:qvalue>
 </matched-element>
 <matched-element start="788" stop="798" score="14.3788" pvalue="8.28e-06">
 <sequence>GCCGGAAGCGT</sequence>
-<mem:qvalue>0.00912</mem:qvalue>
+<mem:qvalue>0.00914</mem:qvalue>
 </matched-element>
 <matched-element start="300" stop="310" score="11.8182" pvalue="5.23e-05">
 <sequence>CCCGGAAGCCG</sequence>
@@ -98,11 +98,11 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="287" stop="277" score="15.5758" pvalue="3.02e-06">
 <sequence>ACCGGAAGTGC</sequence>
-<mem:qvalue>0.00476</mem:qvalue>
+<mem:qvalue>0.00501</mem:qvalue>
 </matched-element>
 <matched-element start="790" stop="800" score="14.3788" pvalue="8.28e-06">
 <sequence>GCCGGAAGCGT</sequence>
-<mem:qvalue>0.00912</mem:qvalue>
+<mem:qvalue>0.00914</mem:qvalue>
 </matched-element>
 <matched-element start="302" stop="312" score="11.8182" pvalue="5.23e-05">
 <sequence>CCCGGAAGCCG</sequence>
@@ -112,39 +112,11 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="779" stop="789" score="16.0455" pvalue="1.09e-06">
 <sequence>GCCGGAAGCGC</sequence>
-<mem:qvalue>0.00476</mem:qvalue>
+<mem:qvalue>0.00501</mem:qvalue>
 </matched-element>
 <matched-element start="277" stop="267" score="15.5758" pvalue="3.02e-06">
 <sequence>ACCGGAAGTGC</sequence>
-<mem:qvalue>0.00476</mem:qvalue>
-</matched-element>
-<matched-element start="292" stop="302" score="11.8182" pvalue="5.23e-05">
-<sequence>CCCGGAAGCCG</sequence>
-<mem:qvalue>0.0385</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="287" stop="277" score="15.5758" pvalue="3.02e-06">
-<sequence>ACCGGAAGTGC</sequence>
-<mem:qvalue>0.00476</mem:qvalue>
-</matched-element>
-<matched-element start="790" stop="800" score="14.3788" pvalue="8.28e-06">
-<sequence>GCCGGAAGCGT</sequence>
-<mem:qvalue>0.00912</mem:qvalue>
-</matched-element>
-<matched-element start="302" stop="312" score="11.8182" pvalue="5.23e-05">
-<sequence>CCCGGAAGCCG</sequence>
-<mem:qvalue>0.0385</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="779" stop="789" score="16.0455" pvalue="1.09e-06">
-<sequence>GCCGGAAGCGC</sequence>
-<mem:qvalue>0.00476</mem:qvalue>
-</matched-element>
-<matched-element start="277" stop="267" score="15.5758" pvalue="3.02e-06">
-<sequence>ACCGGAAGTGC</sequence>
-<mem:qvalue>0.00476</mem:qvalue>
+<mem:qvalue>0.00501</mem:qvalue>
 </matched-element>
 <matched-element start="292" stop="302" score="11.8182" pvalue="5.23e-05">
 <sequence>CCCGGAAGCCG</sequence>
@@ -157,51 +129,31 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="476" stop="468" score="14.5" pvalue="3.31e-06">
 <sequence>GCGATAAGC</sequence>
-<mem:qvalue>0.00744</mem:qvalue>
+<mem:qvalue>0.00741</mem:qvalue>
 </matched-element>
 <matched-element start="971" stop="979" score="11.6571" pvalue="8.87e-05">
 <sequence>GAGATAAGG</sequence>
-<mem:qvalue>0.0996</mem:qvalue>
+<mem:qvalue>0.0993</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="478" stop="470" score="14.5" pvalue="3.31e-06">
 <sequence>GCGATAAGC</sequence>
-<mem:qvalue>0.00744</mem:qvalue>
+<mem:qvalue>0.00741</mem:qvalue>
 </matched-element>
 <matched-element start="973" stop="981" score="11.6571" pvalue="8.87e-05">
 <sequence>GAGATAAGG</sequence>
-<mem:qvalue>0.0996</mem:qvalue>
+<mem:qvalue>0.0993</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="470" stop="462" score="14.5" pvalue="3.31e-06">
 <sequence>GCGATAAGC</sequence>
-<mem:qvalue>0.00744</mem:qvalue>
+<mem:qvalue>0.00741</mem:qvalue>
 </matched-element>
 <matched-element start="969" stop="977" score="11.6571" pvalue="8.87e-05">
 <sequence>GAGATAAGG</sequence>
-<mem:qvalue>0.0996</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="478" stop="470" score="14.5" pvalue="3.31e-06">
-<sequence>GCGATAAGC</sequence>
-<mem:qvalue>0.00744</mem:qvalue>
-</matched-element>
-<matched-element start="973" stop="981" score="11.6571" pvalue="8.87e-05">
-<sequence>GAGATAAGG</sequence>
-<mem:qvalue>0.0996</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="470" stop="462" score="14.5" pvalue="3.31e-06">
-<sequence>GCGATAAGC</sequence>
-<mem:qvalue>0.00744</mem:qvalue>
-</matched-element>
-<matched-element start="969" stop="977" score="11.6571" pvalue="8.87e-05">
-<sequence>GAGATAAGG</sequence>
-<mem:qvalue>0.0996</mem:qvalue>
+<mem:qvalue>0.0993</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -210,31 +162,19 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="462" stop="470" score="10.9571" pvalue="7.41e-05">
 <sequence>GGTTCCGCT</sequence>
-<mem:qvalue>0.166</mem:qvalue>
+<mem:qvalue>0.167</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="464" stop="472" score="10.9571" pvalue="7.41e-05">
 <sequence>GGTTCCGCT</sequence>
-<mem:qvalue>0.166</mem:qvalue>
+<mem:qvalue>0.167</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="456" stop="464" score="10.9571" pvalue="7.41e-05">
 <sequence>GGTTCCGCT</sequence>
-<mem:qvalue>0.166</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="464" stop="472" score="10.9571" pvalue="7.41e-05">
-<sequence>GGTTCCGCT</sequence>
-<mem:qvalue>0.166</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="456" stop="464" score="10.9571" pvalue="7.41e-05">
-<sequence>GGTTCCGCT</sequence>
-<mem:qvalue>0.166</mem:qvalue>
+<mem:qvalue>0.167</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -251,13 +191,13 @@ clusterid CDATA #IMPLIED
 </matched-element>
 <matched-element start="209" stop="199" score="11.1818" pvalue="8.61e-05">
 <sequence>CGCTCTCGCTA</sequence>
-<mem:qvalue>0.071</mem:qvalue>
+<mem:qvalue>0.0692</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="932" stop="922" score="15.1667" pvalue="1.34e-06">
 <sequence>CGCGCTCGCTC</sequence>
-<mem:qvalue>0.00358</mem:qvalue>
+<mem:qvalue>0.0043</mem:qvalue>
 </matched-element>
 <matched-element start="1027" stop="1037" score="11.9545" pvalue="4.94e-05">
 <sequence>CTCTCTCGTTC</sequence>
@@ -265,37 +205,13 @@ clusterid CDATA #IMPLIED
 </matched-element>
 <matched-element start="211" stop="201" score="11.1818" pvalue="8.61e-05">
 <sequence>CGCTCTCGCTA</sequence>
-<mem:qvalue>0.071</mem:qvalue>
+<mem:qvalue>0.0692</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="928" stop="918" score="15.1667" pvalue="1.34e-06">
 <sequence>CGCGCTCGCTC</sequence>
-<mem:qvalue>0.00358</mem:qvalue>
-</matched-element>
-<matched-element start="1023" stop="1033" score="11.9545" pvalue="4.94e-05">
-<sequence>CTCTCTCGTTC</sequence>
-<mem:qvalue>0.053</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="932" stop="922" score="15.1667" pvalue="1.34e-06">
-<sequence>CGCGCTCGCTC</sequence>
-<mem:qvalue>0.00358</mem:qvalue>
-</matched-element>
-<matched-element start="1027" stop="1037" score="11.9545" pvalue="4.94e-05">
-<sequence>CTCTCTCGTTC</sequence>
-<mem:qvalue>0.053</mem:qvalue>
-</matched-element>
-<matched-element start="211" stop="201" score="11.1818" pvalue="8.61e-05">
-<sequence>CGCTCTCGCTA</sequence>
-<mem:qvalue>0.071</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="928" stop="918" score="15.1667" pvalue="1.34e-06">
-<sequence>CGCGCTCGCTC</sequence>
-<mem:qvalue>0.00358</mem:qvalue>
+<mem:qvalue>0.0043</mem:qvalue>
 </matched-element>
 <matched-element start="1023" stop="1033" score="11.9545" pvalue="4.94e-05">
 <sequence>CTCTCTCGTTC</sequence>
@@ -308,51 +224,31 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="721" stop="708" score="13.2576" pvalue="1.17e-05">
 <sequence>CAAGCACCACCAAC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
+<mem:qvalue>0.0296</mem:qvalue>
 </matched-element>
 <matched-element start="792" stop="779" score="11.9091" pvalue="2.82e-05">
 <sequence>CCGGCAGCTTCCGC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
+<mem:qvalue>0.0296</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="719" stop="706" score="13.2576" pvalue="1.17e-05">
 <sequence>CAAGCACCACCAAC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
+<mem:qvalue>0.0296</mem:qvalue>
 </matched-element>
 <matched-element start="794" stop="781" score="11.9091" pvalue="2.82e-05">
 <sequence>CCGGCAGCTTCCGC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
+<mem:qvalue>0.0296</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="707" stop="694" score="12.5909" pvalue="1.83e-05">
 <sequence>CAAGCACCAACAAC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
+<mem:qvalue>0.0296</mem:qvalue>
 </matched-element>
 <matched-element start="783" stop="770" score="11.9091" pvalue="2.82e-05">
 <sequence>CCGGCAGCTTCCGC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="719" stop="706" score="13.2576" pvalue="1.17e-05">
-<sequence>CAAGCACCACCAAC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
-</matched-element>
-<matched-element start="794" stop="781" score="11.9091" pvalue="2.82e-05">
-<sequence>CCGGCAGCTTCCGC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="707" stop="694" score="12.5909" pvalue="1.83e-05">
-<sequence>CAAGCACCAACAAC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
-</matched-element>
-<matched-element start="783" stop="770" score="11.9091" pvalue="2.82e-05">
-<sequence>CCGGCAGCTTCCGC</sequence>
-<mem:qvalue>0.0294</mem:qvalue>
+<mem:qvalue>0.0296</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -361,7 +257,7 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="285" stop="278" score="13.1" pvalue="2.41e-05">
 <sequence>ACCGGAAG</sequence>
-<mem:qvalue>0.0541</mem:qvalue>
+<mem:qvalue>0.054</mem:qvalue>
 </matched-element>
 <matched-element start="300" stop="307" score="10.7857" pvalue="9.04e-05">
 <sequence>CCCGGAAG</sequence>
@@ -371,7 +267,7 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="287" stop="280" score="13.1" pvalue="2.41e-05">
 <sequence>ACCGGAAG</sequence>
-<mem:qvalue>0.0541</mem:qvalue>
+<mem:qvalue>0.054</mem:qvalue>
 </matched-element>
 <matched-element start="302" stop="309" score="10.7857" pvalue="9.04e-05">
 <sequence>CCCGGAAG</sequence>
@@ -381,27 +277,7 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="277" stop="270" score="13.1" pvalue="2.41e-05">
 <sequence>ACCGGAAG</sequence>
-<mem:qvalue>0.0541</mem:qvalue>
-</matched-element>
-<matched-element start="292" stop="299" score="10.7857" pvalue="9.04e-05">
-<sequence>CCCGGAAG</sequence>
-<mem:qvalue>0.101</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="287" stop="280" score="13.1" pvalue="2.41e-05">
-<sequence>ACCGGAAG</sequence>
-<mem:qvalue>0.0541</mem:qvalue>
-</matched-element>
-<matched-element start="302" stop="309" score="10.7857" pvalue="9.04e-05">
-<sequence>CCCGGAAG</sequence>
-<mem:qvalue>0.101</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="277" stop="270" score="13.1" pvalue="2.41e-05">
-<sequence>ACCGGAAG</sequence>
-<mem:qvalue>0.0541</mem:qvalue>
+<mem:qvalue>0.054</mem:qvalue>
 </matched-element>
 <matched-element start="292" stop="299" score="10.7857" pvalue="9.04e-05">
 <sequence>CCCGGAAG</sequence>
@@ -414,31 +290,19 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="785" stop="779" score="13.2368" pvalue="4.39e-05">
 <sequence>CTTCCGC</sequence>
-<mem:qvalue>0.0994</mem:qvalue>
+<mem:qvalue>0.0998</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="787" stop="781" score="13.2368" pvalue="4.39e-05">
 <sequence>CTTCCGC</sequence>
-<mem:qvalue>0.0994</mem:qvalue>
+<mem:qvalue>0.0998</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="776" stop="770" score="13.2368" pvalue="4.39e-05">
 <sequence>CTTCCGC</sequence>
-<mem:qvalue>0.0994</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="787" stop="781" score="13.2368" pvalue="4.39e-05">
-<sequence>CTTCCGC</sequence>
-<mem:qvalue>0.0994</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="776" stop="770" score="13.2368" pvalue="4.39e-05">
-<sequence>CTTCCGC</sequence>
-<mem:qvalue>0.0994</mem:qvalue>
+<mem:qvalue>0.0998</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -450,41 +314,25 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="9-CAKATGGYGCN" name="STREME-9">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="592" stop="602" score="14.9857" pvalue="4.25e-06">
 <sequence>CATATGGCCCA</sequence>
-<mem:qvalue>0.00983</mem:qvalue>
+<mem:qvalue>0.00981</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="598" stop="608" score="14.9857" pvalue="4.25e-06">
 <sequence>CATATGGCCCA</sequence>
-<mem:qvalue>0.00983</mem:qvalue>
+<mem:qvalue>0.00981</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="590" stop="600" score="14.9857" pvalue="4.25e-06">
 <sequence>CATATGGCCCA</sequence>
-<mem:qvalue>0.00983</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="598" stop="608" score="14.9857" pvalue="4.25e-06">
-<sequence>CATATGGCCCA</sequence>
-<mem:qvalue>0.00983</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="590" stop="600" score="14.9857" pvalue="4.25e-06">
-<sequence>CATATGGCCCA</sequence>
-<mem:qvalue>0.00983</mem:qvalue>
+<mem:qvalue>0.00981</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -496,10 +344,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="11-WCSRSCGSMM" name="STREME-11">
@@ -509,10 +353,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="12-CGTCGTGCG" name="STREME-12">
@@ -521,10 +361,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -536,15 +372,7 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="1126" stop="1135" score="9.07879" pvalue="6.44e-05">
 <sequence>CCAAAAGGCG</sequence>
-<mem:qvalue>0.351</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="1126" stop="1135" score="9.07879" pvalue="6.44e-05">
-<sequence>CCAAAAGGCG</sequence>
-<mem:qvalue>0.351</mem:qvalue>
+<mem:qvalue>0.419</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -556,10 +384,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="15-AAACGCGCTTGG" name="STREME-15">
@@ -568,10 +392,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -582,10 +402,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="17-CATTCGCTTTTA" name="STREME-17">
@@ -594,10 +410,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -608,10 +420,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="19-CTTGACGGTCCAA" name="STREME-19">
@@ -620,10 +428,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -634,10 +438,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="21-GTTCTACTTCTATA" name="STREME-21">
@@ -646,10 +446,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -660,49 +456,29 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="23-ACAACCGAAACGTGC" name="STREME-23">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="79" stop="93" score="-0.489796" pvalue="1.76e-05">
 <sequence>GCAAACGAAAAGTGC</sequence>
-<mem:qvalue>0.0684</mem:qvalue>
+<mem:qvalue>0.0619</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="79" stop="93" score="-0.489796" pvalue="1.76e-05">
 <sequence>GCAAACGAAAAGTGC</sequence>
-<mem:qvalue>0.0684</mem:qvalue>
+<mem:qvalue>0.0619</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="78" stop="92" score="-4.44898" pvalue="4.27e-05">
 <sequence>GTAAACGAAAAGTGC</sequence>
-<mem:qvalue>0.0995</mem:qvalue>
+<mem:qvalue>0.1</mem:qvalue>
 </matched-element>
 <matched-element start="820" stop="806" score="-8.23469" pvalue="9.45e-05">
 <sequence>TTCCCCGCAACGTGC</sequence>
-<mem:qvalue>0.157</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="79" stop="93" score="-0.489796" pvalue="1.76e-05">
-<sequence>GCAAACGAAAAGTGC</sequence>
-<mem:qvalue>0.0684</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="78" stop="92" score="-4.44898" pvalue="4.27e-05">
-<sequence>GTAAACGAAAAGTGC</sequence>
-<mem:qvalue>0.0995</mem:qvalue>
-</matched-element>
-<matched-element start="820" stop="806" score="-8.23469" pvalue="9.45e-05">
-<sequence>TTCCCCGCAACGTGC</sequence>
-<mem:qvalue>0.157</mem:qvalue>
+<mem:qvalue>0.166</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -714,53 +490,33 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="25-AACAATGTTACGCTC" name="STREME-25">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="736" stop="750" score="7.09697" pvalue="4.55e-05">
 <sequence>AACAGTGTCTCTCTC</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
+<mem:qvalue>0.0655</mem:qvalue>
 </matched-element>
 <matched-element start="1169" stop="1183" score="7.09697" pvalue="4.55e-05">
 <sequence>AACATTGTGCCGCTT</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
+<mem:qvalue>0.0655</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="734" stop="748" score="7.09697" pvalue="4.55e-05">
 <sequence>AACAGTGTCTCTCTC</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
+<mem:qvalue>0.0655</mem:qvalue>
 </matched-element>
 <matched-element start="1167" stop="1181" score="7.09697" pvalue="4.55e-05">
 <sequence>AACATTGTGCCGCTT</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
+<mem:qvalue>0.0655</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="722" stop="736" score="7.09697" pvalue="4.55e-05">
 <sequence>AACAGTGTCTCTCTC</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="734" stop="748" score="7.09697" pvalue="4.55e-05">
-<sequence>AACAGTGTCTCTCTC</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
-</matched-element>
-<matched-element start="1167" stop="1181" score="7.09697" pvalue="4.55e-05">
-<sequence>AACATTGTGCCGCTT</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="722" stop="736" score="7.09697" pvalue="4.55e-05">
-<sequence>AACAGTGTCTCTCTC</sequence>
-<mem:qvalue>0.0681</mem:qvalue>
+<mem:qvalue>0.0655</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -772,49 +528,29 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="27-TATATCGAAAACACA" name="STREME-27">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="976" stop="962" score="-9.69388" pvalue="9.05e-05">
 <sequence>TATCTCTAAATCACT</sequence>
-<mem:qvalue>0.156</mem:qvalue>
+<mem:qvalue>0.164</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="978" stop="964" score="-9.69388" pvalue="9.05e-05">
 <sequence>TATCTCTAAATCACT</sequence>
-<mem:qvalue>0.156</mem:qvalue>
+<mem:qvalue>0.164</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="1070" stop="1056" score="-9.5102" pvalue="8.08e-05">
 <sequence>TCTCTCGTACACACA</sequence>
-<mem:qvalue>0.156</mem:qvalue>
+<mem:qvalue>0.164</mem:qvalue>
 </matched-element>
 <matched-element start="974" stop="960" score="-9.69388" pvalue="9.05e-05">
 <sequence>TATCTCTAAATCACT</sequence>
-<mem:qvalue>0.156</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="978" stop="964" score="-9.69388" pvalue="9.05e-05">
-<sequence>TATCTCTAAATCACT</sequence>
-<mem:qvalue>0.156</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="1070" stop="1056" score="-9.5102" pvalue="8.08e-05">
-<sequence>TCTCTCGTACACACA</sequence>
-<mem:qvalue>0.156</mem:qvalue>
-</matched-element>
-<matched-element start="974" stop="960" score="-9.69388" pvalue="9.05e-05">
-<sequence>TATCTCTAAATCACT</sequence>
-<mem:qvalue>0.156</mem:qvalue>
+<mem:qvalue>0.164</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -826,10 +562,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="29-ACAACCGAAAC" name="STREME-29">
@@ -839,53 +571,33 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="30-CTCCTCCTCC" name="STREME-30">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="517" stop="526" score="11.0395" pvalue="6.86e-05">
 <sequence>CCCCCCCACC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
+<mem:qvalue>0.113</mem:qvalue>
 </matched-element>
 <matched-element start="512" stop="521" score="10.5789" pvalue="8.51e-05">
 <sequence>CTCCCCCCCC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
+<mem:qvalue>0.113</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="514" stop="523" score="10.5789" pvalue="8.51e-05">
 <sequence>CTCCCCCCCC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
+<mem:qvalue>0.113</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="511" stop="520" score="11.4211" pvalue="5.36e-05">
 <sequence>CCCCACCCCC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
+<mem:qvalue>0.113</mem:qvalue>
 </matched-element>
 <matched-element start="508" stop="517" score="11.0395" pvalue="6.86e-05">
 <sequence>CCCCCCCACC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="514" stop="523" score="10.5789" pvalue="8.51e-05">
-<sequence>CTCCCCCCCC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="511" stop="520" score="11.4211" pvalue="5.36e-05">
-<sequence>CCCCACCCCC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
-</matched-element>
-<matched-element start="508" stop="517" score="11.0395" pvalue="6.86e-05">
-<sequence>CCCCCCCACC</sequence>
-<mem:qvalue>0.117</mem:qvalue>
+<mem:qvalue>0.113</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -897,10 +609,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="32-GCCGTGGTCTTCT" name="STREME-32">
@@ -909,10 +617,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -923,10 +627,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="34-GCTGATAA" name="STREME-34">
@@ -935,10 +635,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -949,10 +645,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="36-GCTCATGAAACAA" name="STREME-36">
@@ -961,10 +653,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -975,10 +663,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="38-CGRCSAG" name="STREME-38">
@@ -987,10 +671,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -1002,15 +682,7 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="683" stop="689" score="11" pvalue="8e-05">
 <sequence>CCCCCTT</sequence>
-<mem:qvalue>0.456</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="683" stop="689" score="11" pvalue="8e-05">
-<sequence>CCCCCTT</sequence>
-<mem:qvalue>0.456</mem:qvalue>
+<mem:qvalue>0.553</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -1022,10 +694,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="41-CGACGACGABG" name="STREME-41">
@@ -1034,10 +702,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -1048,41 +712,25 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="43-GCAGCASC" name="STREME-43">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="22" stop="29" score="14.5921" pvalue="9.9e-06">
 <sequence>GCAGCACC</sequence>
-<mem:qvalue>0.0211</mem:qvalue>
+<mem:qvalue>0.0215</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="22" stop="29" score="14.5921" pvalue="9.9e-06">
 <sequence>GCAGCACC</sequence>
-<mem:qvalue>0.0211</mem:qvalue>
+<mem:qvalue>0.0215</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="22" stop="29" score="14.5921" pvalue="9.9e-06">
 <sequence>GCAGCACC</sequence>
-<mem:qvalue>0.0211</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="22" stop="29" score="14.5921" pvalue="9.9e-06">
-<sequence>GCAGCACC</sequence>
-<mem:qvalue>0.0211</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="22" stop="29" score="14.5921" pvalue="9.9e-06">
-<sequence>GCAGCACC</sequence>
-<mem:qvalue>0.0211</mem:qvalue>
+<mem:qvalue>0.0215</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -1094,10 +742,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="45-CGMNKCG" name="STREME-45">
@@ -1107,41 +751,25 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="46-ACCAAAAACCTAACC" name="STREME-46">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="260" stop="274" score="-6.71429" pvalue="5.42e-05">
 <sequence>ACCCGAAACCCCACC</sequence>
-<mem:qvalue>0.127</mem:qvalue>
+<mem:qvalue>0.128</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="262" stop="276" score="-6.71429" pvalue="5.42e-05">
 <sequence>ACCCGAAACCCCACC</sequence>
-<mem:qvalue>0.127</mem:qvalue>
+<mem:qvalue>0.128</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="252" stop="266" score="-6.71429" pvalue="5.42e-05">
 <sequence>ACCCGAAACCCCACC</sequence>
-<mem:qvalue>0.127</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="262" stop="276" score="-6.71429" pvalue="5.42e-05">
-<sequence>ACCCGAAACCCCACC</sequence>
-<mem:qvalue>0.127</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="252" stop="266" score="-6.71429" pvalue="5.42e-05">
-<sequence>ACCCGAAACCCCACC</sequence>
-<mem:qvalue>0.127</mem:qvalue>
+<mem:qvalue>0.128</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -1153,38 +781,22 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="48-CTTCCCGTC" name="STREME-48">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="399" stop="407" score="12.5366" pvalue="3.15e-05">
 <sequence>CTTCCCTTT</sequence>
-<mem:qvalue>0.122</mem:qvalue>
+<mem:qvalue>0.11</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="401" stop="409" score="12.5366" pvalue="3.15e-05">
 <sequence>CTTCCCTTT</sequence>
-<mem:qvalue>0.122</mem:qvalue>
+<mem:qvalue>0.11</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-<matched-element start="392" stop="400" score="10.2927" pvalue="8.6e-05">
-<sequence>CTTCCCCTT</sequence>
-<mem:qvalue>0.2</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="401" stop="409" score="12.5366" pvalue="3.15e-05">
-<sequence>CTTCCCTTT</sequence>
-<mem:qvalue>0.122</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 <matched-element start="392" stop="400" score="10.2927" pvalue="8.6e-05">
 <sequence>CTTCCCCTT</sequence>
 <mem:qvalue>0.2</mem:qvalue>
@@ -1196,39 +808,23 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="381" stop="372" score="7.55102" pvalue="6.82e-05">
 <sequence>AACAACGATA</sequence>
-<mem:qvalue>0.116</mem:qvalue>
+<mem:qvalue>0.122</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="383" stop="374" score="7.55102" pvalue="6.82e-05">
 <sequence>AACAACGATA</sequence>
-<mem:qvalue>0.116</mem:qvalue>
+<mem:qvalue>0.122</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="48" stop="57" score="9.2551" pvalue="3.07e-05">
 <sequence>AACAACACCA</sequence>
-<mem:qvalue>0.116</mem:qvalue>
+<mem:qvalue>0.122</mem:qvalue>
 </matched-element>
 <matched-element start="374" stop="365" score="7.55102" pvalue="6.82e-05">
 <sequence>AACAACGATA</sequence>
-<mem:qvalue>0.116</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="383" stop="374" score="7.55102" pvalue="6.82e-05">
-<sequence>AACAACGATA</sequence>
-<mem:qvalue>0.116</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="48" stop="57" score="9.2551" pvalue="3.07e-05">
-<sequence>AACAACACCA</sequence>
-<mem:qvalue>0.116</mem:qvalue>
-</matched-element>
-<matched-element start="374" stop="365" score="7.55102" pvalue="6.82e-05">
-<sequence>AACAACGATA</sequence>
-<mem:qvalue>0.116</mem:qvalue>
+<mem:qvalue>0.122</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -1237,319 +833,195 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="176" stop="182" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="178" stop="184" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="180" stop="186" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="182" stop="188" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="184" stop="190" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="186" stop="192" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="188" stop="194" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="190" stop="196" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="660" stop="666" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="662" stop="668" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="664" stop="670" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="666" stop="672" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="668" stop="674" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1050" stop="1044" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1052" stop="1046" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1060" stop="1054" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1062" stop="1056" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="176" stop="182" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="178" stop="184" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="180" stop="186" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="182" stop="188" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="184" stop="190" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="186" stop="192" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="188" stop="194" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="190" stop="196" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="192" stop="198" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="664" stop="670" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="666" stop="672" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="668" stop="674" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="670" stop="676" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="672" stop="678" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1052" stop="1046" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1054" stop="1048" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1062" stop="1056" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1064" stop="1058" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1066" stop="1060" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="170" stop="176" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="172" stop="178" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="174" stop="180" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="176" stop="182" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="178" stop="184" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="180" stop="186" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="182" stop="188" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1050" stop="1044" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1052" stop="1046" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1054" stop="1048" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 <matched-element start="1062" stop="1056" score="13.2061" pvalue="6.51e-05">
 <sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="176" stop="182" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="178" stop="184" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="180" stop="186" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="182" stop="188" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="184" stop="190" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="186" stop="192" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="188" stop="194" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="190" stop="196" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="192" stop="198" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="664" stop="670" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="666" stop="672" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="668" stop="674" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="670" stop="676" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="672" stop="678" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1052" stop="1046" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1054" stop="1048" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1062" stop="1056" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1064" stop="1058" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1066" stop="1060" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="170" stop="176" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="172" stop="178" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="174" stop="180" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="176" stop="182" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="178" stop="184" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="180" stop="186" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="182" stop="188" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1050" stop="1044" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1052" stop="1046" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1054" stop="1048" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1062" stop="1056" score="13.2061" pvalue="6.51e-05">
-<sequence>ACACACA</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.00992</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -1558,51 +1030,31 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="525" stop="533" score="13.2632" pvalue="1.32e-05">
 <sequence>CCGTCTCCG</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
+<mem:qvalue>0.0286</mem:qvalue>
 </matched-element>
 <matched-element start="949" stop="957" score="12.5921" pvalue="2.21e-05">
 <sequence>CCGTTTCCA</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
+<mem:qvalue>0.0286</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="951" stop="959" score="12.5921" pvalue="2.21e-05">
 <sequence>CCGTTTCCA</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
+<mem:qvalue>0.0286</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="523" stop="531" score="13.2632" pvalue="1.32e-05">
 <sequence>CCGTCTCCG</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
+<mem:qvalue>0.0286</mem:qvalue>
 </matched-element>
 <matched-element start="947" stop="955" score="12.5921" pvalue="2.21e-05">
 <sequence>CCGTTTCCA</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
+<mem:qvalue>0.0286</mem:qvalue>
 </matched-element>
 <matched-element start="789" stop="781" score="11.2763" pvalue="7.03e-05">
 <sequence>GCGCTTCCG</sequence>
-<mem:qvalue>0.0744</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="951" stop="959" score="12.5921" pvalue="2.21e-05">
-<sequence>CCGTTTCCA</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="523" stop="531" score="13.2632" pvalue="1.32e-05">
-<sequence>CCGTCTCCG</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
-</matched-element>
-<matched-element start="947" stop="955" score="12.5921" pvalue="2.21e-05">
-<sequence>CCGTTTCCA</sequence>
-<mem:qvalue>0.0292</mem:qvalue>
-</matched-element>
-<matched-element start="789" stop="781" score="11.2763" pvalue="7.03e-05">
-<sequence>GCGCTTCCG</sequence>
-<mem:qvalue>0.0744</mem:qvalue>
+<mem:qvalue>0.0759</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -1614,45 +1066,41 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="53-CACACACACAC" name="STREME-53">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="177" stop="187" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="179" stop="189" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="181" stop="191" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="183" stop="193" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="185" stop="195" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="187" stop="197" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="661" stop="671" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="663" stop="673" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="1057" stop="1047" score="16.5488" pvalue="2.22e-06">
 <sequence>CACAGACACAC</sequence>
@@ -1660,89 +1108,89 @@ clusterid CDATA #IMPLIED
 </matched-element>
 <matched-element start="669" stop="679" score="9.15854" pvalue="8.89e-06">
 <sequence>CACACAAACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1059" stop="1049" score="9.09756" pvalue="9.09e-06">
 <sequence>CACACAGACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="175" stop="185" score="8.70732" pvalue="1.27e-05">
 <sequence>AACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="665" stop="675" score="8.70732" pvalue="1.27e-05">
 <sequence>CACACACACAA</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="667" stop="677" score="8.70732" pvalue="1.27e-05">
 <sequence>CACACACAAAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="657" stop="667" score="8.64634" pvalue="1.35e-05">
 <sequence>CAGACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="659" stop="669" score="8.64634" pvalue="1.35e-05">
 <sequence>GACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1051" stop="1041" score="8.64634" pvalue="1.35e-05">
 <sequence>CACACACAGAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1055" stop="1045" score="8.64634" pvalue="1.35e-05">
 <sequence>CAGACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1061" stop="1051" score="8.64634" pvalue="1.35e-05">
 <sequence>CACACACAGAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="655" stop="665" score="4.68293" pvalue="6.2e-05">
 <sequence>CGCAGACACAC</sequence>
-<mem:qvalue>0.00791</mem:qvalue>
+<mem:qvalue>0.00777</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="177" stop="187" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="179" stop="189" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="181" stop="191" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="183" stop="193" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="185" stop="195" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="187" stop="197" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="189" stop="199" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="663" stop="673" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="665" stop="675" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="667" stop="677" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="1059" stop="1049" score="16.5488" pvalue="2.22e-06">
 <sequence>CACAGACACAC</sequence>
@@ -1750,69 +1198,69 @@ clusterid CDATA #IMPLIED
 </matched-element>
 <matched-element start="1061" stop="1051" score="9.09756" pvalue="9.09e-06">
 <sequence>CACACAGACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="661" stop="671" score="8.92683" pvalue="1.02e-05">
 <sequence>CGCACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="175" stop="185" score="8.70732" pvalue="1.27e-05">
 <sequence>AACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="669" stop="679" score="8.70732" pvalue="1.27e-05">
 <sequence>CACACACACAA</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1067" stop="1057" score="8.70732" pvalue="1.27e-05">
 <sequence>TACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1053" stop="1043" score="8.64634" pvalue="1.35e-05">
 <sequence>CACACACAGAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1057" stop="1047" score="8.64634" pvalue="1.35e-05">
 <sequence>CAGACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1063" stop="1053" score="8.64634" pvalue="1.35e-05">
 <sequence>CACACACAGAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1065" stop="1055" score="8.64634" pvalue="1.35e-05">
 <sequence>CACACACACAG</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="671" stop="681" score="6.96341" pvalue="2.4e-05">
 <sequence>CACACACAAGC</sequence>
-<mem:qvalue>0.00317</mem:qvalue>
+<mem:qvalue>0.00312</mem:qvalue>
 </matched-element>
 <matched-element start="659" stop="669" score="6.68293" pvalue="2.83e-05">
 <sequence>CCCGCACACAC</sequence>
-<mem:qvalue>0.00366</mem:qvalue>
+<mem:qvalue>0.00362</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="171" stop="181" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="173" stop="183" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="175" stop="185" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="177" stop="187" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="179" stop="189" score="20.7927" pvalue="2.05e-07">
 <sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
+<mem:qvalue>6.14e-05</mem:qvalue>
 </matched-element>
 <matched-element start="655" stop="665" score="19.0732" pvalue="4.54e-07">
 <sequence>CACACATACAC</sequence>
@@ -1824,171 +1272,27 @@ clusterid CDATA #IMPLIED
 </matched-element>
 <matched-element start="1061" stop="1051" score="9.09756" pvalue="9.09e-06">
 <sequence>CACACAGACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="169" stop="179" score="8.70732" pvalue="1.27e-05">
 <sequence>AACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1053" stop="1043" score="8.70732" pvalue="1.27e-05">
 <sequence>CACACACACAT</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1055" stop="1045" score="8.64634" pvalue="1.35e-05">
 <sequence>GACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1057" stop="1047" score="8.64634" pvalue="1.35e-05">
 <sequence>CAGACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
+<mem:qvalue>0.00182</mem:qvalue>
 </matched-element>
 <matched-element start="1049" stop="1039" score="6.9878" pvalue="2.22e-05">
 <sequence>CACACATAAAC</sequence>
-<mem:qvalue>0.003</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="177" stop="187" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="179" stop="189" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="181" stop="191" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="183" stop="193" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="185" stop="195" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="187" stop="197" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="189" stop="199" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="663" stop="673" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="665" stop="675" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="667" stop="677" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="1059" stop="1049" score="16.5488" pvalue="2.22e-06">
-<sequence>CACAGACACAC</sequence>
-<mem:qvalue>0.000567</mem:qvalue>
-</matched-element>
-<matched-element start="1061" stop="1051" score="9.09756" pvalue="9.09e-06">
-<sequence>CACACAGACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="661" stop="671" score="8.92683" pvalue="1.02e-05">
-<sequence>CGCACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="175" stop="185" score="8.70732" pvalue="1.27e-05">
-<sequence>AACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="669" stop="679" score="8.70732" pvalue="1.27e-05">
-<sequence>CACACACACAA</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1067" stop="1057" score="8.70732" pvalue="1.27e-05">
-<sequence>TACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1053" stop="1043" score="8.64634" pvalue="1.35e-05">
-<sequence>CACACACAGAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1057" stop="1047" score="8.64634" pvalue="1.35e-05">
-<sequence>CAGACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1063" stop="1053" score="8.64634" pvalue="1.35e-05">
-<sequence>CACACACAGAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1065" stop="1055" score="8.64634" pvalue="1.35e-05">
-<sequence>CACACACACAG</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="671" stop="681" score="6.96341" pvalue="2.4e-05">
-<sequence>CACACACAAGC</sequence>
-<mem:qvalue>0.00317</mem:qvalue>
-</matched-element>
-<matched-element start="659" stop="669" score="6.68293" pvalue="2.83e-05">
-<sequence>CCCGCACACAC</sequence>
-<mem:qvalue>0.00366</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="171" stop="181" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="173" stop="183" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="175" stop="185" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="177" stop="187" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="179" stop="189" score="20.7927" pvalue="2.05e-07">
-<sequence>CACACACACAC</sequence>
-<mem:qvalue>6.19e-05</mem:qvalue>
-</matched-element>
-<matched-element start="655" stop="665" score="19.0732" pvalue="4.54e-07">
-<sequence>CACACATACAC</sequence>
-<mem:qvalue>0.00013</mem:qvalue>
-</matched-element>
-<matched-element start="1059" stop="1049" score="16.5488" pvalue="2.22e-06">
-<sequence>CACAGACACAC</sequence>
-<mem:qvalue>0.000567</mem:qvalue>
-</matched-element>
-<matched-element start="1061" stop="1051" score="9.09756" pvalue="9.09e-06">
-<sequence>CACACAGACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="169" stop="179" score="8.70732" pvalue="1.27e-05">
-<sequence>AACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1053" stop="1043" score="8.70732" pvalue="1.27e-05">
-<sequence>CACACACACAT</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1055" stop="1045" score="8.64634" pvalue="1.35e-05">
-<sequence>GACACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1057" stop="1047" score="8.64634" pvalue="1.35e-05">
-<sequence>CAGACACACAC</sequence>
-<mem:qvalue>0.00187</mem:qvalue>
-</matched-element>
-<matched-element start="1049" stop="1039" score="6.9878" pvalue="2.22e-05">
-<sequence>CACACATAAAC</sequence>
-<mem:qvalue>0.003</mem:qvalue>
+<mem:qvalue>0.00294</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -1997,31 +1301,19 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="1038" stop="1030" score="12.5366" pvalue="3.58e-05">
 <sequence>AGAGAACGA</sequence>
-<mem:qvalue>0.0802</mem:qvalue>
+<mem:qvalue>0.0795</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="1040" stop="1032" score="12.5366" pvalue="3.58e-05">
 <sequence>AGAGAACGA</sequence>
-<mem:qvalue>0.0802</mem:qvalue>
+<mem:qvalue>0.0795</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="1036" stop="1028" score="12.5366" pvalue="3.58e-05">
 <sequence>AGAGAACGA</sequence>
-<mem:qvalue>0.0802</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="1040" stop="1032" score="12.5366" pvalue="3.58e-05">
-<sequence>AGAGAACGA</sequence>
-<mem:qvalue>0.0802</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="1036" stop="1028" score="12.5366" pvalue="3.58e-05">
-<sequence>AGAGAACGA</sequence>
-<mem:qvalue>0.0802</mem:qvalue>
+<mem:qvalue>0.0795</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2033,10 +1325,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="56-GCCGGCACT" name="STREME-56">
@@ -2046,53 +1334,33 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="57-CAAAACACAAAAAA" name="STREME-57">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="1118" stop="1105" score="10.0606" pvalue="1.33e-05">
 <sequence>CATCACACTAAAAA</sequence>
-<mem:qvalue>0.0557</mem:qvalue>
+<mem:qvalue>0.0558</mem:qvalue>
 </matched-element>
 <matched-element start="1186" stop="1199" score="5" pvalue="7.01e-05">
 <sequence>CTTTTCACAAAAAA</sequence>
-<mem:qvalue>0.104</mem:qvalue>
+<mem:qvalue>0.0998</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="1116" stop="1103" score="9.99394" pvalue="2.35e-05">
 <sequence>CACCACACTAAAAA</sequence>
-<mem:qvalue>0.0557</mem:qvalue>
+<mem:qvalue>0.0558</mem:qvalue>
 </matched-element>
 <matched-element start="1184" stop="1197" score="5" pvalue="7.01e-05">
 <sequence>CTTTTCACAAAAAA</sequence>
-<mem:qvalue>0.104</mem:qvalue>
+<mem:qvalue>0.0998</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="1106" stop="1093" score="9.99394" pvalue="2.35e-05">
 <sequence>CACCACACTAAAAA</sequence>
-<mem:qvalue>0.0557</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="1116" stop="1103" score="9.99394" pvalue="2.35e-05">
-<sequence>CACCACACTAAAAA</sequence>
-<mem:qvalue>0.0557</mem:qvalue>
-</matched-element>
-<matched-element start="1184" stop="1197" score="5" pvalue="7.01e-05">
-<sequence>CTTTTCACAAAAAA</sequence>
-<mem:qvalue>0.104</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="1106" stop="1093" score="9.99394" pvalue="2.35e-05">
-<sequence>CACCACACTAAAAA</sequence>
-<mem:qvalue>0.0557</mem:qvalue>
+<mem:qvalue>0.0558</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2104,10 +1372,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="59-AAGGTCAAGCATTC" name="STREME-59">
@@ -2117,45 +1381,29 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="60-GCAGCCACAAAAAA" name="STREME-60">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="100" stop="113" score="10.2485" pvalue="4.37e-05">
 <sequence>GGAGCAAAAAAAAA</sequence>
-<mem:qvalue>0.101</mem:qvalue>
+<mem:qvalue>0.0908</mem:qvalue>
 </matched-element>
 <matched-element start="901" stop="888" score="5.96364" pvalue="5.14e-05">
 <sequence>GCAGCCACTTGAAG</sequence>
-<mem:qvalue>0.101</mem:qvalue>
+<mem:qvalue>0.0908</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="903" stop="890" score="5.96364" pvalue="5.14e-05">
 <sequence>GCAGCCACTTGAAG</sequence>
-<mem:qvalue>0.101</mem:qvalue>
+<mem:qvalue>0.0908</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="899" stop="886" score="5.96364" pvalue="5.14e-05">
 <sequence>GCAGCCACTTGAAG</sequence>
-<mem:qvalue>0.101</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="903" stop="890" score="5.96364" pvalue="5.14e-05">
-<sequence>GCAGCCACTTGAAG</sequence>
-<mem:qvalue>0.101</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="899" stop="886" score="5.96364" pvalue="5.14e-05">
-<sequence>GCAGCCACTTGAAG</sequence>
-<mem:qvalue>0.101</mem:qvalue>
+<mem:qvalue>0.0908</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2164,24 +1412,16 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="1179" stop="1185" score="13.1939" pvalue="5.35e-05">
 <sequence>CGCTTCA</sequence>
-<mem:qvalue>0.202</mem:qvalue>
+<mem:qvalue>0.183</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="1177" stop="1183" score="13.1939" pvalue="5.35e-05">
 <sequence>CGCTTCA</sequence>
-<mem:qvalue>0.202</mem:qvalue>
+<mem:qvalue>0.183</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="1177" stop="1183" score="13.1939" pvalue="5.35e-05">
-<sequence>CGCTTCA</sequence>
-<mem:qvalue>0.202</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
@@ -2192,10 +1432,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="63-KCTTATCA" name="STREME-63">
@@ -2205,41 +1441,25 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="64-CGGCACACG" name="STREME-64">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="811" stop="819" score="11.1053" pvalue="5.32e-05">
 <sequence>CGGCGCACG</sequence>
-<mem:qvalue>0.125</mem:qvalue>
+<mem:qvalue>0.126</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="813" stop="821" score="11.1053" pvalue="5.32e-05">
 <sequence>CGGCGCACG</sequence>
-<mem:qvalue>0.125</mem:qvalue>
+<mem:qvalue>0.126</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="802" stop="810" score="11.1053" pvalue="5.32e-05">
 <sequence>CGGCGCACG</sequence>
-<mem:qvalue>0.125</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="813" stop="821" score="11.1053" pvalue="5.32e-05">
-<sequence>CGGCGCACG</sequence>
-<mem:qvalue>0.125</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="802" stop="810" score="11.1053" pvalue="5.32e-05">
-<sequence>CGGCGCACG</sequence>
-<mem:qvalue>0.125</mem:qvalue>
+<mem:qvalue>0.126</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2251,89 +1471,53 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="66-CCCGTTCCMG" name="STREME-66">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="462" stop="453" score="13.3286" pvalue="1.48e-05">
 <sequence>CCCGGTCCGG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.0307</mem:qvalue>
 </matched-element>
 <matched-element start="294" stop="303" score="12.1" pvalue="3.51e-05">
 <sequence>GCCGGTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.031</mem:qvalue>
 </matched-element>
 <matched-element start="625" stop="634" score="11.6286" pvalue="4.98e-05">
 <sequence>TCCGTTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.031</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="464" stop="455" score="13.3286" pvalue="1.48e-05">
 <sequence>CCCGGTCCGG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.0307</mem:qvalue>
 </matched-element>
 <matched-element start="296" stop="305" score="12.1" pvalue="3.51e-05">
 <sequence>GCCGGTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.031</mem:qvalue>
 </matched-element>
 <matched-element start="631" stop="640" score="11.6286" pvalue="4.98e-05">
 <sequence>TCCGTTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.031</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="456" stop="447" score="13.3286" pvalue="1.48e-05">
 <sequence>CCCGGTCCGG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.0307</mem:qvalue>
 </matched-element>
 <matched-element start="286" stop="295" score="12.1" pvalue="3.51e-05">
 <sequence>GCCGGTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.031</mem:qvalue>
 </matched-element>
 <matched-element start="832" stop="823" score="11.6714" pvalue="4.92e-05">
 <sequence>CCCGCCCCAG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.031</mem:qvalue>
 </matched-element>
 <matched-element start="623" stop="632" score="11.6286" pvalue="4.98e-05">
 <sequence>TCCGTTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="464" stop="455" score="13.3286" pvalue="1.48e-05">
-<sequence>CCCGGTCCGG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
-</matched-element>
-<matched-element start="296" stop="305" score="12.1" pvalue="3.51e-05">
-<sequence>GCCGGTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
-</matched-element>
-<matched-element start="631" stop="640" score="11.6286" pvalue="4.98e-05">
-<sequence>TCCGTTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="456" stop="447" score="13.3286" pvalue="1.48e-05">
-<sequence>CCCGGTCCGG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
-</matched-element>
-<matched-element start="286" stop="295" score="12.1" pvalue="3.51e-05">
-<sequence>GCCGGTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
-</matched-element>
-<matched-element start="832" stop="823" score="11.6714" pvalue="4.92e-05">
-<sequence>CCCGCCCCAG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
-</matched-element>
-<matched-element start="623" stop="632" score="11.6286" pvalue="4.98e-05">
-<sequence>TCCGTTCCCG</sequence>
-<mem:qvalue>0.0303</mem:qvalue>
+<mem:qvalue>0.031</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2342,51 +1526,31 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="454" stop="460" score="12.1829" pvalue="7.21e-05">
 <sequence>CGGACCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
+<mem:qvalue>0.0767</mem:qvalue>
 </matched-element>
 <matched-element start="460" stop="454" score="12.1829" pvalue="7.21e-05">
 <sequence>CGGTCCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
+<mem:qvalue>0.0767</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="456" stop="462" score="12.1829" pvalue="7.21e-05">
 <sequence>CGGACCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
+<mem:qvalue>0.0767</mem:qvalue>
 </matched-element>
 <matched-element start="462" stop="456" score="12.1829" pvalue="7.21e-05">
 <sequence>CGGTCCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
+<mem:qvalue>0.0767</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="448" stop="454" score="12.1829" pvalue="7.21e-05">
 <sequence>CGGACCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
+<mem:qvalue>0.0767</mem:qvalue>
 </matched-element>
 <matched-element start="454" stop="448" score="12.1829" pvalue="7.21e-05">
 <sequence>CGGTCCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="456" stop="462" score="12.1829" pvalue="7.21e-05">
-<sequence>CGGACCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
-</matched-element>
-<matched-element start="462" stop="456" score="12.1829" pvalue="7.21e-05">
-<sequence>CGGTCCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="448" stop="454" score="12.1829" pvalue="7.21e-05">
-<sequence>CGGACCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
-</matched-element>
-<matched-element start="454" stop="448" score="12.1829" pvalue="7.21e-05">
-<sequence>CGGTCCG</sequence>
-<mem:qvalue>0.0775</mem:qvalue>
+<mem:qvalue>0.0767</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2398,57 +1562,33 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="69-CGCACCACAG" name="STREME-69">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="582" stop="591" score="12.4079" pvalue="2.25e-05">
 <sequence>GGCGCCACAG</sequence>
-<mem:qvalue>0.0391</mem:qvalue>
+<mem:qvalue>0.0411</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="588" stop="597" score="12.4079" pvalue="2.25e-05">
 <sequence>GGCGCCACAG</sequence>
-<mem:qvalue>0.0391</mem:qvalue>
+<mem:qvalue>0.0411</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="580" stop="589" score="12.4079" pvalue="2.25e-05">
 <sequence>GGCGCCACAG</sequence>
-<mem:qvalue>0.0391</mem:qvalue>
+<mem:qvalue>0.0411</mem:qvalue>
 </matched-element>
 <matched-element start="1108" stop="1099" score="12.3816" pvalue="2.31e-05">
 <sequence>GGCACCACAC</sequence>
-<mem:qvalue>0.0391</mem:qvalue>
+<mem:qvalue>0.0411</mem:qvalue>
 </matched-element>
 <matched-element start="318" stop="327" score="11.7105" pvalue="4.23e-05">
 <sequence>CGAGCCACAG</sequence>
-<mem:qvalue>0.0556</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="588" stop="597" score="12.4079" pvalue="2.25e-05">
-<sequence>GGCGCCACAG</sequence>
-<mem:qvalue>0.0391</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="580" stop="589" score="12.4079" pvalue="2.25e-05">
-<sequence>GGCGCCACAG</sequence>
-<mem:qvalue>0.0391</mem:qvalue>
-</matched-element>
-<matched-element start="1108" stop="1099" score="12.3816" pvalue="2.31e-05">
-<sequence>GGCACCACAC</sequence>
-<mem:qvalue>0.0391</mem:qvalue>
-</matched-element>
-<matched-element start="318" stop="327" score="11.7105" pvalue="4.23e-05">
-<sequence>CGAGCCACAG</sequence>
-<mem:qvalue>0.0556</mem:qvalue>
+<mem:qvalue>0.0602</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2460,10 +1600,6 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="71-GCACGCG" name="STREME-71">
@@ -2473,17 +1609,13 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="72-GCACACACA" name="STREME-72">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="1064" stop="1056" score="12.7556" pvalue="2.67e-05">
 <sequence>GTACACACA</sequence>
-<mem:qvalue>0.0411</mem:qvalue>
+<mem:qvalue>0.0444</mem:qvalue>
 </matched-element>
 <matched-element start="656" stop="664" score="11.9" pvalue="3.81e-05">
 <sequence>GCAGACACA</sequence>
@@ -2493,41 +1625,21 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="662" stop="670" score="17.1" pvalue="3.31e-06">
 <sequence>GCACACACA</sequence>
-<mem:qvalue>0.0199</mem:qvalue>
+<mem:qvalue>0.0239</mem:qvalue>
 </matched-element>
 <matched-element start="1068" stop="1060" score="12.7556" pvalue="2.67e-05">
 <sequence>GTACACACA</sequence>
-<mem:qvalue>0.0411</mem:qvalue>
+<mem:qvalue>0.0444</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="1064" stop="1056" score="12.7556" pvalue="2.67e-05">
 <sequence>GTACACACA</sequence>
-<mem:qvalue>0.0411</mem:qvalue>
+<mem:qvalue>0.0444</mem:qvalue>
 </matched-element>
 <matched-element start="654" stop="662" score="12.6222" pvalue="3.08e-05">
 <sequence>GCACACATA</sequence>
-<mem:qvalue>0.0411</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="662" stop="670" score="17.1" pvalue="3.31e-06">
-<sequence>GCACACACA</sequence>
-<mem:qvalue>0.0199</mem:qvalue>
-</matched-element>
-<matched-element start="1068" stop="1060" score="12.7556" pvalue="2.67e-05">
-<sequence>GTACACACA</sequence>
-<mem:qvalue>0.0411</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="1064" stop="1056" score="12.7556" pvalue="2.67e-05">
-<sequence>GTACACACA</sequence>
-<mem:qvalue>0.0411</mem:qvalue>
-</matched-element>
-<matched-element start="654" stop="662" score="12.6222" pvalue="3.08e-05">
-<sequence>GCACACATA</sequence>
-<mem:qvalue>0.0411</mem:qvalue>
+<mem:qvalue>0.0444</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2539,181 +1651,109 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="74-CTCTCTTTC" name="STREME-74">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="744" stop="752" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="746" stop="754" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="748" stop="756" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="1035" stop="1043" score="13.6463" pvalue="1.8e-05">
 <sequence>CTCTCTGTC</sequence>
-<mem:qvalue>0.00817</mem:qvalue>
+<mem:qvalue>0.00849</mem:qvalue>
 </matched-element>
 <matched-element start="855" stop="847" score="12.7683" pvalue="2.47e-05">
 <sequence>CTCTCCCTC</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.0103</mem:qvalue>
 </matched-element>
 <matched-element start="1027" stop="1035" score="12.0854" pvalue="3.54e-05">
 <sequence>CTCTCGTTC</sequence>
-<mem:qvalue>0.0123</mem:qvalue>
+<mem:qvalue>0.0125</mem:qvalue>
 </matched-element>
 <matched-element start="1075" stop="1067" score="11.439" pvalue="4.69e-05">
 <sequence>CTCTCACTC</sequence>
-<mem:qvalue>0.0147</mem:qvalue>
+<mem:qvalue>0.0146</mem:qvalue>
 </matched-element>
 <matched-element start="750" stop="758" score="11.4024" pvalue="4.96e-05">
 <sequence>CTCTCTCCC</sequence>
-<mem:qvalue>0.0147</mem:qvalue>
+<mem:qvalue>0.0146</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="742" stop="750" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="744" stop="752" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="746" stop="754" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="748" stop="756" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="750" stop="758" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="1037" stop="1045" score="13.6463" pvalue="1.8e-05">
 <sequence>CTCTCTGTC</sequence>
-<mem:qvalue>0.00817</mem:qvalue>
+<mem:qvalue>0.00849</mem:qvalue>
 </matched-element>
 <matched-element start="857" stop="849" score="12.7683" pvalue="2.47e-05">
 <sequence>CTCTCCCTC</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
+<mem:qvalue>0.0103</mem:qvalue>
 </matched-element>
 <matched-element start="1029" stop="1037" score="12.0854" pvalue="3.54e-05">
 <sequence>CTCTCGTTC</sequence>
-<mem:qvalue>0.0123</mem:qvalue>
+<mem:qvalue>0.0125</mem:qvalue>
 </matched-element>
 <matched-element start="752" stop="760" score="11.4024" pvalue="4.96e-05">
 <sequence>CTCTCTCCC</sequence>
-<mem:qvalue>0.0147</mem:qvalue>
+<mem:qvalue>0.0146</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="730" stop="738" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="732" stop="740" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="734" stop="742" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="736" stop="744" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="738" stop="746" score="15.7439" pvalue="7.34e-06">
 <sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
+<mem:qvalue>0.004</mem:qvalue>
 </matched-element>
 <matched-element start="1025" stop="1033" score="12.0854" pvalue="3.54e-05">
 <sequence>CTCTCGTTC</sequence>
-<mem:qvalue>0.0123</mem:qvalue>
+<mem:qvalue>0.0125</mem:qvalue>
 </matched-element>
 <matched-element start="740" stop="748" score="11.4024" pvalue="4.96e-05">
 <sequence>CTCTCTCCC</sequence>
-<mem:qvalue>0.0147</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="742" stop="750" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="744" stop="752" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="746" stop="754" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="748" stop="756" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="750" stop="758" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="1037" stop="1045" score="13.6463" pvalue="1.8e-05">
-<sequence>CTCTCTGTC</sequence>
-<mem:qvalue>0.00817</mem:qvalue>
-</matched-element>
-<matched-element start="857" stop="849" score="12.7683" pvalue="2.47e-05">
-<sequence>CTCTCCCTC</sequence>
-<mem:qvalue>0.0101</mem:qvalue>
-</matched-element>
-<matched-element start="1029" stop="1037" score="12.0854" pvalue="3.54e-05">
-<sequence>CTCTCGTTC</sequence>
-<mem:qvalue>0.0123</mem:qvalue>
-</matched-element>
-<matched-element start="752" stop="760" score="11.4024" pvalue="4.96e-05">
-<sequence>CTCTCTCCC</sequence>
-<mem:qvalue>0.0147</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="730" stop="738" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="732" stop="740" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="734" stop="742" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="736" stop="744" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="738" stop="746" score="15.7439" pvalue="7.34e-06">
-<sequence>CTCTCTCTC</sequence>
-<mem:qvalue>0.00377</mem:qvalue>
-</matched-element>
-<matched-element start="1025" stop="1033" score="12.0854" pvalue="3.54e-05">
-<sequence>CTCTCGTTC</sequence>
-<mem:qvalue>0.0123</mem:qvalue>
-</matched-element>
-<matched-element start="740" stop="748" score="11.4024" pvalue="4.96e-05">
-<sequence>CTCTCTCCC</sequence>
-<mem:qvalue>0.0147</mem:qvalue>
+<mem:qvalue>0.0146</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2725,49 +1765,29 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="76-GGGCAAGA" name="STREME-76">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="155" stop="148" score="11.2472" pvalue="8.27e-05">
 <sequence>GGGAAAGA</sequence>
-<mem:qvalue>0.13</mem:qvalue>
+<mem:qvalue>0.136</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="155" stop="148" score="11.2472" pvalue="8.27e-05">
 <sequence>GGGAAAGA</sequence>
-<mem:qvalue>0.13</mem:qvalue>
+<mem:qvalue>0.136</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="398" stop="391" score="13.2022" pvalue="3.62e-05">
 <sequence>GGGGAAGA</sequence>
-<mem:qvalue>0.13</mem:qvalue>
+<mem:qvalue>0.136</mem:qvalue>
 </matched-element>
 <matched-element start="149" stop="142" score="11.2472" pvalue="8.27e-05">
 <sequence>GGGAAAGA</sequence>
-<mem:qvalue>0.13</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="155" stop="148" score="11.2472" pvalue="8.27e-05">
-<sequence>GGGAAAGA</sequence>
-<mem:qvalue>0.13</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="398" stop="391" score="13.2022" pvalue="3.62e-05">
-<sequence>GGGGAAGA</sequence>
-<mem:qvalue>0.13</mem:qvalue>
-</matched-element>
-<matched-element start="149" stop="142" score="11.2472" pvalue="8.27e-05">
-<sequence>GGGAAAGA</sequence>
-<mem:qvalue>0.13</mem:qvalue>
+<mem:qvalue>0.136</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2791,18 +1811,6 @@ clusterid CDATA #IMPLIED
 <mem:qvalue>0.174</mem:qvalue>
 </matched-element>
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="285" stop="277" score="11.4211" pvalue="7.81e-05">
-<sequence>CGGAAGTGC</sequence>
-<mem:qvalue>0.174</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="275" stop="267" score="11.4211" pvalue="7.81e-05">
-<sequence>CGGAAGTGC</sequence>
-<mem:qvalue>0.174</mem:qvalue>
-</matched-element>
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="78-CTTTATC" name="STREME-78">
@@ -2812,45 +1820,29 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="79-CACCACCACC" name="STREME-79">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="717" stop="708" score="13.1796" pvalue="1.59e-05">
 <sequence>CACCACCAAC</sequence>
-<mem:qvalue>0.059</mem:qvalue>
+<mem:qvalue>0.053</mem:qvalue>
 </matched-element>
 <matched-element start="517" stop="526" score="10.497" pvalue="9.75e-05">
 <sequence>CCCCCCCACC</sequence>
-<mem:qvalue>0.181</mem:qvalue>
+<mem:qvalue>0.163</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="715" stop="706" score="13.1796" pvalue="1.59e-05">
 <sequence>CACCACCAAC</sequence>
-<mem:qvalue>0.059</mem:qvalue>
+<mem:qvalue>0.053</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="508" stop="517" score="10.497" pvalue="9.75e-05">
 <sequence>CCCCCCCACC</sequence>
-<mem:qvalue>0.181</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="715" stop="706" score="13.1796" pvalue="1.59e-05">
-<sequence>CACCACCAAC</sequence>
-<mem:qvalue>0.059</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="508" stop="517" score="10.497" pvalue="9.75e-05">
-<sequence>CCCCCCCACC</sequence>
-<mem:qvalue>0.181</mem:qvalue>
+<mem:qvalue>0.163</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2862,117 +1854,69 @@ clusterid CDATA #IMPLIED
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 </scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-</scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>
 <pattern accession="81-AGCGAAACGGAAA" name="STREME-81">
 <scanned-sequence accession="KLF_Fd03_3_A" name="KLF_Fd03_3_A">
 <matched-element start="848" stop="860" score="10.7349" pvalue="4.42e-05">
 <sequence>AGGGAGAGGAAAA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="386" stop="374" score="10.0843" pvalue="6.18e-05">
 <sequence>AGCAAAACAACGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="755" stop="743" score="9.68675" pvalue="7.49e-05">
 <sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="102" stop="114" score="9.25301" pvalue="9.19e-05">
 <sequence>AGCAAAAAAAAAA</sequence>
-<mem:qvalue>0.0437</mem:qvalue>
+<mem:qvalue>0.0446</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 <matched-element start="850" stop="862" score="10.7349" pvalue="4.42e-05">
 <sequence>AGGGAGAGGAAAA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="388" stop="376" score="10.0843" pvalue="6.18e-05">
 <sequence>AGCAAAACAACGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="753" stop="741" score="9.68675" pvalue="7.49e-05">
 <sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="755" stop="743" score="9.68675" pvalue="7.49e-05">
 <sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="757" stop="745" score="9.68675" pvalue="7.49e-05">
 <sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
 <matched-element start="846" stop="858" score="10.7349" pvalue="4.42e-05">
 <sequence>AGGGAGAGGAAAA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="379" stop="367" score="10.0843" pvalue="6.18e-05">
 <sequence>AGCAAAACAACGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="741" stop="729" score="9.68675" pvalue="7.49e-05">
 <sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="743" stop="731" score="9.68675" pvalue="7.49e-05">
 <sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 <matched-element start="745" stop="733" score="9.68675" pvalue="7.49e-05">
 <sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-<matched-element start="850" stop="862" score="10.7349" pvalue="4.42e-05">
-<sequence>AGGGAGAGGAAAA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="388" stop="376" score="10.0843" pvalue="6.18e-05">
-<sequence>AGCAAAACAACGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="753" stop="741" score="9.68675" pvalue="7.49e-05">
-<sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="755" stop="743" score="9.68675" pvalue="7.49e-05">
-<sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="757" stop="745" score="9.68675" pvalue="7.49e-05">
-<sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
-<matched-element start="846" stop="858" score="10.7349" pvalue="4.42e-05">
-<sequence>AGGGAGAGGAAAA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="379" stop="367" score="10.0843" pvalue="6.18e-05">
-<sequence>AGCAAAACAACGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="741" stop="729" score="9.68675" pvalue="7.49e-05">
-<sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="743" stop="731" score="9.68675" pvalue="7.49e-05">
-<sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
-</matched-element>
-<matched-element start="745" stop="733" score="9.68675" pvalue="7.49e-05">
-<sequence>AGAGAGAGAGAGA</sequence>
-<mem:qvalue>0.0372</mem:qvalue>
+<mem:qvalue>0.0392</mem:qvalue>
 </matched-element>
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
@@ -2983,10 +1927,6 @@ clusterid CDATA #IMPLIED
 <scanned-sequence accession="KLF_Fd05_1_A" name="KLF_Fd05_1_A">
 </scanned-sequence>
 <scanned-sequence accession="KLF_Fd09_1_A" name="KLF_Fd09_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd05_1_A" name="KLF_ECO1Fd05_1_A">
-</scanned-sequence>
-<scanned-sequence accession="KLF_ECO1Fd09_1_A" name="KLF_ECO1Fd09_1_A">
 </scanned-sequence>
 <mem:has-qvalues>yes</mem:has-qvalues>
 </pattern>

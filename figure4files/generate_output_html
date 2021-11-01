@@ -4,4 +4,14 @@
 python_script="../clustal_format_highlighter.py"
 output_directory="/home/petersjg/windows_directory/html_files/"
 
-python ../clustal_format_highlighter.py 
+python3 ../clustal_format_highlighter.py ./ACE1/ACE1_Indels.fa False ./ACE1/ACE1_Fimo/streme/fimo.tsv ./ACE1/ACE1_Fimo/jaspar/fimo.tsv ./ACE1/ACE1.fa $output_directory/ACE1.html
+
+python3 ../clustal_format_highlighter.py ./AP/AP_Indels.fa False ./AP/AP_Fimo/streme/fimo.tsv ./AP/AP_Fimo/jaspar/fimo.tsv ./AP/AP.fa $output_directory/AP.html
+
+python3 ../clustal_format_highlighter.py ./KLF/KLF_Indels.fa False ./KLF/KLF_Fimo/streme/fimo.tsv ./KLF/KLF_Fimo/jaspar/fimo.tsv ./KLF/KLF.fa $output_directory/KLF.html
+
+python3 ../clustal_format_highlighter.py ./LRIM1/LRIM1_Indels.fa False ./LRIM1/LRIM1_Fimo/streme/fimo.tsv ./LRIM1/LRIM1_Fimo/jaspar/fimo.tsv ./LRIM1/LRIM1.fa $output_directory/LRIM1.html
+
+python3 ../clustal_format_highlighter.py ./OVO/OVO_Indels.fa False ./OVO/OVO_Fimo/streme/fimo.tsv ./OVO/OVO_Fimo/jaspar/fimo.tsv ./OVO/OVO.fa $output_directory/OVO.html
+
+python3 ../clustal_format_highlighter.py ./RDL/RDL_Indels.fa False ./RDL/RDL_Fimo/streme/fimo.tsv ./RDL/RDL_Fimo/jaspar/fimo.tsv ./RDL/RDL.fa $output_directory/RDL.html
