@@ -28,4 +28,17 @@ Tutorial:
         output_path: A path to the file to output to. So for example, '~/highlights.html' will output to a linux home directory and generate the file 'highlights.html'
 
         Note that indel_fasta_path and sequences_fasta_path must have the exact same sequences and labels for this program to work, even if you are running clustal omega multiple times to properly formulate indels. The files must then be merged into a single file
+
+    Tutorial for running nardini file with multiple outputs:
+        The current iteraton of the software does not handle this case. However, there's a hacky solution that's currently implemented:
+
+        When cloning the repo, a directory structure (called figure4files) is already in place and populated from split data from the collective nardini output.
+
+        Within that directory is a batch script called: generate_output_html
+
+        Edit this file with any text editor and change the output directory at the top of the file to any directory of your choice. 
+
+        After that, save the file and run it: ./generate_output_html
+        
+        This will generate html files analogus to figure 4 in Michell's paper.
         
