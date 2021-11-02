@@ -43,6 +43,7 @@ def main():
     jaspar_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/jaspar/fimo.tsv'
 
     
+    
     if len(sys.argv) == 7:
         indel_fasta_path = sys.argv[1]
         a_only_bool = sys.argv[2]
