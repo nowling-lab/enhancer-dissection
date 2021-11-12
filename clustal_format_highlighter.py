@@ -43,7 +43,6 @@ def main():
     jaspar_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/jaspar/fimo.tsv'
 
     
-    
     if len(sys.argv) == 7:
         indel_fasta_path = sys.argv[1]
         a_only_bool = sys.argv[2]
@@ -91,7 +90,139 @@ def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_
     html_string_to_output(html_output, output_path)
     return
 
+def find_matched_sequences(matched_sequences, first_part_key, motif_keys):
+    matched_sequences[first_part_key] = set()
+    setty = matched_sequences[first_part_key]
+    for key2 in motif_keys:
+        is_int = True
+        try:
+            int(first_part_key)
+        except:
+            is_int = False
+        
+        if first_part_key in key2 and not is_int:
+            setty.add(key2)
+            #finds all the like-keys. So all the KLF ones ect
+
+def normalize_line_length(key_list, combined_dict, list_of_lines, line_length):
+    for key in key_list:
+        line_list = [] #loops through all the keys
+        combined_list = combined_dict[key]
+        line = []
+        for index, char_color in enumerate(combined_list):                
+            if index % line_length == 0 and index != 0:
+                line_list.append(line.copy())
+                line.clear()
+
+            line.append(char_color)
+        line_list.append(line.copy())
+        line.clear()
+        list_of_lines.append((key, line_list.copy()))
+        line_list.clear()
+        #This essentially just splits the whole massive sequence into
+        #Multiple 70-length sequences for clustal format
+
+def find_max_key_length(list_of_lines):
+    keys_lengths = []
+    for key, row in list_of_lines:
+        keys_lengths.append(len(key)) 
+    
+    keys_lengths.append(len('stars'))
+    
+    max_len = max(keys_lengths) 
+    return max_len
+    #this last loop is to find the longest key so we can add
+    #white space to other keys to make it line up properly
+
+def compare_append_rows(row, counter, max_len, key):
+    row_string = ""
+    padding_str = generate_padding_string(max_len, key)
+    #For every key that like, as in for all KLF's,
+    #Grab the row and print them 
+    #also adds to the rows_to_compare for when I do star comparisons 
+    row_string +=  key + padding_str + ": " 
+    row_string += convert_line_to_html(row[counter])
+    row_string += '<br>'
+    return row_string
+
+def append_stars(max_len, rows_to_compare,):
+    padding = generate_padding_string(max_len, 'Stars')
+    
+    star_str = 'stars' + padding + ': '
+    check_list = set()
+    for index, rows in enumerate(rows_to_compare):
+        check_list.add(len(rows))
+    if len(rows_to_compare) > 0:
+        star_str += generate_continuity_stars(rows_to_compare)
+    star_str += '<br>' 
+    
+    return star_str
+
+def group_matched_sequences(matched_sequences, motif_keys, key):
+    key_split = key.split('_')
+    first_part_key = key_split[0]
+
+    if len(matched_sequences) > 0:
+        last_key = list(matched_sequences.keys())[-1]
+        last_list = list(matched_sequences[last_key])
+        if key in last_list:
+            return #If this key was already done
+        #we don't want to do it again so we skip. This is a clustal
+        #omega format thing since we include multiple sequences 
+        #per block
+
+    matched_sequences[first_part_key] = set()
+    setty = matched_sequences[first_part_key]
+    setty = find_matched_sequences(matched_sequences, first_part_key, motif_keys)
+    
+    if len(setty) == 0:
+        setty.add(key)
+    return
+
 def generate_html(combined_dict):
+    html_string = html_header()
+     # Large HTML header up top, then adds to it below with dynamic_html_string
+    dynamic_html_string = "<br>"
+    motif_keys = list(combined_dict.keys())
+    motif_keys.sort()
+
+    matched_sequences = {}
+    for key in motif_keys: #Loop through all of the sequences
+        group_matched_sequences(matched_sequences, motif_keys, key)
+
+    for key_to_list in matched_sequences:
+        dynamic_html_string += "<br> <span> New Sequence </span>"
+        key_list = list(matched_sequences[key_to_list])
+        #This is the start of a new sequence in the output
+        list_of_lines = []
+
+        line_length = 70
+        normalize_line_length(key_list, combined_dict, list_of_lines, line_length)
+
+        if(len(list_of_lines) == 0):
+            stop = 1
+        else:
+            stop = len(list_of_lines[0][1])
+        counter = 0
+        while counter < stop: #Loop through however many lines we got
+            max_len = find_max_key_length(list_of_lines)
+
+            dynamic_html_string += '<pre>'
+            rows_to_compare = []
+            for key, row in list_of_lines:
+                rows_to_compare.append(row[counter])
+                dynamic_html_string += compare_append_rows(row, counter, max_len, key)
+
+            dynamic_html_string += append_stars(max_len, rows_to_compare)
+            
+            dynamic_html_string += '</pre>' #this is the last block since it's excluded
+            counter += 1 #From the list. 
+
+    html_string += dynamic_html_string
+    html_string += '\n</body>'
+    return html_string
+
+def html_header():
     html_string = """
     <!DOCTYPE html>
     <html lang="en-US">
@@ -158,105 +289,6 @@ def generate_html(combined_dict):
     });
     </script>
      """
-     # Large HTML header up top, then adds to it below with dynamic_html_string
-    dynamic_html_string = "<br>"
-    motif_keys = list(combined_dict.keys())
-    motif_keys.sort()
-
-    matched_sequences = {}
-    first_part_key = ''
-    for key in motif_keys: #Loop through all of the sequences
-        key_split = key.split('_')
-        first_part_key = key_split[0]
-
-        if len(matched_sequences) > 0:
-            last_key = list(matched_sequences.keys())[-1]
-            last_list = list(matched_sequences[last_key])
-            if key in last_list:
-                continue #If this key was already done
-            #we don't want to do it again so we skip. This is a clustal
-            #omega format thing since we include multiple sequences 
-            #per block
-
-        matched_sequences[first_part_key] = set()
-        setty = matched_sequences[first_part_key]
-        for key2 in motif_keys:
-            is_int = True
-            try:
-                int(first_part_key)
-            except:
-                is_int = False
-            
-            if first_part_key in key2 and not is_int:
-                setty.add(key2)
-                #finds all the like-keys. So all the KLF ones ect
-        if len(setty) == 0:
-            setty.add(key)
-
-    for key_to_list in matched_sequences:
-        dynamic_html_string += "<br> <span> New Sequence </span>"
-        key_list = list(matched_sequences[key_to_list])
-        #This is the start of a new sequence in the output
-        list_of_lines = []
-
-        for key in key_list:
-            line_list = [] #loops through all the keys
-            combined_list = combined_dict[key]
-            line = []
-            for index, char_color in enumerate(combined_list):                
-                if index % 70 == 0 and index != 0:
-                    line_list.append(line.copy())
-                    line.clear()
- 
-                line.append(char_color)
-            line_list.append(line.copy())
-            line.clear()
-            list_of_lines.append((key, line_list.copy()))
-            line_list.clear()
-            #This essentially just splits the whole massive sequence into
-            #Multiple 70-length sequences for clustal format
-
-        if(len(list_of_lines) == 0):
-            stop = 1
-        else:
-            stop = len(list_of_lines[0][1])
-        counter = 0
-        while counter < stop: #Loop through however many lines we got
-            keys_lengths = []
-            for key, row in list_of_lines:
-                keys_lengths.append(len(key)) 
-            
-            keys_lengths.append(len('stars'))
-            
-            max_len = max(keys_lengths) 
-            #this last loop is to find the longest key so we can add
-            #white space to other keys to make it line up properly
-
-            dynamic_html_string += '<pre>'
-            rows_to_compare = []
-            for key, row in list_of_lines:
-                rows_to_compare.append(row[counter])
-                padding_str = generate_padding_string(max_len, key)
-                #For every key that like, as in for all KLF's,
-                #Grab the row and print them 
-                #also adds to the rows_to_compare for when I do star comparisons 
-                dynamic_html_string +=  key + padding_str + ": " 
-                dynamic_html_string += convert_line_to_html(row[counter])
-                dynamic_html_string += '<br>'
-
-            padding = generate_padding_string(max_len, 'Stars')
-            dynamic_html_string += 'stars' + padding + ': '
-            check_list = set()
-            for index, rows in enumerate(rows_to_compare):
-                check_list.add(len(rows))
-            if len(rows_to_compare) > 0:
-                dynamic_html_string += generate_continuity_stars(rows_to_compare)
-            dynamic_html_string += '<br>' 
-            dynamic_html_string += '</pre>' #this is the last block since it's excluded
-            counter += 1 #From the list. 
-
-    html_string += dynamic_html_string
-    html_string += '\n</body>'
     return html_string
 
 def generate_padding_string(max_len, key):
@@ -327,6 +359,63 @@ def return_sequences(line):
             return_string += char
     return return_string
 
+def generate_overlap_dict(motif_dict1, motif_dict2, key):
+    highlight_list = motif_dict1[key]
+    highlight_list = sorted(highlight_list, key=lambda x: x[0])
+    overlap_dict = {} #getting the sequences
+    
+    highlight_overlaps(highlight_list, overlap_dict, "blue")
+
+    highlight_list2 = motif_dict2[key]
+    highlight_list2 = sorted(highlight_list2, key=lambda x: x[0])
+    
+    highlight_overlaps(highlight_list2, overlap_dict, "red")
+    #adding all the highlighting to the proper lists
+    return overlap_dict
+
+def color_characters(color, combined_list, char, tooltip_str):
+    if color == "purple":
+        combined_list.append((char.upper(), 'purple', tooltip_str))
+    elif color == "red" or color == "redx":
+        if color == 'redx':
+            combined_list.append((char.upper(), 'redx', tooltip_str))
+        else:
+            combined_list.append((char.upper(), 'red', tooltip_str))
+    elif color == "blue" or color ==  "bluex":
+        if color == 'bluex':
+            combined_list.append((char.upper(), 'bluex', tooltip_str))
+        else:
+            combined_list.append((char.upper(), 'blue', tooltip_str))
+    else:
+        combined_list.append((char.upper(), 'none'))
+    
+def add_trailing_indels(indel_list, index_1_based, sequence, combined_list):
+    if len(indel_list) > 0:
+        if index_1_based == len(sequence) and indel_list[-1][0] == len(sequence):
+            add_indel_string_to_list(indel_list[-1][1], combined_list, 'none')
+
+def color_indels(indel_list, index, index_1_based, overlap_dict, combined_list, color):
+    for pos, indel_str in indel_list:
+        #This loop colors the indels properly
+        #just does logic to check if it's the same motif
+        #and some other stuff to see if the indel is colored
+        if pos == index:
+            if (index_1_based - 1) in overlap_dict and (index_1_based) in overlap_dict:
+                prev_color = overlap_dict[index_1_based - 1]
+                if 'x' in prev_color or 'x' in color:
+                    add_indel_string_to_list(indel_str, combined_list, 'none')
+                    continue                
+                if color == "purple":
+                    add_indel_string_to_list(indel_str, combined_list, 'purple')
+                elif color == "red":
+                    add_indel_string_to_list(indel_str, combined_list, 'red')
+                elif color == "blue":
+                    add_indel_string_to_list(indel_str, combined_list, 'blue')     
+            else:
+                add_indel_string_to_list(indel_str, combined_list, 'none')                    
+            break 
+    return
+
 def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
     #Combines all the dictionaries and indels into one single one.
     motif_keys = list(motif_dict1.keys())
@@ -339,19 +428,10 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
             indel_list = indel_dict[key]
         else:
             indel_list = {} #if not there make it 
-
+            
         sequence = seq_dict[key]
-        highlight_list = motif_dict1[key]
-        highlight_list = sorted(highlight_list, key=lambda x: x[0])
-        overlap_dict = {} #getting the sequences
-        
-        highlight_overlaps(highlight_list, overlap_dict, "blue")
 
-        highlight_list2 = motif_dict2[key]
-        highlight_list2 = sorted(highlight_list2, key=lambda x: x[0])
-        
-        highlight_overlaps(highlight_list2, overlap_dict, "red")
-        #adding all the highlighting to the proper lists
+        overlap_dict = generate_overlap_dict(motif_dict1, motif_dict2, key)
 
         for index, char in enumerate(sequence):
             index_1_based = index + 1
@@ -361,46 +441,15 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
                 color = "none"
                 #if there is no color then put none there 
             
-            for pos, indel_str in indel_list:
-                #This loop colors the indels properly
-                #just does logic to check if it's the same motif
-                #and some other stuff to see if the indel is colored
-                if pos == index:
-                    if (index_1_based - 1) in overlap_dict and (index_1_based) in overlap_dict:
-                        prev_color = overlap_dict[index_1_based - 1]
-                        if 'x' in prev_color or 'x' in color:
-                            add_indel_string_to_list(indel_str, combined_list, 'none')
-                            continue                
-                        if color == "purple":
-                            add_indel_string_to_list(indel_str, combined_list, 'purple')
-                        elif color == "red":
-                            add_indel_string_to_list(indel_str, combined_list, 'red')
-                        elif color == "blue":
-                            add_indel_string_to_list(indel_str, combined_list, 'blue')     
-                    else:
-                        add_indel_string_to_list(indel_str, combined_list, 'none')                    
-                    break                    
+            #color indels here
+            color_indels(indel_list, index, index_1_based, overlap_dict, combined_list, color)                   
                 
             #Adding tupules of character.upper() and its color to a combined list
             #This is so I can then split it up for clustal later
-            if color == "purple":
-                combined_list.append((char.upper(), 'purple', tooltip_str))
-            elif color == "red" or color == "redx":
-                if color == 'redx':
-                    combined_list.append((char.upper(), 'redx', tooltip_str))
-                else:
-                    combined_list.append((char.upper(), 'red', tooltip_str))
-            elif color == "blue" or color ==  "bluex":
-                if color == 'bluex':
-                    combined_list.append((char.upper(), 'bluex', tooltip_str))
-                else:
-                    combined_list.append((char.upper(), 'blue', tooltip_str))
-            else:
-                combined_list.append((char.upper(), 'none'))
+            color_characters(color, combined_list, char, tooltip_str)
             
-            if len(indel_list) > 0:
-                if index_1_based == len(sequence) and indel_list[-1][0] == len(sequence):
-                    add_indel_string_to_list(indel_list[-1][1], combined_list, 'none')
+            #add trailing indels
+            add_trailing_indels(indel_list, index_1_based, sequence, combined_list)
             
         combined_dict[key] = combined_list
 
