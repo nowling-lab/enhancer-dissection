@@ -76,6 +76,7 @@ def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_
         output_path (string): Path to output file. Note this must go to a .html file: ~/highlights.html as an example
     """
     indel_fasta = read_fasta_file(indel_fasta_path, a_only_bool)
+    print(indel_fasta)
     indel_dict = generate_indel_locals(indel_fasta)
     combined_indel_dict = combine_indels(indel_dict)
 
