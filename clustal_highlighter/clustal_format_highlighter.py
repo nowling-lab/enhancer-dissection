@@ -53,14 +53,13 @@ def main():
         main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path)
     
     else:
-        
         output_path = '/home/petersjg/windows_directory'
         output_file_path = output_path + '/nardini_all_b_a_highlights.html'
     
-        main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
+        #main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
         #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
         #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
-        #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
+        main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
         #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
     
     return    
@@ -103,6 +102,7 @@ def find_matched_sequences(matched_sequences, first_part_key, motif_keys):
         if first_part_key in key2 and not is_int:
             setty.add(key2)
             #finds all the like-keys. So all the KLF ones ect
+    return setty
 
 def normalize_line_length(key_list, combined_dict, list_of_lines, line_length):
     for key in key_list:
@@ -145,7 +145,7 @@ def compare_append_rows(row, counter, max_len, key):
     row_string += '<br>'
     return row_string
 
-def append_stars(max_len, rows_to_compare,):
+def append_stars(max_len, rows_to_compare):
     padding = generate_padding_string(max_len, 'Stars')
     
     star_str = 'stars' + padding + ': '
@@ -171,8 +171,6 @@ def group_matched_sequences(matched_sequences, motif_keys, key):
         #omega format thing since we include multiple sequences 
         #per block
 
-    matched_sequences[first_part_key] = set()
-    setty = matched_sequences[first_part_key]
     setty = find_matched_sequences(matched_sequences, first_part_key, motif_keys)
     
     if len(setty) == 0:
@@ -439,6 +437,7 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
                 color, tooltip_str = overlap_dict[index_1_based]
             else:
                 color = "none"
+                tooltip_str = ""
                 #if there is no color then put none there 
             
             #color indels here
@@ -461,7 +460,6 @@ def add_indel_string_to_list(indel_string, combined_list, color):
     #makes indels tupoles with colors and adds them to combined list
     for char in indel_string:
         combined_list.append(('-', color))
-
 
 def generate_indel_string(indel_string):
     #This used to help with HTML formatting, but now it's 
