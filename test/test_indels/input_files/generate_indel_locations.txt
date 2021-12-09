@@ -1,3 +1,0 @@
-seq1, TTGC---CACCTAG---- : 5,6,7,15,16,17,18
-seq2, -TTTT : 1
-seq3, TTTT- : 5

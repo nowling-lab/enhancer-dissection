@@ -58,8 +58,8 @@ def main():
     
         #main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
         #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
-        #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
-        main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
+        main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
+        #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
         #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
     
     return    
@@ -76,7 +76,7 @@ def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_
         output_path (string): Path to output file. Note this must go to a .html file: ~/highlights.html as an example
     """
     indel_fasta = read_fasta_file(indel_fasta_path, a_only_bool)
-    print(indel_fasta)
+
     indel_dict = generate_indel_locals(indel_fasta)
     combined_indel_dict = combine_indels(indel_dict)
 
@@ -188,7 +188,7 @@ def generate_html(combined_dict):
     matched_sequences = {}
     for key in motif_keys: #Loop through all of the sequences
         group_matched_sequences(matched_sequences, motif_keys, key)
-
+    
     for key_to_list in matched_sequences:
         dynamic_html_string += "<br> <span> New Sequence </span>"
         key_list = list(matched_sequences[key_to_list])
@@ -197,7 +197,7 @@ def generate_html(combined_dict):
 
         line_length = 70
         normalize_line_length(key_list, combined_dict, list_of_lines, line_length)
-
+        
         if(len(list_of_lines) == 0):
             stop = 1
         else:
@@ -655,4 +655,5 @@ def highlight_overlaps(highlight_list, overlap_dict, color):
                     overlap_dict[x] = (color, alt_motif_id)
 
 
-main()
+if __name__ == "__main__":
+   main()
