@@ -58,8 +58,8 @@ def main():
     
         #main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
         #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
-        main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
-        #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
+        #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
+        main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
         #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
     
     return    
@@ -370,6 +370,7 @@ def generate_overlap_dict(motif_dict1, motif_dict2, key):
     
     highlight_overlaps(highlight_list2, overlap_dict, "red")
     #adding all the highlighting to the proper lists
+    
     return overlap_dict
 
 def color_characters(color, combined_list, char, tooltip_str):
@@ -442,8 +443,7 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
                 #if there is no color then put none there 
             
             #color indels here
-            color_indels(indel_list, index, index_1_based, overlap_dict, combined_list, color)                   
-                
+            color_indels(indel_list, index, index_1_based, overlap_dict, combined_list, color)                  
             #Adding tupules of character.upper() and its color to a combined list
             #This is so I can then split it up for clustal later
             color_characters(color, combined_list, char, tooltip_str)

@@ -10,7 +10,7 @@ def test_convert_line_to_html():
     html_out = convert_line_to_html(item_list)
     print(html_out)
     
-test_convert_line_to_html()
+test_convert_line_to_html
     
     
 #TODO BUGGED CODE. FIX PLS
