@@ -3,7 +3,7 @@ import os
 
 sys.path.insert(0, os.getcwd())
 
-from clustal_highlighter.clustal_format_highlighter import read_fasta_file
+from clustal_highlighter.modules.file_handler import read_fasta_file
 
 #Tests the ability for read_fasta_file to read fasta formatted sequences,
 #With out without indels.

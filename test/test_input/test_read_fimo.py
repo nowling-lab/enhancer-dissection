@@ -3,7 +3,7 @@ import os
 
 sys.path.insert(0, os.getcwd())
 
-from clustal_highlighter.clustal_format_highlighter import read_fimo_file
+from clustal_highlighter.modules.file_handler import read_fimo_file
 
 
 #This test matches the corrent outputs: one, two, three, and four
