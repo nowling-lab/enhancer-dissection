@@ -1,4 +1,4 @@
-def read_fasta_file(file_path, only_A):
+def read_fasta_file(file_path):
     #Reads in a fasta file. Standard stuff
     sequence_dictionary = {}
     sequence = None
@@ -7,24 +7,20 @@ def read_fasta_file(file_path, only_A):
         for line in f:
             if '>' in line:
                 header = line
-                split_header = header.split()                   
 
                 if sequence_name == None:
                     sequence = None
-                    sequence_name = split_header[0]
-                    sequence_name = sequence_name[1:]
+                    sequence_name = header[1:].strip()
                 else:
-                    if ('_A' or '_a') in sequence_name or not only_A:
-                        sequence_dictionary[sequence_name] = sequence
-                    sequence_name = split_header[0]
-                    sequence_name = sequence_name[1:]
+                    sequence_dictionary[sequence_name] = sequence
+                    sequence_name = header[1:].strip()
                     sequence = None
             else:
                 if sequence == None:
                     sequence = line.strip()
                 else:
                     sequence += line.strip() 
-    if ('_A' or '_a') in sequence_name or not only_A:
+    
         sequence_dictionary[sequence_name] = sequence
     return sequence_dictionary
 

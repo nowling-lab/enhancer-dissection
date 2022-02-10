@@ -1,4 +1,4 @@
-# enhancer-disection
+# enhancer-dissection
 
 Tutorial:
     This program hasn't been updated to use the command-line as of yet. 

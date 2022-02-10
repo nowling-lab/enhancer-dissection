@@ -1,8 +1,11 @@
 from os import read
 from typing import Literal
 import sys
+import os
 
-from modules.file_handler import *
+sys.path.append(os.getcwd())
+
+from clustal_highlighter.modules.file_handler import *
 
 def main():
     ### INDEL FILE PATHS
@@ -11,7 +14,7 @@ def main():
     KLF_A_indels = '/home/petersjg/windows_directory/indel-fasta-files/KLF_A_Indels.fa'
     LRIM_A_indels = '/home/petersjg/windows_directory/indel-fasta-files/LRIM_A_Indels.fa'
     all_indels_merged = './a_only_indels/indel-fasta-files/nardini_a_only_merged.fa'
-    pfin1_7051_indels = '/home/petersjg/windows_directory/7051_Pfin1_aligned.fasta'
+    pfin1_7051_indels = '/home/petersjg/windows_directory/old/7051_Pfin1_aligned.fasta'
     pfin_haplotype_indels = '/home/petersjg/windows_directory/Pfin1_with_1000genomes_haplotypes_clustal_omega.fa'
     nardini_all_b_to_a_indels = '/home/petersjg/windows_directory/nardini_groups/clustal_results/nardini_b_to_a_clustal.fa'
     
@@ -21,7 +24,7 @@ def main():
     APT2_A = '/home/petersjg/windows_directory/a-only-fasta-files/APT2_A.fa'
     KLF_A = '/home/petersjg/windows_directory/a-only-fasta-files/KLF_A.fa'
     LRIM_A = '/home/petersjg/windows_directory/a-only-fasta-files/LRIM_A.fa'
-    pfin1_7051 = '/home/petersjg/windows_directory/7051_Pfin1_sequences.txt' 
+    pfin1_7051 = '/home/petersjg/windows_directory/old/7051_Pfin1_sequences.txt' 
     pfin_haplotypes = '/home/petersjg/windows_directory/Pfin1_with_1000genomes_haplotypes.fa'
     enhancers_16 = './temp_files_pre_params/fasta_files/16_enhancers.fa'
     
@@ -34,8 +37,8 @@ def main():
     ### Fimo file paths
     streme_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_streme_a_only/fimo.tsv'
     jaspar_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_jaspar_a_only/fimo.tsv'
-    streme_motifs_pfin1 = '/home/petersjg/windows_directory/7051_Pfin1_fimo/streme/fimo.tsv'
-    jaspar_motifs_pfin1 = '/home/petersjg/windows_directory/7051_Pfin1_fimo/jaspar/fimo.tsv'
+    streme_motifs_pfin1 = '/home/petersjg/windows_directory/old/7051_Pfin1_fimo/streme/fimo.tsv'
+    jaspar_motifs_pfin1 = '/home/petersjg/windows_directory/old/7051_Pfin1_fimo/jaspar/fimo.tsv'
     streme_motifs_haplotypes = '/home/petersjg/windows_directory/haplotypes_fimo/streme/fimo.tsv'
     jaspar_motifs_haplotypes = '/home/petersjg/windows_directory/haplotypes_fimo/jaspar/fimo.tsv'
     streme_motfs_16_enhancers = './temp_files_pre_params/enhancer-dissection-out/FIMO_16_enhancers/fimo.tsv'
@@ -44,14 +47,13 @@ def main():
     jaspar_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/jaspar/fimo.tsv'
 
     
-    if len(sys.argv) == 7:
+    if len(sys.argv) == 6:
         indel_fasta_path = sys.argv[1]
-        a_only_bool = sys.argv[2]
-        streme_tsv_path = sys.argv[3]
-        jaspar_tsv_path = sys.argv[4]
-        sequences_fasta_path = sys.argv[5]
-        output_path = sys.argv[6]
-        main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path)
+        streme_tsv_path = sys.argv[2]
+        jaspar_tsv_path = sys.argv[3]
+        sequences_fasta_path = sys.argv[4]
+        output_path = sys.argv[5]
+        main_abstraction(indel_fasta_path, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path)
     
     else:
         output_path = '/home/petersjg/windows_directory'
@@ -60,12 +62,12 @@ def main():
         #main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
         #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
         #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
-        main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
+        #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
         #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
     
     return    
 
-def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path):
+def main_abstraction(indel_fasta_path, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path):
     """This method abstracts the main method so other users don't need to remember which order to call functions in
 
     Args:
@@ -76,7 +78,7 @@ def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_
         sequences_fasta_path (string): Path to the sequences file in fasta format
         output_path (string): Path to output file. Note this must go to a .html file: ~/highlights.html as an example
     """
-    indel_fasta = read_fasta_file(indel_fasta_path, a_only_bool)
+    indel_fasta = read_fasta_file(indel_fasta_path)
 
     indel_dict = generate_indel_locals(indel_fasta)
     combined_indel_dict = combine_indels(indel_dict)
@@ -84,7 +86,7 @@ def main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_
     streme_motifs = read_fimo_file(streme_tsv_path)
     jaspar_motifs = read_fimo_file(jaspar_tsv_path)
 
-    sequence_dict = read_fasta_file(sequences_fasta_path, a_only_bool)
+    sequence_dict = read_fasta_file(sequences_fasta_path)
     combined_dicts = combine_dictionaries(streme_motifs, jaspar_motifs, sequence_dict, combined_indel_dict)
     html_output = generate_html(combined_dicts)
 
@@ -160,8 +162,26 @@ def append_stars(max_len, rows_to_compare):
     
     return star_str
 
+def append_position(max_len, rows_to_compare, position):
+    padding = generate_padding_string(max_len, 'Pos')
+    start_pos = 0
+    if position == 0:
+        start_pos = 1
+    else:
+        start_pos = position
+    
+    pos_string = 'Pos' + padding + ': Start: ' + str(start_pos) + ","
+    
+     #Just an easy way to keep the loop more simple since it's +1 in the loop
+    pre_pos = position
+    position += len(rows_to_compare[0])
+
+    pos_string += " End: " + str(position)
+    
+    return pos_string, position
+
 def group_matched_sequences(matched_sequences, motif_keys, key):
-    key_split = key.split('_')
+    key_split = key.split('-')
     first_part_key = key_split[0]
 
     if len(matched_sequences) > 0:
@@ -204,6 +224,7 @@ def generate_html(combined_dict):
         else:
             stop = len(list_of_lines[0][1])
         counter = 0
+        position = 0
         while counter < stop: #Loop through however many lines we got
             max_len = find_max_key_length(list_of_lines)
 
@@ -213,7 +234,10 @@ def generate_html(combined_dict):
                 rows_to_compare.append(row[counter])
                 dynamic_html_string += compare_append_rows(row, counter, max_len, key)
 
-            dynamic_html_string += append_stars(max_len, rows_to_compare)
+            #dynamic_html_string += append_stars(max_len, rows_to_compare)
+            
+            position_string, position = append_position(max_len, rows_to_compare, position)
+            dynamic_html_string += position_string
             
             dynamic_html_string += '</pre>' #this is the last block since it's excluded
             counter += 1 #From the list. 
@@ -268,8 +292,8 @@ def convert_line_to_html(line):
             else:
                 class_color = color
             
-        if '-' in char and 'none' not in color:
-            html_out += '</span class="' + class_color + '"' 
+        if 'none' not in color:
+            html_out += '<span class="' + class_color + '"' 
             
         if 'none' not in color:
             html_out += '>'
@@ -356,7 +380,8 @@ def combine_dictionaries(motif_dict1, motif_dict2, seq_dict, indel_dict):
 
     for key in motif_keys: #Go for all keys
         combined_list = []        
-        if indel_dict != None:
+        
+        if indel_dict != None and len(indel_dict) != 0:
             indel_list = indel_dict[key]
         else:
             indel_list = {} #if not there make it 
@@ -475,6 +500,7 @@ def generate_indel_locals(seqs_with_indels):
             indel_locations[key] = []
         
         seq = seqs_with_indels[key]
+        
         for index, char in enumerate(seq):
             if char == '-':
                 indel_locations[key].append(index + 1)
