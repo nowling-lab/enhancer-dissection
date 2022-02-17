@@ -176,7 +176,7 @@ def append_position(max_len, rows_to_compare, position):
     return pos_string, position
 
 def group_matched_sequences(matched_sequences, motif_keys, key):
-    key_split = key.split('-')
+    key_split = key.split('_')
     first_part_key = key_split[0]
 
     if len(matched_sequences) > 0:

@@ -12,7 +12,7 @@ def test_read_fasta():
     two = ('ACE1_Fd05_3_A','TTGTGCTCGGATTGCTATGAATCCTTCAACCGCT')
     three = ('ACE1_Ng3_1_A','TTGTGCTCGGATTGCTATG----CTTCAACCGCT')
     output_list = (one, two, three)
-    fasta = read_fasta_file('test/test_input/input_files/test_fasta.fa', False)
+    fasta = read_fasta_file('test/test_input/input_files/test_fasta.fa')
     keys = fasta.keys()
     assert len(keys) == len(output_list)
     for index, key in enumerate(keys):

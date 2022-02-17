@@ -10,6 +10,7 @@ def test_group_matched_sequences():
     matched_sequences = {}
     for key in keys:
         group_matched_sequences(matched_sequences, keys, key)
+    print(matched_sequences)
     
     assert "Seq" in matched_sequences.keys()
     assert 'alt' in matched_sequences.keys()
