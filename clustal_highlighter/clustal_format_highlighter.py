@@ -8,44 +8,6 @@ sys.path.append(os.getcwd())
 from clustal_highlighter.modules.file_handler import *
 
 def main():
-    ### INDEL FILE PATHS
-    ACE1_A_indels = '/home/petersjg/Windows_Directory/indel-fasta-files/ACE1_A_Indels.fa'
-    APT2_A_indels = '/home/petersjg/Windows_Directory/indel-fasta-files/APT2_A_Indels.fa'
-    KLF_A_indels = '/home/petersjg/windows_directory/indel-fasta-files/KLF_A_Indels.fa'
-    LRIM_A_indels = '/home/petersjg/windows_directory/indel-fasta-files/LRIM_A_Indels.fa'
-    all_indels_merged = './a_only_indels/indel-fasta-files/nardini_a_only_merged.fa'
-    pfin1_7051_indels = '/home/petersjg/windows_directory/old/7051_Pfin1_aligned.fasta'
-    pfin_haplotype_indels = '/home/petersjg/windows_directory/Pfin1_with_1000genomes_haplotypes_clustal_omega.fa'
-    nardini_all_b_to_a_indels = '/home/petersjg/windows_directory/nardini_groups/clustal_results/nardini_b_to_a_clustal.fa'
-    
-    
-    ### WITHOUT INDELS FILE PATHS
-    ACE1_A = '/home/petersjg/windows_directory/a-only-fasta-files/ACE1_A.fa'
-    APT2_A = '/home/petersjg/windows_directory/a-only-fasta-files/APT2_A.fa'
-    KLF_A = '/home/petersjg/windows_directory/a-only-fasta-files/KLF_A.fa'
-    LRIM_A = '/home/petersjg/windows_directory/a-only-fasta-files/LRIM_A.fa'
-    pfin1_7051 = '/home/petersjg/windows_directory/old/7051_Pfin1_sequences.txt' 
-    pfin_haplotypes = '/home/petersjg/windows_directory/Pfin1_with_1000genomes_haplotypes.fa'
-    enhancers_16 = './temp_files_pre_params/fasta_files/16_enhancers.fa'
-    
-
-    ### Nardini luciferase fragments
-    nardini_fasta_all = './temp_files_pre_params/fasta_files/nardini_luciferase_fragments.fasta'
-    nardini_a_only_fasta = './temp_files_pre_params/fasta_files/nardini_luciferase_fragments_A_only.fasta'
-    nardini_a_to_b_all = '/home/petersjg/windows_directory/nardini_groups/nardini_all_a_to_b.fa'
-
-    ### Fimo file paths
-    streme_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_streme_a_only/fimo.tsv'
-    jaspar_motifs_nardini = './temp_files_pre_params/fimo_a_only/fimo_jaspar_a_only/fimo.tsv'
-    streme_motifs_pfin1 = '/home/petersjg/windows_directory/old/7051_Pfin1_fimo/streme/fimo.tsv'
-    jaspar_motifs_pfin1 = '/home/petersjg/windows_directory/old/7051_Pfin1_fimo/jaspar/fimo.tsv'
-    streme_motifs_haplotypes = '/home/petersjg/windows_directory/haplotypes_fimo/streme/fimo.tsv'
-    jaspar_motifs_haplotypes = '/home/petersjg/windows_directory/haplotypes_fimo/jaspar/fimo.tsv'
-    streme_motfs_16_enhancers = './temp_files_pre_params/enhancer-dissection-out/FIMO_16_enhancers/fimo.tsv'
-    jaspar_motifs_16_enhancers = './temp_files_pre_params/enhancer-dissection-out/FIMO_16_JASPAR/fimo.tsv'
-    streme_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/streme/fimo.tsv'
-    jaspar_motifs_nardini_all = '/home/petersjg/windows_directory/nardini_groups/Fimo/jaspar/fimo.tsv'
-
     
     if len(sys.argv) == 6:
         indel_fasta_path = sys.argv[1]
@@ -54,16 +16,9 @@ def main():
         sequences_fasta_path = sys.argv[4]
         output_path = sys.argv[5]
         main_abstraction(indel_fasta_path, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path)
-    
-    else:
-        output_path = '/home/petersjg/windows_directory'
-        output_file_path = output_path + '/nardini_all_b_a_highlights.html'
-    
-        #main_abstraction(nardini_all_b_to_a_indels, False, streme_motifs_nardini_all, jaspar_motifs_nardini_all, nardini_a_to_b_all, output_file_path)
-        #main_abstraction(enhancers_16, False, streme_motfs_16_enhancers, jaspar_motifs_16_enhancers, enhancers_16, output_file_path)
-        #main_abstraction(pfin_haplotype_indels, False, streme_motifs_haplotypes, jaspar_motifs_haplotypes, pfin_haplotypes, output_file_path)
-        #main_abstraction(pfin1_7051_indels, False, streme_motifs_pfin1, jaspar_motifs_pfin1, pfin1_7051, output_file_path)
-        #main_abstraction(all_indels_merged, False, streme_motifs_nardini, jaspar_motifs_nardini, nardini_a_only_fasta, output_file_path)
+    else: 
+        print("Invalid number of sys arguments, these need to be: \n" +
+              "Path to indel fasta (if N/A just use the fasta file), fimo ran with streme(tsv), fimo ran with jaspar(tsv), the fasta file with sequences and the output path for the html")
     
     return    
 
