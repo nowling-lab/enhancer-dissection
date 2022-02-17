@@ -1,0 +1,5 @@
+motif_id	motif_alt_id	sequence_name	start	stop	strand	score	p-value	q-value	matched_sequence
+1-AAAAA	TEST-1	Seq_1	0	5	+	11.111	1.01e-01	0.0001	AAAaa
+2-BBBBB	TEST-2	Seq_2	6	10	+	22.222	1.02e-02	0.0002	BBBbb
+3-CCCCC	TEST-3	Seq_3	10	12	+	33.333	1.03e-03	0.0003	CCCcc
+4-DDDDD	TEST-4	Seq_1	25	30	+	44.444	1.04e-04	0.0004	DDDdd
