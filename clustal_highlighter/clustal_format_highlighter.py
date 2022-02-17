@@ -164,19 +164,14 @@ def append_stars(max_len, rows_to_compare):
 
 def append_position(max_len, rows_to_compare, position):
     padding = generate_padding_string(max_len, 'Pos')
-    start_pos = 0
-    if position == 0:
-        start_pos = 1
-    else:
-        start_pos = position
     
-    pos_string = 'Pos' + padding + ': Start: ' + str(start_pos) + ","
+    pos_string = 'Pos' + padding + ': Start: ' + str(position) + ","
     
      #Just an easy way to keep the loop more simple since it's +1 in the loop
-    pre_pos = position
-    position += len(rows_to_compare[0])
+    position += len(rows_to_compare[0]) - 1
 
     pos_string += " End: " + str(position)
+    position += 1
     
     return pos_string, position
 
@@ -224,7 +219,7 @@ def generate_html(combined_dict):
         else:
             stop = len(list_of_lines[0][1])
         counter = 0
-        position = 0
+        position = 1
         while counter < stop: #Loop through however many lines we got
             max_len = find_max_key_length(list_of_lines)
 
@@ -234,7 +229,7 @@ def generate_html(combined_dict):
                 rows_to_compare.append(row[counter])
                 dynamic_html_string += compare_append_rows(row, counter, max_len, key)
 
-            #dynamic_html_string += append_stars(max_len, rows_to_compare)
+            ##dynamic_html_string += append_stars(max_len, rows_to_compare)
             
             position_string, position = append_position(max_len, rows_to_compare, position)
             dynamic_html_string += position_string
