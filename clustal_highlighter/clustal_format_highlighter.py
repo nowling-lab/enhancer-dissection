@@ -1,5 +1,3 @@
-from os import read
-from typing import Literal
 import sys
 import os
 
@@ -74,6 +72,7 @@ def normalize_line_length(key_list, combined_dict, list_of_lines, line_length):
                 line.clear()
 
             line.append(char_color)
+            print(char_color)
         line_list.append(line.copy())
         line.clear()
         list_of_lines.append((key, line_list.copy()))
@@ -147,7 +146,6 @@ def group_matched_sequences(matched_sequences, motif_keys, key):
     
     if len(setty) == 0:
         setty.add(key)
-    return
 
 def generate_html(combined_dict):
     html_string = html_header()
@@ -242,7 +240,7 @@ def convert_line_to_html(line):
             else:
                 class_color = color
             
-        if 'none' not in color:
+        if 'none' not in color: #Is it possible for this not to be an -? Check if highlights without tooltip is possible
             html_out += '<span class="' + class_color + '"' 
             
         if 'none' not in color:
