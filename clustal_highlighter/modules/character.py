@@ -35,21 +35,13 @@ class Character:
             tooltip = tooltip[:-2]
             
         self.tooltip = tooltip
-    
-    def verify_color(self, motif_descriptor):
-        for descriptor in self.motif_files:
-            motifs_in_same_descriptor = self.motif_files[descriptor]
             
-            if self.character == "-" and len(motifs_in_same_descriptor) > 1 and descriptor == motif_descriptor:
-                self.color = None
-            
-    def set_color(self, color: str, motif_descriptor: str):
+    def set_color(self, color: str):
         if self.color != color and self.color != None:
             self.color = "purple"
         else:
             self.color = color
             
-        self.verify_color(motif_descriptor)
         self.modified = True
         
     def add_motif(self, motif_descriptor:str, motif_id:str, color:str):
@@ -59,11 +51,23 @@ class Character:
             self.motif_files[motif_descriptor] = set()
             self.motif_files[motif_descriptor].add(motif_id)
             
-        self.set_color(color, motif_descriptor)
+        self.set_color(color)
+        
+    def set_indel_color(self, char_left, char_right):
+        # TODO Go over this with nowling. I forgot this logic and didn't document it. Sadge
+        if char_left == None or char_right == None:
+            return
+        else:  
+            left_motif_dict = char_left.motif_files
+            right_motif_dict = char_right.motif_files
+
+            if left_motif_dict == right_motif_dict and len(left_motif_dict) == 1:
+                self.set_color(char_left.color) #Left and right in this case have == color
+            elif left_motif_dict == right_motif_dict and len(left_motif_dict) > 1:
+                self.set_color('purple')
         
     def to_string(self) -> str:
         if self.html_string == None:
             self.html_string = self.generate_html_string()
         
-        return self.html_string
-    
+        return self.html_string  

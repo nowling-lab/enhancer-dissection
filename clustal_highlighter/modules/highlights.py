@@ -1,5 +1,6 @@
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
+from collections import deque
 
 
 class Highlights:
@@ -17,7 +18,7 @@ class Highlights:
         return temp_sequences
     
     def _sequnece_as_Characters(self, sequence: str) -> list:
-            char_obj_list = []
+            char_obj_list = deque()
             for char in sequence:
                 char_obj_list.append(Character(char))
             return char_obj_list
@@ -80,10 +81,73 @@ class Highlights:
         if len(similar_sequences) == 0:
             similar_sequences.add(key)
         return              
-                     
-                     
-    def generate_html_file(self):
+                  
+    def add_indels(self, path_to_indel_file:str):
+        indel_fasta = read_fasta_file(path_to_indel_file)
+        if not self._verify_matching_keys(indel_fasta):
+            raise Exception("Key mismatch, aborting")
+        indel_dict = self._parse_indels(indel_fasta)
+        self._add_indels_to_sequences(indel_dict)
+        self._color_indels()
+
+    def _color_indels(self):
+        for sequence in self.sequences:
+            sequence_character_list = self.sequences[sequence]
+            for index, character in enumerate(sequence_character_list):
+                if character.character == '-':
+                    if index > 0 and index < (len(sequence_character_list) - 1):
+                        left_char, right_char = self._find_nearest_non_indels(index, sequence_character_list)
+                        character.set_indel_color(left_char, right_char)
+    
+    def _find_nearest_non_indels(self, index, sequence:list):
+        output_tuple = [None,None]
+        left_copy = index
+        right_copy = index
         
+        found_left = False
+        while(left_copy > 0 and not found_left):
+            left_copy -= 1
+            character_at_index = sequence[left_copy]
+            if character_at_index.character != '-':
+                output_tuple[0] = character_at_index
+                found_left = True
+
+        found_right = False
+        while(right_copy < (len(sequence) - 1) and not found_right):
+            right_copy += 1
+            character_at_index = sequence[right_copy]
+            if character_at_index.character != '-':
+                output_tuple[1] = character_at_index
+                found_right = True
+                
+        return output_tuple
+            
+    def _verify_matching_keys(self, fasta_dictionary:dict) -> bool:
+        for sequence in fasta_dictionary:
+            if sequence not in self.sequences:
+                return False
+        return True
+    
+    def _parse_indels(self, indel_fasta:dict) -> dict:
+        indel_dict = {}
+        for sequence in indel_fasta:        
+            indel_dict[sequence] = []
+            for index, character in enumerate(indel_fasta[sequence]):
+                if character == '-':
+                    indel_dict[sequence].append((index, character))
+        return indel_dict
+                    
+    def _add_indels_to_sequences(self, indel_dict:dict) -> dict:
+        for sequence in indel_dict:
+            current_sequence = self.sequences[sequence]
+            for location, dash in indel_dict[sequence]:
+                if location < len(current_sequence):
+                    current_sequence.insert(location, Character(dash))
+                else:
+                    current_sequence.append(Character(dash))    
+                
+    
+    def generate_html_file(self):
         html_string = html_header()
          # Large HTML header up top, then adds to it below with dynamic_html_string
         dynamic_html_string = "<br>"
@@ -116,7 +180,7 @@ class Highlights:
                     rows_to_compare.append(row[counter])
                     dynamic_html_string += self._compare_append_rows(row, counter, max_len, key)
 
-                ##dynamic_html_string += append_stars(max_len, rows_to_compare)
+                dynamic_html_string += self._append_stars(max_len, rows_to_compare)
                 
                 position_string, position = self._append_position(max_len, rows_to_compare, position)
                 dynamic_html_string += position_string
@@ -129,6 +193,36 @@ class Highlights:
         
         self.outputs.append(html_string)
         return self.outputs[-1]
+    
+    
+    def _append_stars(self, max_len, rows_to_compare):
+        padding = self._generate_padding_string(max_len, 'Stars')
+        
+        star_str = 'stars' + padding + ': '
+        check_list = set()
+        for row in rows_to_compare:
+            check_list.add(len(row))
+        if len(rows_to_compare) > 0:
+            star_str += self._generate_continuity_stars(rows_to_compare)
+        star_str += '<br>' 
+    
+        return star_str
+
+    def _generate_continuity_stars(self, row_list):
+        #Generates the stars for a list of 70 length strings
+        star_string = ""
+        for index, char in enumerate(row_list[-1]):
+            chars_at_index = set()
+            #Add all the characters at a single index to a set
+            for row in row_list:
+                chars_at_index.add(row[index].character)
+                #If we have multiple chars at an index then we want empty
+            if len(chars_at_index) > 1:
+                star_string += ' '
+            else: #else put a star there
+                star_string += "*"
+
+        return star_string
 
     def _generate_padding_string(self, max_len:int, key:str):
         ##Pads out the keys so it lines everything up properly

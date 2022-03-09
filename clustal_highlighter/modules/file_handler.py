@@ -102,6 +102,9 @@ def html_header():
         .clearv2{
             background:white;
         }
+        body{
+            margin-left: 1vw;
+        }
     </style>
     </head>
     <body>
