@@ -12,6 +12,7 @@ class Character:
         
     def generate_html_string(self):
         as_html = "<span"
+
         if self.modified == False:
             return self.character
         else:
@@ -19,8 +20,7 @@ class Character:
                 as_html += ' class="' + self.color + '"'
             
             if len(self.motif_files) > 0:
-                if self.tooltip == None:
-                    self.generate_tooltip()            
+                self.generate_tooltip()            
                 as_html += ' data-toggle="tooltip" data-animation="false" title = "' + self.tooltip + '"' 
 
             as_html += '>' + self.character + "</span>"
@@ -67,7 +67,7 @@ class Character:
                 self.set_color('purple')
         
     def to_string(self) -> str:
-        if self.html_string == None:
-            self.html_string = self.generate_html_string()
+        #if self.html_string == None:
+        self.html_string = self.generate_html_string()
         
         return self.html_string  

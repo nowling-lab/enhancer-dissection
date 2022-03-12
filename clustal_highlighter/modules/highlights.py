@@ -9,7 +9,8 @@ class Highlights:
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
         self.outputs = [] #array of strings containing full html file outs. Because why not?
         self._sequences_grouped = {}
-
+        self.indel_dict = None
+        
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         temp_sequences = {}
         
@@ -87,13 +88,16 @@ class Highlights:
         if not self._verify_matching_keys(indel_fasta):
             raise Exception("Key mismatch, aborting")
         indel_dict = self._parse_indels(indel_fasta)
-        self._add_indels_to_sequences(indel_dict)
+        self.indel_dict = indel_dict
+        
+    def _append_indels_to_internal_list(self):
+        self._add_indels_to_sequences(self.indel_dict)
         self._color_indels()
 
     def _color_indels(self):
         for sequence in self.sequences:
             sequence_character_list = self.sequences[sequence]
-            for index, character in enumerate(sequence_character_list):
+            for index, character in enumerate(sequence_character_list):                
                 if character.character == '-':
                     if index > 0 and index < (len(sequence_character_list) - 1):
                         left_char, right_char = self._find_nearest_non_indels(index, sequence_character_list)
@@ -148,6 +152,9 @@ class Highlights:
                 
     
     def generate_html_file(self):
+        if self.indel_dict != None:
+            self._append_indels_to_internal_list()
+            
         html_string = html_header()
          # Large HTML header up top, then adds to it below with dynamic_html_string
         dynamic_html_string = "<br>"
