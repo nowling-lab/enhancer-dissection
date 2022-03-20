@@ -10,6 +10,8 @@ class Highlights:
         self.outputs = [] #array of strings containing full html file outs. Because why not?
         self._sequences_grouped = {}
         self.indel_dict = None
+        self.variant_data = None
+        self.group_all = True
         
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         temp_sequences = {}
@@ -49,6 +51,11 @@ class Highlights:
     def _group_sequences(self):
         for key in self.sequences.keys(): #Loop through all of the sequences
             self._find_similar_sequences(key)
+    
+    def _group_all_sequences(self):
+        self._sequences_grouped['all'] = set()
+        for key in self.sequences.keys():
+            self._sequences_grouped['all'].add(key)
        
     def _find_similar_sequences(self, key:str): 
         key_split = key.split('-')
@@ -161,7 +168,10 @@ class Highlights:
         motif_keys = list(self.sequences.keys())
         motif_keys.sort()
         
-        self._group_sequences()
+        if self.group_all:
+            self._group_all_sequences()
+        else:
+            self._group_sequences()
         
         for key_to_list in self._sequences_grouped:
             dynamic_html_string += "<br> <span> New Sequence </span>"
@@ -183,6 +193,10 @@ class Highlights:
 
                 dynamic_html_string += '<pre>'
                 rows_to_compare = []
+                
+                if self.variant_data != None:
+                    dynamic_html_string += self._append_variant_data(max_len, position)
+                
                 for key, row in list_of_lines:
                     rows_to_compare.append(row[counter])
                     dynamic_html_string += self._compare_append_rows(row, counter, max_len, key)
@@ -300,3 +314,26 @@ class Highlights:
         return max_len
         #this last loop is to find the longest key so we can add
         #white space to other keys to make it line up properly
+        
+    def add_variant_data(self, file_path: str) -> None:
+        variant_data = read_variant_stats(file_path)
+        self.variant_data = variant_data
+    
+    def _append_variant_data(self, max_len, position):
+        padding = self._generate_padding_string(max_len, 'Variant')
+        
+        variant_string = 'Variant' + padding + ": "
+        for x in range(position, position + 70): #70 is line width...
+            if x in self.variant_data:
+                char1, char2, chance1, chance2 = self.variant_data[x]
+                chance1 = float(round((chance1 * 100), 3))
+                chance2 = float(round((chance2 * 100), 3))
+                variant_string += f'<span data-toggle="tooltip" data-animation="false" title ="Appearances: {char1}: {chance1}% {char2}: {chance2}%">^</span>'
+            else:
+                variant_string += ' '
+        
+        variant_string += "<br>"
+        
+        return variant_string
+    
+    #as_html += ' data-toggle="tooltip" data-animation="false" title = "' + self.tooltip + '"' 

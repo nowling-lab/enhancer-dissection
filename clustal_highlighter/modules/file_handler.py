@@ -1,3 +1,5 @@
+import pandas as pd
+
 def read_fasta_file(file_path):
     #Reads in a fasta file. Standard stuff
     sequence_dictionary = {}
@@ -45,6 +47,15 @@ def read_fimo_file(file_path):
                     sequence_name_dict[seq_name].append((start, stop, motif_alt_id))  
     return sequence_name_dict
 
+def read_variant_stats(file_path: str) -> dict:
+    variant_dict = {}
+    df = pd.read_excel(file_path)
+    df_list = list(df.itertuples(index=False, name=None))
+    
+    for line in df_list:
+            variant_dict[line[1]] = (line[3], line[5], line[10], line[11])
+    return variant_dict
+    
 def html_string_to_output(html_string, outputdir):
     #just writes the html string to out
     output = open(outputdir, 'w')
