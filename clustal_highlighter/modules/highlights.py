@@ -1,3 +1,4 @@
+from encodings import normalize_encoding
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
 from collections import deque
@@ -328,7 +329,17 @@ class Highlights:
                 char1, char2, chance1, chance2 = self.variant_data[x]
                 chance1 = float(round((chance1 * 100), 3))
                 chance2 = float(round((chance2 * 100), 3))
-                variant_string += f'<span data-toggle="tooltip" data-animation="false" title ="Appearances: {char1}: {chance1}% {char2}: {chance2}%">^</span>'
+                normalized_chance = None
+                if chance1 >= 50.0:
+                    normalized_chance = (chance1 - 50)/(100 - 50)
+                else:
+                    normalized_chance = (chance2 - 50)/(100 - 50)
+                    
+                red = 255 * (1 - normalized_chance)
+                green = 255 * normalized_chance
+                blue = 0
+                    
+                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="Appearances: {char1}: {chance1}% {char2}: {chance2}%">^</span>'
             else:
                 variant_string += ' '
         
