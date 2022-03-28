@@ -323,7 +323,7 @@ class Highlights:
     def _append_variant_data(self, max_len, position):
         padding = self._generate_padding_string(max_len, 'Variant')
         
-        variant_string = 'Variant' + padding + ": "
+        variant_string = 'Variant' + padding + ": " + '<span class="variant">'
         for x in range(position, position + 70): #70 is line width...
             if x in self.variant_data:
                 char1, char2, chance1, chance2 = self.variant_data[x]
@@ -343,7 +343,7 @@ class Highlights:
             else:
                 variant_string += ' '
         
-        variant_string += "<br>"
+        variant_string += "</span>" + "<br>"
         
         return variant_string
     

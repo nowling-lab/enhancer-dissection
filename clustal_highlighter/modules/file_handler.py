@@ -114,6 +114,9 @@ def html_header():
         .clearv2{
             background:white;
         }
+        .hidden{
+            display: none;
+        }
         body{
             margin-left: 1vw;
         }
@@ -129,6 +132,7 @@ def html_header():
     <button id="toggle_blue" type="button" class="btn" style="background:Aqua">Toggle Blue</button>
     <button id="toggle_red" type="button" class="btn" style="background:PaleVioletRed">Toggle Red</button>
     <button id="toggle_purple" type="button" class="btn" style="background:Plum">Toggle Purple</button>
+    <button id="toggle_variant" type="button" class="btn btn-secondary">Toggle Variant ^'s</button>
     </span>
     <script type="text/javascript">
     $(document).ready(function () {   
@@ -145,6 +149,11 @@ def html_header():
       $('#toggle_purple').click(function(){
           $( "span.purple" ).toggleClass( "clearv2" );
       });
+      
+      $('#toggle_variant').click(function(){
+          $( "span.variant" ).toggleClass( "hidden" );
+      });
+      
     });
     </script>
      """
