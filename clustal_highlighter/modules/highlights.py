@@ -1,6 +1,8 @@
-from encodings import normalize_encoding
+
+import os
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
+from clustal_highlighter.modules.html_framework import *
 from collections import deque
 
 
@@ -13,6 +15,7 @@ class Highlights:
         self.indel_dict = None
         self.variant_data = None
         self.group_all = True
+        self.highlight_styles = {}
         
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         temp_sequences = {}
@@ -27,13 +30,22 @@ class Highlights:
                 char_obj_list.append(Character(char))
             return char_obj_list
 
-    def add_highlights(self, motifs_descriptor:str, file_path:str, color:str):
+    def add_highlights(self, motifs_descriptor:str, file_path:str, color:str, html_color:str):
         # motifs descriptor is not yet used. It's there for when the HTML file will allow a variable size
         # of inputs. For now it will stay streme and jaspar but this is to let it scale indefinitly and remind me
         # to actually make that happen
             
         motifs = read_fimo_file(file_path)
+        self._add_html_style(color.lower(), html_color, motifs_descriptor)
         self._color_characters(motifs, color, motifs_descriptor)
+        
+    def _add_html_style(self, color:str, html_color:str, motifs_descriptor:str):
+        class_name = "." + color + "{\n"
+        background = f" background:{html_color};"
+        class_string = (class_name + background + '\n}\n') 
+        
+        self.highlight_styles[color] = (class_string, motifs_descriptor, html_color)
+         
         
     def _color_characters(self, motifs:dict, color:str, motifs_descriptor:str):
         for sequence in motifs:
@@ -158,13 +170,95 @@ class Highlights:
                 else:
                     current_sequence.append(Character(dash))    
                 
+    def _add_html_classes(self):
+        keys = list(self.highlight_styles.keys())
+        keys.sort()
+        
+        html_class_string = ""
+        for key in keys:
+            class_string, motifs_descriptor, html_color = self.highlight_styles[key]
+            html_class_string += class_string
+        html_class_string += "</style>\n"
+        return html_class_string
     
+    def _add_html_legend(self):
+        legend_string = """
+        </head>
+        <body>
+        <div> Legend: </div>
+        
+        """
+        keys = list(self.highlight_styles.keys())
+        keys.sort()
+        
+        for key in keys:
+            class_string, motifs_descriptor, html_color = self.highlight_styles[key]
+            legend_string += f'<div class = "{key} heading"> This color is for the {motifs_descriptor} descriptor given </div>\n'
+        
+        if len(keys) > 1:
+            legend_string += f'<div class = "purple heading"> This is for overlapping highlights </div>\n'
+        
+        if self.indel_dict != None:
+            legend_string += """<div class = "clear" style="width:75%; word-wrap: break-word;"> Colored &#8209;'s indicate that the indel is between 2 characters that have an identical set of motifs. If they are not colored, then that means the character to the left has a different set of motifs than the one to the right of the indel. </div>"""
+        
+        if self.variant_data != None:
+            legend_string += """<div class = "clear" style="width:75%; word-wrap: break-word;"> ^'s indicate that Variant data is available for that position. Mouse over to view stats </div>"""
+    
+        return legend_string
+    
+    def _add_html_buttons(self):
+        button_string = "<span>"
+        keys = list(self.highlight_styles.keys())
+        keys.sort()  
+          
+        for key in keys:
+            class_string, motifs_descriptor, html_color = self.highlight_styles[key]
+            button_string += f"""\n<button id="toggle_{key}" type="button" class="btn" style="background:{html_color}">Toggle {key}</button>"""
+
+        if self.variant_data != None:
+            button_string += """\n<button id="toggle_variant" type="button" class="btn btn-secondary">Toggle Variant ^'s</button>"""
+
+        if len(keys) > 1:
+            button_string += """\n<button id="toggle_purple" type="button" class="btn" style="background:Plum">Toggle Purple</button>"""
+
+        button_string += "\n</span>"
+        
+        button_string += '\n<script type="text/javascript">\n'
+        button_string += "$(document).ready(function () {\n"
+       
+        button_string += """$('[data-toggle="tooltip"]').tooltip();\n"""
+        
+        for key in keys:
+            button_string += f"""$("#toggle_{key}").click(function() """ + "{\n"
+            button_string += f"""   $( "span.{key}" ).toggleClass( "clear" );\n"""
+            button_string += "});\n\n"
+            
+        if len(keys) > 1:
+            button_string += f"""$("#toggle_purple").click(function() """ + "{\n"
+            button_string += f"""   $( "span.purple" ).toggleClass( "clear" );\n"""
+            button_string += "});\n\n"
+        
+        if self.variant_data != None:
+            button_string += """$('#toggle_variant').click(function(){
+                $( "span.variant" ).toggleClass( "hidden" );
+            });
+            """
+        button_string += "}); \n</script>"
+        return button_string
+    
+    def _generate_html(self):
+        html_string = html_heading()
+        html_string += self._add_html_classes()
+        html_string += self._add_html_legend()
+        html_string += self._add_html_buttons()
+        return html_string
+        
     def generate_html_file(self):
         if self.indel_dict != None:
             self._append_indels_to_internal_list()
             
-        html_string = html_header()
-         # Large HTML header up top, then adds to it below with dynamic_html_string
+        html_string = self._generate_html()
+        # Large HTML header up top, then adds to it below with dynamic_html_string
         dynamic_html_string = "<br>"
         motif_keys = list(self.sequences.keys())
         motif_keys.sort()
@@ -240,7 +334,10 @@ class Highlights:
             chars_at_index = set()
             #Add all the characters at a single index to a set
             for row in row_list:
-                chars_at_index.add(row[index].character)
+                try:
+                    chars_at_index.add(row[index].character)
+                except:
+                    pass
                 #If we have multiple chars at an index then we want empty
             if len(chars_at_index) > 1:
                 star_string += ' '

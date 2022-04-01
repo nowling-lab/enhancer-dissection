@@ -27,12 +27,12 @@ def main_abstraction(indel_fasta_path, streme_tsv_path, jaspar_tsv_path, sequenc
     
     
     test_highlight = Highlights(sequences_fasta_path)
-    test_highlight.add_variant_data(indel_fasta_path)
+    #test_highlight.add_variant_data(indel_fasta_path)
     
-    #test_highlight.add_indels(indel_fasta_path)
+    test_highlight.add_indels(indel_fasta_path)
     
-    #test_highlight.add_highlights('Streme', streme_tsv_path, 'Blue')
-    #test_highlight.add_highlights('Jaspar', jaspar_tsv_path, 'Red')
+    test_highlight.add_highlights('Streme', streme_tsv_path, 'Blue', 'Aqua')
+    #test_highlight.add_highlights('Jaspar', jaspar_tsv_path, 'Red', 'PaleVioletRed')
     
     html_output = test_highlight.generate_html_file()
     
