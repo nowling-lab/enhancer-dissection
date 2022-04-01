@@ -18,10 +18,10 @@ class Highlights:
         temp_sequences = {}
         
         for sequence in sequences:
-            temp_sequences[sequence] = self._sequnece_as_Characters(sequences[sequence])
+            temp_sequences[sequence] = self._sequence_as_Characters(sequences[sequence])
         return temp_sequences
     
-    def _sequnece_as_Characters(self, sequence: str) -> list:
+    def _sequence_as_Characters(self, sequence: str) -> list:
             char_obj_list = deque()
             for char in sequence:
                 char_obj_list.append(Character(char))
@@ -187,6 +187,7 @@ class Highlights:
                 stop = 1
             else:
                 stop = len(list_of_lines[0][1])
+                
             counter = 0
             position = 1
             while counter < stop: #Loop through however many lines we got
@@ -196,16 +197,18 @@ class Highlights:
                 rows_to_compare = []
                 
                 if self.variant_data != None:
-                    dynamic_html_string += self._append_variant_data(max_len, position)
+                    dynamic_html_string += self._append_variant_data(max_len, counter+1)
                 
+                row_end_position = None
                 for key, row in list_of_lines:
                     rows_to_compare.append(row[counter])
-                    dynamic_html_string += self._compare_append_rows(row, counter, max_len, key)
+                    row_end_position = self._calculate_position(len(row[counter]), position)
+                    dynamic_html_string += self._compare_append_rows(row, counter, max_len, key, row_end_position)
+                    
+                if row_end_position != None:
+                    position = row_end_position + 1
 
                 dynamic_html_string += self._append_stars(max_len, rows_to_compare)
-                
-                position_string, position = self._append_position(max_len, rows_to_compare, position)
-                dynamic_html_string += position_string
                 
                 dynamic_html_string += '</pre>' #this is the last block since it's excluded
                 counter += 1 #From the list. 
@@ -255,18 +258,11 @@ class Highlights:
                 padding_str += " "
         return padding_str 
     
-    def _append_position(self, max_len:int, rows_to_compare:list, position:int):
-        padding = self._generate_padding_string(max_len, 'Pos')
-        
-        pos_string = 'Pos' + padding + ': Start: ' + str(position) + ","
-        
+    def _calculate_position(self, row_size, row_start:int):        
         #Just an easy way to keep the loop more simple since it's +1 in the loop
-        position += len(rows_to_compare[0]) - 1
-
-        pos_string += " End: " + str(position)
-        position += 1
+        row_end_position = row_start + row_size 
         
-        return pos_string, position
+        return row_end_position - 1
     
     def _convert_line_to_html(self, line:list):
         html_out = ""
@@ -274,7 +270,7 @@ class Highlights:
             html_out += character.to_string()
         return html_out
     
-    def _compare_append_rows(self, row:list, counter:int, max_len:int, key:str):
+    def _compare_append_rows(self, row:list, counter:int, max_len:int, key:str, row_end_position:int):
         row_string = ""
         padding_str = self._generate_padding_string(max_len, key)
         #For every key that like, as in for all KLF's,
@@ -282,6 +278,7 @@ class Highlights:
         #also adds to the rows_to_compare for when I do star comparisons 
         row_string +=  key + padding_str + ": " 
         row_string += self._convert_line_to_html(row[counter])
+        row_string += " " + str(row_end_position)
         row_string += '<br>'
         return row_string
     
@@ -320,8 +317,12 @@ class Highlights:
         variant_data = read_variant_stats(file_path)
         self.variant_data = variant_data
     
-    def _append_variant_data(self, max_len, position):
+    def _append_variant_data(self, max_len, row):
         padding = self._generate_padding_string(max_len, 'Variant')
+        position = 1
+        if row > 1:
+            position = (row-1) * 70
+            position += 1       
         
         variant_string = 'Variant' + padding + ": " + '<span class="variant">'
         for x in range(position, position + 70): #70 is line width...
@@ -347,4 +348,17 @@ class Highlights:
         
         return variant_string
     
-    #as_html += ' data-toggle="tooltip" data-animation="false" title = "' + self.tooltip + '"' 
+    def _to_string(self):
+        keys = list(self.sequences.keys())
+        keys.sort()
+        output_string = ''
+        for key in keys:
+            output_string += f'{key}\n'
+            for index, character in enumerate(self.sequences[key]):
+                output_string += character.to_string()
+                if index == 69: #Breaks after 70 char, 0 indexed
+                    output_string += '\n'
+            output_string += '\n'
+        output_string = output_string[:-2] #getting rid of last newline
+        
+        return output_string

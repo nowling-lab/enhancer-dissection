@@ -60,7 +60,7 @@ class Character:
         else:  
             left_motif_dict = char_left.motif_files
             right_motif_dict = char_right.motif_files
-
+            
             if left_motif_dict == right_motif_dict and len(left_motif_dict) == 1:
                 self.set_color(char_left.color) #Left and right in this case have == color
             elif left_motif_dict == right_motif_dict and len(left_motif_dict) > 1:

@@ -32,3 +32,42 @@ def test_html_string():
         correct_output = '<span class="purple" data-toggle="tooltip" data-animation="false" title = " Test is: motif_1 Test2 is: motif_2">A</span>'
         print(char_3.to_string())
         assert char_3.to_string() == correct_output
+        
+def test_set_indel_color():
+        temp_char = Character('-')
+        left_char = Character('A')
+        right_char = Character('B')
+        
+        temp_char.set_indel_color(None, right_char)
+        assert temp_char.color == None 
+        
+        temp_char.set_indel_color(left_char, None)        
+        assert temp_char.color == None
+        
+        temp_char = Character('-')
+        left_char = Character('A')
+        right_char = Character('B')
+        
+        left_char.add_motif('test_motif1', 'test1', 'Blue')
+        right_char.add_motif('test_motif1', 'test1', 'Blue')
+        temp_char.set_indel_color(left_char, right_char)
+        assert temp_char.color == 'Blue'
+        
+        temp_char = Character('-')
+        left_char = Character('A')
+        right_char = Character('B')
+        
+        left_char.add_motif('test_motif1', 'test1', 'Blue')
+        left_char.add_motif('test_motif2', 'test2', 'Red')
+        right_char.add_motif('test_motif1', 'test1', 'Blue')
+        right_char.add_motif('test_motif2', 'test2', 'Red')
+        temp_char.set_indel_color(left_char, right_char)
+        assert temp_char.color == 'purple'
+        
+        temp_char = Character('-')
+        left_char = Character('A')
+        right_char = Character('B')
+        left_char.add_motif('test_motif1', 'test1', 'Blue')
+        right_char.add_motif('test_motif2', 'test2', 'Red')
+        temp_char.set_indel_color(left_char, right_char)
+        assert temp_char.color == None

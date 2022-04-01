@@ -53,7 +53,7 @@ def read_variant_stats(file_path: str) -> dict:
     df_list = list(df.itertuples(index=False, name=None))
     
     for line in df_list:
-            pos = line[1] + 1
+            pos = line[1]
             variant_dict[pos] = (line[3], line[5], line[10], line[11])
     return variant_dict
     
