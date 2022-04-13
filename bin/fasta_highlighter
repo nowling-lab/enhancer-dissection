@@ -1,0 +1,92 @@
+import argparse
+import os
+from subprocess import call
+import sys 
+
+sys.path.append('/home/petersjg/enhancer-dissection')
+
+from clustal_highlighter.modules.highlights import Highlights
+
+def generate_dependencies(args) -> Highlights:
+    colors = ['blue', 'red']
+    html_colors = ['Aqua', 'PaleVioletRed']
+    
+    if args.outputdir != None and not os.path.exists(args.outputdir):
+      os.makedirs(args.outputdir)
+    else:
+        args.outputdir = '../../highlights_output'
+        if not os.path.exists('../../highlights_output'):
+            os.makedirs('../../highlights_output')
+
+    fimo_highlights = generate_fimo_output(args.seq_file)
+
+    temp_highlight = Highlights(args.seq_file)
+    for key in fimo_highlights:
+        for index, highlight in enumerate(fimo_highlights[key]):
+            highlight_path = fimo_highlights[key][highlight]
+            temp_highlight.add_highlights(highlight, highlight_path, colors[index], html_colors[index])
+
+    return temp_highlight
+
+def generate_fimo_output(seq_path):
+    highlights = {}
+    seq_path = os.path.abspath(seq_path)
+    if os.path.isdir(seq_path):
+        for index, file_name in enumerate(os.listdir(seq_path)):
+            call(f"../fimo/run_fimo_a_bunch {file_name}")
+            #Figure out what I want to do here with colors and files...
+    else:
+        call(f"../fimo/run_fimo_a_bunch {seq_path}", shell=True)
+        for filename in os.listdir('./'):
+            if os.path.isdir(filename):
+                highlights[filename] = {}
+                for motif in os.listdir(filename):
+                    for file in os.listdir(f"./{filename}/{motif}"):
+                        if "tsv" in file:
+                            highlights[filename][motif] = os.path.abspath(f"./{filename}/{motif}/{file}")
+    return highlights
+
+
+def generate_highlights(highlighter: Highlights, indel_path:str, highlights: list):
+    if indel_path != None:
+        highligher.add_indels(indel_path)
+    for motif_descriptor, tsv_path, color, html_color in highlights:
+        highligher.add_highlights(motif_descriptor, tsv_path, color, html_color)
+
+    return
+
+def parseargs():
+    """
+    generates and returns a namespace for the argument parser
+    """
+    parser = argparse.ArgumentParser(description="Caller")
+
+    parser.add_argument("--seq-file",
+                        type=str,
+                        required=True,
+                        help="Fasta formatted sequnece file")
+
+    parser.add_argument("--indel-file",
+                        type=str,
+                        required=False,
+                        help="Fasta formatted sequence file with indels")
+
+    parser.add_argument("--outputdir",
+                    type=str,
+                    required=False,
+                    help="Output file directory")
+
+    return parser.parse_args()
+    
+
+def html_string_to_output(html_string, outputdir):
+    #just writes the html string to out
+    output = open(outputdir, 'w')
+    output.write(html_string)
+    output.close
+
+if __name__ == "__main__":
+    args = parseargs()
+    highligher = generate_dependencies(args)
+    html_string_to_output(highligher.generate_html_file(), f"{args.outputdir}/test_highlights.html")
+    
