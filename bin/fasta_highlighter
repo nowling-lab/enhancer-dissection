@@ -1,59 +1,75 @@
+from clustal_highlighter.modules.highlights import Highlights
 import argparse
 import os
 from subprocess import call
-import sys 
+import sys
+from pathlib import Path
 
-sys.path.append('/home/petersjg/enhancer-dissection')
+#current_path = os.path.abspath(__file__)
 
-from clustal_highlighter.modules.highlights import Highlights
+#sys.path.append(f"../../{current_path}")
+
 
 def generate_dependencies(args) -> Highlights:
     colors = ['blue', 'red']
     html_colors = ['Aqua', 'PaleVioletRed']
-    
+
     if args.outputdir != None and not os.path.exists(args.outputdir):
-      os.makedirs(args.outputdir)
+        os.makedirs(args.outputdir)
     else:
         args.outputdir = '../../highlights_output'
         if not os.path.exists('../../highlights_output'):
             os.makedirs('../../highlights_output')
 
-    fimo_highlights = generate_fimo_output(args.seq_file)
+    fimo_highlights = []
+    motifs = generate_tuple_motifs(args.motif_files)
+    for motif_name, motif_path in motifs:
+        fimo_highlights.append(generate_fimo_output(
+            args.seq_file, motif_path, motif_name))
 
     temp_highlight = Highlights(args.seq_file)
-    for key in fimo_highlights:
-        for index, highlight in enumerate(fimo_highlights[key]):
-            highlight_path = fimo_highlights[key][highlight]
-            temp_highlight.add_highlights(highlight, highlight_path, colors[index], html_colors[index])
+    
+    for index, (motif_name, motif_path) in enumerate(fimo_highlights):
+        temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
+    
+    return None
 
-    return temp_highlight
+def generate_tuple_motifs(motifs):
+    motif_pairs = []
+    for i, j in zip(motifs[0::2], motifs[1::2]):
+        motif_pairs.append((i, j))
 
-def generate_fimo_output(seq_path):
-    highlights = {}
+    return motif_pairs
+
+
+def generate_fimo_output(seq_path, motif_path, motif_name):
+    highlights_tsv = None
     seq_path = os.path.abspath(seq_path)
-    if os.path.isdir(seq_path):
-        for index, file_name in enumerate(os.listdir(seq_path)):
-            call(f"../fimo/run_fimo_a_bunch {file_name}")
-            #Figure out what I want to do here with colors and files...
-    else:
-        call(f"../fimo/run_fimo_a_bunch {seq_path}", shell=True)
-        for filename in os.listdir('./'):
-            if os.path.isdir(filename):
-                highlights[filename] = {}
-                for motif in os.listdir(filename):
-                    for file in os.listdir(f"./{filename}/{motif}"):
-                        if "tsv" in file:
-                            highlights[filename][motif] = os.path.abspath(f"./{filename}/{motif}/{file}")
-    return highlights
+    basename_no_ending = Path(seq_path).stem
+    call(f"run_fimo_on_file {seq_path} {motif_name} {motif_path}", shell=True)
+
+    cwd = os.getcwd()
+
+    for dir in os.listdir(cwd):
+        if dir == basename_no_ending:
+            file_motifs_path = f"{cwd}/{dir}"
+            for sub_dir in os.listdir(file_motifs_path):
+                if sub_dir == motif_name:
+                    highlights_tsv = (
+                        motif_name, f"{file_motifs_path}/{sub_dir}/fimo.tsv")
+
+    return highlights_tsv
 
 
-def generate_highlights(highlighter: Highlights, indel_path:str, highlights: list):
+def generate_highlights(highlighter: Highlights, indel_path: str, highlights: list):
     if indel_path != None:
         highligher.add_indels(indel_path)
     for motif_descriptor, tsv_path, color, html_color in highlights:
-        highligher.add_highlights(motif_descriptor, tsv_path, color, html_color)
+        highligher.add_highlights(
+            motif_descriptor, tsv_path, color, html_color)
 
     return
+
 
 def parseargs():
     """
@@ -66,27 +82,37 @@ def parseargs():
                         required=True,
                         help="Fasta formatted sequnece file")
 
-    parser.add_argument("--indel-file",
+    parser.add_argument("--motif-files",
                         type=str,
+                        required=False,
+                        nargs='+',
+                        help="A list of motif_name motif_file_path tuples for all the motifs that you want in the output")
+
+    parser.add_argument("--indel-file",
+                        dest='list',
                         required=False,
                         help="Fasta formatted sequence file with indels")
 
     parser.add_argument("--outputdir",
-                    type=str,
-                    required=False,
-                    help="Output file directory")
+                        type=str,
+                        required=False,
+                        help="Output file directory")
 
     return parser.parse_args()
-    
+
 
 def html_string_to_output(html_string, outputdir):
-    #just writes the html string to out
+    # just writes the html string to out
     output = open(outputdir, 'w')
     output.write(html_string)
     output.close
 
+
 if __name__ == "__main__":
     args = parseargs()
-    highligher = generate_dependencies(args)
-    html_string_to_output(highligher.generate_html_file(), f"{args.outputdir}/test_highlights.html")
-    
+    if len(args.motif_files) % 2 != 0:
+        print("\n--motif-files flag given an odd number of inputs, please use -h for more info")
+        exit(0)
+    else:
+        highligher = generate_dependencies(args)
+        # html_string_to_output(highligher.generate_html_file(), f"{args.outputdir}/test_highlights.html")

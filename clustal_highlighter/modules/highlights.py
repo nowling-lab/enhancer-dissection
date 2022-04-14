@@ -1,5 +1,4 @@
 
-import os
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
 from clustal_highlighter.modules.html_framework import *
@@ -294,7 +293,7 @@ class Highlights:
         """
         keys = list(self.highlight_styles.keys())
         keys.sort()
-        
+
         legend_string = ""
         if self.variant_data != None or self.indel_dict != None or len(keys) > 0:
             legend_string = """

@@ -1,44 +1,41 @@
 # enhancer-dissection
  
-Tutorial:
-    This program hasn't been updated to use the command-line as of yet. 
-    There are various python files within this repo which do different 
-    tasks. The main file that will be used is: clustal_format_highlighter.py. However, previously clustal_omega_highlightor.py and fimo_highlightor_html.py were used for output. 
+This program adds highlights to a given sequence based on results of FIMO running with motif file. This is useful for showing which motifs are in a sequence and where. 
 
-    As currently we are only running clustal_format_highlighter this tutorial only partains to that.
-
-    clustal_format_highlighter has all of the up-to date items that display in our current output. To run the format highlighter, you will need to call a single method that contains some paramters. 
-
-    This method is the main_abstraction method.      
+Requirements:
+    Make sure FIMO is installed and added to your PATH environment variable. You can get fimo here by downloading meme-suite:https://meme-suite.org/meme/doc/download.html
     
-    main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path):
+    And then install following their installation instructions.
 
+    To add FIMO and other programs to your path:
+        1. Backup your current PATH (echo $PATH > ~/path.txt)
+        2. In your home directory (cd ~/) add a folder called bin (mkdir $HOME/bin)
+        3. From where you installed meme-suite cd meme-(version)/srcs
+        4. Next copy fimo to that folder you created in the home directory (cp fimo ~/bin)
+        5. Add the programs in that program to the PATH (export PATH="$PATH:$HOME/bin")
+    
+    If there are other programs you would like to add to the path in the future then adding them in bin and running step 5 again
 
-    It takes in 6 parameters in it to run:
-        indel_fasta_path: A file in fasta format which is the output of clustal omega.
-        
-        a_only_bool: A boolean condidtion to only use the a only labeled sequences for inputting indel_fasta_path and sequences_fasta_path. 
+Installing and running the software with a Python Environment:
+    First go to a location where you would like to install the software with cd. Then follow these commands:
 
-        streme_tsv_path: The path to the Fimo out fimo.tsv file when running Fimo with the streme motif on the sequences
+    $ python3 -m venv venv
+    $ source venv/bin/activate
+    $ git clone git@github.com:nowling-lab/enhancer-dissection.git
+    $ cd enhancer-dissection
+    $ python setup.py install
+    
+    The program is then ran by calling fasta_highlighter.
+    The arguments that are taken are:
+        --seq-file SEQ_FILE
+            Fasta formatted sequnece file
+        --motif-files MOTIF_FILES [MOTIF_FILES ...]
+            A list of motif_name motif_file_path tuples for all the motifs that you want in the output
+        --indel-file LIST
+            Fasta formatted sequence file with indels
+        --outputdir OUTPUTDIR
+            Output file directory
 
-        jaspar_tsv_path: The path to the Fimo out fimo.tsv file when running Fimo with the jaspar motif on the sequences
-        
-        sequences_fasta_path: A file in fasta format which is the raw seqeunces without indels or any other input
-
-        output_path: A path to the file to output to. So for example, '~/highlights.html' will output to a linux home directory and generate the file 'highlights.html'
-
-        Note that indel_fasta_path and sequences_fasta_path must have the exact same sequences and labels for this program to work, even if you are running clustal omega multiple times to properly formulate indels. The files must then be merged into a single file
-
-    Tutorial for running nardini file with multiple outputs:
-        The current iteraton of the software does not handle this case. However, there's a hacky solution that's currently implemented:
-
-        When cloning the repo, a directory structure (called figure4files) is already in place and populated from split data from the collective nardini output.
-
-        Within that directory is a batch script called: generate_output_html
-
-        Edit this file with any text editor and change the output directory at the top of the file to any directory of your choice. 
-
-        After that, save the file and run it: ./generate_output_html
-        
-        This will generate html files analogus to figure 4 in Michell's paper.
-        
+    An example of running this program is this:
+     
+     fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt

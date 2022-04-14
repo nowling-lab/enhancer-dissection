@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [[ $# -ne 3 ]] ; then
+    echo 'Arguments are sequence_file motifs_name motifs_file'
+    exit 0
+fi
+
+script_directory=$(pwd)
+
+sequence_file=$(basename $1)
+sequence_file_name=${sequence_file%.*}
+motifs_name=$2
+motifs_file=$3
+
+output_path=$script_directory/$sequence_file_name
+mkdir $output_path
+
+pushd $output_path
+
+fimo -oc $output_path/$motifs_name $motifs_file $1
+
+popd
+
+unset filename
+unset global_path
+unset script_directory

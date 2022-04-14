@@ -8,9 +8,13 @@ setup(
     author='John Peters',
     author_email='John.Geraldo.Peters@gmail.com',
     license='Apache-2.0',
-    packages=['clustal_highlighter'],
+    packages=['clustal_highlighter', 'clustal_highlighter/modules'],
     zip_safe=False,
     python_requires=">=3.8",
-    scripts=["bin/fasta_highlighter"],
-    install_requires=['pandas>=1.3.4']
+    scripts=[
+        "bin/fasta_highlighter",
+        "bin/run_fimo_on_file"
+        ],
+    install_requires=['pandas>=1.3.4'],
+    include_package_data=True,
 )
