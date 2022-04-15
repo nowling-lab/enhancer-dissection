@@ -2,8 +2,8 @@ from clustal_highlighter.modules.highlights import Highlights
 import argparse
 import os
 from subprocess import call
-import sys
 from pathlib import Path
+import shutil
 
 #current_path = os.path.abspath(__file__)
 
@@ -22,17 +22,26 @@ def generate_dependencies(args) -> Highlights:
             os.makedirs('../../highlights_output')
 
     fimo_highlights = []
+    paths_to_cleanup = set()
     motifs = generate_tuple_motifs(args.motif_files)
     for motif_name, motif_path in motifs:
-        fimo_highlights.append(generate_fimo_output(
-            args.seq_file, motif_path, motif_name))
+        highlights_tsv, file_paths = generate_fimo_output(
+            args.seq_file, motif_path, motif_name)
+        
+        paths_to_cleanup.update(file_paths)
+
+        fimo_highlights.append(highlights_tsv)
 
     temp_highlight = Highlights(args.seq_file)
     
     for index, (motif_name, motif_path) in enumerate(fimo_highlights):
         temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
     
-    return None
+    for directory_to_delete in paths_to_cleanup:
+        if os.path.isdir(directory_to_delete):
+            shutil.rmtree(directory_to_delete)
+    
+    return temp_highlight
 
 def generate_tuple_motifs(motifs):
     motif_pairs = []
@@ -46,19 +55,20 @@ def generate_fimo_output(seq_path, motif_path, motif_name):
     highlights_tsv = None
     seq_path = os.path.abspath(seq_path)
     basename_no_ending = Path(seq_path).stem
+    file_paths = set()
     call(f"run_fimo_on_file {seq_path} {motif_name} {motif_path}", shell=True)
-
     cwd = os.getcwd()
 
     for dir in os.listdir(cwd):
         if dir == basename_no_ending:
             file_motifs_path = f"{cwd}/{dir}"
+            file_paths.add(file_motifs_path)
             for sub_dir in os.listdir(file_motifs_path):
                 if sub_dir == motif_name:
                     highlights_tsv = (
                         motif_name, f"{file_motifs_path}/{sub_dir}/fimo.tsv")
 
-    return highlights_tsv
+    return highlights_tsv, file_paths
 
 
 def generate_highlights(highlighter: Highlights, indel_path: str, highlights: list):
@@ -80,7 +90,7 @@ def parseargs():
     parser.add_argument("--seq-file",
                         type=str,
                         required=True,
-                        help="Fasta formatted sequnece file")
+                        help="Path to fasta formatted sequnece file (align sequences beforehand if needed)")
 
     parser.add_argument("--motif-files",
                         type=str,
@@ -89,15 +99,14 @@ def parseargs():
                         help="A list of motif_name motif_file_path tuples for all the motifs that you want in the output")
 
     parser.add_argument("--indel-file",
-                        dest='list',
                         required=False,
-                        help="Fasta formatted sequence file with indels")
+                        help="Path to fasta formatted sequence file with indels")
 
     parser.add_argument("--outputdir",
                         type=str,
                         required=False,
                         help="Output file directory")
-
+    
     return parser.parse_args()
 
 
@@ -115,4 +124,6 @@ if __name__ == "__main__":
         exit(0)
     else:
         highligher = generate_dependencies(args)
-        # html_string_to_output(highligher.generate_html_file(), f"{args.outputdir}/test_highlights.html")
+        output_path = os.path.abspath(f'{args.outputdir}/test_highlights2.html')
+        print(f'\noutput at: {output_path}')
+        html_string_to_output(highligher.generate_html_file(), output_path)

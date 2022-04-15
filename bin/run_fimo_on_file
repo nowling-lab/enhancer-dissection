@@ -13,13 +13,13 @@ motifs_name=$2
 motifs_file=$3
 
 output_path=$script_directory/$sequence_file_name
-mkdir $output_path
+mkdir $output_path &>/dev/null
 
-pushd $output_path
+pushd $output_path &>/dev/null
 
-fimo -oc $output_path/$motifs_name $motifs_file $1
+fimo -oc $output_path/$motifs_name --verbosity 1 $motifs_file $1 &>/dev/null
 
-popd
+popd &>/dev/null
 
 unset filename
 unset global_path

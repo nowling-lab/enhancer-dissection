@@ -8,6 +8,7 @@ from collections import deque
 class Highlights:
     def __init__(self, fasta_path: str):
         sequence_dict = read_fasta_file(fasta_path)
+        self.has_indels = False
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
         self.outputs = []  # array of strings containing full html file outs. Because why not?
         self._sequences_grouped = {}
@@ -44,6 +45,8 @@ class Highlights:
         char_obj_list = deque()
         for char in sequence:
             char_obj_list.append(Character(char))
+            if char == "-" and not self.has_indels:
+                self.has_indels = True
         return char_obj_list
 
     def add_highlights(self, motifs_descriptor: str, file_path: str, color: str, html_color: str):
@@ -381,6 +384,8 @@ class Highlights:
         """
         if self.indel_dict != None:
             self._append_indels_to_internal_list()
+        elif self.has_indels:
+            self._color_indels()
 
         html_string = self._generate_html()
         # Large HTML header up top, then adds to it below with dynamic_html_string
