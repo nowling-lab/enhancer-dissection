@@ -19,7 +19,7 @@ def generate_dependencies(args) -> Highlights:
     if args.outputdir != None and not os.path.exists(args.outputdir):
         os.makedirs(args.outputdir)
     else:
-        global_home = os.path.abspath('~/highlights_output')
+        global_home = os.path.expanduser('~/highlights_output')
         args.outputdir = global_home 
         if not os.path.exists(global_home):
             os.makedirs(global_home)
