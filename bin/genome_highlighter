@@ -19,9 +19,9 @@ def generate_dependencies(args) -> Highlights:
     if args.outputdir != None and not os.path.exists(args.outputdir):
         os.makedirs(args.outputdir)
     else:
-        args.outputdir = '../../highlights_output'
-        if not os.path.exists('../../highlights_output'):
-            os.makedirs('../../highlights_output')
+        args.outputdir = '~/highlights_output'
+        if not os.path.exists('~/highlights_output'):
+            os.makedirs('~/highlights_output')
 
     print("Created output directory")
     
