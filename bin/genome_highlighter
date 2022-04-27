@@ -1,1 +1,205 @@
-//placeholder for now
+from fileinput import filename
+from clustal_highlighter.modules.file_handler import generate_variant_dict
+from clustal_highlighter.modules.highlights import Highlights
+from clustal_highlighter.modules.variant_handler import *
+import argparse
+import os
+from subprocess import call
+from pathlib import Path
+import shutil
+
+#current_path = os.path.abspath(__file__)
+
+#sys.path.append(f"../../{current_path}")
+
+def generate_dependencies(args) -> Highlights:
+    colors = ['blue', 'red']
+    html_colors = ['Aqua', 'PaleVioletRed']
+
+    if args.outputdir != None and not os.path.exists(args.outputdir):
+        os.makedirs(args.outputdir)
+    else:
+        args.outputdir = '../../highlights_output'
+        if not os.path.exists('../../highlights_output'):
+            os.makedirs('../../highlights_output')
+
+    print("Created output directory")
+    
+    peak_locations = get_peak_locations(args.peaks)
+    keys = list(peak_locations.keys())   
+    
+    print("Peaks loaded")
+    
+    print("Loading sequence file...")
+    seq_dict = read_fasta_file(args.seq_file)
+    seq_keys = list(seq_dict.keys())
+    
+    print("Sequence file loaded")
+    
+    for seq_key in seq_keys:
+        if any(key in seq_key for key in keys):
+            seq_dict[seq_key.split('|', 1)[0].strip()] = seq_dict.pop(seq_key)
+        else:
+            del seq_dict[seq_key]
+    seq_keys = list(seq_dict.keys())
+        
+    vcf_df = None    
+    if args.variant_data:
+        print("Loading VCF...")
+        vcf_df = read_vcf_into_dataframe(args.variant_data)
+        print("VCF Loaded")
+    
+    for chromosome in peak_locations:
+        print(f"Processing chromosome: {chromosome}")
+        chromosome_seq = None
+        file_name = None
+        for file in seq_keys:
+            if chromosome in file:
+                chromosome_seq = seq_dict[file]
+                file_name = file
+        
+        for start, end in peak_locations[chromosome]:
+            seq = ""
+            char_pos = 0
+            
+            for char in chromosome_seq:
+                char_pos += 1
+                if char_pos >= start and char_pos <= end:
+                    seq += char
+                elif char_pos > end:
+                    break
+                else:
+                    pass
+            single_seq_dict = {}
+            single_seq_dict[file_name] = seq
+            
+            file_path = print_fasta(seq, file_name)
+            
+            fimo_highlights = []
+            paths_to_cleanup = set()
+            motifs = generate_tuple_motifs(args.motif_files)
+            
+            print("Generating fimo tsv")
+            
+            for motif_name, motif_path in motifs:
+                highlights_tsv, file_paths = generate_fimo_output(
+                    file_path, motif_path, motif_name)
+                
+                paths_to_cleanup.update(file_paths)
+
+                fimo_highlights.append(highlights_tsv)
+            
+            os.remove(file_path)           
+            temp_highlight = Highlights(single_seq_dict, start, end)
+            
+            temp_highlight.add_variant_data(vcf_df)
+                
+            print("Generating output")
+            
+            for index, (motif_name, motif_path) in enumerate(fimo_highlights):
+                temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
+            
+            for directory_to_delete in paths_to_cleanup:
+                if os.path.isdir(directory_to_delete):
+                    shutil.rmtree(directory_to_delete)
+                
+            output_path = os.path.abspath(f'{args.outputdir}/{file_name}/{file_name}-{start}-{end}.html')
+           
+            if not os.path.exists(f'{args.outputdir}/{file_name}'):
+                os.makedirs(f'{args.outputdir}/{file_name}')
+            
+            html_string_to_output(temp_highlight.generate_html_file(), output_path)
+            print(f'\noutput at: {output_path}')
+
+
+def print_fasta(seq, header):
+    file_path = f'{os.getcwd()}/{header}.fasta' 
+    out = open(file_path, 'w')
+    out.write(f'>{header}\n{seq}')
+    out.close()
+    return file_path
+
+def generate_tuple_motifs(motifs):
+    motif_pairs = []
+    for i, j in zip(motifs[0::2], motifs[1::2]):
+        motif_pairs.append((i, j))
+
+    return motif_pairs
+
+
+def generate_fimo_output(seq_path, motif_path, motif_name):
+    highlights_tsv = None
+    seq_path = os.path.abspath(seq_path)
+    basename_no_ending = Path(seq_path).stem
+    file_paths = set()
+    call(f"run_fimo_on_file {seq_path} {motif_name} {motif_path}", shell=True)
+    cwd = os.getcwd()
+
+    for dir in os.listdir(cwd):
+        if dir == basename_no_ending:
+            file_motifs_path = f"{cwd}/{dir}"
+            file_paths.add(file_motifs_path)
+            for sub_dir in os.listdir(file_motifs_path):
+                if sub_dir == motif_name:
+                    highlights_tsv = (
+                        motif_name, f"{file_motifs_path}/{sub_dir}/fimo.tsv")
+
+    return highlights_tsv, file_paths
+
+
+def generate_highlights(highlighter: Highlights, indel_path: str, highlights: list):
+    if indel_path != None:
+        highligher.add_indels(indel_path)
+    for motif_descriptor, tsv_path, color, html_color in highlights:
+        highligher.add_highlights(
+            motif_descriptor, tsv_path, color, html_color)
+
+    return
+
+
+def parseargs():
+    """
+    generates and returns a namespace for the argument parser
+    """
+    parser = argparse.ArgumentParser(description="Caller")
+
+    parser.add_argument("--seq-file",
+                        type=str,
+                        required=True,
+                        help="Path to fasta formatted sequnece file")
+
+    parser.add_argument("--motif-files",
+                        type=str,
+                        required=True,
+                        nargs='+',
+                        help="A list of motif_name motif_file_path tuples for all the motifs that you want in the output")
+
+    parser.add_argument("--variant-data",
+                        required=False,
+                        help="Path to VCF file containing variant data")
+
+    parser.add_argument("--peaks",
+                        required=True,
+                        help="Path to csv file containing the locations of the different regions that you want highlights of")    
+
+    parser.add_argument("--outputdir",
+                        type=str,
+                        required=False,
+                        help="Output file directory. Default is ~/highlights_output")
+    
+    return parser.parse_args()
+
+def html_string_to_output(html_string, outputdir):
+    # just writes the html string to out
+    output = open(outputdir, 'w')
+    output.write(html_string)
+    output.close
+
+if __name__ == "__main__":
+    args = parseargs()
+    if len(args.motif_files) % 2 != 0:
+        print("\n--motif-files flag given an odd number of inputs, please use -h for more info")
+        exit(0)
+    else:
+        generate_dependencies(args)
+    

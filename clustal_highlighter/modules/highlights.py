@@ -1,4 +1,4 @@
-
+from ctypes import pointer
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
 from clustal_highlighter.modules.html_framework import *
@@ -6,8 +6,11 @@ from collections import deque
 
 
 class Highlights:
-    def __init__(self, fasta_path: str):
-        sequence_dict = read_fasta_file(fasta_path)
+    def __init__(self, seq_dict: dict, offset=0, seq_end=None):
+        self.offset = offset
+        self.seq_start = offset
+        self.seq_end = seq_end
+        sequence_dict = seq_dict
         self.has_indels = False
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
         self.outputs = []  # array of strings containing full html file outs. Because why not?
@@ -16,6 +19,7 @@ class Highlights:
         self.variant_data = None
         self.group_all = True
         self.highlight_styles = {}
+        
 
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format 
@@ -63,8 +67,9 @@ class Highlights:
         # to actually make that happen
 
         motifs = read_fimo_file(file_path)
-        self._add_html_style(color.lower(), html_color, motifs_descriptor)
-        self._color_characters(motifs, color, motifs_descriptor)
+        if motifs:
+            self._add_html_style(color.lower(), html_color, motifs_descriptor)
+            self._color_characters(motifs, color, motifs_descriptor)
 
     def _add_html_style(self, color: str, html_color: str, motifs_descriptor: str):
         """This adds a class based on the color description and actual html color passed in from add_highlights. 
@@ -413,7 +418,7 @@ class Highlights:
                 stop = len(list_of_lines[0][1])
 
             counter = 0
-            position = 1
+            position = 1 + self.offset
             while counter < stop:  # Loop through however many lines we got
                 max_len = self._find_max_key_length(list_of_lines)
 
@@ -607,14 +612,15 @@ class Highlights:
         # this last loop is to find the longest key so we can add
         # white space to other keys to make it line up properly
 
-    def add_variant_data(self, file_path: str) -> None:
+    def add_variant_data(self, df) -> None:
         """Adds variant data to the object
 
         Args:
             file_path (str): A file path to variant data. This returns a dict of positions and what variations could be there and their positions 
         """
-        variant_data = read_variant_stats(file_path)
-        self.variant_data = variant_data
+        variant_data = generate_variant_dict(self.seq_start, self.seq_end, df)
+        if len(variant_data) > 0:
+            self.variant_data = variant_data
 
     def _append_variant_data(self, max_len, row):
         """Appends variant data to the html string
@@ -634,8 +640,9 @@ class Highlights:
 
         variant_string = 'Variant' + padding + ": " + '<span class="variant">'
         for x in range(position, position + 70):  # 70 is line width...
-            if x in self.variant_data:
-                char1, char2, chance1, chance2 = self.variant_data[x]
+            x_offset = (x + self.offset)
+            if x_offset in self.variant_data:
+                char1, char2, chance1, chance2 = self.variant_data[x_offset]
                 chance1 = float(round((chance1 * 100), 3))
                 chance2 = float(round((chance2 * 100), 3))
                 normalized_chance = None
