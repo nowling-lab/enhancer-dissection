@@ -19,9 +19,10 @@ def generate_dependencies(args) -> Highlights:
     if args.outputdir != None and not os.path.exists(args.outputdir):
         os.makedirs(args.outputdir)
     else:
-        args.outputdir = '~/highlights_output'
-        if not os.path.exists('~/highlights_output'):
-            os.makedirs('~/highlights_output')
+        global_home = os.path.abspath('~/highlights_output')
+        args.outputdir = global_home 
+        if not os.path.exists(global_home):
+            os.makedirs(global_home)
 
     print("Created output directory")
     
@@ -109,7 +110,7 @@ def generate_dependencies(args) -> Highlights:
                 os.makedirs(f'{args.outputdir}/{file_name}')
             
             html_string_to_output(temp_highlight.generate_html_file(), output_path)
-            print(f'\noutput at: {output_path}')
+            print(f'output at: {output_path}\n')
 
 
 def print_fasta(seq, header):
