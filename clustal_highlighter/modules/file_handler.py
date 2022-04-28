@@ -50,6 +50,14 @@ def read_fimo_file(file_path):
                     sequence_name_dict[seq_name].append((start, stop, motif_alt_id))  
     return sequence_name_dict
 
+def read_diverse_fimo_file(file_path):
+    seqeunce_name_dict = {}
+    fimo_df = pd.read_csv(file_path, sep='\t')
+    
+    fimo_df.drop(fimo_df.tail(3).index, inplace=True)
+    
+    return fimo_df
+
 def read_variant_stats(file_path: str) -> dict:
     comment_rows = 0
     with open(file_path, 'r') as variant_data:        

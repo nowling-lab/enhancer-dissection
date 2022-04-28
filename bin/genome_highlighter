@@ -1,7 +1,10 @@
 from fileinput import filename
+
+from pandas import DataFrame
 from clustal_highlighter.modules.file_handler import generate_variant_dict
 from clustal_highlighter.modules.highlights import Highlights
 from clustal_highlighter.modules.variant_handler import *
+from clustal_highlighter.modules.file_handler import read_diverse_fimo_file
 import argparse
 import os
 from subprocess import call
@@ -44,10 +47,10 @@ def generate_dependencies(args) -> Highlights:
             del seq_dict[seq_key]
     seq_keys = list(seq_dict.keys())
         
-    vcf_df = None    
+    vcf_df = pd.DataFrame()    
     if args.variant_data:
         print("Loading VCF...")
-        vcf_df = read_vcf_into_dataframe(args.variant_data)
+        #vcf_df = read_vcf_into_dataframe(args.variant_data)
         print("VCF Loaded")
     
     for chromosome in peak_locations:
@@ -59,45 +62,50 @@ def generate_dependencies(args) -> Highlights:
                 chromosome_seq = seq_dict[file]
                 file_name = file
         
+        all_sequences = {}
+        motifs = None
         for start, end in peak_locations[chromosome]:
-            seq = ""
-            char_pos = 0
-            
-            for char in chromosome_seq:
-                char_pos += 1
-                if char_pos >= start and char_pos <= end:
-                    seq += char
-                elif char_pos > end:
-                    break
-                else:
-                    pass
+            seq = chromosome_seq[start-1:end]
+
             single_seq_dict = {}
             single_seq_dict[file_name] = seq
             
-            file_path = print_fasta(seq, file_name)
+            all_sequences[(start, end)] = single_seq_dict
             
-            fimo_highlights = []
-            paths_to_cleanup = set()
-            motifs = generate_tuple_motifs(args.motif_files)
+        file_path = print_fasta(all_sequences, file_name)
+        
+        fimo_highlights = []
+        paths_to_cleanup = set()
+        motifs = generate_tuple_motifs(args.motif_files)
             
-            print("Generating fimo tsv")
+        print("Generating fimo tsv")
             
-            for motif_name, motif_path in motifs:
-                highlights_tsv, file_paths = generate_fimo_output(
-                    file_path, motif_path, motif_name)
-                
-                paths_to_cleanup.update(file_paths)
+        fimo_df = pd.DataFrame()
+        for motif_name, motif_path in motifs:
+            highlights_tsv, file_paths = generate_fimo_output(
+                file_path, motif_path, motif_name)
+            
+            paths_to_cleanup.update(file_paths)
 
-                fimo_highlights.append(highlights_tsv)
+            fimo_highlights.append(highlights_tsv)
             
-            os.remove(file_path)           
+        os.remove(file_path)
+
+        for start, end in peak_locations[chromosome]:    
+            single_seq_dict = all_sequences[((start, end))]
+            
             temp_highlight = Highlights(single_seq_dict, start, end)
             
-            temp_highlight.add_variant_data(vcf_df)
+            if args.variant_data and not vcf_df.empty:
+                temp_highlight.add_variant_data(vcf_df)
                 
             print("Generating output")
             
-            for index, (motif_name, motif_path) in enumerate(fimo_highlights):
+            for index, (motif_name, motif_df) in enumerate(fimo_highlights):
+                seq_name = f'{list(single_seq_dict.keys())[0]}_{start}_{end}'
+                motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
+                
+                motif_path = print_fimo_subset(motifs)
                 temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
             
             for directory_to_delete in paths_to_cleanup:
@@ -113,10 +121,21 @@ def generate_dependencies(args) -> Highlights:
             print(f'output at: {output_path}\n')
 
 
-def print_fasta(seq, header):
+def print_fimo_subset(motif_df: DataFrame):
+    file_path = f'{os.getcwd()}/temp_fimo.tsv' 
+    motif_df.to_csv(file_path, index=False, sep="\t", header=True)
+    return file_path
+
+def print_fasta(all_sequences, header):
     file_path = f'{os.getcwd()}/{header}.fasta' 
     out = open(file_path, 'w')
-    out.write(f'>{header}\n{seq}')
+    for key in all_sequences:
+        start, end = key
+        sequence_dict = all_sequences[key]
+        for seq_name in sequence_dict:
+            seq = sequence_dict[seq_name]
+            out.write(f'>{seq_name}_{start}_{end}\n{seq}\n')
+        
     out.close()
     return file_path
 
@@ -142,21 +161,11 @@ def generate_fimo_output(seq_path, motif_path, motif_name):
             file_paths.add(file_motifs_path)
             for sub_dir in os.listdir(file_motifs_path):
                 if sub_dir == motif_name:
+                    fimo_df = read_diverse_fimo_file(f"{file_motifs_path}/{sub_dir}/fimo.tsv")
                     highlights_tsv = (
-                        motif_name, f"{file_motifs_path}/{sub_dir}/fimo.tsv")
+                        motif_name, fimo_df)
 
     return highlights_tsv, file_paths
-
-
-def generate_highlights(highlighter: Highlights, indel_path: str, highlights: list):
-    if indel_path != None:
-        highligher.add_indels(indel_path)
-    for motif_descriptor, tsv_path, color, html_color in highlights:
-        highligher.add_highlights(
-            motif_descriptor, tsv_path, color, html_color)
-
-    return
-
 
 def parseargs():
     """
@@ -176,7 +185,7 @@ def parseargs():
                         help="A list of motif_name motif_file_path tuples for all the motifs that you want in the output")
 
     parser.add_argument("--variant-data",
-                        required=False,
+                        required=True,
                         help="Path to VCF file containing variant data")
 
     parser.add_argument("--peaks",
