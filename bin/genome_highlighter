@@ -107,6 +107,7 @@ def generate_dependencies(args) -> Highlights:
                 
                 motif_path = print_fimo_subset(motifs)
                 temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
+                os.remove(motif_path)
             
             for directory_to_delete in paths_to_cleanup:
                 if os.path.isdir(directory_to_delete):
