@@ -39,8 +39,8 @@ def read_fimo_file(file_path):
                         return None
                 line_split = line.split()
                 seq_name = line_split[2]
-                start = int(line_split[3])
-                stop = int(line_split[4])
+                start = int(line_split[3].strip())
+                stop = int(line_split[4].strip())
                 motif_alt_id = line_split[1]
 
                 if seq_name not in sequence_name_dict:
@@ -52,7 +52,7 @@ def read_fimo_file(file_path):
 
 def read_diverse_fimo_file(file_path):
     seqeunce_name_dict = {}
-    fimo_df = pd.read_csv(file_path, sep='\t')
+    fimo_df = pd.read_csv(file_path, sep='\t', comment="#")
     
     fimo_df.drop(fimo_df.tail(3).index, inplace=True)
     

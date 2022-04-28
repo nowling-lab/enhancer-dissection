@@ -50,7 +50,7 @@ def generate_dependencies(args) -> Highlights:
     vcf_df = pd.DataFrame()    
     if args.variant_data:
         print("Loading VCF...")
-        #vcf_df = read_vcf_into_dataframe(args.variant_data)
+        vcf_df = read_vcf_into_dataframe(args.variant_data)
         print("VCF Loaded")
     
     for chromosome in peak_locations:
@@ -68,7 +68,7 @@ def generate_dependencies(args) -> Highlights:
             seq = chromosome_seq[start-1:end]
 
             single_seq_dict = {}
-            single_seq_dict[file_name] = seq
+            single_seq_dict[f'{file_name}_{start}_{end}'] = seq
             
             all_sequences[(start, end)] = single_seq_dict
             
@@ -135,7 +135,7 @@ def print_fasta(all_sequences, header):
         sequence_dict = all_sequences[key]
         for seq_name in sequence_dict:
             seq = sequence_dict[seq_name]
-            out.write(f'>{seq_name}_{start}_{end}\n{seq}\n')
+            out.write(f'>{seq_name}\n{seq}\n')
         
     out.close()
     return file_path

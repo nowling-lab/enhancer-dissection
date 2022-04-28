@@ -96,6 +96,8 @@ class Highlights:
         """
         for sequence in motifs:
             if sequence not in self.sequences:
+                print(motifs.keys())
+                print(self.sequences.keys())
                 print(
                     "Mismatch between supplied FIMO file and sequences in original sequence file, aborting coloring")
                 return
