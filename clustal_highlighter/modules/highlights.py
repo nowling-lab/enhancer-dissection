@@ -614,13 +614,13 @@ class Highlights:
         # this last loop is to find the longest key so we can add
         # white space to other keys to make it line up properly
 
-    def add_variant_data(self, df) -> None:
+    def add_variant_data(self, df, max_missing_frac=None, min_allele_freq=None) -> None:
         """Adds variant data to the object
 
         Args:
             file_path (str): A file path to variant data. This returns a dict of positions and what variations could be there and their positions 
         """
-        variant_data = generate_variant_dict(self.seq_start, self.seq_end, df)
+        variant_data = generate_variant_dict(self.seq_start, self.seq_end, df, max_missing_frac, min_allele_freq)
         if len(variant_data) > 0:
             self.variant_data = variant_data
 

@@ -64,9 +64,10 @@ def calculate_variant_stats(variant_Row):
 
 def get_peak_locations(file_path):
     peak_locations = {}
-    df = pd.read_csv(file_path, sep=",")
+    column_names = ['chrom', 'start', 'end']
+    df = pd.read_csv(file_path, sep="\t", usecols=range(3), names=column_names)
     
-    df = df.groupby(['seqnames'])
+    df = df.groupby(['chrom'])
     chromosomes = df.groups.keys()
     for chromosome in chromosomes:
         group = df.get_group(chromosome)

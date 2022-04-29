@@ -1,4 +1,5 @@
 from fileinput import filename
+from numpy import maximum_sctype
 
 from pandas import DataFrame
 from clustal_highlighter.modules.file_handler import generate_variant_dict
@@ -13,46 +14,50 @@ import shutil
 
 #current_path = os.path.abspath(__file__)
 
-#sys.path.append(f"../../{current_path}")
+# sys.path.append(f"../../{current_path}")
+
 
 def generate_dependencies(args) -> Highlights:
     colors = ['blue', 'red']
     html_colors = ['Aqua', 'PaleVioletRed']
+    working_directory = None
 
-    if args.outputdir != None and not os.path.exists(args.outputdir):
-        os.makedirs(args.outputdir)
+    if args.output_dir != None and not os.path.exists(args.output_dir):
+        os.makedirs(args.output_dir)
+        working_directory = args.output_dir
     else:
         global_home = os.path.expanduser('~/highlights_output')
-        args.outputdir = global_home 
+        args.output_dir = global_home
         if not os.path.exists(global_home):
             os.makedirs(global_home)
+        working_directory = global_home
 
     print("Created output directory")
-    
+
     peak_locations = get_peak_locations(args.peaks)
-    keys = list(peak_locations.keys())   
-    
+    keys = list(peak_locations.keys())
+
     print("Peaks loaded")
-    
+
     print("Loading sequence file...")
     seq_dict = read_fasta_file(args.seq_file)
     seq_keys = list(seq_dict.keys())
-    
+
     print("Sequence file loaded")
-    
+
     for seq_key in seq_keys:
         if any(key in seq_key for key in keys):
             seq_dict[seq_key.split('|', 1)[0].strip()] = seq_dict.pop(seq_key)
         else:
             del seq_dict[seq_key]
     seq_keys = list(seq_dict.keys())
-        
-    vcf_df = pd.DataFrame()    
+
+    vcf_df = pd.DataFrame()
     if args.variant_data:
         print("Loading VCF...")
         vcf_df = read_vcf_into_dataframe(args.variant_data)
         print("VCF Loaded")
-    
+
     for chromosome in peak_locations:
         print(f"Processing chromosome: {chromosome}")
         chromosome_seq = None
@@ -61,7 +66,7 @@ def generate_dependencies(args) -> Highlights:
             if chromosome in file:
                 chromosome_seq = seq_dict[file]
                 file_name = file
-        
+
         all_sequences = {}
         motifs = None
         for start, end in peak_locations[chromosome]:
@@ -69,66 +74,89 @@ def generate_dependencies(args) -> Highlights:
 
             single_seq_dict = {}
             single_seq_dict[f'{file_name}_{start}_{end}'] = seq
-            
+
             all_sequences[(start, end)] = single_seq_dict
-            
+
         file_path = print_fasta(all_sequences, file_name)
-        
+
         fimo_highlights = []
         paths_to_cleanup = set()
         motifs = generate_tuple_motifs(args.motif_files)
-            
+
         print("Generating fimo tsv")
-            
+
         fimo_df = pd.DataFrame()
         for motif_name, motif_path in motifs:
             highlights_tsv, file_paths = generate_fimo_output(
                 file_path, motif_path, motif_name)
-            
+
             paths_to_cleanup.update(file_paths)
 
             fimo_highlights.append(highlights_tsv)
-            
-        os.remove(file_path)
 
-        for start, end in peak_locations[chromosome]:    
+        ##os.remove(file_path)
+
+        for start, end in peak_locations[chromosome]:
             single_seq_dict = all_sequences[((start, end))]
-            
+
             temp_highlight = Highlights(single_seq_dict, start, end)
-            
+
             if args.variant_data and not vcf_df.empty:
-                temp_highlight.add_variant_data(vcf_df)
+                max_missing_frac = args.max_missing_frac
+                min_allele_freq = args.min_allele_freq
+
+                # Guard clauses to verify input
+                if max_missing_frac is not None:
+                    verify_valid_decimals(max_missing_frac)
+                if min_allele_freq is not None:
+                    verify_valid_decimals(min_allele_freq)
                 
+                if max_missing_frac is None and min_allele_freq is None:
+                    temp_highlight.add_variant_data(vcf_df)
+                elif max_missing_frac is not None and min_allele_freq is not None:
+                    temp_highlight.add_variant_data(
+                        vcf_df, max_missing_frac, min_allele_freq)
+                elif max_missing_frac is not None:
+                    temp_highlight.add_variant_data(
+                        vcf_df, max_missing_frac=max_missing_frac)
+                else:
+                    temp_highlight.add_variant_data(
+                        vcf_df, min_allele_freq=min_allele_freq)
+
             print("Generating output")
-            
+
             for index, (motif_name, motif_df) in enumerate(fimo_highlights):
                 seq_name = f'{list(single_seq_dict.keys())[0]}_{start}_{end}'
                 motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
-                
+
                 motif_path = print_fimo_subset(motifs)
-                temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
-                os.remove(motif_path)
-            
-            for directory_to_delete in paths_to_cleanup:
-                if os.path.isdir(directory_to_delete):
-                    shutil.rmtree(directory_to_delete)
-                
-            output_path = os.path.abspath(f'{args.outputdir}/{file_name}/{file_name}-{start}-{end}.html')
-           
-            if not os.path.exists(f'{args.outputdir}/{file_name}'):
-                os.makedirs(f'{args.outputdir}/{file_name}')
-            
-            html_string_to_output(temp_highlight.generate_html_file(), output_path)
+                temp_highlight.add_highlights(
+                    motif_name, motif_path, colors[index], html_colors[index])
+                ##os.remove(motif_path)
+
+            # for directory_to_delete in paths_to_cleanup:
+            #     if os.path.isdir(directory_to_delete):
+            #         shutil.rmtree(directory_to_delete)
+
+            output_path = os.path.abspath(
+                f'{args.output_dir}/{file_name}/{file_name}-{start}-{end}.html')
+
+            if not os.path.exists(f'{args.output_dir}/{file_name}'):
+                os.makedirs(f'{args.output_dir}/{file_name}')
+
+            html_string_to_output(
+                temp_highlight.generate_html_file(), output_path)
             print(f'output at: {output_path}\n')
 
 
 def print_fimo_subset(motif_df: DataFrame):
-    file_path = f'{os.getcwd()}/temp_fimo.tsv' 
+    file_path = f'{os.getcwd()}/temp_fimo.tsv'
     motif_df.to_csv(file_path, index=False, sep="\t", header=True)
     return file_path
 
+
 def print_fasta(all_sequences, header):
-    file_path = f'{os.getcwd()}/{header}.fasta' 
+    file_path = f'{os.getcwd()}/{header}.fasta'
     out = open(file_path, 'w')
     for key in all_sequences:
         start, end = key
@@ -136,9 +164,10 @@ def print_fasta(all_sequences, header):
         for seq_name in sequence_dict:
             seq = sequence_dict[seq_name]
             out.write(f'>{seq_name}\n{seq}\n')
-        
+
     out.close()
     return file_path
+
 
 def generate_tuple_motifs(motifs):
     motif_pairs = []
@@ -162,11 +191,19 @@ def generate_fimo_output(seq_path, motif_path, motif_name):
             file_paths.add(file_motifs_path)
             for sub_dir in os.listdir(file_motifs_path):
                 if sub_dir == motif_name:
-                    fimo_df = read_diverse_fimo_file(f"{file_motifs_path}/{sub_dir}/fimo.tsv")
+                    fimo_df = read_diverse_fimo_file(
+                        f"{file_motifs_path}/{sub_dir}/fimo.tsv")
                     highlights_tsv = (
                         motif_name, fimo_df)
 
     return highlights_tsv, file_paths
+
+
+def verify_valid_decimals(value):
+    if value < 0 or value > 1:
+        raise argparse.ArgumentTypeError(
+            "%s is an invalid positive int value" % value)
+
 
 def parseargs():
     """
@@ -177,7 +214,7 @@ def parseargs():
     parser.add_argument("--seq-file",
                         type=str,
                         required=True,
-                        help="Path to fasta formatted sequnece file")
+                        help="Path to fasta formatted sequence file")
 
     parser.add_argument("--motif-files",
                         type=str,
@@ -191,20 +228,36 @@ def parseargs():
 
     parser.add_argument("--peaks",
                         required=True,
-                        help="Path to csv file containing the locations of the different regions that you want highlights of")    
+                        help="Path to csv file containing the locations of the different regions that you want highlights of")
 
-    parser.add_argument("--outputdir",
+    parser.add_argument("--output-dir",
                         type=str,
                         required=False,
                         help="Output file directory. Default is ~/highlights_output")
-    
+
+    parser.add_argument("--max-missing-frac",
+                        type=float,
+                        nargs='?',
+                        const=None,
+                        required=False,
+                        help="0-1 float representing what percent of missing allele information makes a variant not display")
+
+    parser.add_argument("--min-allele-freq",
+                        type=float,
+                        nargs='?',
+                        const=None,
+                        required=False,
+                        help="0-1 float representing what minimum percent appearance an allele must have in order for a variant to display")
+
     return parser.parse_args()
 
-def html_string_to_output(html_string, outputdir):
+
+def html_string_to_output(html_string, output_dir):
     # just writes the html string to out
-    output = open(outputdir, 'w')
+    output = open(output_dir, 'w')
     output.write(html_string)
     output.close
+
 
 if __name__ == "__main__":
     args = parseargs()
@@ -213,4 +266,3 @@ if __name__ == "__main__":
         exit(0)
     else:
         generate_dependencies(args)
-    

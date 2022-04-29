@@ -72,17 +72,17 @@ def read_variant_stats(file_path: str) -> dict:
     df = pd.read_csv(file_path, sep='\t', skiprows=(comment_rows-1))
     return df
 
-def generate_variant_dict(seq_start, seq_end, df): #df is pandas DataFrame
+def generate_variant_dict(seq_start, seq_end, df, max_missing_frac=None, min_allele_freq=None): #df is pandas DataFrame
     variant_dict = {}
  
     variant_data = df.loc[(df['POS'] >= seq_start) & (df['POS'] <= seq_end)]
     
     for row in variant_data[:].to_numpy().tolist():
-        calculate_variant_stats(row, variant_dict)
+        calculate_variant_stats(row, variant_dict, max_missing_frac, min_allele_freq)
     
     return variant_dict
 
-def calculate_variant_stats(variant_Row, variant_dict):
+def calculate_variant_stats(variant_Row, variant_dict, max_missing_frac=None, min_allele_freq=None):
     ref = variant_Row[3]
     alt = variant_Row[4]
     pos = variant_Row[1]
@@ -95,20 +95,44 @@ def calculate_variant_stats(variant_Row, variant_dict):
     alt_1 = 0
     
     #./.
+    missing_allele = False
+    num_missing_alleles = 0
     for sample in cleaned_samples:
         ref_val, alt_val = sample
         try:
             ref_1 += int(ref_val)
         except:
+            missing_allele = True
             pass
         #2 blocks so one of them doesn't not get added if it was a 1...
         try:
             alt_1 += int(alt_val)     
         except:
+            missing_allele = True
             pass
+        
+        if missing_allele:
+            num_missing_alleles += 1
+            missing_allele = False
     
     ref_percent = (ref_1 + alt_1)/(2*variant_amount)
-    #print(variant_Row[0:9])
+    alt_percent = 1-ref_percent
+
+    if max_missing_frac is not None:
+        num_samples = variant_amount
+        max_individuals_missing = int(max_missing_frac * num_samples)
+        if num_missing_alleles >= max_individuals_missing:
+            return
+        
+    if min_allele_freq is not None:
+        min_percent = ref_percent if ref_percent < alt_percent else alt_percent
+        if min_percent <= min_allele_freq:
+            return
+        
+    #Program short circuits on the above conditions and variant is not added to dictionary...
+    variant_dict[int(pos) + 1] = (ref, alt, ref_percent, alt_percent)    
+
+  #print(variant_Row[0:9]) This can be used if I want to make the code more human readable...
     # appearances = {
     #     'chromosome': chromosome,
     #     'position': pos,
@@ -118,7 +142,6 @@ def calculate_variant_stats(variant_Row, variant_dict):
     #     'alt_percent': 1-ref_percent
     # } Ideal Appearances. Just to get it to work we use other.
                 #1 index to 0 index
-    variant_dict[int(pos) + 1] = (ref, alt, ref_percent, 1-ref_percent)    
 
 def __DEPREICATED_read_variant_stats(file_path: str) -> dict:
     variant_dict = {}
