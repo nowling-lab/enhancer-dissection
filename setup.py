@@ -16,6 +16,6 @@ setup(
         "bin/run_fimo_on_file",
         "bin/fasta_highlighter"
         ],
-    install_requires=['pandas>=1.3.4', 'numpy>=1.22.3', 'cython>=0.29.28',],
+    install_requires=['pandas>=1.3.4', 'numpy>=1.22.3'],
     include_package_data=True,
 )
