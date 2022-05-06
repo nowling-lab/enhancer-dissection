@@ -102,7 +102,7 @@ def read_fasta_file(file_path):
     with open(file_path) as f:
         for line in f:
             if '>' in line:
-                header = line
+                header = line.split()[0]
 
                 if sequence_name == None:
                     sequence = None
