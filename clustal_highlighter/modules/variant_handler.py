@@ -1,8 +1,17 @@
 import pandas as pd
+import pathlib
+import gzip
 
 def read_vcf_into_dataframe(file_path):
+    file_extension = pathlib.Path(file_path).suffix
+    file_opener = open
+    open_as = 'r'
+    if file_extension == '.gz':
+        open_as = 'rt'
+        file_opener = gzip.open
+
     comment_rows = 0
-    with open(file_path, 'r') as variant_data:        
+    with file_opener(file_path, open_as) as variant_data:        
         for line in variant_data:
             comment_rows += 1
             if line[0] == '#':
@@ -11,8 +20,8 @@ def read_vcf_into_dataframe(file_path):
                 else:
                     pass
         
-    df = pd.read_csv(file_path, sep='\t', skiprows=(comment_rows-1))
-    return df
+    return pd.read_csv(file_path, sep='\t', skiprows=(comment_rows-1), memory_map=True)
+
 
 def find_variants_in_sequnce(seq_start, seq_end, df): #df is pandas dataframe
     variants = []
