@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -e
+set -u
+set -o pipefail
+set -x
+
 if [[ $# -ne 4 ]] ; then
     echo 'Arguments are sequence_file motifs_name motifs_file output_path'
     exit 0
@@ -13,13 +18,9 @@ motifs_name=$2
 motifs_file=$3
 
 output_path=$4/$sequence_file_name
-mkdir $output_path &>/dev/null
+mkdir -p $output_path
 
-pushd $output_path &>/dev/null
-
-fimo -oc $output_path/$motifs_name --verbosity 1 $motifs_file $1 &>/dev/null
-
-popd &>/dev/null
+fimo -oc $output_path/$motifs_name --verbosity 1 $motifs_file $1
 
 unset filename
 unset global_path
