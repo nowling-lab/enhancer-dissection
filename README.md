@@ -69,6 +69,8 @@ An example of running this program is this:
      
      fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt
 
+- - -
+
 For debian users (Not debian-based, but specifically debian) when running python setup.py install there might be a failure to install because of a missing dependency cython. This only happens on debian for some reason but can be fixed by running:
 
     pip install cython
