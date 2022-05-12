@@ -105,9 +105,9 @@ def generate_dependencies(args) -> Highlights:
 
                 # Guard clauses to verify input
                 if max_missing_frac is not None:
-                    verify_valid_decimals(max_missing_frac)
+                    verify_valid_decimals(max_missing_frac, "max-missing-frac")
                 if min_allele_freq is not None:
-                    verify_valid_decimals(min_allele_freq)
+                    verify_valid_decimals(min_allele_freq, "min-allele-freq")
                 
                 if max_missing_frac is None and min_allele_freq is None:
                     temp_highlight.add_variant_data(vcf_df)
@@ -191,10 +191,10 @@ def generate_fimo_output(seq_path, motif_path, motif_name, output_path):
     return highlights_tsv, file_paths
 
 
-def verify_valid_decimals(value):
+def verify_valid_decimals(value, value_desc):
     if value < 0 or value > 1:
         raise argparse.ArgumentTypeError(
-            "%s is an invalid positive int value" % value)
+            f"{value} is an invalid value for {value_desc}")
 
 
 def parseargs():
@@ -206,26 +206,26 @@ def parseargs():
     parser.add_argument("--seq-file",
                         type=str,
                         required=True,
-                        help="Path to fasta formatted sequence file")
+                        help="Path to fasta formatted sequence file ")
 
     parser.add_argument("--motif-files",
                         type=str,
-                        required=True,
+                        required=False,
                         nargs='+',
                         help="A list of motif_name motif_file_path tuples for all the motifs that you want in the output")
 
     parser.add_argument("--variant-data",
-                        required=True,
+                        required=False,
                         help="Path to VCF file containing variant data")
 
     parser.add_argument("--peaks",
                         required=True,
-                        help="Path to csv file containing the locations of the different regions that you want highlights of")
+                        help="Path to BED file containing the locations of the different regions that you want highlights of (i.e. the start and end of an enhancer region")
 
     parser.add_argument("--output-dir",
                         type=str,
-                        required=False,
-                        help="Output file directory. Default is ~/highlights_output")
+                        required=True,
+                        help="Output file directory. This will be used as a working directory as well")
 
     parser.add_argument("--max-missing-frac",
                         type=float,

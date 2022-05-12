@@ -1,4 +1,3 @@
-from ctypes import pointer
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
 from clustal_highlighter.modules.html_framework import *
@@ -13,6 +12,11 @@ class Highlights:
         sequence_dict = seq_dict
         self.has_indels = False
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
+        if self.seq_end == None:
+            keys = list(self.sequences.keys())
+            max_len = max([len(self.sequences[key]) for key in keys]) #list compression getting all seq sizes and calling max
+            self.seq_end = max_len
+        
         self.outputs = []  # array of strings containing full html file outs. Because why not?
         self._sequences_grouped = {}
         self.indel_dict = None

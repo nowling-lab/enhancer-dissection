@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 def read_fasta_file(file_path):
@@ -130,7 +131,7 @@ def calculate_variant_stats(variant_Row, variant_dict, max_missing_frac=None, mi
             return
         
     #Program short circuits on the above conditions and variant is not added to dictionary...
-    variant_dict[int(pos) + 1] = (ref, alt, ref_percent, alt_percent)    
+    variant_dict[int(pos)] = (ref, alt, ref_percent, alt_percent)    
 
   #print(variant_Row[0:9]) This can be used if I want to make the code more human readable...
     # appearances = {
@@ -155,6 +156,7 @@ def __DEPREICATED_read_variant_stats(file_path: str) -> dict:
     
 def html_string_to_output(html_string, outputdir):
     #just writes the html string to out
+    outputdir = os.path.expanduser(outputdir)
     output = open(outputdir, 'w')
     output.write(html_string)
     output.close

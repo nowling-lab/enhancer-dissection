@@ -1,18 +1,21 @@
 import sys
 import os
+import pandas as pd 
+import numpy as np
 
 sys.path.insert(0, os.getcwd())
 
 from clustal_highlighter.modules.highlights import Highlights
-
 from clustal_highlighter.modules.character import Character
+from clustal_highlighter.modules.file_handler import html_string_to_output, read_fasta_file
+from clustal_highlighter.modules.variant_handler import read_vcf_into_dataframe
 
 #Testing the highlights object
 
 #Global variables:
 sequence_path = './test/test_highlights/test_files/test_sequence.fa'
 indel_path = './test/test_highlights/test_files/test_seq_aligned.fa'
-variant_data = './test/test_highlights/test_files/test_variant_data.xlsx'
+variant_data = './test/test_highlights/test_files/test_variant_data.vcf'
 
 after_import = """Pfin1_3_3
 ACGGACTTTGATGAACGCAAGGGCCGTTGCTCGAGGACACGGCGACTCGAGGGAAATCCTGTTTTCGGGG
@@ -35,10 +38,13 @@ list_of_lines = [
     ('keys', ['this','is','a','sequence']),
     ('keyactuallysuperlong', ['this','is','a','sequence'])
 ]
-test_highlight = Highlights(sequence_path) #to pass self to functions
+
+sequence_dict = read_fasta_file(sequence_path)
+
+test_highlight = Highlights(sequence_dict) #to pass self to functions
 
 def test_highlights():
-        temp_highlight = Highlights(sequence_path)
+        temp_highlight = Highlights(sequence_dict)
         
         stored_sequence = temp_highlight._to_string()
         assert stored_sequence == after_import
@@ -96,11 +102,15 @@ def test_find_nearest_non_indels():
     assert correct_tuple == generated_tuple
 
 def test_variant_data():
-    temp_highlights = Highlights(sequence_path)
-    temp_highlights.add_variant_data(variant_data)
+    temp_highlights = Highlights(sequence_dict)
+    vcf_df = read_vcf_into_dataframe(variant_data)
+    temp_highlights.add_variant_data(vcf_df)
     variant_string = temp_highlights._append_variant_data(20, 0)
-    
-    assert variant_string == correct_variant_data
+    html_string_to_output(temp_highlights.generate_html_file(), '~/test_highlight.html')
+    print(temp_highlights.variant_data)
+    #visually count and see if it works. 
+    #assert False
+    #Uncomment to see print statement above.
 
 
 # Note, color characters and variant data tests rely on 
