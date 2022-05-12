@@ -1,5 +1,7 @@
 # enhancer-dissection
  
+#NOTE: Debian users please rease the warnings at the bottom of this file
+ 
 The two programs in this project display variant data, motif data (via highlights). They differ only by their inputs. fasta_highlighter takes groups of aligned sequen es (all orientated the same way) in order to compare by the sequence data. Motifs are commonly overlayed on these. 
 
 genome_highlighter does this but takes singular sequences given by a BED file and pulls those locations from a supplied FASTA formatted sequence file in order to display highlights on individual sequences. 
@@ -66,3 +68,14 @@ The arguments that are taken are:
 An example of running this program is this:
      
      fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt
+
+For debian users (Not debian-based, but specifically debian) when running python setup.py install there might be a failure to install because of a missing dependency cython. This only happens on debian for some reason but can be fixed by running:
+
+    pip install cython
+    
+And then running 
+
+    python setup.py install
+ 
+A few more times. It sometimes will break saying you don't have numpy, but just run it once or twice more and it will finish installing. 
+Also be aware that the pandas installation takes a really long time but just wait it out and it will work. 
