@@ -13,11 +13,26 @@ And then install following their installation instructions.
 
 To add FIMO and other programs to your path:
     
-    1. Backup your current PATH (echo $PATH > ~/path.txt)
-    2. In your home directory (cd ~/) add a folder called bin (mkdir $HOME/bin)
-    3. From where you installed meme-suite cd meme-(version)/srcs
-    4. Next copy fimo to that folder you created in the home directory (cp fimo ~/bin)
-    5. Add the programs in that program to the PATH (export PATH="$PATH:$HOME/bin")
+1. Backup your current PATH 
+
+       $ echo $PATH > ~/path.txt
+    
+2. In your home directory (cd ~/) add a folder called bin (mkdir $HOME/bin)
+
+       $ cd ~/
+       $ mkdir $HOME/bin
+
+3. From where you installed meme-suite cd meme-(version)/srcs
+
+       $ cd meme-(version)/srcs
+
+4. Next copy fimo to that folder you created in the home directory 
+     
+       $ cp fimo ~/bin
+     
+5. Add the programs in that program to the PATH 
+
+       $ export PATH="$PATH:$HOME/bin"
     
 If there are other programs you would like to add to the path in the future then adding them in bin and running step 5 again
 
@@ -51,7 +66,7 @@ The arguments that are taken are:
                            
  An example of running this program is as follows:
  
-     genome_highlighter --seq-file ~/VectorBase-56_AgambiaePEST_Genome.fasta --motif-files JASPAR ~/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt streme ~/streme_motifs.txt --variant-data ~/ag1000g_2L_bfaso_coluzzii.vcf --peaks ~/X_peaks.bed 
+     $ genome_highlighter --seq-file ~/VectorBase-56_AgambiaePEST_Genome.fasta --motif-files JASPAR ~/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt streme ~/streme_motifs.txt --variant-data ~/ag1000g_2L_bfaso_coluzzii.vcf --peaks ~/X_peaks.bed 
     
 The second program is ran by calling fasta_highlighter.
 The arguments that are taken are:
@@ -67,17 +82,17 @@ The arguments that are taken are:
 
 An example of running this program is this:
      
-     fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt
+     $ fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt
 
 - - -
 
 For debian users (Not debian-based, but specifically debian) when running python setup.py install there might be a failure to install because of a missing dependency cython. This only happens on debian for some reason but can be fixed by running:
 
-    pip install cython
+    $ pip install cython
     
 And then running 
 
-    python setup.py install
+    $ python setup.py install
  
 A few more times. It sometimes will break saying you don't have numpy, but just run it once or twice more and it will finish installing. 
 Also be aware that the pandas installation takes a really long time but just wait it out and it will work. 
