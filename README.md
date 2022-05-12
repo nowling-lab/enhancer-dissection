@@ -5,7 +5,7 @@ The two programs in this project display variant data, motif data (via highlight
 genome_highlighter does this but takes singular sequences given by a BED file and pulls those locations from a supplied FASTA formatted sequence file in order to display highlights on individual sequences. 
 
 Requirements:
-    Make sure FIMO is installed and added to your PATH environment variable. You can get fimo here by downloading meme-suite:https://meme-suite.org/meme/doc/download.html
+    Make sure FIMO is installed and added to your PATH environment variable. You can get fimo here by downloading meme-suite: https://meme-suite.org/meme/doc/download.html
     
 And then install following their installation instructions.
 
