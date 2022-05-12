@@ -55,7 +55,7 @@ The arguments that are taken are:
                            A list of motif_name motif_file_path tuples for all the motifs that you want in the output
      --variant-data VARIANT_DATA
                            Path to VCF file containing variant data
-     --peaks PEAKS         Path to BED file containing the locations of the different regions that you want highlights of (i.e. the start and end positions of enhancers)
+     --peaks PEAKS         Path to BED file containing the locations of the different regions that you want highlights of (e.g. the start and end positions of enhancers)
      --output-dir OUTPUT_DIR
                            Output file directory. Will store output and be used as a working directory.
      --max-missing-frac [MAX_MISSING_FRAC]
