@@ -30,6 +30,8 @@ def read_fasta_file(file_path):
 def read_fimo_file(file_path):
     #Reads in a fimo file, standard stuff
     sequence_name_dict = {}
+    if not os.path.isfile(file_path):
+        print("Fimo file not found, check input parameters")
     with open(file_path) as f:
             header = f.readline() #to get rid of it
             for line in f:
@@ -52,11 +54,8 @@ def read_fimo_file(file_path):
     return sequence_name_dict
 
 def read_diverse_fimo_file(file_path):
-    seqeunce_name_dict = {}
     fimo_df = pd.read_csv(file_path, sep='\t', comment="#")
-    
     fimo_df.drop(fimo_df.tail(3).index, inplace=True)
-    
     return fimo_df
 
 def read_variant_stats(file_path: str) -> dict:

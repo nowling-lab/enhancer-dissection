@@ -82,14 +82,13 @@ def generate_dependencies(args) -> Highlights:
 
         print("Generating fimo tsv")
 
-        fimo_df = pd.DataFrame()
         for motif_name, motif_path in motifs:
-            highlights_tsv, file_paths = generate_fimo_output(
+            motif_and_df, file_paths = generate_fimo_output(
                 file_path, motif_path, motif_name, working_directory)
 
             paths_to_cleanup.update(file_paths)
 
-            fimo_highlights.append(highlights_tsv)
+            fimo_highlights.append(motif_and_df)
 
         ##os.remove(file_path)
 
@@ -121,13 +120,11 @@ def generate_dependencies(args) -> Highlights:
                     temp_highlight.add_variant_data(
                         vcf_df, min_allele_freq=min_allele_freq)
 
-            
-
-            for index, (motif_name, motif_df) in enumerate(fimo_highlights):
-                seq_name = f'{list(single_seq_dict.keys())[0]}_{start}_{end}'
+            for index, (motif_name, motif_df, working_directory) in enumerate(fimo_highlights):
+                seq_name = list(single_seq_dict.keys())[0]
                 motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
-
-                motif_path = print_fimo_subset(motifs)
+                
+                motif_path = print_fimo_subset(motifs, working_directory)
                 temp_highlight.add_highlights(
                     motif_name, motif_path, colors[index], html_colors[index])
                 ##os.remove(motif_path)
@@ -144,11 +141,11 @@ def generate_dependencies(args) -> Highlights:
 
             html_string_to_output(
                 temp_highlight.generate_html_file(), output_path)
-        print(f'output at: {working_directory}')
+        print(f'output at: {args.output_dir}/{file_name}')
 
 
-def print_fimo_subset(motif_df: DataFrame):
-    file_path = f'{os.getcwd()}/temp_fimo.tsv'
+def print_fimo_subset(motif_df: DataFrame, working_directory ):
+    file_path = f'{working_directory}/fimo_subset.tsv'
     motif_df.to_csv(file_path, index=False, sep="\t", header=True)
     return file_path
 
@@ -177,18 +174,18 @@ def generate_tuple_motifs(motifs):
 
 
 def generate_fimo_output(seq_path, motif_path, motif_name, output_path):
-    highlights_tsv = None
     seq_path = os.path.abspath(seq_path)
     basename_no_ending = Path(seq_path).stem
     file_paths = set()
     output_path = output_path + "/fimo"
-    os.makedirs(os.path.dirname(f"{output_path}/{basename_no_ending}/{motif_name}"), exist_ok=True)
+    fimo_directory = f"{output_path}/{basename_no_ending}/{motif_name}/"
+    os.makedirs(os.path.dirname(fimo_directory), exist_ok=True)
     call(f"run_fimo_on_file {seq_path} {motif_name} {motif_path} {output_path}", shell=True)
 
-    fimo_df = read_diverse_fimo_file(f"{output_path}/{basename_no_ending}/{motif_name}/fimo.tsv")
-    highlights_tsv = (motif_name, fimo_df)                 
+    fimo_file = fimo_directory + "/fimo.tsv"
+    fimo_df = read_diverse_fimo_file(fimo_file)
     
-    return highlights_tsv, file_paths
+    return (motif_name, fimo_df, fimo_directory), file_paths
 
 
 def verify_valid_decimals(value, value_desc):

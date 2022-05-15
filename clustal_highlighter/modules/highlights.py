@@ -410,7 +410,10 @@ class Highlights:
             self._group_sequences()
 
         for key_to_list in self._sequences_grouped:
-            dynamic_html_string += "<br> <span> New Sequence </span>"
+            if len(self.sequences) > 1:
+                dynamic_html_string += "<br/> <span> New Sequence </span>"
+            else:
+                dynamic_html_string += "<br/>"
             key_list = list(self._sequences_grouped[key_to_list])
             # This is the start of a new sequence in the output
             list_of_lines = []
@@ -445,9 +448,10 @@ class Highlights:
 
                 if row_end_position != None:
                     position = row_end_position + 1
-
-                dynamic_html_string += self._append_stars(
-                    max_len, rows_to_compare)
+                
+                if len(rows_to_compare) > 1:
+                    dynamic_html_string += self._append_stars(
+                        max_len, rows_to_compare)
 
                 dynamic_html_string += '</pre>'  # this is the last block since it's excluded
                 counter += 1  # From the list.
@@ -643,7 +647,7 @@ class Highlights:
         if row > 1:
             position = (row-1) * 70
             position += 1
-
+        
         variant_string = 'Variant' + padding + ": " + '<span class="variant">'
         for x in range(position, position + 70):  # 70 is line width...
             x_offset = (x + self.offset)
