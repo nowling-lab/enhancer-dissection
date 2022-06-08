@@ -1,5 +1,6 @@
 import sys
 import os
+from matplotlib import offsetbox
 import pandas as pd 
 import numpy as np
 
@@ -16,6 +17,7 @@ from clustal_highlighter.modules.variant_handler import read_vcf_into_dataframe
 sequence_path = './test/test_highlights/test_files/test_sequence.fa'
 indel_path = './test/test_highlights/test_files/test_seq_aligned.fa'
 variant_data = './test/test_highlights/test_files/test_variant_data.vcf'
+offset_variant_data = './test/test_highlights/test_files/test_variant_data_offset_1000.vcf'
 
 after_import = """Pfin1_3_3
 ACGGACTTTGATGAACGCAAGGGCCGTTGCTCGAGGACACGGCGACTCGAGGGAAATCCTGTTTTCGGGG
@@ -48,6 +50,12 @@ def test_highlights():
         
         stored_sequence = temp_highlight._to_string()
         assert stored_sequence == after_import
+        test_max_key_length()
+        test_calculate_position()
+        test_continuinty_stars()
+        test_find_nearest_non_indels()
+        test_variant_data()
+        test_variant_data_offset_1000()
         
 def test_max_key_length():
     max_key_len = Highlights._find_max_key_length(None, list_of_lines)
@@ -106,13 +114,22 @@ def test_variant_data():
     vcf_df = read_vcf_into_dataframe(variant_data)
     temp_highlights.add_variant_data(vcf_df)
     variant_string = temp_highlights._append_variant_data(20, 0)
-    html_string_to_output(temp_highlights.generate_html_file(), '~/test_highlight.html')
-    print(temp_highlights.variant_data)
+    html_string_to_output(temp_highlights.generate_html_file(), '~/test_highlights_variants.html')
+    #print(temp_highlights.variant_data)
     #visually count and see if it works. 
     #assert False
     #Uncomment to see print statement above.
 
-
+def test_variant_data_offset_1000():
+    temp_highlights = Highlights(sequence_dict, 1000)
+    vcf_df = read_vcf_into_dataframe(offset_variant_data)
+    temp_highlights.add_variant_data(vcf_df)
+    variant_string = temp_highlights._append_variant_data(20, 0)
+    html_string_to_output(temp_highlights.generate_html_file(), '~/test_highlights_variants_offset_1000.html')
+    #print(temp_highlights.variant_data)
+    #visually count and see if it works. 
+    #assert False
+    #Uncomment to see print statement above.
 # Note, color characters and variant data tests rely on 
 # a build of code that worked, verifying that it produced the correct output
 # and then making sure the output of the function is that
