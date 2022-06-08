@@ -19,9 +19,10 @@ def generate_dependencies(args) -> Highlights:
     html_colors = ['Aqua', 'PaleVioletRed']
     working_directory = None
 
-    if args.output_dir != None and not os.path.exists(args.output_dir):
-        os.makedirs(args.output_dir)
-        working_directory = args.output_dir
+    if args.output_dir != None:
+        os.makedirs(args.output_dir, exist_ok=True)
+        absolute_path = os.path.expanduser(args.output_dir)
+        working_directory = os.path.abspath(absolute_path)
     else:
         global_home = os.path.expanduser('~/highlights_output')
         args.output_dir = global_home
@@ -29,7 +30,7 @@ def generate_dependencies(args) -> Highlights:
             os.makedirs(global_home)
         working_directory = global_home
 
-    print("Created output directory")
+    print("Output and Working directory is at: " + working_directory)
 
     peak_locations = get_peak_locations(args.peaks)
     keys = list(peak_locations.keys())
@@ -67,7 +68,7 @@ def generate_dependencies(args) -> Highlights:
         all_sequences = {}
         motifs = None
         for start, end in peak_locations[chromosome]:
-            seq = chromosome_seq[start-1:end]
+            seq = chromosome_seq[start:end]
 
             single_seq_dict = {}
             single_seq_dict[f'{file_name}_{start}_{end}'] = seq

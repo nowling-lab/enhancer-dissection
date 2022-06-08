@@ -17,7 +17,7 @@ class Highlights:
             max_len = max([len(self.sequences[key]) for key in keys]) #list compression getting all seq sizes and calling max
             self.seq_end = max_len
             if self.seq_start != 0:
-                self.seq_end += self.seq_start
+                self.seq_end += self.seq_start + 1
         
         self.outputs = []  # array of strings containing full html file outs. Because why not?
         self._sequences_grouped = {}
