@@ -124,9 +124,10 @@ def test_variant_data_offset_1000():
     temp_highlights = Highlights(sequence_dict, 1000)
     vcf_df = read_vcf_into_dataframe(offset_variant_data)
     temp_highlights.add_variant_data(vcf_df)
-    variant_string = temp_highlights._append_variant_data(20, 0)
+    #variant_string = temp_highlights._append_variant_data(20, 0)
+    print(temp_highlights.seq_end)
     html_string_to_output(temp_highlights.generate_html_file(), '~/test_highlights_variants_offset_1000.html')
-    #print(temp_highlights.variant_data)
+    print(temp_highlights.variant_data)
     #visually count and see if it works. 
     #assert False
     #Uncomment to see print statement above.
