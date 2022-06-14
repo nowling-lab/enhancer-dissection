@@ -18,6 +18,8 @@ def generate_dependencies(args) -> Highlights:
     colors = ['blue', 'red']
     html_colors = ['Aqua', 'PaleVioletRed']
     working_directory = None
+    reports_generated = 0
+    reports_requested = 0
 
     if args.output_dir != None:
         os.makedirs(args.output_dir, exist_ok=True)
@@ -68,7 +70,8 @@ def generate_dependencies(args) -> Highlights:
         all_sequences = {}
         motifs = None
         for start, end in peak_locations[chromosome]:
-            seq = chromosome_seq[start:end]
+            reports_requested += 1
+            seq = chromosome_seq[start - 1:end - 1]
 
             single_seq_dict = {}
             single_seq_dict[f'{file_name}_{start}_{end}'] = seq
@@ -128,12 +131,7 @@ def generate_dependencies(args) -> Highlights:
                 motif_path = print_fimo_subset(motifs, working_directory)
                 temp_highlight.add_highlights(
                     motif_name, motif_path, colors[index], html_colors[index])
-                ##os.remove(motif_path)
-
-            # for directory_to_delete in paths_to_cleanup:
-            #     if os.path.isdir(directory_to_delete):
-            #         shutil.rmtree(directory_to_delete)
-
+                
             output_path = os.path.abspath(
                 f'{args.output_dir}/{file_name}/{file_name}-{start}-{end}.html')
 
@@ -142,8 +140,29 @@ def generate_dependencies(args) -> Highlights:
 
             html_string_to_output(
                 temp_highlight.generate_html_file(), output_path)
+            reports_generated += 1
         print(f'output at: {args.output_dir}/{file_name}')
+    
+    # Stats to verify everything is working    
+    validate_reports(reports_generated, reports_requested)
 
+def validate_reports(reports_generated, reports_requested):
+    print(f'Total reports generated: {reports_generated}')
+    print(f'Number of Reports Requested: {reports_requested}')
+    if reports_generated != reports_requested:
+        print_error('Numbers of reports requested not equal to reports outputted')
+    else:
+        print_ok('Correct number of reports generated')
+
+def print_error(print_str):
+    warning_color = '\033[93m'
+    end_color = '\033[0m'
+    print(f'{warning_color}{print_str}{end_color}')
+
+def print_ok(print_str):
+    end_color = '\033[0m'
+    success_color = '\033[92m'
+    print(f'{success_color}{print_str}{end_color}')
 
 def print_fimo_subset(motif_df: DataFrame, working_directory ):
     file_path = f'{working_directory}/fimo_subset.tsv'
