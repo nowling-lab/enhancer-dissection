@@ -1,6 +1,7 @@
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
 from clustal_highlighter.modules.html_framework import *
+from clustal_highlighter.modules.variant_handler import *
 from collections import deque
 
 
