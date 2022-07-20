@@ -6,7 +6,7 @@ from collections import deque
 
 
 class Highlights:
-    def __init__(self, seq_dict: dict, offset=0, seq_end=None):
+    def __init__(self, seq_dict: dict, offset=1, seq_end=None):
         self.offset = offset
         self.seq_start = offset
         self.seq_end = seq_end
@@ -302,6 +302,11 @@ class Highlights:
         for key in keys:
             class_string, motifs_descriptor, html_color = self.highlight_styles[key]
             html_class_string += class_string
+
+        html_class_string += """.clear{
+            background:white !important;
+        }"""
+
         html_class_string += "</style>\n"
         return html_class_string
 
@@ -349,9 +354,6 @@ class Highlights:
         if self.variant_data != None:
             button_string += """\n<button id="toggle_variant" type="button" class="btn btn-secondary">Toggle Variant ^'s</button>"""
 
-        if len(keys) > 1:
-            button_string += """\n<button id="toggle_purple" type="button" class="btn" style="background:Plum">Toggle Purple</button>"""
-
         button_string += "\n</span>"
 
         button_string += '\n<script type="text/javascript">\n'
@@ -359,9 +361,17 @@ class Highlights:
 
         button_string += """$('[data-toggle="tooltip"]').tooltip();\n"""
 
+        keys_reverse = keys[::-1]
+    
+        opposite_lookup_table = {}
+        
+        for index, key in enumerate(keys):
+            opposite_lookup_table[key] = keys_reverse[index]
+
         for key in keys:
             button_string += f"""$("#toggle_{key}").click(function() """ + "{\n"
             button_string += f"""   $( "span.{key}" ).toggleClass( "clear" );\n"""
+            button_string += f"""   $( "span.purple" ).toggleClass( "{opposite_lookup_table[key]}" );"""
             button_string += "});\n\n"
 
         if len(keys) > 1:
@@ -444,8 +454,13 @@ class Highlights:
                 row_end_position = None
                 for key, row in list_of_lines:
                     rows_to_compare.append(row[counter])
+
                     row_end_position = self._calculate_position(
                         len(row[counter]), position)
+
+                    if counter + 1 >= stop:
+                        row_end_position -= 1
+
                     dynamic_html_string += self._compare_append_rows(
                         row, counter, max_len, key, row_end_position)
 

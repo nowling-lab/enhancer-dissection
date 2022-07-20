@@ -71,7 +71,7 @@ def generate_dependencies(args) -> Highlights:
         motifs = None
         for start, end in peak_locations[chromosome]:
             reports_requested += 1
-            seq = chromosome_seq[start - 1:end - 1]
+            seq = chromosome_seq[start-1:end]
 
             single_seq_dict = {}
             single_seq_dict[f'{file_name}_{start}_{end}'] = seq
@@ -141,8 +141,8 @@ def generate_dependencies(args) -> Highlights:
             html_string_to_output(
                 temp_highlight.generate_html_file(), output_path)
             reports_generated += 1
-        print(f'output at: {args.output_dir}/{file_name}')
-    
+            
+        print(f'output at: {working_directory}{file_name}')
     # Stats to verify everything is working    
     validate_reports(reports_generated, reports_requested)
 
@@ -158,6 +158,7 @@ def print_error(print_str):
     warning_color = '\033[93m'
     end_color = '\033[0m'
     print(f'{warning_color}{print_str}{end_color}')
+        
 
 def print_ok(print_str):
     end_color = '\033[0m'
