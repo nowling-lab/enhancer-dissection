@@ -72,7 +72,7 @@ class Highlights:
         # motifs descriptor is not yet used. It's there for when the HTML file will allow a variable size
         # of inputs. For now it will stay streme and jaspar but this is to let it scale indefinitly and remind me
         # to actually make that happen
-
+        
         motifs = read_fimo_file(file_path)
         if motifs:
             self._add_html_style(color.lower(), html_color, motifs_descriptor)

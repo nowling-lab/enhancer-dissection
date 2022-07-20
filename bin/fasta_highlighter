@@ -1,42 +1,41 @@
 from clustal_highlighter.modules.highlights import Highlights
 from clustal_highlighter.modules.file_handler import read_fasta_file
+from clustal_highlighter.modules.file_handler import read_diverse_fimo_file
 import argparse
 import os
 from subprocess import call
 from pathlib import Path
 import shutil
+import pandas as pd
+
 
 #current_path = os.path.abspath(__file__)
 
 #sys.path.append(f"../../{current_path}")
 
 
-def generate_dependencies(args) -> Highlights:
+def generate_dependencies(args, working_directory) -> Highlights:
     colors = ['blue', 'red']
     html_colors = ['Aqua', 'PaleVioletRed']
-
-    if args.outputdir != None and not os.path.exists(args.outputdir):
-        os.makedirs(args.outputdir)
-    else:
-        args.outputdir = '../../highlights_output'
-        if not os.path.exists('../../highlights_output'):
-            os.makedirs('../../highlights_output')
 
     fimo_highlights = []
     paths_to_cleanup = set()
     motifs = generate_tuple_motifs(args.motif_files)
+    
     for motif_name, motif_path in motifs:
-        highlights_tsv, file_paths = generate_fimo_output(
-            args.seq_file, motif_path, motif_name)
-        
-        paths_to_cleanup.update(file_paths)
+            motif_and_df, file_paths = generate_fimo_output(
+                args.seq_file, motif_path, motif_name, working_directory)
 
-        fimo_highlights.append(highlights_tsv)
+            paths_to_cleanup.update(file_paths)
 
+            fimo_highlights.append(motif_and_df)
+    
     seq_dict = read_fasta_file(args.seq_file)
     temp_highlight = Highlights(seq_dict)
-    
-    for index, (motif_name, motif_path) in enumerate(fimo_highlights):
+
+    for index, (motif_name, motifs, working_directory) in enumerate(fimo_highlights):
+        motif_path = print_fimo_subset(motifs, working_directory)
+
         temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
     
     for directory_to_delete in paths_to_cleanup:
@@ -45,6 +44,12 @@ def generate_dependencies(args) -> Highlights:
     
     return temp_highlight
 
+def print_fimo_subset(motif_df: pd.DataFrame, working_directory ):
+    file_path = f'{working_directory}/fimo_subset.tsv'
+    
+    motif_df.to_csv(file_path, index=False, sep="\t", header=True)
+    return file_path
+
 def generate_tuple_motifs(motifs):
     motif_pairs = []
     for i, j in zip(motifs[0::2], motifs[1::2]):
@@ -52,25 +57,19 @@ def generate_tuple_motifs(motifs):
 
     return motif_pairs
 
-
-def generate_fimo_output(seq_path, motif_path, motif_name):
-    highlights_tsv = None
+def generate_fimo_output(seq_path, motif_path, motif_name, output_path):
     seq_path = os.path.abspath(seq_path)
     basename_no_ending = Path(seq_path).stem
     file_paths = set()
-    call(f"run_fimo_on_file {seq_path} {motif_name} {motif_path}", shell=True)
-    cwd = os.getcwd()
+    output_path = output_path + "/fimo"
+    fimo_directory = f"{output_path}/{basename_no_ending}/{motif_name}/"
+    os.makedirs(os.path.dirname(fimo_directory), exist_ok=True)
+    call(f"run_fimo_on_file {seq_path} {motif_name} {motif_path} {output_path}", shell=True)
 
-    for dir in os.listdir(cwd):
-        if dir == basename_no_ending:
-            file_motifs_path = f"{cwd}/{dir}"
-            file_paths.add(file_motifs_path)
-            for sub_dir in os.listdir(file_motifs_path):
-                if sub_dir == motif_name:
-                    highlights_tsv = (
-                        motif_name, f"{file_motifs_path}/{sub_dir}/fimo.tsv")
-
-    return highlights_tsv, file_paths
+    fimo_file = fimo_directory + "/fimo.tsv"
+    fimo_df = read_diverse_fimo_file(fimo_file)
+    
+    return (motif_name, fimo_df, fimo_directory), file_paths
 
 
 def generate_highlights(highlighter: Highlights, indel_path: str, highlights: list):
@@ -125,7 +124,15 @@ if __name__ == "__main__":
         print("\n--motif-files flag given an odd number of inputs, please use -h for more info")
         exit(0)
     else:
-        highligher = generate_dependencies(args)
-        output_path = os.path.abspath(f'{args.outputdir}/test_highlights2.html')
+        working_directory = '~/'
+        
+        if args.outputdir != None:
+            os.makedirs(args.outputdir, exist_ok=True)
+            absolute_path = os.path.expanduser(args.outputdir)
+            working_directory = os.path.abspath(absolute_path)
+            
+        highligher = generate_dependencies(args, working_directory)
+        
+        output_path = os.path.abspath(f'{working_directory}/{Path(args.seq_file).stem}.html')
         print(f'\noutput at: {output_path}')
         html_string_to_output(highligher.generate_html_file(), output_path)
