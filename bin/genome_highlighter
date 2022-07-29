@@ -159,7 +159,6 @@ def print_error(print_str):
     end_color = '\033[0m'
     print(f'{warning_color}{print_str}{end_color}')
         
-
 def print_ok(print_str):
     end_color = '\033[0m'
     success_color = '\033[92m'
@@ -169,7 +168,6 @@ def print_fimo_subset(motif_df: DataFrame, working_directory ):
     file_path = f'{working_directory}/fimo_subset.tsv'
     motif_df.to_csv(file_path, index=False, sep="\t", header=True)
     return file_path
-
 
 def print_fasta(all_sequences, output_path):
     file_path = f'{output_path}.fasta'

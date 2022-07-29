@@ -26,28 +26,20 @@ def generate_dependencies(args, working_directory) -> Highlights:
             motif_and_df, file_paths = generate_fimo_output(
                 args.seq_file, motif_path, motif_name, working_directory)
 
-            paths_to_cleanup.update(file_paths)
-
             fimo_highlights.append(motif_and_df)
     
     seq_dict = read_fasta_file(args.seq_file)
     temp_highlight = Highlights(seq_dict)
 
     for index, (motif_name, motifs, working_directory) in enumerate(fimo_highlights):
-        motif_path = print_fimo_subset(motifs, working_directory)
+        motif_path = get_fimo_path(working_directory)
 
         temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
     
-    for directory_to_delete in paths_to_cleanup:
-        if os.path.isdir(directory_to_delete):
-            shutil.rmtree(directory_to_delete)
-    
     return temp_highlight
 
-def print_fimo_subset(motif_df: pd.DataFrame, working_directory ):
-    file_path = f'{working_directory}/fimo_subset.tsv'
-    
-    motif_df.to_csv(file_path, index=False, sep="\t", header=True)
+def get_fimo_path(working_directory ):
+    file_path = f'{working_directory}/fimo.tsv'
     return file_path
 
 def generate_tuple_motifs(motifs):
