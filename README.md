@@ -82,7 +82,7 @@ The arguments that are taken are:
 
 An example of running this program is this:
      
-     $ fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt
+     $ fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt --outputdir /path/to/output/folder
 
 - - -
 
