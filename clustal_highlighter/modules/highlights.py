@@ -2,10 +2,16 @@ from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.file_handler import *
 from clustal_highlighter.modules.html_framework import *
 from clustal_highlighter.modules.variant_handler import *
+from clustal_highlighter.modules.data_classes import *
 from collections import deque
+import logging
 
+from clustal_highlighter.modules.logger import *
+default_logger = True
 
 class Highlights:
+    logger = logging.getLogger('generic_highlights')
+
     def __init__(self, seq_dict: dict, offset=1, seq_end=None):
         self.offset = offset
         self.seq_start = offset
@@ -27,6 +33,11 @@ class Highlights:
         self.group_all = True
         self.highlight_styles = {}
         
+        #variables for runtime checks
+        self.highlights_name = None
+        self.variant_matches = 0
+        self.variant_mismatches = 0
+        self.highlights_requested = {}
 
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format 
@@ -69,11 +80,17 @@ class Highlights:
             color (str): The color description of what the highlights should be
             html_color (str): The actual HTML color (rbg, name or otherwise) which will be used to color the positions given in the femo results tsv
         """
-        # motifs descriptor is not yet used. It's there for when the HTML file will allow a variable size
-        # of inputs. For now it will stay streme and jaspar but this is to let it scale indefinitly and remind me
-        # to actually make that happen
         
         motifs = read_fimo_file(file_path)
+        
+        if(default_logger and len(motifs.keys()) == 1):
+            global logger
+            logger = logging.getLogger(list(motifs.keys())[0])
+        
+        for key in motifs:
+            tmp_motif_highlights = motif_highlights(motifs_descriptor, len(motifs[key]), 0)
+            self.highlights_requested[motifs_descriptor] = tmp_motif_highlights
+        
         if motifs:
             self._add_html_style(color.lower(), html_color, motifs_descriptor)
             self._color_characters(motifs, color, motifs_descriptor)
@@ -110,13 +127,22 @@ class Highlights:
                 return
             # Check all keys are valid before applying colors
 
+        motif_highlights = self.highlights_requested[motifs_descriptor]
+    
+    
         for sequence in motifs:
             highlights = motifs[sequence]
-
+            
             for start, end, motif_id in highlights:
+                motif_highlights.motifs_applied += 1
+                
                 for x in range(start - 1, end):  # From 1 base to 0 base
                     self.sequences[sequence][x].add_motif(
                         motifs_descriptor, motif_id, color.lower())
+        if motif_highlights.is_equal():
+            info(logger, motif_highlights.to_string())
+        else:
+            warning(logger, f'Mismatch between requested highlights and applied highlights. {motif_highlights.to_string()}')
 
     def _group_sequences(self):
         """Groups sequences by the first part of their name, delimited by -
