@@ -693,10 +693,27 @@ class Highlights:
             position += 1
         
         variant_string = 'Variant' + padding + ": " + '<span class="variant">'
+        
+        seq_name = list(self.sequences.keys())[0]
+        chars = self.sequences[seq_name]
+        #print(len(chars))
+        #print(self.seq_start)
+        #print(self.seq_start + len(chars))
+        max = self.seq_start + len(chars)
+        
+        wrong_chars = 0
+        variants_found = 0
         for x in range(position, position + 70):  # 70 is line width...
             x_offset = (x + self.offset)
             if x_offset in self.variant_data:
                 char1, char2, chance1, chance2 = self.variant_data[x_offset]
+            
+                #access the character the requisite spot:
+                if (x_offset-self.seq_start) < max:
+                    if (char1 != chars[x_offset-self.seq_start].character) and (char1 != chars[x_offset-self.seq_start].character):
+                        wrong_chars += 1
+                variants_found += 1
+            
                 chance1 = float(round((chance1 * 100), 3))
                 chance2 = float(round((chance2 * 100), 3))
                 normalized_chance = None
@@ -712,6 +729,13 @@ class Highlights:
                 variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="Appearances: {char1}: {chance1}% {char2}: {chance2}%">^</span>'
             else:
                 variant_string += ' '
+        if wrong_chars == 0:
+            info(logger, f'All variants in {seq_name} match characters found at that position')
+        else:
+            warning(logger, f'Variants have been found in {seq_name} which do not match the characters present')
+
+        info(logger, f'Num variants found: {variants_found}')
+        info(logger, f'% of region that has variation: {variants_found/len(chars)}')
 
         variant_string += "</span>" + "<br>"
 

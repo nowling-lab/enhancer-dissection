@@ -41,7 +41,7 @@ def generate_dependencies(args) -> Highlights:
     peak_locations = get_peak_locations(args.peaks)
     keys = list(peak_locations.keys())
     
-    info(logger, f'Successfully read in peaks. Peak keys as list: {keys}')
+    info(logger, f'Successfully read in peaks from {args.peaks}. Peak keys as list: {keys}')
 
     print("Peaks loaded")
 
@@ -107,7 +107,7 @@ def generate_dependencies(args) -> Highlights:
                 file_path, motif_path, motif_name, working_directory)
 
             fimo_highlights.append(motif_and_df)
-            info(logger, 'Fimo successfully ran. ')
+            info(logger, f'Fimo successfully ran. File used: {motif_path}')
         
         print("Generating output...")
         for start, end in peak_locations[chromosome]:
