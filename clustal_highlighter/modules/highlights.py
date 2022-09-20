@@ -507,20 +507,26 @@ class Highlights:
 
         self.outputs.append(html_string)
         
+        seq_name = list(self.sequences.keys())[0]
+        chars = self.sequences[seq_name]
+        
         if self.variant_data != None:   
-            self._log_variants()
-            
+            self._log_variants(seq_name, chars)
+        else:
+            num_sequnces = len(self.sequences.keys())
+            if num_sequnces == 1:
+                info(logger, f'{seq_name} has a region of length {len(chars)}')
+            else:
+                info(logger, f'{self.sequences.keys()} when alined are of length {len(chars)}')
+                
         return self.outputs[-1]
     
-    def _log_variants(self):
+    def _log_variants(self, seq_name, chars):
         """Logs variant data gathered over the course of the generating the html for this highlight
         """
         #guard clause in case I do an oops and put this in the wrong spot
         if self.variant_data == None:
             raise Exception("Cannot run log variants without variant data loaded")
-        
-        seq_name = list(self.sequences.keys())[0]
-        chars = self.sequences[seq_name]
         
         if self.wrong_chars == 0:
             info(logger, f'All variants in {seq_name} match characters found at that position')
@@ -528,7 +534,7 @@ class Highlights:
             warning(logger, f'Variants have been found in {seq_name} which do not match the characters present')
 
         info(logger, f'Num variants found: {self.variants_found} within a region containing {len(chars)} nucleotides')
-        info(logger, f'Percent of nucleotides in region: {self.variants_found/len(chars)}')
+        info(logger, f'Percent of variable nucleotides in region: {self.variants_found/len(chars)}')
 
     def _append_stars(self, max_len, rows_to_compare):
         """Adds the continunity stars to the html file
