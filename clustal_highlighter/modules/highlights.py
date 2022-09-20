@@ -38,6 +38,8 @@ class Highlights:
         self.variant_matches = 0
         self.variant_mismatches = 0
         self.highlights_requested = {}
+        self.wrong_chars = 0
+        self.variants_found = 0        
 
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format 
@@ -504,7 +506,29 @@ class Highlights:
         html_string += '\n</body>'
 
         self.outputs.append(html_string)
+        
+        if self.variant_data != None:   
+            self._log_variants()
+            
         return self.outputs[-1]
+    
+    def _log_variants(self):
+        """Logs variant data gathered over the course of the generating the html for this highlight
+        """
+        #guard clause in case I do an oops and put this in the wrong spot
+        if self.variant_data == None:
+            raise Exception("Cannot run log variants without variant data loaded")
+        
+        seq_name = list(self.sequences.keys())[0]
+        chars = self.sequences[seq_name]
+        
+        if self.wrong_chars == 0:
+            info(logger, f'All variants in {seq_name} match characters found at that position')
+        else:
+            warning(logger, f'Variants have been found in {seq_name} which do not match the characters present')
+
+        info(logger, f'Num variants found: {self.variants_found} within a region containing {len(chars)} nucleotides')
+        info(logger, f'Percent of nucleotides in region: {self.variants_found/len(chars)}')
 
     def _append_stars(self, max_len, rows_to_compare):
         """Adds the continunity stars to the html file
@@ -696,13 +720,8 @@ class Highlights:
         
         seq_name = list(self.sequences.keys())[0]
         chars = self.sequences[seq_name]
-        #print(len(chars))
-        #print(self.seq_start)
-        #print(self.seq_start + len(chars))
         max = self.seq_start + len(chars)
         
-        wrong_chars = 0
-        variants_found = 0
         for x in range(position, position + 70):  # 70 is line width...
             x_offset = (x + self.offset)
             if x_offset in self.variant_data:
@@ -711,8 +730,8 @@ class Highlights:
                 #access the character the requisite spot:
                 if (x_offset-self.seq_start) < max:
                     if (char1 != chars[x_offset-self.seq_start].character) and (char1 != chars[x_offset-self.seq_start].character):
-                        wrong_chars += 1
-                variants_found += 1
+                        self.wrong_chars += 1
+                self.variants_found += 1
             
                 chance1 = float(round((chance1 * 100), 3))
                 chance2 = float(round((chance2 * 100), 3))
@@ -729,13 +748,6 @@ class Highlights:
                 variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="Appearances: {char1}: {chance1}% {char2}: {chance2}%">^</span>'
             else:
                 variant_string += ' '
-        if wrong_chars == 0:
-            info(logger, f'All variants in {seq_name} match characters found at that position')
-        else:
-            warning(logger, f'Variants have been found in {seq_name} which do not match the characters present')
-
-        info(logger, f'Num variants found: {variants_found}')
-        info(logger, f'% of region that has variation: {variants_found/len(chars)}')
 
         variant_string += "</span>" + "<br>"
 
