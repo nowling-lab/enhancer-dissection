@@ -33,6 +33,8 @@ class Highlights:
         self.group_all = True
         self.highlight_styles = {}
         
+        self.motif_names = []
+        
         #variables for runtime checks
         self.highlights_name = None
         self.variant_matches = 0
@@ -84,6 +86,8 @@ class Highlights:
         """
         
         motifs = read_fimo_file(file_path)
+        
+        self.motif_names.append(motifs_descriptor)
         
         if(default_logger and len(motifs.keys()) == 1):
             global logger
@@ -427,99 +431,6 @@ class Highlights:
         html_string += self._add_html_legend()
         html_string += self._add_html_buttons()
         return html_string
-
-    def generate_html_file(self):
-        """Generates the entire html file and returns that string as output
-
-        Returns:
-            String: A string that is the HTML file that can later be printed and viewed
-        """
-        if self.indel_dict != None:
-            self._append_indels_to_internal_list()
-        elif self.has_indels:
-            self._color_indels()
-
-        html_string = self._generate_html()
-        # Large HTML header up top, then adds to it below with dynamic_html_string
-        dynamic_html_string = "<br>"
-        motif_keys = list(self.sequences.keys())
-        motif_keys.sort()
-
-        if self.group_all:
-            self._group_all_sequences()
-        else:
-            self._group_sequences()
-
-        for key_to_list in self._sequences_grouped:
-            if len(self.sequences) > 1:
-                dynamic_html_string += "<br/> <span> New Sequence </span>"
-            else:
-                dynamic_html_string += "<br/>"
-            key_list = list(self._sequences_grouped[key_to_list])
-            # This is the start of a new sequence in the output
-            list_of_lines = []
-
-            line_length = 70
-            self._normalize_line_length(key_list, list_of_lines, line_length)
-
-            if(len(list_of_lines) == 0):
-                stop = 1
-            else:
-                stop = len(list_of_lines[0][1])
-
-            counter = 0
-            position = 1 + self.offset
-            while counter < stop:  # Loop through however many lines we got
-                max_len = self._find_max_key_length(list_of_lines)
-
-                dynamic_html_string += '<pre>'
-                rows_to_compare = []
-
-                if self.variant_data != None:
-                    dynamic_html_string += self._append_variant_data(
-                        max_len, counter+1)
-
-                row_end_position = None
-                for key, row in list_of_lines:
-                    rows_to_compare.append(row[counter])
-
-                    row_end_position = self._calculate_position(
-                        len(row[counter]), position)
-
-                    if counter + 1 >= stop:
-                        row_end_position -= 1
-
-                    dynamic_html_string += self._compare_append_rows(
-                        row, counter, max_len, key, row_end_position)
-
-                if row_end_position != None:
-                    position = row_end_position + 1
-                
-                if len(rows_to_compare) > 1:
-                    dynamic_html_string += self._append_stars(
-                        max_len, rows_to_compare)
-
-                dynamic_html_string += '</pre>'  # this is the last block since it's excluded
-                counter += 1  # From the list.
-
-        html_string += dynamic_html_string
-        html_string += '\n</body>'
-
-        self.outputs.append(html_string)
-        
-        seq_name = list(self.sequences.keys())[0]
-        chars = self.sequences[seq_name]
-        
-        if self.variant_data != None:   
-            self._log_variants(seq_name, chars)
-        else:
-            num_sequnces = len(self.sequences.keys())
-            if num_sequnces == 1:
-                info(logger, f'{seq_name} has a region of length {len(chars)}')
-            else:
-                info(logger, f'{self.sequences.keys()} when alined are of length {len(chars)}')
-                
-        return self.outputs[-1]
     
     def _log_variants(self, seq_name, chars):
         """Logs variant data gathered over the course of the generating the html for this highlight
@@ -729,7 +640,7 @@ class Highlights:
         max = self.seq_start + len(chars)
         
         for x in range(position, position + 70):  # 70 is line width...
-            x_offset = (x + self.offset)
+            x_offset = (x + self.offset - 1)
             if x_offset in self.variant_data:
                 char1, char2, chance1, chance2 = self.variant_data[x_offset]
             
@@ -778,3 +689,214 @@ class Highlights:
         output_string = output_string[:-2]  # getting rid of last newline
 
         return output_string
+    
+    def _calculate_motif_stats(self):
+        keys = self.sequences.keys()
+        motif_coverage = {}
+        motif_sets = {}
+        for motif_name in self.motif_names:
+            motif_sets[motif_name] = set()
+            
+        for key in keys:
+            sequence = self.sequences[key]
+            motif_coverage[key] = {'length': len(sequence)}
+            for name in self.motif_names:
+                motif_coverage[key][name] = 0
+            for char in sequence:
+                if char.motif_files != {}:
+                    for motif_name in char.motif_files:
+                        for motif in char.motif_files[motif_name]:
+                            motif_sets[motif_name].add(motif)
+                        if motif_name in motif_coverage[key]:
+                            motif_coverage[key][motif_name] += 1
+                            
+        for key, value in motif_coverage.items():
+            for motif_name in self.motif_names:
+                if value[motif_name] == 0:
+                    warning(logger, f'Sequence {key} did not have any found motifs for {motif_name}')
+        
+        return (motif_sets, motif_coverage)
+    
+    def _pretty_print_motifs(self, motif_sets, motif_coverage):
+        sets_string = '</br><div>Motifs found within this file: '
+        for motif_name in motif_sets:
+            sets_string += f'</br><div class="heading">{motif_name} : '
+            for motif in motif_sets[motif_name]:
+                sets_string += f'{motif}, '
+            sets_string = sets_string[:-2]
+            sets_string += '</br></div>'
+        if 'None' in sets_string:
+            print('BRO IT BROKE BROKE')
+                
+        sets_string += '</br>'
+        if 'None' in sets_string:
+            print('BRO WHY')
+        return sets_string
+    
+    def _pretty_print_variants(self, length):
+        #print(self.variants_found, self.variants_found/length)
+        return
+    
+    def _generate_table(self, num_variants, percent_variable, motifs_found, motif_coverage):
+        table_rows = self._create_motif_stats_rows(motifs_found, motif_coverage)
+        table_string = f"""<table>
+            <thead>
+            <tr>
+                Summary Stats
+            </tr> 
+            </thead>
+            <tbody>
+            <tr>
+                <td>Variants in region:</td>
+                <td>{num_variants}</td>
+            </tr>
+            <tr>
+                <td>Percent Variable:</td>
+                <td>{round(percent_variable * 100, 3)}%</td>
+            </tr>
+            {table_rows}
+            </tbody>
+        </table>"""
+        
+        return table_string
+    
+    def _create_motif_stats_rows(self, motifs_sets, motif_coverage):
+        rows = []
+        for motif_name in motifs_sets:
+            row_string = self._stats_row_template(motif_name, len(motifs_sets[motif_name])) 
+            rows.append(row_string)
+        
+        for sequence_motif_info in motif_coverage:
+            rows.extend(self._motif_row_template(motif_coverage[sequence_motif_info]))      
+            
+        table_rows = ''
+        for row in rows:
+            table_rows += f'{row}\n' 
+        return table_rows
+    
+    def _motif_row_template(self, motif_info):
+        length = motif_info['length']
+        rows = []
+        
+        for motif_name in self.motif_names:
+            row = f"""
+                <tr>
+                    <td>{motif_name} Percent Coverage:</td>
+                    <td>{round((motif_info[motif_name]/length) * 100, 3)}%</td>
+                </tr>
+            """
+            rows.append(row)
+        
+        return rows
+    
+    def _stats_row_template(self, motif_description, uniq_found):
+        row = f"""
+            <tr>
+                <td>Unique {motif_description} motifs found:</td>
+                <td>{uniq_found}</td>
+            </tr>"""
+        return row
+    
+    def generate_html_file(self):
+        """Generates the entire html file and returns that string as output
+
+        Returns:
+            String: A string that is the HTML file that can later be printed and viewed
+        """
+        if self.indel_dict != None:
+            self._append_indels_to_internal_list()
+        elif self.has_indels:
+            self._color_indels()
+
+        html_string = self._generate_html()
+        # Large HTML header up top, then adds to it below with dynamic_html_string
+        dynamic_html_string = "<br>"
+        motif_keys = list(self.sequences.keys())
+        motif_keys.sort()
+
+        if self.group_all:
+            self._group_all_sequences()
+        else:
+            self._group_sequences()
+
+        for key_to_list in self._sequences_grouped:
+            if len(self.sequences) > 1:
+                dynamic_html_string += "<br/> <span> New Sequence </span>"
+            else:
+                dynamic_html_string += "<br/>"
+            key_list = list(self._sequences_grouped[key_to_list])
+            # This is the start of a new sequence in the output
+            list_of_lines = []
+
+            line_length = 70
+            self._normalize_line_length(key_list, list_of_lines, line_length)
+
+            if(len(list_of_lines) == 0):
+                stop = 1
+            else:
+                stop = len(list_of_lines[0][1])
+
+            counter = 0
+            position = 1 + self.offset
+            while counter < stop:  # Loop through however many lines we got
+                max_len = self._find_max_key_length(list_of_lines)
+
+                dynamic_html_string += '<pre>'
+                rows_to_compare = []
+
+                if self.variant_data != None:
+                    dynamic_html_string += self._append_variant_data(
+                        max_len, counter+1)
+
+                row_end_position = None
+                for key, row in list_of_lines:
+                    rows_to_compare.append(row[counter])
+
+                    row_end_position = self._calculate_position(
+                        len(row[counter]), position)
+
+                    if counter + 1 >= stop:
+                        row_end_position -= 1
+
+                    dynamic_html_string += self._compare_append_rows(
+                        row, counter, max_len, key, row_end_position)
+
+                if row_end_position != None:
+                    position = row_end_position + 1
+                
+                if len(rows_to_compare) > 1:
+                    dynamic_html_string += self._append_stars(
+                        max_len, rows_to_compare)
+
+                dynamic_html_string += '</pre>'  # this is the last block since it's excluded
+                counter += 1  # From the list.
+
+        html_string += dynamic_html_string
+        
+        seq_name = list(self.sequences.keys())[0]
+        chars = self.sequences[seq_name]
+        
+        if self.variant_data != None:   
+            self._log_variants(seq_name, chars)
+        else:
+            num_sequnces = len(self.sequences.keys())
+            if num_sequnces == 1:
+                info(logger, f'{seq_name} has a region of length {len(chars)}')
+            else:
+                info(logger, f'{self.sequences.keys()} when alined are of length {len(chars)}')
+        
+                
+        motif_sets, motif_coverage = self._calculate_motif_stats()
+        motifs_found = self._pretty_print_motifs(motif_sets, motif_coverage)
+        
+        html_string += f'\n{self._generate_table(self.variants_found, self.variants_found/len(chars), motif_sets, motif_coverage)}'        
+        html_string += f'\n{motifs_found}'
+        
+        # if self.variant_data != None:
+        #     variant_stats = self._pretty_print_variants(len(chars))
+        #     html_string += f'\n{variant_stats}'
+        html_string += '\n</body>'
+
+        self.outputs.append(html_string)     
+        
+        return self.outputs[-1]

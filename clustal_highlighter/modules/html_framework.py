@@ -34,6 +34,9 @@ def html_heading():
         button{
             margin-top: 1vh;
         }
+        td {
+        padding: 0 15px;
+        }
     """
     return html_string
     
