@@ -10,6 +10,7 @@ from clustal_highlighter.modules.logger import *
 default_logger = True
 
 class Highlights:
+    global logger
     logger = logging.getLogger('generic_highlights')
 
     def __init__(self, seq_dict: dict, offset=1, seq_end=None):
