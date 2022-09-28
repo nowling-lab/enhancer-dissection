@@ -1,7 +1,8 @@
 class Character:
-    def __init__(self, char: str):
+    def __init__(self, char: str, pos: int):
         self.character = char
         self.color = None
+        self.position = pos
         
         self.html_string = None
         self.tooltip = None

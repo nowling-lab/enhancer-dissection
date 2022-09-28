@@ -183,8 +183,17 @@ def generate_dependencies(args) -> Highlights:
     else:
         warning(logger, f'Sequenecs gathered. reports requested: {reports_requested} vs reports generated: {reports_generated}') 
     
+    #check for stats flags and do stats things
+    if args.summary_stats:
+        print("This was the summary stats argument")
+        pass
+
+    if args.per_seq_stats:
+        print("this was the per seq stats argument")
+        pass
+    
     #Do all of my check validations here
-    #validate_reports(reports_generated, reports_requested)
+    check_warnings()
 
 def add_log(log_file: TextIO, log: str):
     log_file.write(f'{log}\n', 'a')
@@ -192,24 +201,6 @@ def add_log(log_file: TextIO, log: str):
 def open_logfile(workspace, filename):
     log_file = open(f'{workspace}{filename}', 'w')
     return log_file
-
-def validate_reports(reports_generated, reports_requested):
-    print(f'Total reports generated: {reports_generated}')
-    print(f'Number of Reports Requested: {reports_requested}')
-    if reports_generated != reports_requested:
-        print_error('Numbers of reports requested not equal to reports outputted')
-    else:
-        print_ok('Correct number of reports generated')
-
-def print_error(print_str):
-    warning_color = '\033[93m'
-    end_color = '\033[0m'
-    print(f'{warning_color}{print_str}{end_color}')
-        
-def print_ok(print_str):
-    end_color = '\033[0m'
-    success_color = '\033[92m'
-    print(f'{success_color}{print_str}{end_color}')
 
 def print_fimo_subset(motif_df: DataFrame, working_directory ):
     file_path = f'{working_directory}/fimo_subset.tsv'
@@ -229,7 +220,6 @@ def print_fasta(all_sequences, output_path):
 
     out.close()
     return file_path
-
 
 def generate_tuple_motifs(motifs):
     motif_pairs = []
@@ -304,6 +294,17 @@ def parseargs():
                         required=False,
                         help="0-1 float representing what minimum percent appearance an allele must have in order for a variant to display")
 
+    parser.add_argument("--per-seq-stats",
+                        required=False,
+                        action = 'store_true',
+                        help="When present this flag allows for the generation of individual CSV files containing the statistics per every sequence given")
+    
+    parser.add_argument("--summary-stats",
+                        required=False,
+                        action = 'store_true',
+                        help="When present this flag allows for the generation of a CSV file containing the statistics summarizing all sequences")
+    
+    
     return parser.parse_args()
 
 

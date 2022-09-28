@@ -70,8 +70,10 @@ class Highlights:
             list: A identical list to the string but made up of Characters
         """
         char_obj_list = deque()
+        pos_counter = self.seq_start
         for char in sequence:
-            char_obj_list.append(Character(char))
+            char_obj_list.append(Character(char, pos_counter))
+            pos_counter += 1
             if char == "-" and not self.has_indels:
                 self.has_indels = True
         return char_obj_list
@@ -441,9 +443,9 @@ class Highlights:
             raise Exception("Cannot run log variants without variant data loaded")
         
         if self.wrong_chars == 0:
-            info(logger, f'All variants in {seq_name} match characters found at that position')
+            info(logger, f'All variants in {seq_name} match with the reference allele at their positions')
         else:
-            warning(logger, f'Variants have been found in {seq_name} which do not match the characters present')
+            warning(logger, f'{self.wrong_chars} Variants have been found in {seq_name} which the reference allele does not match the underlying sequence')
 
         info(logger, f'Num variants found: {self.variants_found} within a region containing {len(chars)} nucleotides')
         info(logger, f'Percent of variable nucleotides in region: {self.variants_found/len(chars)}')
@@ -643,11 +645,13 @@ class Highlights:
         for x in range(position, position + 70):  # 70 is line width...
             x_offset = (x + self.offset - 1)
             if x_offset in self.variant_data:
-                char1, char2, chance1, chance2 = self.variant_data[x_offset]
-            
-                #access the character the requisite spot:
+                ref, alt, chance1, chance2 = self.variant_data[x_offset]
+                current_char = chars[x_offset-self.seq_start]
+                if current_char.position != x_offset:
+                    warning(logger, f'Variant not lined up with character position! Character position: {current_char.position}, Variant position: {x_offset}, Character in Object: {current_char.character}, Ref: {ref}, Alt: {alt}')
+
                 if (x_offset-self.seq_start) < max:
-                    if (char1 != chars[x_offset-self.seq_start].character) and (char1 != chars[x_offset-self.seq_start].character):
+                    if (ref != current_char.character):
                         self.wrong_chars += 1
                 self.variants_found += 1
             
@@ -663,7 +667,7 @@ class Highlights:
                 green = 255 * normalized_chance
                 blue = 0
 
-                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="Appearances: {char1}: {chance1}% {char2}: {chance2}%">^</span>'
+                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="Appearances: {ref}: {chance1}% {alt}: {chance2}%">^</span>'
             else:
                 variant_string += ' '
 
@@ -719,7 +723,7 @@ class Highlights:
         return (motif_sets, motif_coverage)
     
     def _pretty_print_motifs(self, motif_sets, motif_coverage):
-        sets_string = '</br><div>Motifs found within this file: '
+        sets_string = '</br><div>Motifs found within this region: '
         for motif_name in motif_sets:
             sets_string += f'</br><div class="heading">{motif_name} : '
             for motif in motif_sets[motif_name]:
@@ -768,17 +772,20 @@ class Highlights:
             rows.append(row_string)
         
         for sequence_motif_info in motif_coverage:
-            rows.extend(self._motif_row_template(motif_coverage[sequence_motif_info]))      
+            rows.extend(self._motif_row_template(motif_coverage[sequence_motif_info], sequence_motif_info))      
             
         table_rows = ''
         for row in rows:
             table_rows += f'{row}\n' 
         return table_rows
     
-    def _motif_row_template(self, motif_info):
+    def _motif_row_template(self, motif_info, sequence_name):
         length = motif_info['length']
         rows = []
-        
+        rows.append(
+            f"""<tr>
+                <td><b>{sequence_name}</b></td>
+                </tr>""")
         for motif_name in self.motif_names:
             row = f"""
                 <tr>
