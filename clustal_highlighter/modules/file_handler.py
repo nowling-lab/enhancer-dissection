@@ -1,6 +1,13 @@
 import os
 import pandas as pd
 
+get_reverse = {
+        'A':'T',
+        'T':'A',
+        'G':'C',
+        'C':'G'
+    }
+
 def read_fasta_file(file_path):
     #Reads in a fasta file. Standard stuff
     sequence_dictionary = {}
@@ -45,13 +52,26 @@ def read_fimo_file(file_path):
                 start = int(line_split[3].strip())
                 stop = int(line_split[4].strip())
                 motif_alt_id = line_split[1]
+                strand = line_split[5]
+                matched_sequence = line_split[-1]
+                if strand == "-":
+                    matched_sequence = reverse_comp(matched_sequence)
 
                 if seq_name not in sequence_name_dict:
                     sequence_name_dict[seq_name] = []
-                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id))
+                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id, matched_sequence))
                 else:
-                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id))  
+                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id, matched_sequence))  
     return sequence_name_dict
+
+def reverse_comp(sequence):
+    global get_reverse
+    rev_seq = sequence[::-1]
+    rev_comp = ''
+    for char in rev_seq:
+        rev_comp += get_reverse[char]
+    
+    return rev_comp
 
 def read_diverse_fimo_file(file_path):
     fimo_df = pd.read_csv(file_path, sep='\t', comment="#")

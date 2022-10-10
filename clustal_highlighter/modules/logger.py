@@ -39,7 +39,6 @@ def check_warnings():
     else:
         print_ok("Runtime checks passed, check tmp.log for more details in your output directory")
     
-
 def warning(logger:logging.Logger, message:str):
     global warning_present
     global warnings

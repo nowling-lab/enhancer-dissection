@@ -42,7 +42,27 @@ class Highlights:
         self.variant_mismatches = 0
         self.highlights_requested = {}
         self.wrong_chars = 0
-        self.variants_found = 0        
+        self.variants_found = 0   
+        
+        self.motif_counts = {}     
+        
+        self.csv_wanted = False
+        #Table data
+        self.name = self._get_name()
+        #name, start, stop, motif, count
+        self.motif_counts_csv = None
+        #name, start, stop, motif_descriptor, coverage
+        self.coverage = {}
+        self.coverage_csv = None
+        #name, start, stop, variant_pos, ref, alt, ref%, alt%
+        self.varaints_csv = None
+        self.variants_with_percent = []
+        
+        #accessibility variables
+        self.has_accessibility = False
+        self.num_variants_accessible = 0
+        self.num_nucleotides_accessible = 0
+
 
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format 
@@ -131,23 +151,36 @@ class Highlights:
             if sequence not in self.sequences:
                 print(motifs.keys())
                 print(self.sequences.keys())
-                print(
-                    "Mismatch between supplied FIMO file and sequences in original sequence file, aborting coloring")
+                print("Mismatch between supplied FIMO file and sequences in original sequence file, aborting coloring")
                 return
             # Check all keys are valid before applying colors
 
         motif_highlights = self.highlights_requested[motifs_descriptor]
     
+        self.motif_counts[motifs_descriptor] = {}
+        motif_counts_per_descriptor = self.motif_counts[motifs_descriptor]
     
         for sequence in motifs:
             highlights = motifs[sequence]
             
-            for start, end, motif_id in highlights:
+            for start, end, motif_id, matched_sequence in highlights:
+                if motif_id in motif_counts_per_descriptor:
+                    motif_counts_per_descriptor[motif_id] += 1
+                else:
+                    motif_counts_per_descriptor[motif_id] = 1
+                    
                 motif_highlights.motifs_applied += 1
-                
+                counter = 0
                 for x in range(start - 1, end):  # From 1 base to 0 base
-                    self.sequences[sequence][x].add_motif(
+                    current_char = self.sequences[sequence][x]
+                    current_char.add_motif(
                         motifs_descriptor, motif_id, color.lower())
+                    
+                    matched_char = matched_sequence[counter]
+                    if current_char.character != matched_char:
+                        warning(logger, f'In {sequence} a matched highlight overlapped the wrong character!')
+                   
+                    counter += 1
         if motif_highlights.is_equal():
             info(logger, motif_highlights.to_string())
         else:
@@ -324,6 +357,52 @@ class Highlights:
                 else:
                     current_sequence.append(Character(dash))
 
+    def add_accessibility(self, accessibility_seq):
+        self.has_accessibility = True
+        for sequence in self.sequences:
+            for index, accessability_char in enumerate(accessibility_seq):
+                index_char_obj = self.sequences[sequence][index]
+                if accessability_char == 'N':
+                    index_char_obj.is_accessible = False
+                else:
+                    index_char_obj.is_accessible = True
+                    self.num_nucleotides_accessible += 1
+
+    def _get_length(self):
+        return self.seq_end - self.seq_start + 1
+    
+    #CSV related CSV methods
+    def enable_csv(self):
+        self.csv_wanted = True
+    
+    def _get_name(self):
+        return list(self.sequences.keys())[0]
+    
+    def _set_name(self, name):
+        self.name = name
+        
+    def _motif_and_count_rows(self):
+        self.motif_counts_csv = []
+        for motif_descriptor in self.motif_counts:
+            for motif in self.motif_counts[motif_descriptor]:
+                self.motif_counts_csv.append((self.name, self.seq_start, self.seq_end, motif, self.motif_counts[motif_descriptor][motif]))
+
+    def _motif_descriptor_coverage(self):
+        tmp_array = []
+        for motif_descriptor in self.coverage:
+            tmp_array.append((self.name, self.seq_start, self.seq_end, motif_descriptor, self.coverage[motif_descriptor]))
+            
+        self.coverage_csv = tmp_array    
+        
+    def _variant_statistics(self):
+        self.varaints_csv = self.variants_with_percent 
+   
+    def _save_csv_data(self):
+        self._motif_and_count_rows()
+        self._motif_descriptor_coverage()
+        if self.variant_data != None:
+            self._variant_statistics()
+        
     def _add_html_classes(self):
         """Adds html classes to the html file
 
@@ -445,7 +524,7 @@ class Highlights:
         if self.wrong_chars == 0:
             info(logger, f'All variants in {seq_name} match with the reference allele at their positions')
         else:
-            warning(logger, f'{self.wrong_chars} Variants have been found in {seq_name} which the reference allele does not match the underlying sequence')
+            warning(logger, f'{self.wrong_chars} Variants out of {len(self.variant_data)} have been found in {seq_name} which the reference allele does not match the underlying sequence. This is {round(self.wrong_chars/len(self.variant_data), 3)} percent')
 
         info(logger, f'Num variants found: {self.variants_found} within a region containing {len(chars)} nucleotides')
         info(logger, f'Percent of variable nucleotides in region: {self.variants_found/len(chars)}')
@@ -667,7 +746,15 @@ class Highlights:
                 green = 255 * normalized_chance
                 blue = 0
 
-                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="Appearances: {ref}: {chance1}% {alt}: {chance2}%">^</span>'
+                self.variants_with_percent.append((self.name, self.seq_start, self.seq_end, current_char.position, ref, alt, chance1, chance2, current_char.is_accessible))
+                
+                if current_char.is_accessible == True:
+                    self.num_variants_accessible += 1
+                    accessibility = "accessible"
+                elif current_char.is_accessible == False:
+                    accessibility = "not accessible"
+                
+                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="{ref}: {chance1}% {alt}: {chance2}% and is {accessibility}">^</span>'
             else:
                 variant_string += ' '
 
@@ -722,28 +809,58 @@ class Highlights:
         
         return (motif_sets, motif_coverage)
     
-    def _pretty_print_motifs(self, motif_sets, motif_coverage):
-        sets_string = '</br><div>Motifs found within this region: '
-        for motif_name in motif_sets:
-            sets_string += f'</br><div class="heading">{motif_name} : '
-            for motif in motif_sets[motif_name]:
-                sets_string += f'{motif}, '
-            sets_string = sets_string[:-2]
-            sets_string += '</br></div>'
-        if 'None' in sets_string:
-            print('BRO IT BROKE BROKE')
-                
-        sets_string += '</br>'
-        if 'None' in sets_string:
-            print('BRO WHY')
-        return sets_string
+    def _pretty_print_motifs(self):
+        table_string = ""
+        for motif_descriptor in self.motif_counts:
+            table_string += f"""
+            </br>
+            <table>
+                <thead>
+                <tr>
+                    {motif_descriptor} Motif Apperances
+                </tr> 
+                <tr>
+                    <td>Motif</td>
+                    <td>Count</td>    
+                </tr> 
+                </thead>
+                <tbody>"""
+            motif_counts = []
+            for motif in self.motif_counts[motif_descriptor]:
+                count = self.motif_counts[motif_descriptor][motif]
+                motif_counts.append((motif, count))
+            motif_counts.sort(key=lambda x:x[1], reverse=True)    
+            
+            for motif, count in motif_counts:
+                row = f"""<tr>
+                    <td>{motif}</td>
+                    <td>{count}</td>
+                    </tr> """
+                table_string += row    
+            table_string += "</tbody> </table>"
+        return table_string
     
     def _pretty_print_variants(self, length):
         #print(self.variants_found, self.variants_found/length)
         return
     
     def _generate_table(self, num_variants, percent_variable, motifs_found, motif_coverage):
-        table_rows = self._create_motif_stats_rows(motifs_found, motif_coverage)
+        unique_motifs_rows = self._unique_motifs_table(motifs_found)
+        motif_coverage_table = self._motif_coverage_table(motif_coverage)
+        if self.has_accessibility and self.variants_found > 0:
+            accessibility_string = f"""
+            <tr>
+                <td>Percent of variants that are accessible:</td>
+                <td>{round(self.num_variants_accessible/self.variants_found*100,1)}%</td>
+            </tr>
+            <tr>
+                <td>Percent of nucleotides that are accessible:</td>
+                <td>{round(self.num_nucleotides_accessible/self._get_length()*100,1)}%</td>
+            </tr>
+            """
+        else:
+            accessibility_string = ""
+        
         table_string = f"""<table>
             <thead>
             <tr>
@@ -756,46 +873,51 @@ class Highlights:
                 <td>{num_variants}</td>
             </tr>
             <tr>
-                <td>Percent Variable:</td>
-                <td>{round(percent_variable * 100, 3)}%</td>
+                <td>Percent of nucleotides with variants:</td>
+                <td>{percent_variable}%</td>
             </tr>
-            {table_rows}
+            {accessibility_string}
+            {unique_motifs_rows}
+            {motif_coverage_table}
             </tbody>
-        </table>"""
+        </table>
+        """
         
         return table_string
     
-    def _create_motif_stats_rows(self, motifs_sets, motif_coverage):
-        rows = []
+    def _unique_motifs_table(self, motifs_sets):
+        table_rows = ''
         for motif_name in motifs_sets:
             row_string = self._stats_row_template(motif_name, len(motifs_sets[motif_name])) 
-            rows.append(row_string)
-        
-        for sequence_motif_info in motif_coverage:
-            rows.extend(self._motif_row_template(motif_coverage[sequence_motif_info], sequence_motif_info))      
-            
-        table_rows = ''
-        for row in rows:
-            table_rows += f'{row}\n' 
+            table_rows += row_string
+                    
         return table_rows
     
+    def _motif_coverage_table(self, motif_coverage):
+        table_string = ''
+        for sequence_motif_info in motif_coverage:
+            table_string += self._motif_row_template(motif_coverage[sequence_motif_info], sequence_motif_info)
+        
+        return table_string  
+        
+        
     def _motif_row_template(self, motif_info, sequence_name):
         length = motif_info['length']
-        rows = []
-        rows.append(
-            f"""<tr>
+        table_string = ""
+        if len(list(self._sequences_grouped.keys())[-1]) == 1:
+            table_string += f"""<tr>
                 <td><b>{sequence_name}</b></td>
-                </tr>""")
+                </tr>"""
         for motif_name in self.motif_names:
-            row = f"""
+            coverage = round((motif_info[motif_name]/length) * 100, 1)
+            self.coverage[motif_name] = coverage
+            table_string += f"""
                 <tr>
                     <td>{motif_name} Percent Coverage:</td>
-                    <td>{round((motif_info[motif_name]/length) * 100, 3)}%</td>
+                    <td>{coverage}%</td>
                 </tr>
             """
-            rows.append(row)
-        
-        return rows
+        return table_string
     
     def _stats_row_template(self, motif_description, uniq_found):
         row = f"""
@@ -895,16 +1017,19 @@ class Highlights:
         
                 
         motif_sets, motif_coverage = self._calculate_motif_stats()
-        motifs_found = self._pretty_print_motifs(motif_sets, motif_coverage)
+        motif_count_table = self._pretty_print_motifs()
         
-        html_string += f'\n{self._generate_table(self.variants_found, self.variants_found/len(chars), motif_sets, motif_coverage)}'        
-        html_string += f'\n{motifs_found}'
+        html_string += f'\n{self._generate_table(self.variants_found, round(self.variants_found/len(chars) * 100, 3), motif_sets, motif_coverage)}'        
+        html_string += f'\n{motif_count_table}'
         
         # if self.variant_data != None:
         #     variant_stats = self._pretty_print_variants(len(chars))
         #     html_string += f'\n{variant_stats}'
         html_string += '\n</body>'
-
-        self.outputs.append(html_string)     
         
+        if self.csv_wanted:
+            self._save_csv_data()
+        
+        self.outputs.append(html_string)     
         return self.outputs[-1]
+    

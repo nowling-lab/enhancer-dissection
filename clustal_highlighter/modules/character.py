@@ -11,6 +11,8 @@ class Character:
                             #Update to python 3.9+ and use dict[str, list] to specify types :)
         self.modified = False
         
+        self.is_accessible = None
+        
     def generate_html_string(self):
         """Generates an html string which includes the tooltip and background class color
 
@@ -92,6 +94,9 @@ class Character:
             elif left_motif_dict == right_motif_dict and len(left_motif_dict) > 1:
                 self.set_color('purple')
         
+    def set_accessible(self, is_accessible):
+        self.is_accessible = is_accessible
+    
     def to_string(self) -> str:
         """Gets the html string representation of this character
 

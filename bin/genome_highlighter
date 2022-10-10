@@ -31,6 +31,16 @@ def generate_dependencies(args) -> Highlights:
             os.makedirs(global_home)
         working_directory = global_home
         
+    if args.csv:
+        motif_counts_data = []
+        motif_counts_columns = ['chromosome','start','stop','motif','count']
+        
+        motif_coverage_data = []
+        motif_coverage_columns = ['chromosome', 'start', 'stop', 'motif_descriptor', 'coverage']
+        
+        variant_data = []
+        variant_columns = ['chromosome', 'sequence_start', 'sequence_stop', 'position', 'ref', 'alt', 'ref_percent', 'alt_percent', 'accessibility']
+        
     logging.basicConfig(filename=f'{working_directory}/tmp.log', filemode='w', level=logging.DEBUG)
 
     info(logger, f'Program Start Time: {datetime.now()}')
@@ -40,8 +50,6 @@ def generate_dependencies(args) -> Highlights:
     peak_locations = get_peak_locations(args.peaks)
     keys = list(peak_locations.keys())
     
-    #TODO: Sequence name, motif name, number of matches found per file
-    #TODO: Make the sequence name and motif name as a composite key
     info(logger, f'Successfully read in peaks from {args.peaks}. Peak keys as list: {keys}')
     for key in peak_locations:
         info(logger, f'Chromosome {key} has {len(peak_locations[key])} peaks')
@@ -51,27 +59,29 @@ def generate_dependencies(args) -> Highlights:
     print("Loading sequence file...")
     
     seq_dict = read_fasta_file(args.seq_file)
-    seq_keys = list(seq_dict.keys())
+    all_seq_keys = list(seq_dict.keys())
         
-    info(logger, f'Successfully read in sequence file from: {args.seq_file}. Sequence keys as list: {seq_keys}')
-
-    print("Sequence file loaded")
-
-    valid_keys = []
-    for seq_key in seq_keys:
-        for key in keys:    
-            if key in seq_key:
-                valid_keys.append(seq_key)
-    for seq_key in seq_keys:
-        if seq_key not in valid_keys:
-            del seq_dict[seq_key]
-        else:
-            seq_dict[seq_key.split('|', 1)[0].strip()] = seq_dict.pop(seq_key)
-                    
-    seq_keys = list(seq_dict.keys())
+    info(logger, f'Successfully read in sequence file from: {args.seq_file}. Sequence keys as list: {all_seq_keys}')
     
+    seq_keys = find_valid_keys(seq_dict, all_seq_keys,  keys)
+    
+    print("Sequence file loaded")
     info(logger, f'Removed excess sequences. Sequences saved: {seq_keys}')
+    
+    if args.accessibility:
+        print("Loading in accessibility file")
+        accessibility_dict = read_fasta_file(args.accessibility)
+        all_accessibility_keys = list(accessibility_dict.keys())
+        info(logger, f'Successfully read in accessibility file from: {args.accessibility}. Accessibility keys as list: {all_accessibility_keys}')
+        accessibility_keys = find_valid_keys(accessibility_dict, all_accessibility_keys, keys)
+        print(f"Accessibility file loaded")
+        info(logger, f'Removed excess accessibility data. Accessibility data saved for these keys:{accessibility_keys}')
+        if accessibility_keys == []:
+            warning(logger, f'Keys present in accessibility: {all_accessibility_keys}. VS key being loaded in from BED file: {keys}. Accessbility keys after validation were empty: {accessibility_keys} ')
+            raise Exception('No accessibility sequence keys found that match provided keys found in BED file')    
+    
     if seq_keys == []:
+        warning(logger, f'Keys present in seqeunces: {all_seq_keys}. VS key being loaded in from BED file: {keys}. Sequence keys after validation were empty: {seq_keys} ')
         raise Exception('No sequences found that match provided keys found in BED file')
 
     vcf_df = pd.DataFrame()
@@ -98,13 +108,28 @@ def generate_dependencies(args) -> Highlights:
             if chromosome in file:
                 chromosome_seq = seq_dict[file]
                 file_name = file
+                
+        accessibility_seq = None
+        if args.accessibility:
+            for key in accessibility_dict:
+                if chromosome in file:
+                    accessibility_seq = seq_dict[file]
+                    
+        if accessibility_seq:
+            if len(accessibility_seq) != len(chromosome_seq):
+                print('why are the lengths different my guy...')
+                warning(logger, f'Accessibility sequence found for chromosome {chromosome} does not equal the length of the sequence found for that chromosome!')
 
         all_sequences = {}
+        all_accessibility = {}
         motifs = None
                 
         for start, end in peak_locations[chromosome]:
             reports_requested += 1
             seq = chromosome_seq[start-1:end]
+            if accessibility_seq:
+                region_accessibility = accessibility_seq[start-1:end]
+                all_accessibility[(start, end)] = region_accessibility
 
             single_seq_dict = {}
             single_seq_dict[f'{file_name}_{start}_{end}'] = seq
@@ -132,6 +157,13 @@ def generate_dependencies(args) -> Highlights:
             single_seq_dict = all_sequences[((start, end))]
 
             temp_highlight = Highlights(single_seq_dict, start, end)
+            temp_highlight._set_name(chromosome)
+            if accessibility_seq:
+                region_accessibility = all_accessibility[(start,end)]
+                temp_highlight.add_accessibility(region_accessibility)
+                
+            if args.csv:
+                temp_highlight.enable_csv()
 
             if args.variant_data and not vcf_df.empty:
                 max_missing_frac = args.max_missing_frac
@@ -142,21 +174,9 @@ def generate_dependencies(args) -> Highlights:
                     verify_valid_decimals(max_missing_frac, "max-missing-frac")
                 if min_allele_freq is not None:
                     verify_valid_decimals(min_allele_freq, "min-allele-freq")
+            
+                temp_highlight.add_variant_data(vcf_df, max_missing_frac, min_allele_freq)
                 
-                # TO:DO I did this with default parameters. I don't know why it's not just running it once. 
-                # I should just check for None in add_variant_data.   
-                if max_missing_frac is None and min_allele_freq is None:
-                    temp_highlight.add_variant_data(vcf_df)
-                elif max_missing_frac is not None and min_allele_freq is not None:
-                    temp_highlight.add_variant_data(
-                        vcf_df, max_missing_frac, min_allele_freq)
-                elif max_missing_frac is not None:
-                    temp_highlight.add_variant_data(
-                        vcf_df, max_missing_frac=max_missing_frac)
-                else:
-                    temp_highlight.add_variant_data(
-                        vcf_df, min_allele_freq=min_allele_freq)
-
             for index, (motif_name, motif_df, working_directory) in enumerate(fimo_highlights):
                 seq_name = list(single_seq_dict.keys())[0]
                 motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
@@ -175,7 +195,21 @@ def generate_dependencies(args) -> Highlights:
                 temp_highlight.generate_html_file(), output_path)
             reports_generated += 1
             
-        print(f'output at: {working_directory}{file_name}')
+            if args.csv:
+                motif_counts_data.extend(temp_highlight.motif_counts_csv)
+                motif_coverage_data.extend(temp_highlight.coverage_csv)
+                if temp_highlight.varaints_csv:
+                    variant_data.extend(temp_highlight.varaints_csv)
+    
+    if args.csv:
+        file_path = f'{args.output_dir}/csv/'
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        pd.DataFrame(motif_coverage_data, columns=motif_coverage_columns).to_csv(f'{args.output_dir}/csv/motif_coverage.csv', sep=',', index=False)
+        pd.DataFrame(motif_counts_data, columns=motif_counts_columns).to_csv(f'{args.output_dir}/csv/motif_counts.csv', sep=',', index=False)
+        pd.DataFrame(variant_data, columns=variant_columns).to_csv(f'{args.output_dir}/csv/variant_data.csv', sep=',', index=False)
+
+            
+    print(f'output at: {working_directory}{file_name}')
     # Stats to verify everything is working
     #this needs to be in {} checks. I'll leave here for now ig...   
     if reports_generated == reports_requested:
@@ -183,17 +217,24 @@ def generate_dependencies(args) -> Highlights:
     else:
         warning(logger, f'Sequenecs gathered. reports requested: {reports_requested} vs reports generated: {reports_generated}') 
     
-    #check for stats flags and do stats things
-    if args.summary_stats:
-        print("This was the summary stats argument")
-        pass
-
-    if args.per_seq_stats:
-        print("this was the per seq stats argument")
-        pass
-    
     #Do all of my check validations here
     check_warnings()
+    
+def find_valid_keys(seq_dict, seq_keys, keys):
+        valid_keys = []
+        for seq_key in seq_keys:
+            for key in keys:    
+                if key in seq_key:
+                    valid_keys.append(seq_key)
+        for seq_key in seq_keys:
+            if seq_key not in valid_keys:
+                del seq_dict[seq_key]
+            else:
+                seq_dict[seq_key.split('|', 1)[0].strip()] = seq_dict.pop(seq_key)
+                        
+        seq_keys = list(seq_dict.keys())
+        return seq_keys
+    
 
 def add_log(log_file: TextIO, log: str):
     log_file.write(f'{log}\n', 'a')
@@ -294,16 +335,14 @@ def parseargs():
                         required=False,
                         help="0-1 float representing what minimum percent appearance an allele must have in order for a variant to display")
 
-    parser.add_argument("--per-seq-stats",
+    parser.add_argument("--csv",
                         required=False,
                         action = 'store_true',
-                        help="When present this flag allows for the generation of individual CSV files containing the statistics per every sequence given")
+                        help="When present this flag allows for the generation of csv files which collect statistics shown in HTML files")
     
-    parser.add_argument("--summary-stats",
+    parser.add_argument("--accessibility",
                         required=False,
-                        action = 'store_true',
-                        help="When present this flag allows for the generation of a CSV file containing the statistics summarizing all sequences")
-    
+                        help="A fast formatted file that contains per nucleotide accessibility data")
     
     return parser.parse_args()
 
