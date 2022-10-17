@@ -5,6 +5,7 @@ from clustal_highlighter.modules.variant_handler import *
 from clustal_highlighter.modules.data_classes import *
 from collections import deque
 import logging
+import statistics
 
 from clustal_highlighter.modules.logger import *
 default_logger = True
@@ -19,6 +20,9 @@ class Highlights:
         self.seq_end = seq_end
         sequence_dict = seq_dict
         self.has_indels = False
+        #from sequence fasta, compare with: self.num_nucleotides_inaccessible
+        self.sequence_positions_N = 0    
+    
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
         if self.seq_end == None:
             keys = list(self.sequences.keys())
@@ -49,21 +53,31 @@ class Highlights:
         self.csv_wanted = False
         #Table data
         self.name = self._get_name()
-        #name, start, stop, motif, count
+        #name, sequence_start, sequence_stop, motif, count
         self.motif_counts_csv = None
-        #name, start, stop, motif_descriptor, coverage
+        #name, sequence_start, sequence_stop, motif_descriptor, coverage
         self.coverage = {}
         self.coverage_csv = None
-        #name, start, stop, variant_pos, ref, alt, ref%, alt%
+        #name, sequence_start, sequence_stop, variant_pos, ref, alt, ref%, alt%
         self.varaints_csv = None
         self.variants_with_percent = []
+        #chromosome, sequence_start, sequence_stop, num_variants, num_accessible_variants, num_accessible_nucleotides, accessibility_given, min_motif_percent_coverage, max_motif_percent_coverag, num_motif_matrices_given
+        self.summary_csv = None
+        self.motif_percent_coverage = {}
         
         #accessibility variables
         self.has_accessibility = False
         self.num_variants_accessible = 0
         self.num_nucleotides_accessible = 0
+        
+        #from accessibility fasta
+        self.num_nucleotides_inaccessible = 0
+        
+        #site pi
+        self.site_pi_dict = None
+        self.pi_scores_array = None
 
-
+    
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format 
 
@@ -96,6 +110,10 @@ class Highlights:
             pos_counter += 1
             if char == "-" and not self.has_indels:
                 self.has_indels = True
+            elif char =="N":
+                self.sequence_positions_N += 1
+        
+        info(logger, f"{logger.name} has {self.sequence_positions_N} nucleotides that have not be sequenced (N)")
         return char_obj_list
 
     def add_highlights(self, motifs_descriptor: str, file_path: str, color: str, html_color: str):
@@ -364,9 +382,13 @@ class Highlights:
                 index_char_obj = self.sequences[sequence][index]
                 if accessability_char == 'N':
                     index_char_obj.is_accessible = False
+                    self.num_nucleotides_inaccessible += 1
                 else:
                     index_char_obj.is_accessible = True
                     self.num_nucleotides_accessible += 1
+
+        info(logger, f'{logger.name} has {self.num_nucleotides_inaccessible} nucleotides inaccessible')
+
 
     def _get_length(self):
         return self.seq_end - self.seq_start + 1
@@ -385,21 +407,70 @@ class Highlights:
         self.motif_counts_csv = []
         for motif_descriptor in self.motif_counts:
             for motif in self.motif_counts[motif_descriptor]:
-                self.motif_counts_csv.append((self.name, self.seq_start, self.seq_end, motif, self.motif_counts[motif_descriptor][motif]))
+                self.motif_counts_csv.append((self.name,
+                                              self.seq_start,
+                                              self.seq_end,
+                                              motif,
+                                              self.motif_counts[motif_descriptor][motif]))
 
     def _motif_descriptor_coverage(self):
         tmp_array = []
         for motif_descriptor in self.coverage:
-            tmp_array.append((self.name, self.seq_start, self.seq_end, motif_descriptor, self.coverage[motif_descriptor]))
+            tmp_array.append((self.name,
+                              self.seq_start,
+                              self.seq_end,
+                              motif_descriptor,
+                              self.coverage[motif_descriptor]))
             
         self.coverage_csv = tmp_array    
         
+    def _summary_stats(self):
+        #fill with NaN if variants were not given
+        if self.variant_data == None:
+            variants_found = "NaN"
+        else:
+            variants_found = self.variants_found
+        
+        #fill with NaN if accessibility was not given
+        if not self.has_accessibility:
+            num_variants_accessible = "NaN"
+            num_nucleotides_accessible = "NaN"
+        else:
+            num_variants_accessible = self.num_variants_accessible
+            num_nucleotides_accessible = self.num_nucleotides_accessible
+        
+        if self.pi_scores_array != None and len(self.pi_scores_array) > 2:
+            pi_scores_mean = round(statistics.mean(self.pi_scores_array), 3)
+            pi_scores_stdev = round(statistics.stdev(self.pi_scores_array), 3)
+        else:
+            pi_scores_mean = "NaN"
+            pi_scores_stdev = "NaN"
+        
+        self.summary_csv = [[self.name,
+                             self.seq_start,
+                             self.seq_end,
+                             self._get_length(),
+                             variants_found,
+                             num_variants_accessible,
+                             num_nucleotides_accessible,
+                             pi_scores_mean,
+                             pi_scores_stdev,
+                             self._calc_percentage(self.sequence_positions_N, 1)]]
+        
+        for motif_name in self.motif_counts:
+            self.summary_csv[0].append(len(self.motif_counts[motif_name]))
+            self.summary_csv[0].append(self.motif_percent_coverage[motif_name])
+            
+    def _calc_percentage(self, numerator, decimal_places):
+        return round((numerator/self._get_length())*100, decimal_places)
+            
     def _variant_statistics(self):
         self.varaints_csv = self.variants_with_percent 
    
     def _save_csv_data(self):
         self._motif_and_count_rows()
         self._motif_descriptor_coverage()
+        self._summary_stats()
         if self.variant_data != None:
             self._variant_statistics()
         
@@ -698,6 +769,14 @@ class Highlights:
         variant_data = generate_variant_dict(self.seq_start, self.seq_end, df, max_missing_frac, min_allele_freq)
         if len(variant_data) > 0:
             self.variant_data = variant_data
+            
+    def add_pi_data(self, site_pi_dict):
+        self.site_pi_dict = site_pi_dict  
+        self.pi_scores_array = []
+        if self.variant_data != None:
+            for pos in self.variant_data:
+                if pos in self.site_pi_dict:
+                    self.pi_scores_array.append(self.site_pi_dict[pos])
 
     def _append_variant_data(self, max_len, row):
         """Appends variant data to the html string
@@ -753,8 +832,13 @@ class Highlights:
                     accessibility = "accessible"
                 elif current_char.is_accessible == False:
                     accessibility = "not accessible"
+                    
+                if current_char.is_accessible != None:
+                    accessibility_string = f" and is {accessibility}"
+                else:
+                    accessibility_string = ""
                 
-                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="{ref}: {chance1}% {alt}: {chance2}% and is {accessibility}">^</span>'
+                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="{ref}: {chance1}% {alt}: {chance2}%{accessibility_string}">^</span>'
             else:
                 variant_string += ' '
 
@@ -855,7 +939,7 @@ class Highlights:
             </tr>
             <tr>
                 <td>Percent of nucleotides that are accessible:</td>
-                <td>{round(self.num_nucleotides_accessible/self._get_length()*100,1)}%</td>
+                <td>{self._calc_percentage(self.num_nucleotides_accessible, 1)}%</td>
             </tr>
             """
         else:
@@ -909,8 +993,9 @@ class Highlights:
                 <td><b>{sequence_name}</b></td>
                 </tr>"""
         for motif_name in self.motif_names:
-            coverage = round((motif_info[motif_name]/length) * 100, 1)
+            coverage =  round((motif_info[motif_name]/length) * 100, 1)
             self.coverage[motif_name] = coverage
+            self.motif_percent_coverage[motif_name] = coverage
             table_string += f"""
                 <tr>
                     <td>{motif_name} Percent Coverage:</td>

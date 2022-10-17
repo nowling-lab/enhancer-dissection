@@ -191,6 +191,16 @@ def generate_variant_dict(seq_start, seq_end, df, max_missing_frac=None, min_all
     
     return variant_dict
 
+def generate_pi_dict(path_to_diversity_file):
+    diversity_df = pd.read_csv(path_to_diversity_file, sep='\t', header=0)
+    diversity_pos_score = {}
+    def add_to_dict(element, pi_score, dictionary):
+        dictionary[element] = pi_score
+
+    [add_to_dict(element, pi_score, diversity_pos_score) for element, pi_score in zip(diversity_df['POS'], diversity_df['PI'])]
+    
+    return diversity_pos_score
+
 def read_fasta_file(file_path):
     #Reads in a fasta file. Standard stuff
     sequence_dictionary = {}

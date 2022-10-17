@@ -31,15 +31,52 @@ def generate_dependencies(args) -> Highlights:
             os.makedirs(global_home)
         working_directory = global_home
         
+    if args.motif_files:
+        motifs = generate_tuple_motifs(args.motif_files)
+        
     if args.csv:
         motif_counts_data = []
-        motif_counts_columns = ['chromosome','start','stop','motif','count']
+        motif_counts_columns = ['chromosome',
+                                'sequence_start',
+                                'sequence_stop',
+                                'motif',
+                                'count']
         
         motif_coverage_data = []
-        motif_coverage_columns = ['chromosome', 'start', 'stop', 'motif_descriptor', 'coverage']
+        motif_coverage_columns = ['chromosome',
+                                  'sequence_start',
+                                  'sequence_stop',
+                                  'motif_descriptor',
+                                  'coverage']
         
         variant_data = []
-        variant_columns = ['chromosome', 'sequence_start', 'sequence_stop', 'position', 'ref', 'alt', 'ref_percent', 'alt_percent', 'accessibility']
+        variant_columns = ['chromosome',
+                           'sequence_start',
+                           'sequence_stop',
+                           'variant_position',
+                           'ref_allele',
+                           'alt_allele',
+                           'ref_percent',
+                           'alt_percent',
+                           'accessibility']
+        
+        summary_data = []
+        #% nucleotides N ONLY reference the fasta sequence passed, NOT the accessibility data
+        summary_columns = ['chromosome',
+                           'sequence_start',
+                           'sequence_stop',
+                           'sequence_length',
+                           'num_variants',
+                           'num_accessible_variants',
+                           'num_nucleotides_accessible',
+                           'pi_scores_mean',
+                           'pi_scores_stdev',
+                           'percent_nucleotides_N']
+        
+        if args.motif_files:
+            for motif in motifs:
+                summary_columns.append(f'motif[0]_unique_motifs')
+                summary_columns.append(f'{motif[0]}_percent_coverage')
         
     logging.basicConfig(filename=f'{working_directory}/tmp.log', filemode='w', level=logging.DEBUG)
 
@@ -84,6 +121,22 @@ def generate_dependencies(args) -> Highlights:
         warning(logger, f'Keys present in seqeunces: {all_seq_keys}. VS key being loaded in from BED file: {keys}. Sequence keys after validation were empty: {seq_keys} ')
         raise Exception('No sequences found that match provided keys found in BED file')
 
+    site_pi_path = None
+    if args.site_pi:
+        site_pi_path = f'{working_directory}/site_pi/diversity.sites.pi'
+        if args.variant_data:
+            print("Generating VCF Tools site pi data")
+            vcf_file_extension = pathlib.Path(args.variant_data).suffix
+            if vcf_file_extension == '.gz':
+                    os.makedirs(os.path.dirname(f'{working_directory}/site_pi/'), exist_ok=True)
+                    call(f"run_vcf_tools_pi {args.variant_data} 1 {working_directory}/site_pi/", shell=True)
+            else:
+                    os.makedirs(os.path.dirname(f'{working_directory}/site_pi/'), exist_ok=True)
+                    call(f"run_vcf_tools_pi {args.variant_data} 0 {working_directory}/site_pi/", shell=True)
+            info(logger, f'Successfully generated site pi data at {working_directory}/stie_pi')
+        else:
+            warning(logger, f'Site pi data was requested but --variant-data flag was not used. No variant or site pi data will be presented')
+        
     vcf_df = pd.DataFrame()
     if args.variant_data:
         print("Loading VCF...")
@@ -102,6 +155,9 @@ def generate_dependencies(args) -> Highlights:
         
         info(logger, f'Chromosome {chromosome} being processed')
         
+        if site_pi_path != None:
+            diversity_dict = generate_pi_dict(site_pi_path)
+        
         chromosome_seq = None
         file_name = None
         for file in seq_keys:
@@ -117,12 +173,10 @@ def generate_dependencies(args) -> Highlights:
                     
         if accessibility_seq:
             if len(accessibility_seq) != len(chromosome_seq):
-                print('why are the lengths different my guy...')
                 warning(logger, f'Accessibility sequence found for chromosome {chromosome} does not equal the length of the sequence found for that chromosome!')
 
         all_sequences = {}
         all_accessibility = {}
-        motifs = None
                 
         for start, end in peak_locations[chromosome]:
             reports_requested += 1
@@ -141,16 +195,16 @@ def generate_dependencies(args) -> Highlights:
         file_path = print_fasta(all_sequences, f'{working_directory}/{file_name}')
 
         fimo_highlights = []
-        motifs = generate_tuple_motifs(args.motif_files)
+        
+        if args.motif_files:
+            print("Generating fimo tsv")
 
-        print("Generating fimo tsv")
+            for motif_name, motif_path in motifs:
+                motif_and_df, file_paths = generate_fimo_output(
+                    file_path, motif_path, motif_name, working_directory)
 
-        for motif_name, motif_path in motifs:
-            motif_and_df, file_paths = generate_fimo_output(
-                file_path, motif_path, motif_name, working_directory)
-
-            fimo_highlights.append(motif_and_df)
-            info(logger, f'Fimo successfully ran. File used: {motif_path}')
+                fimo_highlights.append(motif_and_df)
+                info(logger, f'Fimo successfully ran. File used: {motif_path}')
         
         print("Generating output...")
         for start, end in peak_locations[chromosome]:
@@ -176,15 +230,19 @@ def generate_dependencies(args) -> Highlights:
                     verify_valid_decimals(min_allele_freq, "min-allele-freq")
             
                 temp_highlight.add_variant_data(vcf_df, max_missing_frac, min_allele_freq)
+
+                if site_pi_path != None:
+                    temp_highlight.add_pi_data(diversity_dict)
                 
-            for index, (motif_name, motif_df, working_directory) in enumerate(fimo_highlights):
-                seq_name = list(single_seq_dict.keys())[0]
-                motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
-                
-                motif_path = print_fimo_subset(motifs, working_directory)
-                temp_highlight.add_highlights(
-                    motif_name, motif_path, colors[index], html_colors[index])
-                
+            if fimo_highlights != []:
+                for index, (motif_name, motif_df, working_directory) in enumerate(fimo_highlights):
+                    seq_name = list(single_seq_dict.keys())[0]
+                    motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
+                    
+                    motif_path = print_fimo_subset(motifs, working_directory)
+                    temp_highlight.add_highlights(
+                        motif_name, motif_path, colors[index], html_colors[index])
+                    
             output_path = os.path.abspath(
                 f'{args.output_dir}/{file_name}/{file_name}-{start}-{end}.html')
 
@@ -196,18 +254,26 @@ def generate_dependencies(args) -> Highlights:
             reports_generated += 1
             
             if args.csv:
-                motif_counts_data.extend(temp_highlight.motif_counts_csv)
-                motif_coverage_data.extend(temp_highlight.coverage_csv)
+                if temp_highlight.motif_counts_csv:
+                    motif_counts_data.extend(temp_highlight.motif_counts_csv)
+                if temp_highlight.coverage_csv:
+                    motif_coverage_data.extend(temp_highlight.coverage_csv)
+                if temp_highlight.summary_csv:
+                    summary_data.extend(temp_highlight.summary_csv)
                 if temp_highlight.varaints_csv:
                     variant_data.extend(temp_highlight.varaints_csv)
-    
-    if args.csv:
-        file_path = f'{args.output_dir}/csv/'
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        pd.DataFrame(motif_coverage_data, columns=motif_coverage_columns).to_csv(f'{args.output_dir}/csv/motif_coverage.csv', sep=',', index=False)
-        pd.DataFrame(motif_counts_data, columns=motif_counts_columns).to_csv(f'{args.output_dir}/csv/motif_counts.csv', sep=',', index=False)
-        pd.DataFrame(variant_data, columns=variant_columns).to_csv(f'{args.output_dir}/csv/variant_data.csv', sep=',', index=False)
-
+                
+        if args.csv:
+            file_path = f'{args.output_dir}/csv/'
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            if motif_coverage_data != []:
+                pd.DataFrame(motif_coverage_data, columns=motif_coverage_columns).to_csv(f'{args.output_dir}/csv/motif_coverage.csv', sep=',', index=False)
+            if motif_counts_data != []:
+                pd.DataFrame(motif_counts_data, columns=motif_counts_columns).to_csv(f'{args.output_dir}/csv/motif_counts.csv', sep=',', index=False)
+            if variant_data != []:
+                pd.DataFrame(variant_data, columns=variant_columns).to_csv(f'{args.output_dir}/csv/variant_data.csv', sep=',', index=False)
+            if summary_data != []:
+                pd.DataFrame(summary_data, columns=summary_columns).to_csv(f'{args.output_dir}/csv/summary.csv', sep=',', index=False)
             
     print(f'output at: {working_directory}{file_name}')
     # Stats to verify everything is working
@@ -344,6 +410,11 @@ def parseargs():
                         required=False,
                         help="A fast formatted file that contains per nucleotide accessibility data")
     
+    parser.add_argument("--site-pi",
+                        required=False,
+                        action = 'store_true',
+                        help="Calculates and displays vcftools site pi data in the results html files. Requires --variant-data run")
+    
     return parser.parse_args()
 
 
@@ -356,7 +427,7 @@ def html_string_to_output(html_string, output_dir):
 
 if __name__ == "__main__":
     args = parseargs()
-    if len(args.motif_files) % 2 != 0:
+    if (args.motif_files != None) and (len(args.motif_files) % 2 != 0):
         print("\n--motif-files flag given an odd number of inputs, please use -h for more info")
         exit(0)
     else:

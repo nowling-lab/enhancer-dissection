@@ -14,7 +14,8 @@ setup(
     scripts=[
         "bin/genome_highlighter",
         "bin/run_fimo_on_file",
-        "bin/fasta_highlighter"
+        "bin/fasta_highlighter",
+        "bin/run_vcf_tools_pi"
         ],
     install_requires=['pandas>=1.3.4', 'numpy>=1.22.3'],
     include_package_data=True,

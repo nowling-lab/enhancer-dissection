@@ -25,3 +25,6 @@ fimo -oc $output_path/$motifs_name --verbosity 1 $motifs_file $1
 unset filename
 unset global_path
 unset script_directory
+unset sequence_file
+unset sequence_file_name
+unset output_path
