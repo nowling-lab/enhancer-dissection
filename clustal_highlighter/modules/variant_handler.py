@@ -33,56 +33,10 @@ def find_variants_in_sequnce(seq_start, seq_end, df): #df is pandas dataframe
     
     return variants
 
-def calculate_variant_stats(variant_Row):
-    ref = variant_Row[3]
-    alt = variant_Row[4]
-    pos = variant_Row[1]
-    chromosome = variant_Row[0]
-    #individual_count = len(variant_Row[9:]) 
-    #0/1:0.34:11,21:31:99:0:638,0,340 takes that string and splits it into "1/0" and then takes that and makes it the tuple (1,0)
-    #variant data starts from index 9, so we take 9 to the end... 
-    cleaned_samples = [tuple(variant.split(':', 1)[0].split('/', 1)) for variant in variant_Row[9:]]
-    ref_1 = 0
-    alt_1 = 0
-    
-    valid_refs = 0
-    valid_alts = 0
-    #./.
-    for sample in cleaned_samples:
-        ref_val, alt_val = sample
-        
-        try:
-            ref_1 += int(ref_val)
-            valid_refs += 1
-        except:
-            pass
-        #2 blocks so one of them doesn't not get added if it was a 1...
-        try:
-            alt_1 += int(alt_val)
-            valid_alts += 1     
-        except:
-            pass
-    
-    valid_individual_count = min(valid_refs, valid_alts)
-    
-    alt_percentage = (ref_1 + alt_1)/(2*valid_individual_count) # TO:DO reduce variant amount based on how many had ./.?? Ask michelle
-    #print(variant_Row[0:9])
-    appearances = {
-        'chromosome': chromosome,
-        'position': pos,
-        'ref_char': ref,
-        'alt_char': alt,
-        'ref_percent': 1-alt_percentage,
-        'alt_percent': alt_percentage
-    }
-    
-    return appearances 
-
 def calculate_variant_stats(variant_Row, variant_dict, max_missing_frac=None, min_allele_freq=None):
     ref = variant_Row[3]
     alt = variant_Row[4]
     pos = variant_Row[1]
-    chromosome = variant_Row[0]
     variant_amount = len(variant_Row[9:]) 
     #0/1:0.34:11,21:31:99:0:638,0,340 takes that string and splits it into "1/0" and then takes that and makes it the tuple (1,0)
     #variant data starts from index 9, so we take 9 to the end... 
@@ -133,7 +87,7 @@ def calculate_variant_stats(variant_Row, variant_dict, max_missing_frac=None, mi
             return
         
     #Program short circuits on the above conditions and variant is not added to dictionary...
-    variant_dict[int(pos)] = (ref, alt, ref_percent, alt_percent)
+    variant_dict[int(pos)] = (ref, alt, ref_percent, alt_percent, len(cleaned_samples), num_missing_alleles)
 
 def get_peak_locations(file_path):
     peak_locations = {}

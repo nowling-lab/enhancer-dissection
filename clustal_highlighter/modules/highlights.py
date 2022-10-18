@@ -35,6 +35,11 @@ class Highlights:
         self._sequences_grouped = {}
         self.indel_dict = None
         self.variant_data = None
+        
+        #Set this flag if variants are added. This does NOT mean that there were 
+        #variants found within this region. It just means that they were asked for when the software
+        #was ran
+        self.variants_given = False
         self.group_all = True
         self.highlight_styles = {}
         
@@ -76,7 +81,9 @@ class Highlights:
         #site pi
         self.site_pi_dict = None
         self.pi_scores_array = None
-
+        
+        #genotype numbers variables 
+        self.genotype_dict = {}
     
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format 
@@ -426,7 +433,7 @@ class Highlights:
         
     def _summary_stats(self):
         #fill with NaN if variants were not given
-        if self.variant_data == None:
+        if not self.variants_given:
             variants_found = "NaN"
         else:
             variants_found = self.variants_found
@@ -439,12 +446,17 @@ class Highlights:
             num_variants_accessible = self.num_variants_accessible
             num_nucleotides_accessible = self.num_nucleotides_accessible
         
-        if self.pi_scores_array != None and len(self.pi_scores_array) > 2:
+        if self.pi_scores_array != None and len(self.pi_scores_array) >= 2:
             pi_scores_mean = round(statistics.mean(self.pi_scores_array), 3)
             pi_scores_stdev = round(statistics.stdev(self.pi_scores_array), 3)
+        elif self.pi_scores_array != None and len(self.pi_scores_array) == 1:
+            pi_scores_mean = self.pi_scores_array[0]
+            pi_scores_stdev = 0
         else:
             pi_scores_mean = "NaN"
             pi_scores_stdev = "NaN"
+        
+        mean_missing, std_missing = self._calculate_genotype_stats()
         
         self.summary_csv = [[self.name,
                              self.seq_start,
@@ -455,11 +467,34 @@ class Highlights:
                              num_nucleotides_accessible,
                              pi_scores_mean,
                              pi_scores_stdev,
-                             self._calc_percentage(self.sequence_positions_N, 1)]]
+                             mean_missing,
+                             std_missing,
+                             self.sequence_positions_N]]
         
         for motif_name in self.motif_counts:
             self.summary_csv[0].append(len(self.motif_counts[motif_name]))
             self.summary_csv[0].append(self.motif_percent_coverage[motif_name])
+            
+    def _calculate_genotype_stats(self):
+        """This function returns the mean of the number of samples that are valid for each variant. It also returns the standard deviation of that number
+
+        Returns:
+            tuple: (mean, stdev)
+        """
+        num_missing_samples = []
+        for _, (num_samples, num_invalid) in self.genotype_dict.items():
+            num_missing_samples.append(num_invalid)
+        if len(num_missing_samples) >= 2:
+            mean_missing = round(statistics.mean(num_missing_samples),3)
+            std_missing = round(statistics.stdev(num_missing_samples),3)
+        elif len(num_missing_samples) == 1:   
+            mean_missing = num_missing_samples[0]
+            std_missing = 0
+        else:
+            mean_missing = 'NaN'
+            std_missing = 'NaN'
+        
+        return (mean_missing, std_missing)
             
     def _calc_percentage(self, numerator, decimal_places):
         return round((numerator/self._get_length())*100, decimal_places)
@@ -689,7 +724,7 @@ class Highlights:
             html_out += character.to_string()
         return html_out
 
-    def _compare_append_rows(self, row: list, counter: int, max_len: int, key: str, row_end_position: int):
+    def _compare_append_rows(self, row: list, counter: int, max_len: int, key : str, row_end_position: int):
         """Converts a row to an html row with a name on the left and position at the right.
            Creates a singsequence_name     : sequence 70 Character lengthed html string with position at the end
 
@@ -766,6 +801,7 @@ class Highlights:
         Args:
             file_path (str): A file path to variant data. This returns a dict of positions and what variations could be there and their positions 
         """
+        self.variants_given = True
         variant_data = generate_variant_dict(self.seq_start, self.seq_end, df, max_missing_frac, min_allele_freq)
         if len(variant_data) > 0:
             self.variant_data = variant_data
@@ -803,7 +839,9 @@ class Highlights:
         for x in range(position, position + 70):  # 70 is line width...
             x_offset = (x + self.offset - 1)
             if x_offset in self.variant_data:
-                ref, alt, chance1, chance2 = self.variant_data[x_offset]
+                ref, alt, chance1, chance2, total_samples, samples_invalid = self.variant_data[x_offset]
+                self.genotype_dict[x_offset] = (total_samples, samples_invalid)
+                
                 current_char = chars[x_offset-self.seq_start]
                 if current_char.position != x_offset:
                     warning(logger, f'Variant not lined up with character position! Character position: {current_char.position}, Variant position: {x_offset}, Character in Object: {current_char.character}, Ref: {ref}, Alt: {alt}')

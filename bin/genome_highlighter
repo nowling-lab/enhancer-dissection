@@ -70,12 +70,14 @@ def generate_dependencies(args) -> Highlights:
                            'num_accessible_variants',
                            'num_nucleotides_accessible',
                            'pi_scores_mean',
-                           'pi_scores_stdev',
-                           'percent_nucleotides_N']
+                           'pi_scores_stdev', 
+                           'genotype_mean_missing', 
+                           'genotype_stdev_missing',
+                           'num_nucleotides_N']
         
         if args.motif_files:
             for motif in motifs:
-                summary_columns.append(f'motif[0]_unique_motifs')
+                summary_columns.append(f'{motif[0]}_unique_motifs')
                 summary_columns.append(f'{motif[0]}_percent_coverage')
         
     logging.basicConfig(filename=f'{working_directory}/tmp.log', filemode='w', level=logging.DEBUG)
