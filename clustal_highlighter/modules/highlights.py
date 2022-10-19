@@ -69,6 +69,8 @@ class Highlights:
         #chromosome, sequence_start, sequence_stop, num_variants, num_accessible_variants, num_accessible_nucleotides, accessibility_given, min_motif_percent_coverage, max_motif_percent_coverag, num_motif_matrices_given
         self.summary_csv = None
         self.motif_percent_coverage = {}
+        self.motif_sets = None
+        self.motif_coverage = None
         
         #accessibility variables
         self.has_accessibility = False
@@ -458,6 +460,8 @@ class Highlights:
         
         mean_missing, std_missing = self._calculate_genotype_stats()
         
+        total_highlight_coverage = self._calculate_total_coverage()
+        
         self.summary_csv = [[self.name,
                              self.seq_start,
                              self.seq_end,
@@ -469,12 +473,28 @@ class Highlights:
                              pi_scores_stdev,
                              mean_missing,
                              std_missing,
-                             self.sequence_positions_N]]
+                             self.sequence_positions_N,
+                             total_highlight_coverage]]
         
         for motif_name in self.motif_counts:
             self.summary_csv[0].append(len(self.motif_counts[motif_name]))
-            self.summary_csv[0].append(self.motif_percent_coverage[motif_name])
             
+            this_sequence = list(self.motif_coverage.keys())[0]
+            self.summary_csv[0].append(self.motif_coverage[this_sequence][motif_name])
+            
+    def _calculate_total_coverage(self):
+        #there should only be 1 sequence when this is called.
+        #this method does not get called for fasta highlighter
+        #maybe inforce this by just grabbing the 0th?
+        num_highlighted = 0
+        for seq in self.sequences:
+            for char in self.sequences[seq]:
+                if char.modified:
+                    num_highlighted += 1
+            
+        return num_highlighted
+            
+    
     def _calculate_genotype_stats(self):
         """This function returns the mean of the number of samples that are valid for each variant. It also returns the standard deviation of that number
 
@@ -1139,10 +1159,10 @@ class Highlights:
                 info(logger, f'{self.sequences.keys()} when alined are of length {len(chars)}')
         
                 
-        motif_sets, motif_coverage = self._calculate_motif_stats()
+        self.motif_sets, self.motif_coverage = self._calculate_motif_stats()
         motif_count_table = self._pretty_print_motifs()
         
-        html_string += f'\n{self._generate_table(self.variants_found, round(self.variants_found/len(chars) * 100, 3), motif_sets, motif_coverage)}'        
+        html_string += f'\n{self._generate_table(self.variants_found, round(self.variants_found/len(chars) * 100, 3), self.motif_sets, self.motif_coverage)}'        
         html_string += f'\n{motif_count_table}'
         
         # if self.variant_data != None:

@@ -73,12 +73,13 @@ def generate_dependencies(args) -> Highlights:
                            'pi_scores_stdev', 
                            'genotype_mean_missing', 
                            'genotype_stdev_missing',
-                           'num_nucleotides_N']
+                           'num_nucleotides_N',
+                           'num_nucleotides_highlighted']
         
         if args.motif_files:
             for motif in motifs:
                 summary_columns.append(f'{motif[0]}_unique_motifs')
-                summary_columns.append(f'{motif[0]}_percent_coverage')
+                summary_columns.append(f'num_{motif[0]}_nucleotide_coverage')
         
     logging.basicConfig(filename=f'{working_directory}/tmp.log', filemode='w', level=logging.DEBUG)
 
@@ -102,7 +103,7 @@ def generate_dependencies(args) -> Highlights:
         
     info(logger, f'Successfully read in sequence file from: {args.seq_file}. Sequence keys as list: {all_seq_keys}')
     
-    seq_keys = find_valid_keys(seq_dict, all_seq_keys,  keys)
+    seq_keys = find_valid_keys(seq_dict, all_seq_keys,  keys, 'FASTA')
     
     print("Sequence file loaded")
     info(logger, f'Removed excess sequences. Sequences saved: {seq_keys}')
@@ -112,7 +113,7 @@ def generate_dependencies(args) -> Highlights:
         accessibility_dict = read_fasta_file(args.accessibility)
         all_accessibility_keys = list(accessibility_dict.keys())
         info(logger, f'Successfully read in accessibility file from: {args.accessibility}. Accessibility keys as list: {all_accessibility_keys}')
-        accessibility_keys = find_valid_keys(accessibility_dict, all_accessibility_keys, keys)
+        accessibility_keys = find_valid_keys(accessibility_dict, all_accessibility_keys, keys, 'Accessibility')
         print(f"Accessibility file loaded")
         info(logger, f'Removed excess accessibility data. Accessibility data saved for these keys:{accessibility_keys}')
         if accessibility_keys == []:
@@ -288,17 +289,22 @@ def generate_dependencies(args) -> Highlights:
     #Do all of my check validations here
     check_warnings()
     
-def find_valid_keys(seq_dict, seq_keys, keys):
+def find_valid_keys(seq_dict, seq_keys, keys, description):
         valid_keys = []
         for seq_key in seq_keys:
             for key in keys:    
                 if key in seq_key:
                     valid_keys.append(seq_key)
+        if valid_keys == []:
+            error_desc = f"Mismatch between provided keys. Keys given in bed file {keys} do not match keys given in {description} file {seq_keys}"
+            warning(logger, error_desc)
+            raise Exception(error_desc)
+        
         for seq_key in seq_keys:
             if seq_key not in valid_keys:
                 del seq_dict[seq_key]
             else:
-                seq_dict[seq_key.split('|', 1)[0].strip()] = seq_dict.pop(seq_key)
+                seq_dict[seq_key] = seq_dict.pop(seq_key)
                         
         seq_keys = list(seq_dict.keys())
         return seq_keys
