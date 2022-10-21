@@ -47,7 +47,7 @@ Installing and running the software with a Python Environment:
     
 There are 2 currently supported programs:
     
-The first program is ran by calling genome_highlighter.
+The first program is ran by calling genome_highlighter. Do note that the program currently only handles SNPs and not indels.
 The arguments that are taken are:
 
      --seq-file SEQ_FILE   Path to fasta formatted sequence file

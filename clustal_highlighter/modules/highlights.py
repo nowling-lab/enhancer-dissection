@@ -814,7 +814,7 @@ class Highlights:
 
     def add_variant_data(self, df, max_missing_frac=None, min_allele_freq=None) -> None:
         """Adds variant data to the object
-
+            NOTE: current variants are only SNPs
         Args:
             file_path (str): A file path to variant data. This returns a dict of positions and what variations could be there and their positions 
         """
