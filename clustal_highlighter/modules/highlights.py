@@ -14,7 +14,7 @@ class Highlights:
     global logger
     logger = logging.getLogger('generic_highlights')
 
-    def __init__(self, seq_dict: dict, offset=1, seq_end=None):
+    def __init__(self, seq_dict: dict, chromosome: str, offset=1, seq_end=None):
         self.offset = offset
         self.seq_start = offset
         self.seq_end = seq_end
@@ -57,7 +57,7 @@ class Highlights:
         
         self.csv_wanted = False
         #Table data
-        self.name = self._get_name()
+        self.name = chromosome
         #name, sequence_start, sequence_stop, motif, count
         self.motif_counts_csv = None
         #name, sequence_start, sequence_stop, motif_descriptor, coverage
@@ -406,11 +406,8 @@ class Highlights:
     def enable_csv(self):
         self.csv_wanted = True
     
-    def _get_name(self):
-        return list(self.sequences.keys())[0]
-    
-    def _set_name(self, name):
-        self.name = name
+    def chromosome_name(self, name):
+        return name
         
     def _motif_and_count_rows(self):
         self.motif_counts_csv = []
@@ -452,7 +449,7 @@ class Highlights:
             pi_scores_mean = round(statistics.mean(self.pi_scores_array), 3)
             pi_scores_stdev = round(statistics.stdev(self.pi_scores_array), 3)
         elif self.pi_scores_array != None and len(self.pi_scores_array) == 1:
-            pi_scores_mean = self.pi_scores_array[0]
+            pi_scores_mean = round(self.pi_scores_array[0], 3)
             pi_scores_stdev = 0
         else:
             pi_scores_mean = "NaN"

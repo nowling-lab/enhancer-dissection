@@ -167,7 +167,8 @@ def generate_dependencies(args) -> Highlights:
             if chromosome in file:
                 chromosome_seq = seq_dict[file]
                 file_name = file
-                
+      
+        
         accessibility_seq = None
         if args.accessibility:
             for key in accessibility_dict:
@@ -213,8 +214,8 @@ def generate_dependencies(args) -> Highlights:
         for start, end in peak_locations[chromosome]:
             single_seq_dict = all_sequences[((start, end))]
 
-            temp_highlight = Highlights(single_seq_dict, start, end)
-            temp_highlight._set_name(chromosome)
+            temp_highlight = Highlights(single_seq_dict, chromosome, start, end)
+            
             if accessibility_seq:
                 region_accessibility = all_accessibility[(start,end)]
                 temp_highlight.add_accessibility(region_accessibility)
