@@ -62,7 +62,7 @@ def generate_dependencies(args) -> Highlights:
         
         summary_data = []
         #% nucleotides N ONLY reference the fasta sequence passed, NOT the accessibility data
-        summary_columns = ['working_directory',
+        summary_columns = ['report_file_path',
                            'chromosome',
                            'sequence_start',
                            'sequence_stop',
@@ -226,7 +226,7 @@ def generate_dependencies(args) -> Highlights:
                 temp_highlight.add_accessibility(region_accessibility)
                 
             if args.csv:
-                temp_highlight.enable_csv(args.output_dir)
+                temp_highlight.enable_csv(f'{file_name}/{file_name}-{start}-{end}.html')
 
             if args.variant_data and not vcf_df.empty:
                 max_missing_frac = args.max_missing_frac

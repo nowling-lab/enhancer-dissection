@@ -2,10 +2,36 @@
 
 This document defines how all values presented to the user are displayed and the inputs that are required to run the software. This document should be updated to match the current present state of the software as the software is updated. 
 
+## Inputs
+The program genome_highlighter can take a variety of inputs. Do note that some of these inputs (BED files and VCF files) should only contain the data of one chromosome. This software currently only supports running on one chromosome at a time. These inputs are: 
+- Required
+    - --seq-file
+        - This input is a required argument. This is a FASTA formatted file which contains the genome assembly of the chromosomes for the organism of your choice. This file can contain all chromosomes, and passed indentically for each execution of the software.
+    - --peaks
+        - This is a required argument. This is a BED file which denotes the desired regions of interest that the software will generate output for. This BED file should only contain the regions of interest for a single chromosome.
+    - --output-dir
+        - This is a required argument. This is the directory in which all generated files will be placed.  
+- Optional 
+    - --motif-files
+        - This is an optional argument. This argument denotes a list of tuples. These are in the format of "MOTIF_NAME PWM_PATH". Where MOTIF_NAME is the descriptor that will be used in the software to describe the motifs found by running Meme-Suite FIMO with PWM_PATH position weight matrix file on all given regions denoted by --peaks. This flag requires FIMO to be installed and appended to the path prior to running this software with this flag.
+    - --variant-data
+        - This is an optional argument. This argument denotes the path towards a VCF file denoting variants found within the chromosomes found in the --seq-file. Note that the VCF file ideally should only have the data for one chromosome. The same file may be passed for all chromosomes, however the memory requirements for that are very large and it is recommended to pass different VCF files for each chromosome.  
+    - --max-missing-frac
+        - This is an optional argument. This argument denotes the maximum missing fraction of samples that are allowed to be missing data for a specific allele. This number ranges from 0 to 1 and is a percentage. I.e. 5% would be --max-missing-frac 0.05.
+    - --min-allele-freq
+        - This is an optional argument. This argument denotes the minimum allele frequency allowed for a variant to show. This is excludes variants where the minimum of both the reference and alternate allele frequency is less than the number passed to --min-allele-freq. This number ranges from 0 to 1 and is a percentage. I.e. 5% would be --min-allele-freq 0.05.
+    - --csv
+        - This is an optional argument. This argument produces multiple CSV's when included in the program run. The only current CSV which is verified is the one denoted in the summary.csv section. This flag also produces CSV's for motif_counts, motif_coverage and variant_data. Those sections are not added yet and will be in the future. Do note that currently that this file will contain data for all chromosomes under the directory for one chromosome. This is the leading reason to why one chromosome is only supported currently.
+    - --accessibility
+        - This is an optional argument. This argument is a FASTA formatted file of the same size as the --seq-file but per each nucleotide position an N is present if the position is not accessible and the nucleotide is present if the position is accessible. This argument adds the accessibility data to the summary.csv. 
+    - --site-pi
+        - This is an optional argument. This flag tells the software to run VCFTools --site-pi during the program cycle. This flag requires VCFTools to be install and appeneded to the path before using it. 
 ## summary.csv calculations
 
 A generation of this file may contain the following columns, where JASPAR and STREME relate to position weight matrix files and their descriptors given by the user at runtime. 
 
+- report_file_path
+    - The field represents the location of the report file that is represented by the row of data for this field.
 - chromosome
     - This field represents the name of the chromosome as given by the BED file (--peaks). This value is set during the construction of the highlights object.
 - sequence_start

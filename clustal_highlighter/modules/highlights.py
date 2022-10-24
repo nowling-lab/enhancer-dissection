@@ -56,7 +56,7 @@ class Highlights:
         self.motif_counts = {}     
         
         self.csv_wanted = False
-        output_path = ""
+        file_path = ""
         #Table data
         self.name = chromosome
         #name, sequence_start, sequence_stop, motif, count
@@ -404,9 +404,9 @@ class Highlights:
         return self.seq_end - self.seq_start + 1
     
     #CSV related CSV methods
-    def enable_csv(self, output_path):
+    def enable_csv(self, file_path):
         self.csv_wanted = True
-        self.output_path = output_path
+        self.file_path = file_path
     
     def chromosome_name(self, name):
         return name
@@ -461,7 +461,7 @@ class Highlights:
         
         total_highlight_coverage = self._calculate_total_coverage()
         
-        self.summary_csv = [[self.output_path,
+        self.summary_csv = [[self.file_path,
                              self.name,
                              self.seq_start,
                              self.seq_end,
