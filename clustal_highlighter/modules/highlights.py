@@ -56,6 +56,7 @@ class Highlights:
         self.motif_counts = {}     
         
         self.csv_wanted = False
+        output_path = ""
         #Table data
         self.name = chromosome
         #name, sequence_start, sequence_stop, motif, count
@@ -403,8 +404,9 @@ class Highlights:
         return self.seq_end - self.seq_start + 1
     
     #CSV related CSV methods
-    def enable_csv(self):
+    def enable_csv(self, output_path):
         self.csv_wanted = True
+        self.output_path = output_path
     
     def chromosome_name(self, name):
         return name
@@ -459,7 +461,8 @@ class Highlights:
         
         total_highlight_coverage = self._calculate_total_coverage()
         
-        self.summary_csv = [[self.name,
+        self.summary_csv = [[self.output_path,
+                             self.name,
                              self.seq_start,
                              self.seq_end,
                              self._get_length(),
@@ -819,7 +822,7 @@ class Highlights:
             file_path (str): A file path to variant data. This returns a dict of positions and what variations could be there and their positions 
         """
         self.variants_given = True
-        variant_data = generate_variant_dict(self.seq_start, self.seq_end, df, max_missing_frac, min_allele_freq)
+        variant_data = generate_variant_dict(self.seq_start, self.seq_end, df, logger, max_missing_frac, min_allele_freq)
         if len(variant_data) > 0:
             self.variant_data = variant_data
             

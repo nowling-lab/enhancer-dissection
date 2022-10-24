@@ -62,7 +62,8 @@ def generate_dependencies(args) -> Highlights:
         
         summary_data = []
         #% nucleotides N ONLY reference the fasta sequence passed, NOT the accessibility data
-        summary_columns = ['chromosome',
+        summary_columns = ['working_directory',
+                           'chromosome',
                            'sequence_start',
                            'sequence_stop',
                            'sequence_length',
@@ -153,6 +154,10 @@ def generate_dependencies(args) -> Highlights:
     else:
         warning(logger, 'No VCF given. Variant data will not be added.')
 
+    chromosome = None
+    if len(peak_locations.keys()) == 1:
+        chromosome = list(peak_locations.keys())[0]
+
     for chromosome in peak_locations:
         print(f"Processing chromosome: {chromosome}")
         
@@ -221,7 +226,7 @@ def generate_dependencies(args) -> Highlights:
                 temp_highlight.add_accessibility(region_accessibility)
                 
             if args.csv:
-                temp_highlight.enable_csv()
+                temp_highlight.enable_csv(args.output_dir)
 
             if args.variant_data and not vcf_df.empty:
                 max_missing_frac = args.max_missing_frac
@@ -269,17 +274,19 @@ def generate_dependencies(args) -> Highlights:
                 
         if args.csv:
             file_path = f'{args.output_dir}/csv/'
+            if chromosome:
+                file_path += f'{chromosome}/'
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             if motif_coverage_data != []:
-                pd.DataFrame(motif_coverage_data, columns=motif_coverage_columns).to_csv(f'{args.output_dir}/csv/motif_coverage.csv', sep=',', index=False)
+                pd.DataFrame(motif_coverage_data, columns=motif_coverage_columns).to_csv(f'{file_path}/motif_coverage.csv', sep=',', index=False)
             if motif_counts_data != []:
-                pd.DataFrame(motif_counts_data, columns=motif_counts_columns).to_csv(f'{args.output_dir}/csv/motif_counts.csv', sep=',', index=False)
+                pd.DataFrame(motif_counts_data, columns=motif_counts_columns).to_csv(f'{file_path}/motif_counts.csv', sep=',', index=False)
             if variant_data != []:
-                pd.DataFrame(variant_data, columns=variant_columns).to_csv(f'{args.output_dir}/csv/variant_data.csv', sep=',', index=False)
+                pd.DataFrame(variant_data, columns=variant_columns).to_csv(f'{file_path}/variant_data.csv', sep=',', index=False)
             if summary_data != []:
-                pd.DataFrame(summary_data, columns=summary_columns).to_csv(f'{args.output_dir}/csv/summary.csv', sep=',', index=False)
+                pd.DataFrame(summary_data, columns=summary_columns).to_csv(f'{file_path}/summary.csv', sep=',', index=False)
             
-    print(f'output at: {working_directory}{file_name}')
+    print(f'output at: {args.output_dir}')
     # Stats to verify everything is working
     #this needs to be in {} checks. I'll leave here for now ig...   
     if reports_generated == reports_requested:

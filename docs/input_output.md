@@ -1,6 +1,6 @@
-# Algorithms
+# Inputs and Outputs
 
-This document defines how all values presented to the user are displayed. This document should be updated to match the current present state of the software as the software is updated.
+This document defines how all values presented to the user are displayed and the inputs that are required to run the software. This document should be updated to match the current present state of the software as the software is updated. 
 
 ## summary.csv calculations
 
@@ -15,7 +15,7 @@ A generation of this file may contain the following columns, where JASPAR and ST
 - sequence_length
     - This field represents the length of a given chromosome. This value is computed by subtracting the sequence_stop by the sequence_start and adding 1.
 - num_variants
-    - This field represents the number of variants present in the given sequence region. This value is generated as the dictionary containing the variants is queried and  
+    - This field represents the number of variants present in the given sequence region. This value is generated as the dictionary containing the variants is queried and variants are appended onto the html string that is being built.
 - num_accessible_variants
     - This field represents the number of variants within a given region that are accessible. Accessibility is defined as not having an N in a given FASTA file which denotes accessiblity. This field is default NaN when no accessibility file is given. This field is incremented during the _append_variant_data function call as each variant is added onto the html string that is being built. Accessibility data is added to each character object, and this object property is simply checked for the current character (variant) during that previously mentioned function call. 
 - num_nucleotides_accessible
@@ -27,15 +27,16 @@ A generation of this file may contain the following columns, where JASPAR and ST
 - genotype_mean_missing
     - This field describes the mean number of missing alleles for the samples that define the variation within a given region. For example, if there were 3 samples per variant. And the first sample was missing an allele the resulting table would look like this:
 
-    |          | Sample1 | Sample2 | Sample3 |
-    | :------- | :------ | :------ | :------ |
-    | variant1 | 1/1     | 1/0     | 1/1     |
-    | variant2 | ./.     | 1/1     | 0/0     |
-    | variant3 | 1/1     | 0/1     | 1/1     |
+    |         | Variant1 | Variant2 | Variant3 |
+    | :------ | :------- | :------- | :------- |
+    | Sample1 | 1/1      | 1/0      | 1/1      |
+    | Sample2 | ./.      | 1/1      | 0/0      |
+    | Samle3  | 1/1      | 0/1      | 1/1      |
+    | Missing | 1        | 0        | 0        |
 
     - The mean missing would then be calculated as the average of variant 1 missing 0 samples. Variant 2 missing 1 samples. And variant 3 missing 0 samples. Mathematically this would be (0 + 1 + 0)/3.
 - genotype_stdev_missing
-    - This field describes the standard deviation of the previous fields data.
+    - This field describes the standard deviation of the previous fieldss data.
 - num_nucleotides_N
     - This field denotes the number of nucleotides that were not sequenced within the given genome FASTA file. NOTE: This is not the same as the sequence_length - num_nucleotides_accessible.
 - num_nucleotides_highlighted
@@ -68,5 +69,23 @@ A generation of this file may contain the following columns, where JASPAR and ST
     - This statistic is a variable field which changes based on the given motif_description. In this case, it is JASPAR. This field would denote the percentage of nucleotides within a JASPAR motif over the total number of nucleotides. This value is rounded to the nearest 1 decimal place. This row is absent when no motifs are requested.
  - STREME Percent Coverage
     - This statistic is a variable field which changes based on the given motif_description. In this case, it is STREME. This field would denote the percentage of nucleotides within a STREME motif over the total number of nucleotides. This value is rounded to the nearest 1 decimal place. This row is absent when no motifs are requested.
- - Motif Apperances Columns   
+ - Motif Appearances Columns   
     - This statistic is a variable field which changes based on the given motif_description. This statistic displays the number of nucleotides (count column) that have the given motif. This column does not appear when no motifs are requested. This column is sorted from greatest count to least count, going from the top to the bottom.
+
+## Allele Frequency Calculation
+
+- Allele Frequencies
+    - The first frequency as displayed in the html files is always the reference frequency.
+
+    ![Example variant image](./pictures/variant.png)
+    
+    - For example, the A allele in this case is the reference allele while the G is the alternate allele. The percentage here are the allele frequency rounded to 3 decimal places. <br> The allele frequencty is calculated like so: 
+    1. Gather the samples as tuples of (allele_val_1, allele_val_2)
+        - > cleaned_samples = [tuple(variant.split(':', 1)[0].split('/', 1)) for variant in variant_Row[9:]]
+    2. Sum the values for the allele value 1 and 2 for each sample (i.e. the allele value for each of its 2 chromosomes). 
+    3. Make sure the number of valid allele values is the same for each of these. These should be the same. A missing value here denotes an erronous case like 1/. or ./0 appearing. Log a warning if they are not, and in this case take the minimum of the two to be the number of valid samples.
+    4. Take the sum of these summations and then divide that by the total number of samples (2*the number of valid samples). An invalid sample is one who was unable to get a reading and appears as "./.". This value will give the alternate allele percentage, and 1-alt_percent will give the reference allele percentage.
+        - > alt_percent = (sample_read_1 + sample_read_2)/(2*valid_individual_count)
+        - > ref_percent = 1-alt_percent
+
+
