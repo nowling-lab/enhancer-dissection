@@ -87,5 +87,6 @@ A generation of this file may contain the following columns, where JASPAR and ST
     4. Take the sum of these summations and then divide that by the total number of samples (2*the number of valid samples). An invalid sample is one who was unable to get a reading and appears as "./.". This value will give the alternate allele percentage, and 1-alt_percent will give the reference allele percentage.
         - > alt_percent = (sample_read_1 + sample_read_2)/(2*valid_individual_count)
         - > ref_percent = 1-alt_percent
-
+    - Definition of allele frequency from [VCF Tools](https://vcftools.github.io/man_latest.html#SITE%20FILTERING%20OPTIONS) in the documentation for the --max-non-ref-ac-any flag
+    - VCF file terms used from [sam tools VCF Specification](https://samtools.github.io/hts-specs/VCFv4.3.pdf) version 4.3.
 
