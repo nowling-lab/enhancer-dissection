@@ -43,61 +43,40 @@ def calculate_variant_stats(logger, variant_Row, variant_dict, max_missing_frac=
     variant_amount = len(variant_Row[9:]) 
     #0/1:0.34:11,21:31:99:0:638,0,340 takes that string and splits it into "1/0" and then takes that and makes it the tuple (1,0)
     #variant data starts from index 9, so we take 9 to the end... 
-    cleaned_samples = [tuple(variant.split(':', 1)[0].split('/', 1)) for variant in variant_Row[9:]]
+    cleaned_samples = [tuple(variant.split(':',1)[0].split('/')) for variant in variant_Row[9:]]
     # Each sample has 2 chromosome, so 2 reads for each position to find its allele 
     # I sum these separatley to account for errornous cases like 1/. or ./0
-    sample_read_1 = 0
-    sample_read_2 = 0
-    
-    valid_refs = 0
-    valid_alts = 0
-    
+ 
     #./. is missing data
-    missing_allele = False
-    num_missing_alleles = 0
+    num_alt_allele_appearances = 0
+    missing_allele_count = 0
+    valid_allele_count = 0
     for sample in cleaned_samples:
-        allele_val_1, allele_val_2 = sample
-        try:
-            sample_read_1 += int(allele_val_1)
-            valid_refs += 1
-        except:
-            missing_allele = True
-            pass
-        #2 blocks so one of them doesn't not get added if it was a 1...
-        try:
-            sample_read_2 += int(allele_val_2)
-            valid_alts +=  1     
-        except:
-            missing_allele = True
-            pass
+        for allele in sample:
+            if allele == "1":
+                num_alt_allele_appearances += 1
+                
+            if allele == '.':
+                missing_allele_count += 1
+            else:  
+                valid_allele_count += 1
         
-        if missing_allele:
-            num_missing_alleles += 1
-            missing_allele = False
-    
-    valid_individual_count = 0
-    if valid_refs != valid_alts:
-        valid_individual_count = min(valid_refs, valid_alts)
-        warning(logger, f'{logger.name} had a variant at pos {pos} that had unequal valid reference vs alternate alleles. Please check VCF file. Allele frequencies for this variant are calculated wrong.')
-    else:
-        valid_individual_count = valid_refs
-    
-    alt_percent = (sample_read_1 + sample_read_2)/(2*valid_individual_count)
+    alt_percent = (num_alt_allele_appearances)/(valid_allele_count-missing_allele_count)
     ref_percent = 1-alt_percent
 
     if max_missing_frac is not None:
         num_samples = variant_amount
         max_individuals_missing = int(max_missing_frac * num_samples)
-        if num_missing_alleles >= max_individuals_missing:
+        if missing_allele_count >= max_individuals_missing:
             return
         
     if min_allele_freq is not None:
         min_percent = min((ref_percent, alt_percent))
         if min_percent <= min_allele_freq:
             return
-        
+    
     #Program short circuits on the above conditions and variant is not added to dictionary...
-    variant_dict[int(pos)] = (ref, alt, ref_percent, alt_percent, len(cleaned_samples), num_missing_alleles)
+    variant_dict[int(pos)] = (ref, alt, ref_percent, alt_percent, len(cleaned_samples), missing_allele_count)
 
 def get_peak_locations(file_path):
     peak_locations = {}

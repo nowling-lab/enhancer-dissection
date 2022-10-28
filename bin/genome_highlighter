@@ -1,6 +1,7 @@
 from typing import TextIO
 from pandas import DataFrame
 from datetime import datetime
+import time
 from clustal_highlighter.modules.highlights import Highlights
 from clustal_highlighter.modules.variant_handler import *
 from clustal_highlighter.modules.file_handler import read_diverse_fimo_file
@@ -81,8 +82,8 @@ def generate_dependencies(args) -> Highlights:
             for motif in motifs:
                 summary_columns.append(f'{motif[0]}_unique_motifs')
                 summary_columns.append(f'num_{motif[0]}_nucleotide_coverage')
-        
-    logging.basicConfig(filename=f'{working_directory}/tmp.log', filemode='w', level=logging.DEBUG)
+                    
+    logging.basicConfig(filename=f'{working_directory}/{int(time.time())}.log', filemode='w', level=logging.DEBUG)
 
     info(logger, f'Program Start Time: {datetime.now()}')
     

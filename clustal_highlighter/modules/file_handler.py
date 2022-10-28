@@ -75,7 +75,6 @@ def reverse_comp(sequence):
 
 def read_diverse_fimo_file(file_path):
     fimo_df = pd.read_csv(file_path, sep='\t', comment="#")
-    fimo_df.drop(fimo_df.tail(3).index, inplace=True)
     return fimo_df
 
 def __DEPREICATED_read_variant_stats(file_path: str) -> dict:
