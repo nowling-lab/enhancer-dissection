@@ -1,6 +1,6 @@
 # Inputs and Outputs
 
-This document defines how all values presented to the user are displayed and the inputs that are required to run the software. This document should be updated to match the current present state of the software as the software is updated. 
+This document defines how all values presented to the user are calculated and the inputs that are required to run the software. This document should be updated to match the current present state of the software as the software is updated. 
 
 ## Inputs
 The program genome_highlighter can take a variety of inputs. Do note that some of these inputs (BED files and VCF files) should only contain the data of one chromosome. This software currently only supports running on one chromosome at a time. These inputs are: 
