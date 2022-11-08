@@ -1,3 +1,13 @@
+import os
+import pandas as pd
+
+get_reverse = {
+        'A':'T',
+        'T':'A',
+        'G':'C',
+        'C':'G'
+    }
+
 def read_fasta_file(file_path):
     #Reads in a fasta file. Standard stuff
     sequence_dictionary = {}
@@ -27,26 +37,59 @@ def read_fasta_file(file_path):
 def read_fimo_file(file_path):
     #Reads in a fimo file, standard stuff
     sequence_name_dict = {}
+    if not os.path.isfile(file_path):
+        print("Fimo file not found, check input parameters")
     with open(file_path) as f:
             header = f.readline() #to get rid of it
             for line in f:
-                if len(line) <= 1:
-                    return sequence_name_dict
+                if len(line) <= 1 or '#' in line:
+                    if len(sequence_name_dict) > 0:
+                        return sequence_name_dict
+                    else: 
+                        return None
                 line_split = line.split()
                 seq_name = line_split[2]
-                start = int(line_split[3])
-                stop = int(line_split[4])
+                start = int(line_split[3].strip())
+                stop = int(line_split[4].strip())
                 motif_alt_id = line_split[1]
+                strand = line_split[5]
+                matched_sequence = line_split[-1]
+                if strand == "-":
+                    matched_sequence = reverse_comp(matched_sequence)
 
                 if seq_name not in sequence_name_dict:
                     sequence_name_dict[seq_name] = []
-                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id))
+                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id, matched_sequence))
                 else:
-                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id))  
+                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id, matched_sequence))  
     return sequence_name_dict
 
+def reverse_comp(sequence):
+    global get_reverse
+    rev_seq = sequence[::-1]
+    rev_comp = ''
+    for char in rev_seq:
+        rev_comp += get_reverse[char]
+    
+    return rev_comp
+
+def read_diverse_fimo_file(file_path):
+    fimo_df = pd.read_csv(file_path, sep='\t', comment="#")
+    return fimo_df
+
+def __DEPREICATED_read_variant_stats(file_path: str) -> dict:
+    variant_dict = {}
+    df = pd.read_excel(file_path)
+    df_list = list(df.itertuples(index=False, name=None))
+    
+    for line in df_list:
+            pos = line[1]
+            variant_dict[pos] = (line[3], line[5], line[10], line[11])
+    return variant_dict
+    
 def html_string_to_output(html_string, outputdir):
     #just writes the html string to out
+    outputdir = os.path.expanduser(outputdir)
     output = open(outputdir, 'w')
     output.write(html_string)
     output.close
@@ -66,71 +109,3 @@ def output_A_seqs(fasta, output, keys):
         output.write(temp_output_string + '\n\n\n')
     output.close()
 
-def html_header():
-    html_string = """
-    <!DOCTYPE html>
-    <html lang="en-US">
-    <head>
-        <title>Html Conversion</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="Keywords"
-        content="HTML">
-        <meta name="Description"
-          content="This is a highlighted FIMO output thingy">
-          
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <!-- JavaScript Bundle with Popper -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <style>
-        .clear{
-            background:white;
-        }
-        .blue{
-            background:Aqua;
-        }
-        .red{
-            background:PaleVioletRed;
-        }
-        .purple{
-            background:Plum;
-        }
-        .heading{
-            width: 75%;
-        }
-        .clearv2{
-            background:white;
-        }
-    </style>
-    </head>
-    <body>
-    <h> Legend: </h>
-    <div class = "blue heading"> This is for fimo run with streme.txt as the motif file </div>
-    <div class = "red heading"> This is for fimo run with JASPAR as the motif file </div>
-    <div class = "purple heading"> This is for when those highlighted motifs overlap </div>
-    <div class = "clear" style="width:75%; word-wrap: break-word;"> Colored &#8209;'s indicate that the indel is within a single motif. If they are not colored, then that means the indel is between two of the same (JASPAR or streme) motif </div>
-    <span>
-    <button id="toggle_blue" type="button" class="btn" style="background:Aqua">Toggle Blue</button>
-    <button id="toggle_red" type="button" class="btn" style="background:PaleVioletRed">Toggle Red</button>
-    <button id="toggle_purple" type="button" class="btn" style="background:Plum">Toggle Purple</button>
-    </span>
-    <script type="text/javascript">
-    $(document).ready(function () {   
-      $('[data-toggle="tooltip"]').tooltip(); 
-            
-      $('#toggle_blue').click(function() {
-          $( "span.blue" ).toggleClass( "clearv2" );
-      });
-      
-      $('#toggle_red').click(function(){
-          $( "span.red" ).toggleClass( "clearv2" );
-      });
-      
-      $('#toggle_purple').click(function(){
-          $( "span.purple" ).toggleClass( "clearv2" );
-      });
-    });
-    </script>
-     """
-    return html_string

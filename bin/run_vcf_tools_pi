@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+set -u
+set -o pipefail
+set -x
+
+if [[ $# -ne 3 ]] ; then
+    echo 'Arguments are vcf_file is_gzip output_path'
+    exit 0
+fi
+
+script_directory=$(pwd)
+vcf_file=$1
+is_gzip=$2
+output_path=$3
+
+if [[ is_gzip -eq 1 ]] ; then
+    vcftools --gzvcf $vcf_file --site-pi --out $output_path/diversity                                            
+fi
+
+if [[ is_gzip -eq 0 ]] ; then
+    vcftools --vcf $vcf_file --site-pi --out $output_path/diversity                                    
+fi
+
+unset vcf_file
+unset is_gzip
+unset output_path
+unset script_directory

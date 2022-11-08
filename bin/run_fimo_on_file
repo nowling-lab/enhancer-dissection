@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+set -u
+set -o pipefail
+set -x
+
+if [[ $# -ne 4 ]] ; then
+    echo 'Arguments are sequence_file motifs_name motifs_file output_path'
+    exit 0
+fi
+
+script_directory=$(pwd)
+
+sequence_file=$(basename $1)
+sequence_file_name=${sequence_file%.*}
+motifs_name=$2
+motifs_file=$3
+
+output_path=$4/$sequence_file_name
+mkdir -p $output_path
+
+fimo -oc $output_path/$motifs_name --verbosity 1 $motifs_file $1
+
+unset filename
+unset global_path
+unset script_directory
+unset sequence_file
+unset sequence_file_name
+unset output_path

@@ -1,44 +1,98 @@
 # enhancer-dissection
+ 
+#NOTE: Debian users please rease the warnings at the bottom of this file
+ 
+The two programs in this project display variant data, motif data (via highlights). They differ only by their inputs. fasta_highlighter takes groups of aligned sequen es (all orientated the same way) in order to compare by the sequence data. Motifs are commonly overlayed on these. 
 
-Tutorial:
-    This program hasn't been updated to use the command-line as of yet. 
-    There are various python files within this repo which do different 
-    tasks. The main file that will be used is: clustal_format_highlighter.py. However, previously clustal_omega_highlightor.py and fimo_highlightor_html.py were used for output. 
+genome_highlighter does this but takes singular sequences given by a BED file and pulls those locations from a supplied FASTA formatted sequence file in order to display highlights on individual sequences. 
 
-    As currently we are only running clustal_format_highlighter this tutorial only partains to that.
-
-    clustal_format_highlighter has all of the up-to date items that display in our current output. To run the format highlighter, you will need to call a single method that contains some paramters. 
-
-    This method is the main_abstraction method.      
+Requirements:
+    Make sure FIMO is installed and added to your PATH environment variable. You can get fimo here by downloading meme-suite: https://meme-suite.org/meme/doc/download.html
     
-    main_abstraction(indel_fasta_path, a_only_bool, streme_tsv_path, jaspar_tsv_path, sequences_fasta_path, output_path):
+And then install following their installation instructions.
 
+To add FIMO and other programs to your path:
+    
+1. Backup your current PATH 
 
-    It takes in 6 parameters in it to run:
-        indel_fasta_path: A file in fasta format which is the output of clustal omega.
-        
-        a_only_bool: A boolean condidtion to only use the a only labeled sequences for inputting indel_fasta_path and sequences_fasta_path. 
+       $ echo $PATH > ~/path.txt
+    
+2. In your home directory (cd ~/) add a folder called bin (mkdir $HOME/bin)
 
-        streme_tsv_path: The path to the Fimo out fimo.tsv file when running Fimo with the streme motif on the sequences
+       $ cd ~/
+       $ mkdir $HOME/bin
 
-        jaspar_tsv_path: The path to the Fimo out fimo.tsv file when running Fimo with the jaspar motif on the sequences
-        
-        sequences_fasta_path: A file in fasta format which is the raw seqeunces without indels or any other input
+3. From where you installed meme-suite cd meme-(version)/srcs
 
-        output_path: A path to the file to output to. So for example, '~/highlights.html' will output to a linux home directory and generate the file 'highlights.html'
+       $ cd meme-(version)/srcs
 
-        Note that indel_fasta_path and sequences_fasta_path must have the exact same sequences and labels for this program to work, even if you are running clustal omega multiple times to properly formulate indels. The files must then be merged into a single file
+4. Next copy fimo to that folder you created in the home directory 
+     
+       $ cp fimo ~/bin
+     
+5. Add the programs in that program to the PATH 
 
-    Tutorial for running nardini file with multiple outputs:
-        The current iteraton of the software does not handle this case. However, there's a hacky solution that's currently implemented:
+       $ export PATH="$PATH:$HOME/bin"
+    
+If there are other programs you would like to add to the path in the future then adding them in bin and running step 5 again
 
-        When cloning the repo, a directory structure (called figure4files) is already in place and populated from split data from the collective nardini output.
+Installing and running the software with a Python Environment:
+    First go to a location where you would like to install the software with cd. Then follow these commands:
 
-        Within that directory is a batch script called: generate_output_html
+    $ python3 -m venv venv
+    $ source venv/bin/activate
+    $ git clone git@github.com:nowling-lab/enhancer-dissection.git
+    $ cd enhancer-dissection
+    $ python setup.py install
+    
+There are 2 currently supported programs:
+    
+The first program is ran by calling genome_highlighter. Do note that the program currently only handles SNPs and not indels.
+The arguments that are taken are:
 
-        Edit this file with any text editor and change the output directory at the top of the file to any directory of your choice. 
+     --seq-file SEQ_FILE   Path to fasta formatted sequence file
+     --motif-files MOTIF_FILES [MOTIF_FILES ...]
+                           A list of motif_name motif_file_path tuples for all the motifs that you want in the output
+     --variant-data VARIANT_DATA
+                           Path to VCF file containing variant data
+     --peaks PEAKS         Path to BED file containing the locations of the different regions that you want highlights of (e.g. the start and end positions of enhancers)
+     --output-dir OUTPUT_DIR
+                           Output file directory. Will store output and be used as a working directory.
+     --max-missing-frac [MAX_MISSING_FRAC]
+                           0-1 float representing what percent of missing allele information makes a variant not display
+     --min-allele-freq [MIN_ALLELE_FREQ]
+                           0-1 float representing what minimum percent appearance an allele must have in order for a
+                           variant to display
+                           
+ An example of running this program is as follows:
+ 
+     $ genome_highlighter --seq-file ~/VectorBase-56_AgambiaePEST_Genome.fasta --motif-files JASPAR ~/JASPAR2020_CORE_insects_non-redundant_pfms_meme.txt streme ~/streme_motifs.txt --variant-data ~/ag1000g_2L_bfaso_coluzzii.vcf --peaks ~/X_peaks.bed 
+    
+The second program is ran by calling fasta_highlighter.
+The arguments that are taken are:
 
-        After that, save the file and run it: ./generate_output_html
-        
-        This will generate html files analogus to figure 4 in Michell's paper.
-        
+        --seq-file SEQ_FILE
+            Fasta formatted sequnece file
+        --motif-files MOTIF_FILES [MOTIF_FILES ...]
+            A list of motif_name motif_file_path tuples for all the motifs that you want in the output
+        --indel-file LIST
+            Fasta formatted sequence file with indels
+        --outputdir OUTPUTDIR
+            Output file directory
+
+An example of running this program is this:
+     
+     $ fasta_highlighter --seq-file /path/to/sequence/file.fasta --motif-files JASPAR /path/to/jaspar/motifs.txt streme /path/to/streme/motifs.txt --outputdir /path/to/output/folder
+
+- - -
+
+For debian users (Not debian-based, but specifically debian) when running python setup.py install there might be a failure to install because of a missing dependency cython. This only happens on debian for some reason but can be fixed by running:
+
+    $ pip install cython
+    
+And then running 
+
+    $ python setup.py install
+ 
+A few more times. It sometimes will break saying you don't have numpy, but just run it once or twice more and it will finish installing. 
+Also be aware that the pandas installation takes a really long time but just wait it out and it will work. 

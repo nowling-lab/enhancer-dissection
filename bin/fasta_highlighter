@@ -1,0 +1,133 @@
+from clustal_highlighter.modules.highlights import Highlights
+from clustal_highlighter.modules.file_handler import read_fasta_file
+from clustal_highlighter.modules.file_handler import read_diverse_fimo_file
+import argparse
+import os
+from subprocess import call
+from pathlib import Path
+from datetime import datetime
+import logging
+
+from clustal_highlighter.modules.logger import *
+logger = logging.getLogger('fasta_highlighter')
+
+def generate_dependencies(args, working_directory) -> Highlights:
+    colors = ['blue', 'red']
+    html_colors = ['Aqua', 'PaleVioletRed']
+
+    fimo_highlights = []
+    paths_to_cleanup = set()
+    motifs = generate_tuple_motifs(args.motif_files)
+    
+    for motif_name, motif_path in motifs:
+            motif_and_df, file_paths = generate_fimo_output(
+                args.seq_file, motif_path, motif_name, working_directory)
+
+            fimo_highlights.append(motif_and_df)
+            
+    logging.basicConfig(filename=f'{working_directory}/tmp.log', filemode='w', level=logging.DEBUG)
+    
+    info(logger, f'Program Start Time: {datetime.now()}')
+    print("Output and Working directory is at: " + working_directory)
+
+    
+    seq_dict = read_fasta_file(args.seq_file)
+    temp_highlight = Highlights(seq_dict)
+
+    for index, (motif_name, motifs, working_directory) in enumerate(fimo_highlights):
+        motif_path = get_fimo_path(working_directory)
+
+        temp_highlight.add_highlights(motif_name, motif_path, colors[index], html_colors[index])
+    
+    return temp_highlight
+
+def get_fimo_path(working_directory ):
+    file_path = f'{working_directory}/fimo.tsv'
+    return file_path
+
+def generate_tuple_motifs(motifs):
+    motif_pairs = []
+    for i, j in zip(motifs[0::2], motifs[1::2]):
+        motif_pairs.append((i, j))
+
+    return motif_pairs
+
+def generate_fimo_output(seq_path, motif_path, motif_name, output_path):
+    seq_path = os.path.abspath(seq_path)
+    basename_no_ending = Path(seq_path).stem
+    file_paths = set()
+    output_path = output_path + "/fimo"
+    fimo_directory = f"{output_path}/{basename_no_ending}/{motif_name}/"
+    os.makedirs(os.path.dirname(fimo_directory), exist_ok=True)
+    call(f"run_fimo_on_file {seq_path} {motif_name} {motif_path} {output_path}", shell=True)
+
+    fimo_file = fimo_directory + "/fimo.tsv"
+    fimo_df = read_diverse_fimo_file(fimo_file)
+    
+    return (motif_name, fimo_df, fimo_directory), file_paths
+
+
+def generate_highlights(highlighter: Highlights, indel_path: str, highlights: list):
+    if indel_path != None:
+        highligher.add_indels(indel_path)
+    for motif_descriptor, tsv_path, color, html_color in highlights:
+        highligher.add_highlights(
+            motif_descriptor, tsv_path, color, html_color)
+
+    return
+
+
+def parseargs():
+    """
+    generates and returns a namespace for the argument parser
+    """
+    parser = argparse.ArgumentParser(description="Caller")
+
+    parser.add_argument("--seq-file",
+                        type=str,
+                        required=True,
+                        help="Path to fasta formatted sequnece file (align sequences beforehand if needed)")
+
+    parser.add_argument("--motif-files",
+                        type=str,
+                        required=False,
+                        nargs='+',
+                        help="A list of motif_name motif_file_path tuples for all the motifs that you want in the output")
+
+    parser.add_argument("--indel-file",
+                        required=False,
+                        help="Path to fasta formatted sequence file with indels")
+
+    parser.add_argument("--outputdir",
+                        type=str,
+                        required=False,
+                        help="Output file directory")
+    
+    return parser.parse_args()
+
+
+def html_string_to_output(html_string, outputdir):
+    # just writes the html string to out
+    output = open(outputdir, 'w')
+    output.write(html_string)
+    output.close
+
+
+if __name__ == "__main__":
+    args = parseargs()
+    if len(args.motif_files) % 2 != 0:
+        print("\n--motif-files flag given an odd number of inputs, please use -h for more info")
+        exit(0)
+    else:
+        working_directory = '~/'
+        
+        if args.outputdir != None:
+            os.makedirs(args.outputdir, exist_ok=True)
+            absolute_path = os.path.expanduser(args.outputdir)
+            working_directory = os.path.abspath(absolute_path)
+            
+        highligher = generate_dependencies(args, working_directory)
+        
+        output_path = os.path.abspath(f'{working_directory}/{Path(args.seq_file).stem}.html')
+        print(f'\noutput at: {output_path}')
+        html_string_to_output(highligher.generate_html_file(), output_path)
