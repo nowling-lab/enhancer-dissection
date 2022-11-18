@@ -9,7 +9,7 @@ from bokeh.layouts import row, column
 from bokeh.models import Button,ColumnDataSource, Div, Select, Slider, TextInput, TableColumn, DataTable
 
 
-rootdir = "C:/Users/sanjeevs/PycharmProjects/pythonProject/verification/csv"
+rootdir = "C:/WSL-Windows-Directory/with_stream_top_25/"
 appended_data = pd.DataFrame()
 
 for subdir, dirs, files in os.walk(rootdir):

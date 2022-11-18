@@ -49,7 +49,6 @@ def get_table(data:pd.DataFrame, abs_path:str=None):
     table = data_table
     return data_table
 
-
 def labels_callback(attr, old, new):
     global table
     global df_reference
@@ -95,8 +94,8 @@ def generate_dynamic_ui(data:pd.DataFrame, abs_path:str):
 
     labels = list(data.columns)
     default_active = [*list(range(0,len(labels)))]
-    checkboxes = CheckboxGroup(labels=labels, active=default_active)
-    checkboxes.on_change("active", labels_callback)
+    col_selection = CheckboxGroup(labels=labels, active=default_active)
+    col_selection.on_change("active", labels_callback)
 
     elements = []
     invalid_cols = {'report_file_path', 'chromosome'}
@@ -111,7 +110,7 @@ def generate_dynamic_ui(data:pd.DataFrame, abs_path:str):
         elements.append(range_slider)
             
     table = get_table(data, abs_path)
-    inputs = column(Div(text="Columns:"),checkboxes, *elements, sizing_mode="stretch_height")
+    inputs = column(Div(text="Columns:", style={'font-weight': 'bold'}),col_selection, *elements, sizing_mode="stretch_height")
     ui = row(inputs, table, sizing_mode="stretch_height")
     return ui
 
