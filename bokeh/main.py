@@ -44,6 +44,10 @@ max_num_variants = appended_data['num_variants'].max()
 min_num_nucleotides = appended_data['num_nucleotides_accessible'].min()
 max_num_nucleotides = appended_data['num_nucleotides_accessible'].max()
 
+# min and max num nucleotides accessible 
+min_num_nucleotides_highlighted = appended_data['num_nucleotides_highlighted'].min()
+max_num_nucleotides_highlighted = appended_data['num_nucleotides_highlighted'].max()
+
 chromosome_list = ["2R","2L","3R","3L","X", "All"]
 
 # Create Input controls
@@ -53,6 +57,7 @@ sequence_stop_slider = Slider(title="Minimum Sequence Stop value", value=min_seq
 sequence_length_slider = Slider(title="Minimum Sequence Length", start=min_sequence_length, end=max_sequence_length, value=min_sequence_length, step=1)
 num_variants_slider = Slider(title="Minimum Number of Variants", value=min_num_variants, start=min_num_variants, end=max_num_variants, step=1)
 num_nucleotides_slider = Slider(title="Minimum Number of Nucleotides Accessible", value=min_num_nucleotides, start=min_num_nucleotides, end=max_num_nucleotides, step=1)
+num_highlight_nucleotides_slider =  Slider(title="Minimum Number of Nucleotides Highlighted", value=min_num_nucleotides_highlighted, start=min_num_nucleotides_highlighted, end=max_num_nucleotides_highlighted, step=1)
 
 def select_chromosomes():
     chromosome_name_val = chromosome_name.value
@@ -61,7 +66,8 @@ def select_chromosomes():
         (appended_data.sequence_stop >= (sequence_stop_slider.value)) &
         (appended_data.sequence_length >= sequence_length_slider.value) &
         (appended_data.num_variants >= num_variants_slider.value) &
-        (appended_data.num_nucleotides_accessible >= num_nucleotides_slider.value)
+        (appended_data.num_nucleotides_accessible >= num_nucleotides_slider.value) &
+        (appended_data.num_nucleotides_highlighted >= num_highlight_nucleotides_slider.value)
     ]
     if (chromosome_name_val != "All"):
         selected = selected[selected.chromosome.str.contains(chromosome_name_val)]
@@ -93,7 +99,7 @@ def update():
     }
 
 
-controls = [chromosome_name, sequence_start_slider, sequence_stop_slider, sequence_length_slider, num_variants_slider]
+controls = [chromosome_name, sequence_start_slider, sequence_stop_slider, sequence_length_slider, num_variants_slider,num_nucleotides_slider,num_highlight_nucleotides_slider]
 for control in controls:
     control.on_change('value', lambda attr, old, new: update())
 
@@ -102,9 +108,10 @@ columns_table = []
 for i in range(len(columns)):
     columns_table.append(TableColumn(field=columns[i]))
 
-data_table = DataTable(source=src, columns=columns_table, width=800)
+data_table = DataTable(source=src, columns=columns_table, autosize_mode='fit_columns', sizing_mode='stretch_both', width=800, height=1000)
 
-layout = row(column(chromosome_name,sequence_start_slider, sequence_stop_slider,sequence_length_slider,num_variants_slider,num_nucleotides_slider),data_table)
+layout = row(column(chromosome_name,sequence_start_slider, sequence_stop_slider,sequence_length_slider,num_variants_slider,
+num_nucleotides_slider,num_highlight_nucleotides_slider),data_table)
 
 curdoc().add_root(layout)
 
