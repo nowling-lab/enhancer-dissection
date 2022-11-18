@@ -9,7 +9,7 @@ from bokeh.layouts import row, column
 from bokeh.models import Button,ColumnDataSource, Div, Select, Slider, TextInput, TableColumn, DataTable
 
 
-rootdir = "C:/WSL-Windows-Directory/with_stream_top_25/"
+rootdir = "C:/Users/sanjeevs/PycharmProjects/pythonProject/verification/csv"
 appended_data = pd.DataFrame()
 
 for subdir, dirs, files in os.walk(rootdir):
@@ -22,7 +22,7 @@ for subdir, dirs, files in os.walk(rootdir):
             appended_data = pd.concat((appended_data, data), axis=0)
 
 # count the number of enhancer peaks
-groupedDataFrame = appended_data.groupby('chromosome')
+#groupedDataFrame = appended_data.groupby('chromosome')
 
 # get minimum and maximum sequence start value in grouped dataframe
 min_sequence_start = appended_data['sequence_start'].min()
