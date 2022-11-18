@@ -1,0 +1,9 @@
+div{
+    outline: 10px;
+    width: 500px;
+    height: auto;
+}
+
+.container{
+    display: flex;
+}

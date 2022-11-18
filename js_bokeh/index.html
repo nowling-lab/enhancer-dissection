@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Viewer</title>
+    <!-- react -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Babel for development -->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- bokeh -->
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js" crossorigin="anonymous"></script>
+
+    <!-- <script src="table.js" type="text/babel"></script> -->
+    <link href="./styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="root"> hi </div>
+    <div id="table"></div>
+    <script>
+        fetch('http://127.0.0.1:5000/')
+        .then(function(response) { return response.json() })
+        .then(function(item) { return Bokeh.embed.embed_item(item, "table"); })
+    </script>
+</body>
+</html>
