@@ -14,7 +14,7 @@ class Highlights:
     global logger
     logger = logging.getLogger('generic_highlights')
 
-    def __init__(self, seq_dict: dict, chromosome: str, offset=1, seq_end=None):
+    def __init__(self, seq_dict: dict, chromosome: str="unknown", offset=1, seq_end=None):        
         self.offset = offset
         self.seq_start = offset
         self.seq_end = seq_end
@@ -22,7 +22,7 @@ class Highlights:
         self.has_indels = False
         #from sequence fasta, compare with: self.num_nucleotides_inaccessible
         self.sequence_positions_N = 0    
-    
+        
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
         if self.seq_end == None:
             keys = list(self.sequences.keys())
@@ -30,6 +30,9 @@ class Highlights:
             self.seq_end = max_len
             if self.seq_start != 0:
                 self.seq_end += self.seq_start + 1
+        
+        if chromosome == "unknown":
+            logger.warning(f"Chromosome unknown. Check Highlights file constructor. Sequence start: {self.seq_start}, Sequence end: {self.seq_end}. First key in self.sequences: {list(self.sequences.keys())[0]}")
         
         self.outputs = []  # array of strings containing full html file outs. Because why not?
         self._sequences_grouped = {}
