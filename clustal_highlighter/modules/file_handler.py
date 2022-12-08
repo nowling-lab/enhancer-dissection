@@ -1,24 +1,27 @@
 import os
+
 import pandas as pd
 
-get_reverse = {
-        'A':'T',
-        'T':'A',
-        'G':'C',
-        'C':'G'
-    }
+REVERSE_TABLE = {"A": "T", "T": "A", "G": "C", "C": "G"}
 
 def read_fasta_file(file_path):
-    #Reads in a fasta file. Standard stuff
+    """Reads in a FASTA formatted file
+
+    Args:
+        file_path (str): Path to the fasta file
+
+    Returns:
+        dict: A dict containing the ID and sequence for each element in the fast file
+    """
     sequence_dictionary = {}
     sequence = None
     sequence_name = None
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         for line in f:
-            if '>' in line:
-                header = line
+            if ">" in line:
+                header = line.split()[0]
 
-                if sequence_name == None:
+                if sequence_name is None:
                     sequence = None
                     sequence_name = header[1:].strip()
                 else:
@@ -26,76 +29,116 @@ def read_fasta_file(file_path):
                     sequence_name = header[1:].strip()
                     sequence = None
             else:
-                if sequence == None:
+                if sequence is None:
                     sequence = line.strip()
                 else:
-                    sequence += line.strip() 
-    
+                    sequence += line.strip()
+
         sequence_dictionary[sequence_name] = sequence
     return sequence_dictionary
 
+
 def read_fimo_file(file_path):
-    #Reads in a fimo file, standard stuff
+    """Reads in a TSV formatted file that was generated when the program FIMO
+    by memesuite was run
+
+    Args:
+        file_path (str): A path to said TSV
+
+    Returns:
+        dict: A dict which contains the sequence name -> start, stop, motif_alt_id, matched_squence
+    """
+    # Reads in a fimo file, standard stuff
     sequence_name_dict = {}
     if not os.path.isfile(file_path):
         print("Fimo file not found, check input parameters")
-    with open(file_path) as f:
-            header = f.readline() #to get rid of it
-            for line in f:
-                if len(line) <= 1 or '#' in line:
-                    if len(sequence_name_dict) > 0:
-                        return sequence_name_dict
-                    else: 
-                        return None
-                line_split = line.split()
-                seq_name = line_split[2]
-                start = int(line_split[3].strip())
-                stop = int(line_split[4].strip())
-                motif_alt_id = line_split[1]
-                strand = line_split[5]
-                matched_sequence = line_split[-1]
-                if strand == "-":
-                    matched_sequence = reverse_comp(matched_sequence)
-
-                if seq_name not in sequence_name_dict:
-                    sequence_name_dict[seq_name] = []
-                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id, matched_sequence))
+    with open(file_path, encoding="utf8") as f:
+        _header = (
+            f.readline()
+        )  # Remove header from file. It is not used. Should have used pandas instead?
+        for line in f:
+            if len(line) <= 1 or "#" in line:
+                if len(sequence_name_dict) > 0:
+                    return sequence_name_dict
                 else:
-                    sequence_name_dict[seq_name].append((start, stop, motif_alt_id, matched_sequence))  
+                    return None
+            line_split = line.split()
+            seq_name = line_split[2]
+            start = int(line_split[3].strip())
+            stop = int(line_split[4].strip())
+            motif_alt_id = line_split[1]
+            strand = line_split[5]
+            matched_sequence = line_split[-1]
+            if strand == "-":
+                matched_sequence = reverse_comp(matched_sequence)
+
+            if seq_name not in sequence_name_dict:
+                sequence_name_dict[seq_name] = []
+                sequence_name_dict[seq_name].append(
+                    (start, stop, motif_alt_id, matched_sequence)
+                )
+            else:
+                sequence_name_dict[seq_name].append(
+                    (start, stop, motif_alt_id, matched_sequence)
+                )
     return sequence_name_dict
 
+
 def reverse_comp(sequence):
-    global get_reverse
+    """Calculates the reverse compliment of a given sequence using the lookup table
+    defined at the top of the file
+
+    Args:
+        sequence (str): A nucleotide sequence (DNA only)
+
+    Returns:
+        str: A reverse complemented DNA sequence
+    """
+    global REVERSE_TABLE
     rev_seq = sequence[::-1]
-    rev_comp = ''
+    rev_comp = ""
     for char in rev_seq:
-        rev_comp += get_reverse[char]
-    
+        rev_comp += REVERSE_TABLE[char]
+
     return rev_comp
 
+
 def read_diverse_fimo_file(file_path):
-    fimo_df = pd.read_csv(file_path, sep='\t', comment="#")
+    """Reads in a TSV generated by fimo using pandas.
+    NOTE: This is only used for fimo files containing many differen sequence ID's
+
+    Args:
+        file_path (str): A path to the TSV file
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the TSV file
+    """
+    fimo_df = pd.read_csv(file_path, sep="\t", comment="#")
     return fimo_df
 
-def __DEPREICATED_read_variant_stats(file_path: str) -> dict:
-    variant_dict = {}
-    df = pd.read_excel(file_path)
-    df_list = list(df.itertuples(index=False, name=None))
-    
-    for line in df_list:
-            pos = line[1]
-            variant_dict[pos] = (line[3], line[5], line[10], line[11])
-    return variant_dict
-    
-def html_string_to_output(html_string, outputdir):
-    #just writes the html string to out
-    outputdir = os.path.expanduser(outputdir)
-    output = open(outputdir, 'w')
-    output.write(html_string)
-    output.close
 
-def output_A_seqs(fasta, output, keys):
-    #output but with sequences that have A only
+def html_string_to_output(html_string, outputdir):
+    """Writes an HTML string to a given directory
+
+    Args:
+        html_string (str): An HTML file stored in memory as a string
+        outputdir (str): A directory to output this string as an HTML at
+    """
+    outputdir = os.path.expanduser(outputdir)
+    output = open(outputdir, "w", encoding="utf8")
+    output.write(html_string)
+    output.close()
+
+
+def output_a_only_secs(fasta, output, keys):
+    """An older method used when we were wanting FASTA files that only contained a capital A in them
+
+    Args:
+        fasta (dict): A dictionary containing fasta_id -> id row data
+        output (File): A file to write the fasta file out with
+        keys (list): A list of keys for the fasta file
+    """
+    # output but with sequences that have A only
     for key in keys:
         seq = fasta[key]
         temp_output_string = ">" + key + "\n"
@@ -106,6 +149,5 @@ def output_A_seqs(fasta, output, keys):
             else:
                 temp_output_string += char
 
-        output.write(temp_output_string + '\n\n\n')
+        output.write(temp_output_string + "\n\n\n")
     output.close()
-

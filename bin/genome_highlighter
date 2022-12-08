@@ -1,18 +1,19 @@
-from typing import TextIO
-from pandas import DataFrame
-from datetime import datetime
-import time
-from clustal_highlighter.modules.highlights import Highlights
-from clustal_highlighter.modules.variant_handler import *
-from clustal_highlighter.modules.file_handler import read_diverse_fimo_file
 import argparse
 import os
 from subprocess import call
 from pathlib import Path
 import logging
+from typing import TextIO
+from datetime import datetime
+import time
+from pandas import DataFrame
+
+from clustal_highlighter.modules.highlights import Highlights
+from clustal_highlighter.modules.variant_handler import *
+from clustal_highlighter.modules.file_handler import read_diverse_fimo_file, read_fasta_file
 
 from clustal_highlighter.modules.logger import *
-logger = logging.getLogger('genome_highlighter')
+LOGGER = logging.getLogger('genome_highlighter')
 
 def generate_dependencies(args) -> Highlights:
     colors = ['blue', 'red']
@@ -85,16 +86,16 @@ def generate_dependencies(args) -> Highlights:
                     
     logging.basicConfig(filename=f'{working_directory}/{int(time.time())}.log', filemode='w', level=logging.DEBUG)
 
-    info(logger, f'Program Start Time: {datetime.now()}')
+    info(LOGGER, f'Program Start Time: {datetime.now()}')
     
     print("Output and Working directory is at: " + working_directory)
     
     peak_locations = get_peak_locations(args.peaks)
     keys = list(peak_locations.keys())
     
-    info(logger, f'Successfully read in peaks from {args.peaks}. Peak keys as list: {keys}')
+    info(LOGGER, f'Successfully read in peaks from {args.peaks}. Peak keys as list: {keys}')
     for key in peak_locations:
-        info(logger, f'Chromosome {key} has {len(peak_locations[key])} peaks')
+        info(LOGGER, f'Chromosome {key} has {len(peak_locations[key])} peaks')
 
     print("Peaks loaded")
 
@@ -103,27 +104,27 @@ def generate_dependencies(args) -> Highlights:
     seq_dict = read_fasta_file(args.seq_file)
     all_seq_keys = list(seq_dict.keys())
         
-    info(logger, f'Successfully read in sequence file from: {args.seq_file}. Sequence keys as list: {all_seq_keys}')
+    info(LOGGER, f'Successfully read in sequence file from: {args.seq_file}. Sequence keys as list: {all_seq_keys}')
     
     seq_keys = find_valid_keys(seq_dict, all_seq_keys,  keys, 'FASTA')
     
     print("Sequence file loaded")
-    info(logger, f'Removed excess sequences. Sequences saved: {seq_keys}')
+    info(LOGGER, f'Removed excess sequences. Sequences saved: {seq_keys}')
     
     if args.accessibility:
         print("Loading in accessibility file")
         accessibility_dict = read_fasta_file(args.accessibility)
         all_accessibility_keys = list(accessibility_dict.keys())
-        info(logger, f'Successfully read in accessibility file from: {args.accessibility}. Accessibility keys as list: {all_accessibility_keys}')
+        info(LOGGER, f'Successfully read in accessibility file from: {args.accessibility}. Accessibility keys as list: {all_accessibility_keys}')
         accessibility_keys = find_valid_keys(accessibility_dict, all_accessibility_keys, keys, 'Accessibility')
         print(f"Accessibility file loaded")
-        info(logger, f'Removed excess accessibility data. Accessibility data saved for these keys:{accessibility_keys}')
+        info(LOGGER, f'Removed excess accessibility data. Accessibility data saved for these keys:{accessibility_keys}')
         if accessibility_keys == []:
-            warning(logger, f'Keys present in accessibility: {all_accessibility_keys}. VS key being loaded in from BED file: {keys}. Accessbility keys after validation were empty: {accessibility_keys} ')
+            warning(LOGGER, f'Keys present in accessibility: {all_accessibility_keys}. VS key being loaded in from BED file: {keys}. Accessbility keys after validation were empty: {accessibility_keys} ')
             raise Exception('No accessibility sequence keys found that match provided keys found in BED file')    
     
     if seq_keys == []:
-        warning(logger, f'Keys present in seqeunces: {all_seq_keys}. VS key being loaded in from BED file: {keys}. Sequence keys after validation were empty: {seq_keys} ')
+        warning(LOGGER, f'Keys present in seqeunces: {all_seq_keys}. VS key being loaded in from BED file: {keys}. Sequence keys after validation were empty: {seq_keys} ')
         raise Exception('No sequences found that match provided keys found in BED file')
 
     site_pi_path = None
@@ -138,22 +139,22 @@ def generate_dependencies(args) -> Highlights:
             else:
                     os.makedirs(os.path.dirname(f'{working_directory}/site_pi/'), exist_ok=True)
                     call(f"run_vcf_tools_pi {args.variant_data} 0 {working_directory}/site_pi/", shell=True)
-            info(logger, f'Successfully generated site pi data at {working_directory}/stie_pi')
+            info(LOGGER, f'Successfully generated site pi data at {working_directory}/stie_pi')
         else:
-            warning(logger, f'Site pi data was requested but --variant-data flag was not used. No variant or site pi data will be presented')
+            warning(LOGGER, f'Site pi data was requested but --variant-data flag was not used. No variant or site pi data will be presented')
         
     vcf_df = pd.DataFrame()
     if args.variant_data:
         print("Loading VCF...")
         
-        info(logger, f'VCF added. Loading variant data from {args.variant_data}')
+        info(LOGGER, f'VCF added. Loading variant data from {args.variant_data}')
         
         vcf_df = read_vcf_into_dataframe(args.variant_data)
         
-        info(logger, f'From the VCF file provided, {vcf_df.shape[0]} rows (variants) and {vcf_df.shape[1]} columns were loaded')
+        info(LOGGER, f'From the VCF file provided, {vcf_df.shape[0]} rows (variants) and {vcf_df.shape[1]} columns were loaded')
         print("VCF Loaded")
     else:
-        warning(logger, 'No VCF given. Variant data will not be added.')
+        warning(LOGGER, 'No VCF given. Variant data will not be added.')
 
     chromosome = None
     if len(peak_locations.keys()) == 1:
@@ -162,7 +163,7 @@ def generate_dependencies(args) -> Highlights:
     for chromosome in peak_locations:
         print(f"Processing chromosome: {chromosome}")
         
-        info(logger, f'Chromosome {chromosome} being processed')
+        info(LOGGER, f'Chromosome {chromosome} being processed')
         
         if site_pi_path != None:
             diversity_dict = generate_pi_dict(site_pi_path)
@@ -183,7 +184,7 @@ def generate_dependencies(args) -> Highlights:
                     
         if accessibility_seq:
             if len(accessibility_seq) != len(chromosome_seq):
-                warning(logger, f'Accessibility sequence found for chromosome {chromosome} does not equal the length of the sequence found for that chromosome!')
+                warning(LOGGER, f'Accessibility sequence found for chromosome {chromosome} does not equal the length of the sequence found for that chromosome!')
 
         all_sequences = {}
         all_accessibility = {}
@@ -200,7 +201,7 @@ def generate_dependencies(args) -> Highlights:
 
             all_sequences[(start, end)] = single_seq_dict
             
-        info(logger, f'For Chromosome {chromosome}, {reports_requested} sequences have been gathered')
+        info(LOGGER, f'For Chromosome {chromosome}, {reports_requested} sequences have been gathered')
 
         file_path = print_fasta(all_sequences, f'{working_directory}/{file_name}')
 
@@ -214,7 +215,7 @@ def generate_dependencies(args) -> Highlights:
                     file_path, motif_path, motif_name, working_directory)
 
                 fimo_highlights.append(motif_and_df)
-                info(logger, f'Fimo successfully ran. File used: {motif_path}')
+                info(LOGGER, f'Fimo successfully ran. File used: {motif_path}')
         
         print("Generating output...")
         for start, end in peak_locations[chromosome]:
@@ -291,9 +292,9 @@ def generate_dependencies(args) -> Highlights:
     # Stats to verify everything is working
     #this needs to be in {} checks. I'll leave here for now ig...   
     if reports_generated == reports_requested:
-        info(logger, f'Sequenecs gathered. reports requested: {reports_requested} vs reports generated: {reports_generated}')
+        info(LOGGER, f'Sequenecs gathered. reports requested: {reports_requested} vs reports generated: {reports_generated}')
     else:
-        warning(logger, f'Sequenecs gathered. reports requested: {reports_requested} vs reports generated: {reports_generated}') 
+        warning(LOGGER, f'Sequenecs gathered. reports requested: {reports_requested} vs reports generated: {reports_generated}') 
     
     #Do all of my check validations here
     check_warnings()
@@ -306,7 +307,7 @@ def find_valid_keys(seq_dict, seq_keys, keys, description):
                     valid_keys.append(seq_key)
         if valid_keys == []:
             error_desc = f"Mismatch between provided keys. Keys given in bed file {keys} do not match keys given in {description} file {seq_keys}"
-            warning(logger, error_desc)
+            warning(LOGGER, error_desc)
             raise Exception(error_desc)
         
         for seq_key in seq_keys:
