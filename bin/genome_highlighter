@@ -11,7 +11,7 @@ from pandas import DataFrame
 from clustal_highlighter.modules.highlights import Highlights
 from clustal_highlighter.modules.variant_handler import *
 from clustal_highlighter.modules.file_handler import read_diverse_fimo_file, read_fasta_file
-
+from clustal_highlighter.modules.file_handler import pwm_p_value_parse
 from clustal_highlighter.modules.logger import *
 LOGGER = logging.getLogger('genome_highlighter')
 
@@ -35,6 +35,9 @@ def generate_dependencies(args) -> Highlights:
         
     if args.motif_files:
         motifs = generate_tuple_motifs(args.motif_files)
+        per_motif_p_values = {}
+        for (motif_label, motif_file_path) in motifs:
+            per_motif_p_values.update(pwm_p_value_parse(motif_file_path))
         
     if args.csv:
         motif_counts_data = []
@@ -42,7 +45,12 @@ def generate_dependencies(args) -> Highlights:
                                 'sequence_start',
                                 'sequence_stop',
                                 'motif',
-                                'count']
+                                'count',
+                                'nucleotides_covered',
+                                'percent_covered',
+                                'orientation',
+                                'fimo_p_value',
+                                'streme_motif_p_value']
         
         motif_coverage_data = []
         motif_coverage_columns = ['chromosome',
@@ -222,6 +230,7 @@ def generate_dependencies(args) -> Highlights:
             single_seq_dict = all_sequences[((start, end))]
 
             temp_highlight = Highlights(single_seq_dict, chromosome, start, end)
+            temp_highlight.per_motif_p_values = per_motif_p_values
             
             if accessibility_seq:
                 region_accessibility = all_accessibility[(start,end)]
@@ -349,6 +358,7 @@ def print_fasta(all_sequences, output_path):
 def generate_tuple_motifs(motifs):
     motif_pairs = []
     for i, j in zip(motifs[0::2], motifs[1::2]):
+        j = os.path.abspath(j)
         motif_pairs.append((i, j))
 
     return motif_pairs

@@ -1,8 +1,14 @@
 import os
 
 import pandas as pd
+from clustal_highlighter.modules.data_structures.motif_classes import Motif
 
 REVERSE_TABLE = {"A": "T", "T": "A", "G": "C", "C": "G"}
+
+from clustal_highlighter.modules.logger import *
+
+global logger
+logger = logging.getLogger("file_handler")
 
 def read_fasta_file(file_path):
     """Reads in a FASTA formatted file
@@ -69,18 +75,18 @@ def read_fimo_file(file_path):
             motif_alt_id = line_split[1]
             strand = line_split[5]
             matched_sequence = line_split[-1]
+            p_value = line_split[-3]
+            
             if strand == "-":
                 matched_sequence = reverse_comp(matched_sequence)
 
+            motif = Motif(start, stop, motif_alt_id, matched_sequence, strand, p_value)
+            
             if seq_name not in sequence_name_dict:
-                sequence_name_dict[seq_name] = []
-                sequence_name_dict[seq_name].append(
-                    (start, stop, motif_alt_id, matched_sequence)
-                )
+                sequence_name_dict[seq_name] = [motif]
             else:
-                sequence_name_dict[seq_name].append(
-                    (start, stop, motif_alt_id, matched_sequence)
-                )
+                sequence_name_dict[seq_name].append(motif)
+                
     return sequence_name_dict
 
 
@@ -151,3 +157,27 @@ def output_a_only_secs(fasta, output, keys):
 
         output.write(temp_output_string + "\n\n\n")
     output.close()
+
+def pwm_p_value_parse(file_path: str):
+    global logger
+    
+    if not os.path.isfile(file_path):
+        warning(logger, "File not found, check input parameters")
+    
+    p_values = {}
+    with open(file_path, encoding="utf8") as f:
+        found_motif = False
+        motif_name = ""
+        for line in (l[:-1] for l in f):
+            if found_motif:
+                p_values[motif_name] = line.split()[-1]
+                found_motif = False
+                continue
+                
+            if 'MOTIF' in line:
+                motif_name = line.split()[-1]
+                found_motif = True
+    
+    return p_values
+                
+        

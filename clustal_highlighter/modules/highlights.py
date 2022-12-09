@@ -1,6 +1,6 @@
 import logging
 import statistics
-from collections import deque
+from collections import defaultdict
 
 from clustal_highlighter.modules.character import Character
 from clustal_highlighter.modules.data_structures.logger_classes import motif_highlights
@@ -19,7 +19,7 @@ class Highlights:
     """
 
     global logger
-    LOGGER = logging.getLogger("generic_highlights")
+    logger = logging.getLogger("generic_highlights")
 
     def __init__(
         self, seq_dict: dict, chromosome: str = "unknown", offset=1, seq_end=None
@@ -32,7 +32,14 @@ class Highlights:
         # from sequence fasta, compare with: self.num_nucleotides_inaccessible
         self.sequence_positions_N = 0
 
+        # self.sequences is where the character objects are. 
+        # for genome highlighter list(self.sequences.keys())[0] gives the current sequence
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
+        
+        # Convinience unpacking
+        self.first_sequence_name = list(self.sequences.keys())[0]
+        self.first_sequence_characters = self.sequences[self.first_sequence_name]
+        
         if self.seq_end == None:
             keys = list(self.sequences.keys())
             max_len = max(
@@ -71,7 +78,11 @@ class Highlights:
         self.wrong_chars = 0
         self.variants_found = 0
 
+        # Dictionary for motifs_counts csv file
         self.motif_counts = {}
+        self.individual_motif_coverage = {}
+        self.motif_orientation = {}
+        self.fimo_p_values = {}
 
         self.csv_wanted = False
         # Table data
@@ -89,6 +100,7 @@ class Highlights:
         self.motif_percent_coverage = {}
         self.motif_sets = None
         self.motif_coverage = None
+        self.per_motif_p_values = {}
 
         # accessibility variables
         self.has_accessibility = False
@@ -104,6 +116,7 @@ class Highlights:
 
         # genotype numbers variables
         self.genotype_dict = {}
+
 
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format
@@ -129,7 +142,7 @@ class Highlights:
         Returns:
             list: A identical list to the string but made up of Characters
         """
-        char_obj_list = deque()
+        char_obj_list = []
         pos_counter = self.seq_start
         for char in sequence:
             char_obj_list.append(Character(char, pos_counter))
@@ -199,11 +212,7 @@ class Highlights:
         """
         for sequence in motifs:
             if sequence not in self.sequences:
-                print(motifs.keys())
-                print(self.sequences.keys())
-                print(
-                    "Mismatch between supplied FIMO file and sequences in original sequence file, aborting coloring"
-                )
+                warning(LOGGER, f"Mismatch between supplied FIMO file and sequences in original sequence file (Key mismatch), aborting coloring. Motif keys: {motifs.keys()}, Sequence keys: {self.sequences.keys()}")
                 return
             # Check all keys are valid before applying colors
 
@@ -213,9 +222,15 @@ class Highlights:
         motif_counts_per_descriptor = self.motif_counts[motifs_descriptor]
 
         for sequence in motifs:
-            highlights = motifs[sequence]
+            motifs = motifs[sequence]
 
-            for start, end, motif_id, matched_sequence in highlights:
+            motif: Motif
+            for motif in motifs:
+                start, end, motif_id, matched_sequence, orientation, p_value = motif.as_tuple()
+                
+                self.motif_orientation[motif_id] = orientation
+                self.fimo_p_values[motif_id] = p_value
+                
                 if motif_id in motif_counts_per_descriptor:
                     motif_counts_per_descriptor[motif_id] += 1
                 else:
@@ -443,6 +458,7 @@ class Highlights:
         self.motif_counts_csv = []
         for motif_descriptor in self.motif_counts:
             for motif in self.motif_counts[motif_descriptor]:
+                coverage = self.individual_motif_coverage[motif]
                 self.motif_counts_csv.append(
                     (
                         self.name,
@@ -450,6 +466,11 @@ class Highlights:
                         self.seq_end,
                         motif,
                         self.motif_counts[motif_descriptor][motif],
+                        coverage,
+                        round(coverage/self._get_length(), 3),
+                        self.motif_orientation[motif],
+                        self.fimo_p_values[motif],
+                        self.per_motif_p_values[motif]
                     )
                 )
 
@@ -515,12 +536,12 @@ class Highlights:
                 total_highlight_coverage,
             ]
         ]
-
-        for motif_name in self.motif_counts:
-            self.summary_csv[0].append(len(self.motif_counts[motif_name]))
+        
+        for motif_descriptor in self.motif_counts:                        
+            self.summary_csv[0].append(len(self.motif_counts[motif_descriptor]))
 
             this_sequence = list(self.motif_coverage.keys())[0]
-            self.summary_csv[0].append(self.motif_coverage[this_sequence][motif_name])
+            self.summary_csv[0].append(self.motif_coverage[this_sequence][motif_descriptor])
 
     def _calculate_total_coverage(self):
         # there should only be 1 sequence when this is called.
@@ -561,12 +582,25 @@ class Highlights:
     def _variant_statistics(self):
         self.varaints_csv = self.variants_with_percent
 
+    def _calc_individual_motif_coverage(self):
+        char: Character
+        for char in self.first_sequence_characters:
+            for description in char.motif_files:
+                for motif in char.motif_files[description]:
+                    if motif in self.individual_motif_coverage:
+                        self.individual_motif_coverage[motif] += 1
+                    else:
+                        self.individual_motif_coverage[motif] = 0
+
+
     def _save_csv_data(self):
         self._motif_and_count_rows()
         self._motif_descriptor_coverage()
         self._summary_stats()
         if self.variant_data != None:
             self._variant_statistics()
+            
+    ## End CSV related methods
 
     def _add_html_classes(self):
         """Adds html classes to the html file
@@ -1232,6 +1266,8 @@ class Highlights:
 
         html_string += dynamic_html_string
 
+        # End basic HTML generation. Below here is to gather statistics!
+
         seq_name = list(self.sequences.keys())[0]
         chars = self.sequences[seq_name]
 
@@ -1246,9 +1282,16 @@ class Highlights:
                     logger,
                     f"{self.sequences.keys()} when alined are of length {len(chars)}",
                 )
-
+        # General motif statistics
         self.motif_sets, self.motif_coverage = self._calculate_motif_stats()
+        
+        # Generate table that says how many of what motifs are in a sequence
         motif_count_table = self._pretty_print_motifs()
+        
+        #Populat individual motif coverage variable
+        self._calc_individual_motif_coverage()
+        
+        # Appending statistics to the bottom of the page here
 
         html_string += f"\n{self._generate_table(self.variants_found, round(self.variants_found/len(chars) * 100, 3), self.motif_sets, self.motif_coverage)}"
         html_string += f"\n{motif_count_table}"
@@ -1258,6 +1301,7 @@ class Highlights:
         #     html_string += f'\n{variant_stats}'
         html_string += "\n</body>"
 
+        # Save csv data
         if self.csv_wanted:
             self._save_csv_data()
 

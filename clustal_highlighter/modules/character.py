@@ -13,8 +13,7 @@ class Character:
         self.html_string = None
         self.tooltip = None
 
-        self.motif_files = {}  # file_name/id -> list of motifs found at this character
-        # Update to python 3.9+ and use dict[str, list] to specify types :)
+        self.motif_files = {}  # file_name/id -> Set of motifs found at this character
         self.modified = False
 
         self.is_accessible = None
