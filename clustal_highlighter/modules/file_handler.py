@@ -170,7 +170,11 @@ def pwm_p_value_parse(file_path: str):
         motif_name = ""
         for line in (l[:-1] for l in f):
             if found_motif:
-                p_values[motif_name] = line.split()[-1]
+                split_line = line.split(sep=' ')
+                if split_line[-2] == 'P=':
+                    p_values[motif_name] = split_line[-1]
+                else:
+                    p_values[motif_name] = 'NaN'
                 found_motif = False
                 continue
                 

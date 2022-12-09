@@ -538,10 +538,23 @@ class Highlights:
         ]
         
         for motif_descriptor in self.motif_counts:                        
-            self.summary_csv[0].append(len(self.motif_counts[motif_descriptor]))
+            motif_appearances = self.motif_counts[motif_descriptor]
+            # Unique
+            self.summary_csv[0].append(len(motif_appearances))
 
+            # Total
+            self.summary_csv[0].append(self._calculate_total_motif_appearances(motif_appearances))
+            
+            # Coverage
             this_sequence = list(self.motif_coverage.keys())[0]
             self.summary_csv[0].append(self.motif_coverage[this_sequence][motif_descriptor])
+
+    def _calculate_total_motif_appearances(self, motif_dict):
+        total_motif_appearances = 0
+        for motif, appearances in motif_dict.items():
+            total_motif_appearances += appearances
+            
+        return total_motif_appearances
 
     def _calculate_total_coverage(self):
         # there should only be 1 sequence when this is called.

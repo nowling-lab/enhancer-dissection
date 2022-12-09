@@ -90,6 +90,7 @@ def generate_dependencies(args) -> Highlights:
         if args.motif_files:
             for motif in motifs:
                 summary_columns.append(f'{motif[0]}_unique_motifs')
+                summary_columns.append(f'{motif[0]}_total_motifs')
                 summary_columns.append(f'num_{motif[0]}_nucleotide_coverage')
                     
     logging.basicConfig(filename=f'{working_directory}/{int(time.time())}.log', filemode='w', level=logging.DEBUG)
