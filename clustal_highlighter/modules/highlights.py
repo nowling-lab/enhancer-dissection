@@ -116,6 +116,11 @@ class Highlights:
 
         # genotype numbers variables
         self.genotype_dict = {}
+        
+        # global variables for the 3 colors (steps) in the color bar in the HTML pages
+        self.color_bar_val1 = (54, 98, 57)
+        self.color_bar_val2 = (177, 63, 35)
+        self.color_bar_val3 = (288, 98, 17)
 
 
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
@@ -667,7 +672,7 @@ class Highlights:
 
     def _add_html_buttons(self):
         """Adds buttons to toggle different features if they are toggleable"""
-        button_string = "<span>"
+        button_string = "<div>"
         keys = list(self.highlight_styles.keys())
         keys.sort()
 
@@ -677,8 +682,16 @@ class Highlights:
 
         if self.variant_data != None:
             button_string += """\n<button id="toggle_variant" type="button" class="btn btn-secondary">Toggle Variant ^'s</button>"""
+            button_string += """\n<div id="colorbar_wrapper">
+                                    <div id="colorbar_top_text">Variant(^) reference allele %</div>
+                                        <div id="colorbar_with_text">
+                                            <span>0%</span>
+                                            <div id="colorbar"></div>
+                                            <span>100%</span>
+                                        </div>
+                                    </div>"""
 
-        button_string += "\n</span>"
+        button_string += "\n</div>"
 
         button_string += '\n<script type="text/javascript">\n'
         button_string += "$(document).ready(function () {\n"
@@ -961,8 +974,8 @@ class Highlights:
                 (
                     ref,
                     alt,
-                    chance1,
-                    chance2,
+                    ref_percent, #this is 0 <= x <= 1
+                    alt_percent, #this is 0 <= x <= 1
                     total_samples,
                     samples_invalid,
                 ) = self.variant_data[x_offset].as_tuple()
@@ -980,17 +993,17 @@ class Highlights:
                         self.wrong_chars += 1
                 self.variants_found += 1
 
-                chance1 = float(round((chance1 * 100), 3))
-                chance2 = float(round((chance2 * 100), 3))
-                normalized_chance = None
-                if chance1 >= 50.0:
-                    normalized_chance = (chance1 - 50) / (100 - 50)
+                ref_percent = float(round(ref_percent, 3))
+                ref_percent_100 = float(round((ref_percent*100),3))
+                alt_percent_100 = float(round((alt_percent*100),3))
+                #colorbar color match with variant percent...
+                new_color = None
+                if ref_percent <= 0.5:
+                    relative_percent = ref_percent/0.5
+                    new_color = self._calculate_color(relative_percent, self.color_bar_val1, self.color_bar_val2)
                 else:
-                    normalized_chance = (chance2 - 50) / (100 - 50)
-
-                red = 255 * (1 - normalized_chance)
-                green = 255 * normalized_chance
-                blue = 0
+                    relative_percent = (ref_percent-0.5)/0.5
+                    new_color = self._calculate_color(relative_percent, self.color_bar_val2, self.color_bar_val3)
 
                 self.variants_with_percent.append(
                     (
@@ -1000,8 +1013,8 @@ class Highlights:
                         current_char.position,
                         ref,
                         alt,
-                        chance1,
-                        chance2,
+                        ref_percent_100,
+                        alt_percent_100,
                         current_char.is_accessible,
                     )
                 )
@@ -1017,13 +1030,21 @@ class Highlights:
                 else:
                     accessibility_string = ""
 
-                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="{ref}: {chance1}% {alt}: {chance2}%{accessibility_string}">^</span>'
+                variant_string += f'<span class="variant_hat" style="color:hsl({new_color[0]},{new_color[1]}%,{new_color[2]}%)" data-toggle="tooltip" data-animation="false" title ="{ref}: {ref_percent_100}% {alt}: {alt_percent_100}%{accessibility_string}">^</span>'
             else:
                 variant_string += " "
 
         variant_string += "</span>" + "<br>"
 
         return variant_string
+
+    def _calculate_color(self, ref_percent, color1, color2):
+            hue_diff = color2[0] - color1[0]
+            sat_diff = color2[1] - color1[1]
+            lumen_diff = color2[2] - color1[2]
+            return (color1[0] + (hue_diff*ref_percent),
+                    color1[1] + (sat_diff*ref_percent),
+                    color1[2] + (lumen_diff*ref_percent))
 
     def _to_string(self):
         """Generates HTML 70 blocked strings using the to_string of the Characters. This is used for testing
