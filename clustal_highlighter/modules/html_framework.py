@@ -25,7 +25,7 @@ def html_heading():
         }
         #colorbar{
             width: 300px;
-            height: 50px;
+            height: 30px;
             outline: auto;
             /* background: linear-gradient(to right,
                                         red 0%,
@@ -44,6 +44,7 @@ def html_heading():
         }
         #colorbar_wrapper{
             width: fit-content;
+            margin-top: 0.5rem;
         }
         #colorbar_with_text{
             display: flex;

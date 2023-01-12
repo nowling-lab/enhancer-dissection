@@ -164,7 +164,7 @@ def pwm_p_value_parse(file_path: str):
     if not os.path.isfile(file_path):
         warning(logger, "File not found, check input parameters")
     
-    p_values = {}
+    p_values = []
     with open(file_path, encoding="utf8") as f:
         found_motif = False
         motif_name = ""
@@ -172,9 +172,9 @@ def pwm_p_value_parse(file_path: str):
             if found_motif:
                 split_line = line.split(sep=' ')
                 if split_line[-2] == 'P=':
-                    p_values[motif_name] = split_line[-1]
+                    p_values.append((motif_name, split_line[-1]))
                 else:
-                    p_values[motif_name] = 'NaN'
+                    p_values.append((motif_name, 'NaN'))
                 found_motif = False
                 continue
                 

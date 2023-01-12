@@ -81,8 +81,7 @@ class Highlights:
         # Dictionary for motifs_counts csv file
         self.motif_counts = {}
         self.individual_motif_coverage = {}
-        self.motif_orientation = {}
-        self.fimo_p_values = {}
+        self.motif_orientation = defaultdict(lambda: 0)
 
         self.csv_wanted = False
         # Table data
@@ -100,7 +99,6 @@ class Highlights:
         self.motif_percent_coverage = {}
         self.motif_sets = None
         self.motif_coverage = None
-        self.per_motif_p_values = {}
 
         # accessibility variables
         self.has_accessibility = False
@@ -116,6 +114,9 @@ class Highlights:
 
         # genotype numbers variables
         self.genotype_dict = {}
+        
+        # for fimo_sub_table data. List of tuples
+        self.fimo_sub_table = []
         
         # global variables for the 3 colors (steps) in the color bar in the HTML pages
         self.color_bar_val1 = (54, 98, 57)
@@ -233,9 +234,19 @@ class Highlights:
             for motif in motifs:
                 start, end, motif_id, matched_sequence, orientation, p_value = motif.as_tuple()
                 
-                self.motif_orientation[motif_id] = orientation
-                self.fimo_p_values[motif_id] = p_value
-                
+                self.motif_orientation[(motif_id, orientation)] += 1
+                self.fimo_sub_table.append((
+                    self.name,
+                    self.seq_start,
+                    self.seq_end,
+                    start,
+                    end,
+                    motif_id,
+                    orientation,
+                    p_value,
+                    matched_sequence
+                ))
+                                
                 if motif_id in motif_counts_per_descriptor:
                     motif_counts_per_descriptor[motif_id] += 1
                 else:
@@ -459,6 +470,9 @@ class Highlights:
     def chromosome_name(self, name):
         return name
 
+    def _fimo_sub_table(self):
+        return self.fimo_sub_table
+
     def _motif_and_count_rows(self):
         self.motif_counts_csv = []
         for motif_descriptor in self.motif_counts:
@@ -473,9 +487,8 @@ class Highlights:
                         self.motif_counts[motif_descriptor][motif],
                         coverage,
                         round(coverage/self._get_length(), 3),
-                        self.motif_orientation[motif],
-                        self.fimo_p_values[motif],
-                        self.per_motif_p_values[motif]
+                        self.motif_orientation[(motif, '+')],
+                        self.motif_orientation[(motif, '-')]
                     )
                 )
 
@@ -529,7 +542,6 @@ class Highlights:
                 self.name,
                 self.seq_start,
                 self.seq_end,
-                self._get_length(),
                 variants_found,
                 num_variants_accessible,
                 num_nucleotides_accessible,
@@ -1104,11 +1116,14 @@ class Highlights:
             <table>
                 <thead>
                 <tr>
-                    {motif_descriptor} Motif Apperances
+                    {motif_descriptor} Motif Stats
                 </tr> 
                 <tr>
                     <td>Motif</td>
                     <td>Count</td>    
+                    <td>Coverage</td>
+                    <td>Forward(+)</td>
+                    <td>Reverse(-)</td>
                 </tr> 
                 </thead>
                 <tbody>"""
@@ -1119,9 +1134,15 @@ class Highlights:
             motif_counts.sort(key=lambda x: x[1], reverse=True)
 
             for motif, count in motif_counts:
+                nucleotide_coverage = self.individual_motif_coverage[motif]
+                coverage = round((nucleotide_coverage/self._get_length())*100,1)
+                
                 row = f"""<tr>
                     <td>{motif}</td>
                     <td>{count}</td>
+                    <td>{coverage}%</td>
+                    <td>{self.motif_orientation[(motif,'+')]}</td>
+                    <td>{self.motif_orientation[(motif,'-')]}</td>
                     </tr> """
                 table_string += row
             table_string += "</tbody> </table>"
@@ -1319,11 +1340,11 @@ class Highlights:
         # General motif statistics
         self.motif_sets, self.motif_coverage = self._calculate_motif_stats()
         
-        # Generate table that says how many of what motifs are in a sequence
-        motif_count_table = self._pretty_print_motifs()
-        
         #Populat individual motif coverage variable
         self._calc_individual_motif_coverage()
+        
+        # Generate table that says how many of what motifs are in a sequence
+        motif_count_table = self._pretty_print_motifs()
         
         # Appending statistics to the bottom of the page here
 
