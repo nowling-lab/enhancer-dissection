@@ -122,7 +122,9 @@ class Highlights:
         self.color_bar_val1 = (54, 98, 57)
         self.color_bar_val2 = (177, 63, 35)
         self.color_bar_val3 = (288, 98, 17)
-
+        
+        #Global variable for the addition of p-value for motif from pwm
+        self.pwm_p_values = None
 
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
         """Given a dictionary of sequences this transforms them into Character objects in the same format
@@ -507,6 +509,19 @@ class Highlights:
 
         self.coverage_csv = tmp_array
 
+    def _get_pi_scores_mean_stdev(self):
+        if self.pi_scores_array != None and len(self.pi_scores_array) >= 2:
+            pi_scores_mean = round(statistics.mean(self.pi_scores_array), 3)
+            pi_scores_stdev = round(statistics.stdev(self.pi_scores_array), 3)
+        elif self.pi_scores_array != None and len(self.pi_scores_array) == 1:
+            pi_scores_mean = round(self.pi_scores_array[0], 3)
+            pi_scores_stdev = 0
+        else:
+            pi_scores_mean = "NaN"
+            pi_scores_stdev = "NaN"
+        
+        return pi_scores_mean, pi_scores_stdev
+
     def _summary_stats(self):
         # fill with NaN if variants were not given
         if not self.variants_given:
@@ -522,15 +537,7 @@ class Highlights:
             num_variants_accessible = self.num_variants_accessible
             num_nucleotides_accessible = self.num_nucleotides_accessible
 
-        if self.pi_scores_array != None and len(self.pi_scores_array) >= 2:
-            pi_scores_mean = round(statistics.mean(self.pi_scores_array), 3)
-            pi_scores_stdev = round(statistics.stdev(self.pi_scores_array), 3)
-        elif self.pi_scores_array != None and len(self.pi_scores_array) == 1:
-            pi_scores_mean = round(self.pi_scores_array[0], 3)
-            pi_scores_stdev = 0
-        else:
-            pi_scores_mean = "NaN"
-            pi_scores_stdev = "NaN"
+        pi_scores_mean, pi_scores_stdev = self._get_pi_scores_mean_stdev()
 
         mean_missing, std_missing = self._calculate_genotype_stats()
 
@@ -594,6 +601,7 @@ class Highlights:
         num_missing_samples = []
         for _, (num_samples, num_invalid) in self.genotype_dict.items():
             num_missing_samples.append(num_invalid)
+            
         if len(num_missing_samples) >= 2:
             mean_missing = round(statistics.mean(num_missing_samples), 3)
             std_missing = round(statistics.stdev(num_missing_samples), 3)
@@ -647,7 +655,7 @@ class Highlights:
             html_class_string += class_string
 
         html_class_string += """.clear{
-            background:white !important;
+            background:#D5D8DC !important;
         }"""
 
         html_class_string += "</style>\n"
@@ -675,14 +683,29 @@ class Highlights:
             legend_string += f'<div class = "purple heading"> This is for overlapping highlights </div>\n'
 
         if self.indel_dict != None:
-            legend_string += """<div class = "clear" style="width:75%; word-wrap: break-word;"> Colored &#8209;'s indicate that the indel is between 2 characters that have an identical set of motifs. If they are not colored, then that means the character to the left has a different set of motifs than the one to the right of the indel. </div>"""
+            legend_string += """<div class = "clear" style="width: 46rem%; word-wrap: break-word;"> Colored &#8209;'s indicate that the indel is between 2 characters that have an identical set of motifs. If they are not colored, then that means the character to the left has a different set of motifs than the one to the right of the indel. </div>"""
 
         if self.variant_data != None:
-            legend_string += """<div class = "clear" style="width:75%; word-wrap: break-word;"> ^'s indicate that Variant data is available for that position. Mouse over to view stats </div>"""
+            legend_string += """<div style="width:75%; word-wrap: break-word;"> ^'s indicate that Variant data is available for that position. Mouse over to view stats </div>"""
 
         return legend_string
 
-    def _add_html_buttons(self):
+    def _add_filters(self):
+        if self.variant_data != None:
+            return """
+            \n<div>
+                <br/>
+                <details id="filters" open>
+                    <summary>Filters</summary>
+                    <p>Filter out variants with reference frequency less than:</p>
+                    <input id="variant_input" type="range" min="0" max="100" step="1" name="variant_filter" value="100"/>
+                    <label for="variant_filter">Percentage: <output id="variant_value"></output></label>
+                    </details>
+            </div>\n"""
+        else:
+            return ""
+
+    def _add_html_buttons_and_javascript(self):
         """Adds buttons to toggle different features if they are toggleable"""
         button_string = "<div>"
         keys = list(self.highlight_styles.keys())
@@ -730,8 +753,25 @@ class Highlights:
 
         if self.variant_data != None:
             button_string += """$('#toggle_variant').click(function(){
-                $( "span.variant" ).toggleClass( "hidden" );
+                $( "div.variant_hat" ).toggleClass( "hidden" );
             });
+            
+            const variant_value = document.querySelector("#variant_value");
+            const variant_input = document.querySelector("#variant_input");
+            variant_value.textContent = variant_input.value;
+
+            const all_variants = document.getElementsByClassName("variant_hat");
+
+            variant_input.addEventListener("input", (event) => {
+                variant_value.textContent = event.target.value;
+                for (var variant of all_variants){
+                    if (parseFloat(variant.dataset.ref) <= event.target.value){
+                        variant.hidden = false;
+                    }else{
+                        variant.hidden = true;
+                    }
+                }    
+            })
             """
         button_string += "}); \n</script>"
         return button_string
@@ -745,7 +785,8 @@ class Highlights:
         html_string = html_heading()
         html_string += self._add_html_classes()
         html_string += self._add_html_legend()
-        html_string += self._add_html_buttons()
+        html_string += self._add_html_buttons_and_javascript()
+        html_string += self._add_filters()
         return html_string
 
     def _log_variants(self, seq_name, chars):
@@ -949,6 +990,48 @@ class Highlights:
         )
         if len(variant_data) > 0:
             self.variant_data = variant_data
+            for char in self.first_sequence_characters:
+                if char.position in self.variant_data:
+                    var_stats = self.variant_data[char.position]
+                    
+                    # Increment counter of how many variants are found in sequence
+                    self.variants_found += 1
+                    
+                    # Give variant_stats Object to character Object
+                    char.add_variant(var_stats)
+                    
+                    (
+                    ref,
+                    alt,
+                    ref_percent, #this is 0 <= x <= 1
+                    alt_percent, #this is 0 <= x <= 1
+                    total_samples,
+                    samples_invalid,
+                    ) = var_stats.as_tuple()
+                    
+                    # Fill in the genotype_dict so that calculate_genotype_stats can use it later...
+                    self.genotype_dict[char.position] = (total_samples, samples_invalid)
+                    
+                    # Add data to variants_with_percent for csv and table info
+                    # Yes. This calculation of ref and alt percent 100 is done
+                    # again in character. Fite me about it!
+                    ref_percent = float(round(ref_percent, 3))
+                    ref_percent_100 = float(round((ref_percent*100),3))
+                    alt_percent_100 = float(round((alt_percent*100),3))
+                    
+                    self.variants_with_percent.append(
+                    (
+                        self.name,
+                        self.seq_start,
+                        self.seq_end,
+                        char.position,
+                        ref,
+                        alt,
+                        ref_percent_100,
+                        alt_percent_100,
+                        char.is_accessible,
+                    )
+                )
 
     def add_pi_data(self, site_pi_dict):
         self.site_pi_dict = site_pi_dict
@@ -1148,13 +1231,11 @@ class Highlights:
             table_string += "</tbody> </table>"
         return table_string
 
-    def _pretty_print_variants(self, length):
-        # print(self.variants_found, self.variants_found/length)
-        return
-
     def _generate_table(
         self, num_variants, percent_variable, motifs_found, motif_coverage
     ):
+        spacer = None
+        
         unique_motifs_rows = self._unique_motifs_table(motifs_found)
         motif_coverage_table = self._motif_coverage_table(motif_coverage)
         if self.has_accessibility and self.variants_found > 0:
@@ -1171,6 +1252,16 @@ class Highlights:
         else:
             accessibility_string = ""
 
+        if self.pi_scores_array == None:
+            pass
+
+        mean_missing, std_missing = self._calculate_genotype_stats()
+
+        if self.pi_scores_array != None:
+           pi_scores_table = self._pi_scores_table()
+        else:
+            pi_scores_table = ""
+
         table_string = f"""<table>
             <thead>
             <tr>
@@ -1183,9 +1274,18 @@ class Highlights:
                 <td>{num_variants}</td>
             </tr>
             <tr>
+                <td>Mean number of alleles missing per sample:</td>
+                <td>{mean_missing}</td>
+            </tr>
+            <tr>
+                <td>Stdev of number alleles missing per sample:</td>
+                <td>{std_missing}</td>
+            </tr>
+            <tr>
                 <td>Percent of nucleotides with variants:</td>
                 <td>{percent_variable}%</td>
             </tr>
+            {pi_scores_table}
             {accessibility_string}
             {unique_motifs_rows}
             {motif_coverage_table}
@@ -1194,6 +1294,52 @@ class Highlights:
         """
 
         return table_string
+    
+    def _per_motif_p_values_pwm(self):
+        table_string = f"""<table>
+            <thead>
+            <tr>
+                Position Weight Matrix P Values
+            </tr> 
+            </thead>
+            <tbody>
+                {self._find_motifs_generate_row()}
+            </tbody>
+        </table>
+        """
+        return table_string
+    
+    def _find_motifs_generate_row(self):
+        table_rows = ""
+        for motif, p_val in self.pwm_p_values:
+            for motif_source in self.motif_sets:
+                if motif in self.motif_sets[motif_source]:
+                    if p_val == "NaN":
+                        p_val_string = "No P Value Found"
+                    else:
+                        p_val_string = f"{p_val}"
+                    
+                    table_rows += f"""
+                    <tr>
+                        <td>{motif}:</td>
+                        <td>{p_val_string}</td>
+                    </tr>\n
+                    """
+        return table_rows
+    
+    def _pi_scores_table(self):
+         pi_scores_mean, pi_scores_stev = self._get_pi_scores_mean_stdev()
+         table = f"""
+         <tr>
+            <td>Mean Pi score:</td>
+            <td>{pi_scores_mean}</td>
+         </tr>
+         <tr>
+            <td>Stdev of Pi scores:</td>
+            <td>{pi_scores_stev}</td>
+         </tr>
+         """
+         return table
 
     def _unique_motifs_table(self, motifs_sets):
         table_rows = ""
@@ -1288,10 +1434,10 @@ class Highlights:
                 dynamic_html_string += "<pre>"
                 rows_to_compare = []
 
-                if self.variant_data != None:
-                    dynamic_html_string += self._append_variant_data(
-                        max_len, counter + 1
-                    )
+                # if self.variant_data != None:
+                #     dynamic_html_string += self._append_variant_data(
+                #         max_len, counter + 1
+                #     )
 
                 row_end_position = None
                 for key, row in list_of_lines:
@@ -1346,14 +1492,15 @@ class Highlights:
         # Generate table that says how many of what motifs are in a sequence
         motif_count_table = self._pretty_print_motifs()
         
+        # Generate table that shows the p value for each match
+        pwm_motif_p_vals = self._per_motif_p_values_pwm()
+        
         # Appending statistics to the bottom of the page here
-
         html_string += f"\n{self._generate_table(self.variants_found, round(self.variants_found/len(chars) * 100, 3), self.motif_sets, self.motif_coverage)}"
         html_string += f"\n{motif_count_table}"
-
-        # if self.variant_data != None:
-        #     variant_stats = self._pretty_print_variants(len(chars))
-        #     html_string += f'\n{variant_stats}'
+        html_string += f"<br>\n{pwm_motif_p_vals}"
+        
+        html_string += '\n<div class = "spacer"> </div>'
         html_string += "\n</body>"
 
         # Save csv data

@@ -1,6 +1,6 @@
 """Module that contains the character class.
 """
-
+from clustal_highlighter.modules.data_structures.variant_classes import variant_stats
 
 class Character:
     """A character class, dedicated to simplifying how I store and represent nucleotides and their highlights"""
@@ -16,8 +16,59 @@ class Character:
         self.motif_files = {}  # file_name/id -> Set of motifs found at this character
         self.modified = False
 
-        self.is_accessible = None
+        self.is_accessible = "N/A"
+        
+        self.variant_stats:variant_stats = None
+        
+        # global variables for the 3 colors (steps) in the color bar in the HTML pages
+        self.color_bar_val1 = (54, 98, 57)
+        self.color_bar_val2 = (177, 63, 35)
+        self.color_bar_val3 = (288, 98, 17)
 
+    def add_variant(self, variant_info:variant_stats):
+        self.variant_stats = variant_info
+        self.modified = True
+
+    def generate_variant_div(self):
+        # Alert! These calculations for ref_percent_100 and alt_percent_100
+        # are done again in highlights.py... Please change both if you change
+        # 1 unless there is a good reason for it.
+        ref_percent = float(round(self.variant_stats.ref_percent, 3))
+        ref_percent_100 = float(round((ref_percent*100),3))
+        alt_percent_100 = float(round((self.variant_stats.alt_percent*100),3))
+        
+        #colorbar color match with variant percent...
+        new_color = None
+        if ref_percent <= 0.5:
+            relative_percent = ref_percent/0.5
+            new_color = self._calculate_color(relative_percent, self.color_bar_val1, self.color_bar_val2)
+        else:
+            relative_percent = (ref_percent-0.5)/0.5
+            new_color = self._calculate_color(relative_percent, self.color_bar_val2, self.color_bar_val3)
+
+        if self.is_accessible == True:
+            self.num_variants_accessible += 1
+            accessibility = "accessible"
+        elif self.is_accessible == False:
+            accessibility = "not accessible"
+
+        if self.is_accessible != "N/A":
+            accessibility_string = f" and is {accessibility}"
+        else:
+            accessibility_string = ""
+
+        ref, alt = self.variant_stats.ref, self.variant_stats.alt
+
+        return  f'<div class="variant_hat" style="color:hsl({new_color[0]},{new_color[1]}%,{new_color[2]}%)" data-toggle="tooltip" data-ref="{ref_percent_100}" data-animation="false" title ="{ref}: {ref_percent_100}% {alt}: {alt_percent_100}%{accessibility_string}">^</div>'
+
+    def _calculate_color(self, ref_percent, color1, color2):
+            hue_diff = color2[0] - color1[0]
+            sat_diff = color2[1] - color1[1]
+            lumen_diff = color2[2] - color1[2]
+            return (color1[0] + (hue_diff*ref_percent),
+                    color1[1] + (sat_diff*ref_percent),
+                    color1[2] + (lumen_diff*ref_percent))
+    
     def generate_html_string(self):
         """Generates an html string which includes the tooltip and background class color
 
@@ -29,18 +80,31 @@ class Character:
         if self.modified is False:
             return self.character
 
+        class_list = []
+        
         if self.color is not None:
-            as_html += ' class="' + self.color + '"'
+            class_list.append(self.color)
+            class_list.append("motif")
+            
+        # add html classes to span string
+        if class_list != []:
+            classes = ""
+            for html_class in class_list:
+                classes += html_class + " "
+            classes = classes[0:-1]
+            
+            as_html += f' class = "{classes}"'
 
         if len(self.motif_files) > 0:
             self.generate_tooltip()
-            as_html += (
-                ' data-toggle="tooltip" data-animation="false" title = "'
-                + self.tooltip
-                + '"'
-            )
+            as_html += f' data-toggle="tooltip" data-animation="false" title = "{self.tooltip}"'
 
         as_html += ">" + self.character + "</span>"
+        
+        if self.variant_stats is not None:
+            variant_hat = self.generate_variant_div()
+            as_html = f'<span class="has_variant">{as_html}{variant_hat}</span>'
+        
         return as_html
 
     def generate_tooltip(self):

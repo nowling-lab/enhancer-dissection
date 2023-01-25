@@ -58,12 +58,12 @@ def generate_dependencies(args) -> Highlights:
                                'motif_start',
                                'motif_end',
                                'motif',
-                               'orientation',
-                               'p_value',
+                               'matched_orientation',
+                               'matched_p_value',
                                'matched_sequence']
         
         pwm_p_values_table_data = ['motif',
-                                   'p_value']
+                                   'motif_definition_p_value']
         
         motif_coverage_data = []
         motif_coverage_columns = ['chromosome',
@@ -244,8 +244,13 @@ def generate_dependencies(args) -> Highlights:
 
             temp_highlight = Highlights(single_seq_dict, chromosome, start, end)
             
+            temp_highlight.pwm_p_values = per_motif_p_values
+            
             if accessibility_seq:
                 region_accessibility = all_accessibility[(start,end)]
+                # Must happen before adding variants! But I can't guarantee this...
+                # because you can run without variants or without accessibility Ahhh!
+                # pls don't break it whoever is reading this :(
                 temp_highlight.add_accessibility(region_accessibility)
                 
             if args.csv:
@@ -310,7 +315,7 @@ def generate_dependencies(args) -> Highlights:
             if fimo_sub_table != []:
                 pd.DataFrame(fimo_sub_table, columns=fimo_sub_table_columns).to_csv(f'{file_path}/fimo_sub_table.csv', sep=',', index=False)
             if per_motif_p_values != {}:
-                pd.DataFrame(per_motif_p_values, columns=pwm_p_values_table_data).to_csv(f'{file_path}/streme_motif_p_values.csv', sep=',', index=False)
+                pd.DataFrame(per_motif_p_values, columns=pwm_p_values_table_data).to_csv(f'{file_path}/motif_definition_p_values.csv', sep=',', index=False)
 
             
     print(f'output at: {args.output_dir}')
