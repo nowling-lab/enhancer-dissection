@@ -7,6 +7,7 @@ from clustal_highlighter.modules.data_structures.logger_classes import motif_hig
 from clustal_highlighter.modules.data_structures.variant_classes import variant_stats
 from clustal_highlighter.modules.file_handler import *
 from clustal_highlighter.modules.html_framework import html_heading
+from clustal_highlighter.modules.html_framework import highlight_variant_class
 from clustal_highlighter.modules.logger import *
 from clustal_highlighter.modules.variant_handler import *
 
@@ -728,9 +729,9 @@ class Highlights:
 
         button_string += "\n</div>"
 
-        button_string += '\n<script type="text/javascript">\n'
+        button_string += '\n<script type="text/javascript">\n'        
+        
         button_string += "$(document).ready(function () {\n"
-
         button_string += """$('[data-toggle="tooltip"]').tooltip();\n"""
 
         keys_reverse = keys[::-1]
@@ -1507,5 +1508,7 @@ class Highlights:
         if self.csv_wanted:
             self._save_csv_data()
 
+        # This must be deferred or else the data attributes break lol
+        html_string += f"\n<script>\n{highlight_variant_class()}\n</script>"
         self.outputs.append(html_string)
         return self.outputs[-1]

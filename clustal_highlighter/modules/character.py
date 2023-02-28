@@ -1,6 +1,7 @@
 """Module that contains the character class.
 """
 from clustal_highlighter.modules.data_structures.variant_classes import variant_stats
+import json
 
 class Character:
     """A character class, dedicated to simplifying how I store and represent nucleotides and their highlights"""
@@ -68,6 +69,61 @@ class Character:
             return (color1[0] + (hue_diff*ref_percent),
                     color1[1] + (sat_diff*ref_percent),
                     color1[2] + (lumen_diff*ref_percent))
+    
+    def get_variant_dict(self):
+        # Alert! These calculations for ref_percent_100 and alt_percent_100
+        # are done again in highlights.py... Please change both if you change
+        # 1 unless there is a good reason for it.
+        ref_percent = float(round(self.variant_stats.ref_percent, 3))
+        ref_percent_100 = float(round((ref_percent*100),3))
+        alt_percent_100 = float(round((self.variant_stats.alt_percent*100),3))
+        
+        #colorbar color match with variant percent...
+        new_color = None
+        if ref_percent <= 0.5:
+            relative_percent = ref_percent/0.5
+            new_color = self._calculate_color(relative_percent, self.color_bar_val1, self.color_bar_val2)
+        else:
+            relative_percent = (ref_percent-0.5)/0.5
+            new_color = self._calculate_color(relative_percent, self.color_bar_val2, self.color_bar_val3)
+
+        ref, alt = self.variant_stats.ref, self.variant_stats.alt
+        return {
+            "color":f'hsl({new_color[0]},{new_color[1]}%,{new_color[2]}%)',
+            "accessibility": f'{self.is_accessible}',
+            "ref_percent": ref_percent_100,
+            "alt_percent": alt_percent_100   
+        }
+    
+    def get_motif_dict(self):
+        ret_dict = {}
+        for motif, motif_set in self.motif_files.items():
+            ret_dict[motif] = list(motif_set)
+        ret_dict['color'] = self.color
+        return ret_dict 
+    
+    def generate_html(self):
+        if self.modified is False:
+            return self.character
+        else:            
+            if len(self.motif_files) != 0:
+                motif_json = json.dumps(self.get_motif_dict())
+                motif_data = f"data-motif='{motif_json}'"
+            else:
+                motif_data = ""
+            if self.variant_stats != None:
+                variant_json = json.dumps(self.get_variant_dict())
+                variant_data = f"data-variant='{variant_json}'"
+            else:
+                variant_data = ""
+                
+            color_str = None
+            if self.color == None:
+                color_str = ""
+            else:
+                color_str = f"data-{self.color}"
+            
+            return f"""<highlight-variant {color_str} data-position='{self.position}' data-character='{self.character}' {motif_data} {variant_data}></highlight-variant>"""
     
     def generate_html_string(self):
         """Generates an html string which includes the tooltip and background class color
@@ -180,6 +236,6 @@ class Character:
             str: The html string that represents this character
         """
         # if self.html_string == None:
-        self.html_string = self.generate_html_string()
+        self.html_string = self.generate_html()
 
         return self.html_string
