@@ -1,0 +1,702 @@
+
+    <!DOCTYPE html>
+    <html lang="en-US">
+    <head>
+        <title>Html Conversion</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="Keywords"
+        content="HTML">
+        <meta name="Description"
+          content="This is a highlighted FIMO output thingy">
+          
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- JavaScript Bundle with Popper -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <style>
+        .variant_hat{
+            font-weight: 800;
+            font-size: large;
+            position: absolute;
+            bottom: 0.3rem;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+        
+        .motif{
+            position: relative;
+            z-index: 2;
+        }
+        
+        pre{
+            overflow-x: visible;
+            overflow-y: visible;
+        }
+        
+        .has_variant{
+            position: relative;
+        }
+        
+        .spacer{
+            margin-bottom: 5rem;
+        }
+        
+        #colorbar{
+            width: 300px;
+            height: 30px;
+            outline: auto;
+            /* background: linear-gradient(to right,
+                                        red 0%,
+                                        orange 25%,
+                                        yellow 75%,
+                                        green 100%); */
+            background: linear-gradient(to right,
+                                        hsl(54, 98%, 57%) 0%,
+                                        hsl(177, 63%, 35%) 50%,
+                                        hsl(288, 98%, 17%) 100%);
+            vertical-align: middle;
+        }   
+        
+        #colorbar_top_text{
+            position: relative;
+            margin-left: 25%;
+        }
+        
+        #colorbar_wrapper{
+            width: fit-content;
+            margin-top: 0.5rem;
+        }
+        
+        #colorbar_with_text{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+        }
+        
+        .heading{
+            width: 75%;
+        }
+        
+        .hidden{
+            display: none;
+        }
+        
+        body{
+            margin-left: 1.5rem;
+            background: #D5D8DC;
+        }
+        
+        button{
+            margin-top: 1vh;
+        }
+        
+        td {
+            padding: 0 15px;
+        }
+        
+        .clear{
+        background:#D5D8DC !important;
+        }
+    .blue{
+ background:Aqua;
+}
+.red{
+ background:PaleVioletRed;
+}
+.clear{
+            background:#D5D8DC !important;
+        }</style>
+
+            </head>
+            <body>
+            <div> Legend: </div>
+            
+            <div class = "blue heading"> This color is for the JASPAR descriptor given </div>
+<div class = "red heading"> This color is for the STREME descriptor given </div>
+<div class = "purple heading"> This is for overlapping highlights </div>
+<div style="width:75%; word-wrap: break-word;"> ^'s indicate that Variant data is available for that position. Mouse over to view stats </div><div>
+<button id="toggle_blue" type="button" class="btn" style="background:Aqua">Toggle blue</button>
+<button id="toggle_red" type="button" class="btn" style="background:PaleVioletRed">Toggle red</button>
+<button id="toggle_variant" type="button" class="btn btn-secondary">Toggle Variant ^'s</button>
+<div id="colorbar_wrapper">
+                                    <div id="colorbar_top_text">Variant(^) reference allele %</div>
+                                        <div id="colorbar_with_text">
+                                            <span>0%</span>
+                                            <div id="colorbar"></div>
+                                            <span>100%</span>
+                                        </div>
+                                    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+$('[data-toggle="tooltip"]').tooltip();
+$("#toggle_blue").click(function() {
+   $( "span.blue" ).toggleClass( "clear" );
+   $( "span.purple" ).toggleClass( "red" );});
+
+$("#toggle_red").click(function() {
+   $( "span.red" ).toggleClass( "clear" );
+   $( "span.purple" ).toggleClass( "blue" );});
+
+$("#toggle_purple").click(function() {
+   $( "span.purple" ).toggleClass( "clear" );
+});
+
+$('#toggle_variant').click(function(){
+                $( "div.variant_hat" ).toggleClass( "hidden" );
+            });
+            
+            const variant_value = document.querySelector("#variant_value");
+            const variant_input = document.querySelector("#variant_input");
+            variant_value.textContent = variant_input.value;
+
+            const all_variants = document.getElementsByClassName("variant_hat");
+
+            variant_input.addEventListener("input", (event) => {
+                variant_value.textContent = event.target.value;
+                for (var variant of all_variants){
+                    if (parseFloat(variant.dataset.ref) <= event.target.value){
+                        variant.hidden = false;
+                    }else{
+                        variant.hidden = true;
+                    }
+                }    
+            })
+            }); 
+</script>
+            
+<div>
+                <br/>
+                <details id="filters" open>
+                    <summary>Filters</summary>
+                    <p>Filter out variants with reference frequency less than:</p>
+                    <input id="variant_input" type="range" min="0" max="100" step="1" name="variant_filter" value="100"/>
+                    <label for="variant_filter">Percentage: <output id="variant_value"></output></label>
+                    </details>
+            </div>
+<br><br/><pre>X_3572862_3573419 : T<highlight-variant data-red data-position='3572863' data-character='G' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3572864' data-character='C' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3572865' data-character='C' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3572866' data-character='G' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3572867' data-character='G' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3572868' data-character='A' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3572869' data-character='T' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3572870' data-character='G' data-motif='{"STREME": [[2, 9, "STREME-6", "GCCGGATG", "+", "5.38e-05"]], "color": "red"}' ></highlight-variant>ATTGATTCCGTGTCGGGGTCCCGTTTTTGCTT<highlight-variant data-blue data-position='3572903' data-character='T' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572904' data-character='A' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572905' data-character='G' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572906' data-character='G' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572907' data-character='G' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572908' data-character='T' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572909' data-character='A' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572910' data-character='G' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572911' data-character='C' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572912' data-character='G' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3572913' data-character='G' data-motif='{"JASPAR": [[42, 52, "odd", "TAGGGTAGCGG", "+", "6.44e-05"]], "color": "blue"}' ></highlight-variant>GCAGAGGGGTAGAGAAGT 3572932<br></pre><pre>X_3572862_3573419 : GTCTGCAGCTCAGCGAGCCCACACGGGCCCCTCTTCCCTTACCCTTCCCGCCGCACTTCCCACCGCCTTC 3573002<br></pre><pre>X_3572862_3573419 : CCTT<highlight-variant data-blue data-position='3573006' data-character='G' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573007' data-character='T' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573008' data-character='G' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573009' data-character='C' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573010' data-character='T' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573011' data-character='C' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573012' data-character='C' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573013' data-character='A' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573014' data-character='A' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573015' data-character='T' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573016' data-character='G' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573017' data-character='T' data-motif='{"JASPAR": [[145, 156, "kni", "GTGCTCCAATGT", "-", "7.02e-05"]], "color": "blue"}' ></highlight-variant>AGA<highlight-variant data-blue data-position='3573021' data-character='T' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573022' data-character='T' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573023' data-character='T' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573024' data-character='T' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573025' data-character='C' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573026' data-character='C' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573027' data-character='A' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573028' data-character='G' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573029' data-character='C' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573030' data-character='A' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573031' data-character='C' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573032' data-character='A' data-motif='{"JASPAR": [[160, 171, "Hsf", "TTTTCCAGCACA", "+", "6.17e-05"]], "color": "blue"}' ></highlight-variant>CA<highlight-variant  data-position='3573035' data-character='A'  data-variant='{"color": "hsl(241.38,83.30000000000001%,24.56%)", "accessibility": "N/A", "ref_percent": 79.0, "alt_percent": 21.014}'></highlight-variant>ACAGCACAGCAGTGTAGCTGACCGTAGTTGGCCGTA 3573072<br></pre><pre>X_3572862_3573419 : GTACGT<highlight-variant data-blue data-position='3573078' data-character='A' data-motif='{"JASPAR": [[217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573079' data-character='C' data-motif='{"JASPAR": [[217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573080' data-character='G' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573081' data-character='C' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573082' data-character='T' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573083' data-character='C' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573084' data-character='T' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573085' data-character='C' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573086' data-character='T' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573087' data-character='T' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573088' data-character='T' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573089' data-character='C' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"], [217, 228, "Trl", "ACGCTCTCTTTC", "-", "1.7e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573090' data-character='G' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573091' data-character='C' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573092' data-character='A' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573093' data-character='C' data-motif='{"JASPAR": [[219, 232, "Clamp", "GCTCTCTTTCGCAC", "-", "2.77e-05"]], "color": "blue"}' ></highlight-variant>CGATATCTGAAACGGA<highlight-variant data-blue data-position='3573110' data-character='A' data-motif='{"JASPAR": [[249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573111' data-character='A' data-motif='{"JASPAR": [[249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573112' data-character='A' data-motif='{"JASPAR": [[251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573113' data-character='A' data-motif='{"JASPAR": [[251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573114' data-character='A' data-motif='{"JASPAR": [[251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573115' data-character='A' data-motif='{"JASPAR": [[251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573116' data-character='G' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573117' data-character='A' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573118' data-character='G' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573119' data-character='A' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573120' data-character='G' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573121' data-character='A' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [249, 260, "Trl", "AAAAAAGAGAGA", "+", "8.43e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573122' data-character='G' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573123' data-character='C' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [251, 262, "Trl", "AAAAGAGAGAGC", "+", "2.74e-06"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573124' data-character='G' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573125' data-character='A' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [251, 264, "Clamp", "AAAAGAGAGAGCGA", "+", "9.01e-05"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [253, 264, "Trl", "AAGAGAGAGCGA", "+", "1.17e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573126' data-character='G' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573127' data-character='A' data-motif='{"JASPAR": [[255, 266, "Trl", "GAGAGAGCGAGA", "+", "4.38e-05"], [255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"], [253, 266, "Clamp", "AAGAGAGAGCGAGA", "+", "9.14e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573128' data-character='A' data-motif='{"JASPAR": [[255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573129' data-character='G' data-motif='{"JASPAR": [[255, 268, "Clamp", "GAGAGAGCGAGAAG", "+", "3.56e-07"]], "color": "blue"}' ></highlight-variant>ACGACTCCACAG 3573142<br></pre><pre>X_3572862_3573419 : TTGAAGGCCGGGAGGAATCTAGAAACGGAAGAAGAAAAAATA<highlight-variant data-blue data-position='3573184' data-character='C' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573185' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573186' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573187' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573188' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573189' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573190' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573191' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573192' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573193' data-character='A' data-motif='{"JASPAR": [[323, 332, "hb", "CAAAAAAAAA", "+", "4.46e-05"]], "color": "blue"}' ></highlight-variant>ACTCCAGAAGGCAGAAAG 3573212<br></pre><pre>X_3572862_3573419 : ATCCC<highlight-variant data-blue data-position='3573217' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573218' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573219' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573220' data-character='T' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573221' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573222' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573223' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573224' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573225' data-character='C' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573226' data-character='T' data-motif='{"JASPAR": [[356, 365, "btd", "CCCTCCCCCT", "-", "4.38e-05"]], "color": "blue"}' ></highlight-variant>CCACGAGGAGGAACAACAGCAAGCCGCCCCT<highlight-variant data-blue data-position='3573258' data-character='G' data-motif='{"JASPAR": [[397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573259' data-character='G' data-motif='{"JASPAR": [[398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573260' data-character='A' data-motif='{"JASPAR": [[398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573261' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573262' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573263' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573264' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573265' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573266' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573267' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"], [397, 406, "hb", "GGAAAAAAAA", "+", "8.58e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573268' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"], [398, 407, "hb", "GAAAAAAAAA", "+", "2.12e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573269' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573270' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573271' data-character='A' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573272' data-character='C' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573273' data-character='G' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573274' data-character='C' data-motif='{"JASPAR": [[400, 413, "pan", "AAAAAAAAAAACGC", "-", "5.57e-05"]], "color": "blue"}' ></highlight-variant>TGGGAAC 3573282<br></pre><pre>X_3572862_3573419 : GCTGGGGACGGAATTGGGGTGCGCGCGCGCGCT<highlight-variant data-red data-position='3573315' data-character='T' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573316' data-character='C' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573317' data-character='C' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573318' data-character='A' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573319' data-character='A' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573320' data-character='A' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573321' data-character='A' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573322' data-character='T' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573323' data-character='T' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573324' data-character='A' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573325' data-character='C' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573326' data-character='G' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573327' data-character='C' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573328' data-character='T' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573329' data-character='C' data-motif='{"STREME": [[454, 468, "STREME-25", "TCCAAAATTACGCTC", "+", "3.1e-05"]], "color": "red"}' ></highlight-variant>GAGT<highlight-variant data-red data-position='3573334' data-character='G' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573335' data-character='A' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573336' data-character='T' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573337' data-character='C' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573338' data-character='A' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573339' data-character='C' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573340' data-character='C' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573341' data-character='G' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573342' data-character='T' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573343' data-character='G' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573344' data-character='A' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573345' data-character='C' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant><highlight-variant data-red data-position='3573346' data-character='A' data-motif='{"STREME": [[473, 485, "STREME-18", "GATCACCGTGACA", "+", "9.31e-05"]], "color": "red"}' ></highlight-variant>ATAAT 3573352<br></pre><pre>X_3572862_3573419 : TCATCCGTCAACTGCCCGTTTCTGTTTCGGTTC<highlight-variant data-blue data-position='3573385' data-character='G' data-motif='{"JASPAR": [[524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573386' data-character='G' data-motif='{"JASPAR": [[524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573387' data-character='G' data-motif='{"JASPAR": [[524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573388' data-character='G' data-motif='{"JASPAR": [[524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573389' data-character='T' data-motif='{"JASPAR": [[524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573390' data-character='T' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573391' data-character='T' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573392' data-character='T' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573393' data-character='T' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573394' data-character='T' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573395' data-character='T' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573396' data-character='G' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [524, 535, "dl", "GGGGTTTTTTTG", "+", "8.02e-06"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573397' data-character='G' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"], [525, 536, "dl", "GGGTTTTTTTGG", "+", "5.73e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573398' data-character='T' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"]], "color": "blue"}' ></highlight-variant><highlight-variant data-blue data-position='3573399' data-character='C' data-motif='{"JASPAR": [[529, 538, "hb", "TTTTTTGGTC", "-", "9.34e-05"]], "color": "blue"}' ></highlight-variant>CCTGTGTGTGTGTGAGTGTG 3573419<br></pre>
+<table>
+            <thead>
+            <tr>
+                Summary Stats
+            </tr> 
+            </thead>
+            <tbody>
+            <tr>
+                <td>Variants in region:</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Mean number of alleles missing per sample:</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Stdev of number alleles missing per sample:</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Percent of nucleotides with variants:</td>
+                <td>0.179%</td>
+            </tr>
+            
+            
+            
+            <tr>
+                <td>Unique JASPAR motifs found:</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>Unique STREME motifs found:</td>
+                <td>3</td>
+            </tr>
+            
+                <tr>
+                    <td>JASPAR Percent Coverage:</td>
+                    <td>22.0%</td>
+                </tr>
+            
+                <tr>
+                    <td>STREME Percent Coverage:</td>
+                    <td>6.5%</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+
+            </br>
+            <table>
+                <thead>
+                <tr>
+                    JASPAR Motif Stats
+                </tr> 
+                <tr>
+                    <td>Motif</td>
+                    <td>Count</td>    
+                    <td>Coverage</td>
+                    <td>Forward(+)</td>
+                    <td>Reverse(-)</td>
+                </tr> 
+                </thead>
+                <tbody><tr>
+                    <td>Trl</td>
+                    <td>5</td>
+                    <td>5.2%</td>
+                    <td>4</td>
+                    <td>1</td>
+                    </tr> <tr>
+                    <td>Clamp</td>
+                    <td>4</td>
+                    <td>5.6%</td>
+                    <td>3</td>
+                    <td>1</td>
+                    </tr> <tr>
+                    <td>hb</td>
+                    <td>4</td>
+                    <td>5.4%</td>
+                    <td>3</td>
+                    <td>1</td>
+                    </tr> <tr>
+                    <td>dl</td>
+                    <td>2</td>
+                    <td>2.2%</td>
+                    <td>2</td>
+                    <td>0</td>
+                    </tr> <tr>
+                    <td>btd</td>
+                    <td>1</td>
+                    <td>1.6%</td>
+                    <td>0</td>
+                    <td>1</td>
+                    </tr> <tr>
+                    <td>pan</td>
+                    <td>1</td>
+                    <td>2.3%</td>
+                    <td>0</td>
+                    <td>1</td>
+                    </tr> <tr>
+                    <td>Hsf</td>
+                    <td>1</td>
+                    <td>2.0%</td>
+                    <td>1</td>
+                    <td>0</td>
+                    </tr> <tr>
+                    <td>odd</td>
+                    <td>1</td>
+                    <td>1.8%</td>
+                    <td>1</td>
+                    <td>0</td>
+                    </tr> <tr>
+                    <td>kni</td>
+                    <td>1</td>
+                    <td>2.0%</td>
+                    <td>0</td>
+                    <td>1</td>
+                    </tr> </tbody> </table>
+            </br>
+            <table>
+                <thead>
+                <tr>
+                    STREME Motif Stats
+                </tr> 
+                <tr>
+                    <td>Motif</td>
+                    <td>Count</td>    
+                    <td>Coverage</td>
+                    <td>Forward(+)</td>
+                    <td>Reverse(-)</td>
+                </tr> 
+                </thead>
+                <tbody><tr>
+                    <td>STREME-25</td>
+                    <td>1</td>
+                    <td>2.5%</td>
+                    <td>1</td>
+                    <td>0</td>
+                    </tr> <tr>
+                    <td>STREME-6</td>
+                    <td>1</td>
+                    <td>1.3%</td>
+                    <td>1</td>
+                    <td>0</td>
+                    </tr> <tr>
+                    <td>STREME-18</td>
+                    <td>1</td>
+                    <td>2.2%</td>
+                    <td>1</td>
+                    <td>0</td>
+                    </tr> </tbody> </table><br>
+<table>
+            <thead>
+            <tr>
+                Position Weight Matrix P Values
+            </tr> 
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        <td>btd:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>Clamp:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>dl:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>hb:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>Hsf:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>kni:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>odd:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>pan:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>Trl:</td>
+                        <td>No P Value Found</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>STREME-6:</td>
+                        <td>1.3e-009</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>STREME-18:</td>
+                        <td>6.2e-006</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>STREME-25:</td>
+                        <td>6.2e-006</td>
+                    </tr>
+
+                    
+            </tbody>
+        </table>
+        
+<div class = "spacer"> </div>
+</body>
+<script>
+
+// Create a class for the element
+class HighlightWithVariant extends HTMLElement {
+  constructor() {
+    // Always call super first in constructor
+    super();
+
+    // Create a shadow root
+    const shadow = this.attachShadow({mode: 'open'});
+
+    // Wrapper class so tooltips can use position: absolute
+    // and z index
+    const wrapper = document.createElement('span');
+    wrapper.classList.add("wrapper");
+    if (typeof this.dataset.motif === 'undefined'){
+        wrapper.innerText = "A";
+    }
+
+    if (typeof this.dataset.motif !== 'undefined'){
+        // Motif highlight
+      const motif_data = JSON.parse(this.dataset.motif);
+      const motif = document.createElement('span');
+      motif.innerText = this.dataset.character;
+      motif.classList.add(motif_data.color);
+      motif.classList.add("motif");
+      wrapper.appendChild(motif);
+
+      // The custom tooltip for this motif
+      const motif_popup = document.createElement('div');
+      motif_popup.setAttribute("id", "pop-up");
+      const popup_table = document.createElement('table');
+      
+      let label_row = document.createElement('tr');
+      let label_row_text = ["Desc","ID", "Orientation", "p-value", "Sequence"]
+      label_row_text.forEach(function (text) {
+          let temp_header_cell = document.createElement('th');
+          temp_header_cell.textContent = text;
+          label_row.appendChild(temp_header_cell);
+      });
+
+      popup_table.appendChild(label_row);
+
+      for (const [key, value] of Object.entries(motif_data)) {
+        if (key != 'color'){          
+            for (let motif of value) {
+                let table_data = [key ,motif[2], motif[4], motif[5], motif[3]]
+                let temp_row = document.createElement('tr');
+                table_data.forEach(function (cell_data) {
+                    let temp_cell = document.createElement('td');
+                    temp_cell.innerText = cell_data;
+                    temp_row.appendChild(temp_cell);
+                });
+                popup_table.appendChild(temp_row);
+            }
+        }
+       }
+      motif_popup.innerHTML = popup_table.outerHTML;
+      motif_popup.classList.add("pop-up");
+      wrapper.appendChild(motif_popup);
+    }
+
+    
+    if (typeof this.dataset.variant !== 'undefined'){
+      // Variant hat
+      const variant_data = JSON.parse(this.dataset.variant);
+      const variant = document.createElement('div');
+      variant.setAttribute("id", "variant")
+      variant.dataset.ref = variant_data.ref_percent;
+      variant.style.color = variant_data.color;
+      variant.innerText = "^";
+      variant.classList.add("variant");
+
+      wrapper.appendChild(variant);
+
+      // Variant custom tooltip
+      const variant_popup = document.createElement('span');
+      variant_popup.classList.add("pop-up");
+      let variant_text = ""
+      variant_text += `Position: ${parseInt(this.dataset.position, 10).toLocaleString("en-US")}
+`
+      variant_text += `Ref Allele Percent: ${variant_data.ref_percent}%
+`
+      variant_text += `Alt Allele Percent: ${variant_data.alt_percent}%
+`
+      variant_popup.innerHTML = variant_text;
+      wrapper.appendChild(variant_popup);
+    }
+
+    // Create some CSS to apply to the shadow dom
+    const style = document.createElement('style');
+    style.textContent = `
+      .wrapper {
+        position: relative;
+      }
+
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border-style: hidden;
+      }
+
+      td, th {
+        border: 1px solid black;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th:first-of-type {
+        border-top-left-radius: 10px;
+      }
+      
+      th:last-of-type {
+        border-top-right-radius: 10px;
+      }
+        
+      tr:last-of-type td:first-of-type {
+        border-bottom-left-radius: 10px;
+      }
+        
+      tr:last-of-type td:last-of-type {
+        border-bottom-right-radius: 10px;
+      }
+        
+      .pop-up {
+        font-size: 0.8rem;
+        width: content-fit;
+        display:table;
+        /*display: inline-block;*/
+        border: 1px solid black;
+        /*padding: 2px;*/
+        background: white;
+        border-radius: 10px;
+        opacity: 0;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        z-index: 1;
+      }
+
+      .hide {
+        visibility: hidden; !important
+      }
+
+      .variant + .pop-up {
+        padding: 10px;
+      }
+
+      .variant:hover + .pop-up {
+        opacity: 1;
+        z-index: 4;
+      }
+
+      .motif:hover + .pop-up {
+        opacity: 1;
+        z-index: 4;
+      }
+
+      .variant{
+        font-weight: 800;
+        font-size: large;
+        position: absolute;
+        bottom: 0.3rem;
+        left: 0;
+        right: 0;
+        z-index: 2;
+      }
+    
+      .motif{
+        position: relative;
+        z-index: 3;
+      }
+
+      .blue{
+        background:Aqua;
+      }
+      
+      .purple{
+            background:Plum;
+      }
+
+      .red{
+        background:PaleVioletRed;
+      }
+    
+      .clear{
+        background:#D5D8DC !important;
+      }
+    `;
+
+    // Attach the created elements to the shadow dom
+    shadow.appendChild(style);
+    shadow.appendChild(wrapper);
+    }
+}
+
+// Define the new element
+customElements.define('highlight-variant', HighlightWithVariant);
+
+function get_spans(className){
+    let classNameElements = document.querySelectorAll(`highlight-variant[data-${className}]`);
+    let spans = []
+    for(let classNameElement of classNameElements){
+        highlighted_span = classNameElement.shadowRoot.querySelector(`.motif`);
+        spans.push(highlighted_span);
+    }
+    return spans;
+}
+
+function get_variants(){
+    let variantHighlights = document.querySelectorAll('highlight-variant[data-variant]');
+    let variantDivs = [];
+    for (let variantHighlight of variantHighlights){
+        variantDivs.push(variantHighlight.shadowRoot.querySelector('div'));
+    }
+    return variantDivs;
+}
+
+let variantDivs = get_variants();
+let redSpans = get_spans('red');
+let blueSpans = get_spans('blue');
+let purpleSpans = get_spans('purple'); 
+
+function toggle_red(){
+    redSpans.forEach(function(redSpan){
+        redSpan.classList.toggle('red');
+        const popup = redSpan.parentElement.querySelector("#pop-up");
+        popup.classList.toggle("hide");
+    });
+    purpleSpans.forEach(function(purpleSpan){
+        if (purpleSpan.classList.contains('red') || purpleSpan.classList.length === 1){
+            purpleSpan.classList.toggle('red');
+        }else{
+            purpleSpan.classList.toggle('purple');
+            purpleSpan.classList.toggle('blue');  
+        }
+    });
+}
+
+function toggle_blue(){
+    blueSpans.forEach(function(blueSpan){
+        blueSpan.classList.toggle('blue');
+        const popup = blueSpan.parentElement.querySelector("#pop-up");
+        popup.classList.toggle("hide");
+    });
+    purpleSpans.forEach(function(purpleSpan){
+        if (purpleSpan.classList.contains('blue') || purpleSpan.classList.length === 1){
+            purpleSpan.classList.toggle('blue');
+        }else{
+            purpleSpan.classList.toggle('purple');
+            purpleSpan.classList.toggle('red'); 
+        }
+    });
+}
+
+function toggle_variant(){  
+    for(let variantDiv of variantDivs){
+        if (variantDiv.hidden === true){
+            variantDiv.hidden = false;
+        }else{
+            variantDiv.hidden = true;
+        }
+    }      
+}
+
+document.getElementById('toggle_blue').addEventListener('click', toggle_blue)
+document.getElementById('toggle_red').addEventListener('click', toggle_red)
+document.getElementById('toggle_variant').addEventListener('click', toggle_variant);
+            
+const variant_value = document.querySelector("#variant_value");
+const variant_input = document.querySelector("#variant_input");
+variant_value.textContent = variant_input.value;
+
+variant_input.addEventListener("input", (event) => {
+variant_value.textContent = event.target.value;
+    for (var variant of variantDivs){
+        if (parseFloat(variant.dataset.ref) <= event.target.value){
+            variant.hidden = false;
+        }else{
+            variant.hidden = true;
+        }
+}    
+})
+
+</script>

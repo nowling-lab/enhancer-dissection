@@ -1,0 +1,45 @@
+body{
+    background-color: #457b9d;
+    /* overflow: hidden; */
+}
+
+body:has(#highlights){
+    overflow: hidden;
+}
+
+.dash-spreadsheet tr td > div:not(.cell-markdown){
+    margin-right: 10px;
+    font-size: large;
+}
+
+.dash-spreadsheet tr th{
+    font-size: large;
+}
+
+.dash-spreadsheet tr td p{
+    margin: 0px;
+    padding: 0px;
+}
+
+#buttons-chart-row{
+    display: flex;
+    gap: 2rem;
+}
+
+#highlights{
+    height: 95vh;
+}
+
+.nav-bar{
+    display: flex;
+    gap: 1rem;
+}
+
+#interactive-table{
+    height: fit-content;
+}
+
+#table-wrapper{
+    max-height: 80vh;
+    min-height: 0vh;
+}
