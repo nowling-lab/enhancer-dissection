@@ -1,6 +1,6 @@
 # enhancer-dissection
  
-#NOTE: Debian users please rease the warnings at the bottom of this file
+#NOTE: Debian users please read the warnings at the bottom of this file
  
 The two programs in this project display variant data, motif data (via highlights). They differ only by their inputs. fasta_highlighter takes groups of aligned sequen es (all orientated the same way) in order to compare by the sequence data. Motifs are commonly overlayed on these. 
 
