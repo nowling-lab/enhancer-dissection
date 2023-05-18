@@ -41,7 +41,8 @@ def generate_dependencies(args) -> Highlights:
         
     if args.csv:
         motif_counts_data = []
-        motif_counts_columns = ['chromosome',
+        motif_counts_columns = ['report_file_path',
+                                'chromosome',
                                 'sequence_start',
                                 'sequence_stop',
                                 'motif',
@@ -53,27 +54,29 @@ def generate_dependencies(args) -> Highlights:
         
         fimo_sub_table = []
         fimo_sub_table_columns = ['chromosome',
-                               'sequence_start',
-                               'sequence_end',
-                               'motif_start',
-                               'motif_end',
-                               'motif',
-                               'matched_orientation',
-                               'matched_p_value',
-                               'matched_sequence']
-        
+                                  'sequence_start',
+                                  'sequence_end',
+                                  'motif_start',
+                                  'motif_end',
+                                  'motif',
+                                  'matched_orientation',
+                                  'matched_p_value',
+                                  'matched_sequence']
+            
         pwm_p_values_table_data = ['motif',
                                    'motif_definition_p_value']
         
         motif_coverage_data = []
-        motif_coverage_columns = ['chromosome',
+        motif_coverage_columns = ['report_file_path',
+                                  'chromosome',
                                   'sequence_start',
                                   'sequence_stop',
                                   'motif_descriptor',
                                   'coverage']
         
         variant_data = []
-        variant_columns = ['chromosome',
+        variant_columns = ['report_file_path',
+                           'chromosome',
                            'sequence_start',
                            'sequence_stop',
                            'variant_position',
@@ -156,10 +159,10 @@ def generate_dependencies(args) -> Highlights:
             vcf_file_extension = pathlib.Path(args.variant_data).suffix
             if vcf_file_extension == '.gz':
                     os.makedirs(os.path.dirname(f'{working_directory}/site_pi/'), exist_ok=True)
-                    call(f"run_vcf_tools_pi {args.variant_data} 1 {working_directory}/site_pi/", shell=True)
+                    call(f"run_vcf_tools_pi {args.variant_data} 1 {working_directory}/site_pi", shell=True)
             else:
                     os.makedirs(os.path.dirname(f'{working_directory}/site_pi/'), exist_ok=True)
-                    call(f"run_vcf_tools_pi {args.variant_data} 0 {working_directory}/site_pi/", shell=True)
+                    call(f"run_vcf_tools_pi {args.variant_data} 0 {working_directory}/site_pi", shell=True)
             info(LOGGER, f'Successfully generated site pi data at {working_directory}/stie_pi')
         else:
             warning(LOGGER, f'Site pi data was requested but --variant-data flag was not used. No variant or site pi data will be presented')

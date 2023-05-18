@@ -259,7 +259,12 @@ class Highlights:
                 counter = 0
                 for x in range(start - 1, end):  # From 1 base to 0 base
                     current_char = self.sequences[sequence][x]
-                    current_char.add_motif(motifs_descriptor, motif_id, color.lower())
+                    temp_motif_obj = {
+                        'desc': motifs_descriptor,
+                        'color': color.lower(),
+                        'motif': motif
+                    }
+                    current_char.add_motif(temp_motif_obj)
 
                     matched_char = matched_sequence[counter]
                     if current_char.character != matched_char:
@@ -483,6 +488,7 @@ class Highlights:
                 coverage = self.individual_motif_coverage[motif]
                 self.motif_counts_csv.append(
                     (
+                        self.file_path,
                         self.name,
                         self.seq_start,
                         self.seq_end,
@@ -500,6 +506,7 @@ class Highlights:
         for motif_descriptor in self.coverage:
             tmp_array.append(
                 (
+                    self.file_path,
                     self.name,
                     self.seq_start,
                     self.seq_end,
@@ -1022,6 +1029,7 @@ class Highlights:
                     
                     self.variants_with_percent.append(
                     (
+                        self.file_path,
                         self.name,
                         self.seq_start,
                         self.seq_end,

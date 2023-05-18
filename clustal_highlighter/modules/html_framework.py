@@ -136,20 +136,35 @@ class HighlightWithVariant extends HTMLElement {
       wrapper.appendChild(motif);
 
       // The custom tooltip for this motif
-      const motif_popup = document.createElement('span');
-      let motif_popup_text = ""
+      const motif_popup = document.createElement('div');
+      motif_popup.setAttribute("id", "pop-up");
+      const popup_table = document.createElement('table');
+      
+      let label_row = document.createElement('tr');
+      let label_row_text = ["Desc","ID", "Orientation", "p-value", "Sequence"]
+      label_row_text.forEach(function (text) {
+          let temp_header_cell = document.createElement('th');
+          temp_header_cell.textContent = text;
+          label_row.appendChild(temp_header_cell);
+      });
+
+      popup_table.appendChild(label_row);
+
       for (const [key, value] of Object.entries(motif_data)) {
-        if (key != 'color'){    
-            motif_popup_text += `${key}:
-`
-            
+        if (key != 'color'){          
             for (let motif of value) {
-                motif_popup_text += `${motif}
-`
+                let table_data = [key ,motif[2], motif[4], motif[5], motif[3]]
+                let temp_row = document.createElement('tr');
+                table_data.forEach(function (cell_data) {
+                    let temp_cell = document.createElement('td');
+                    temp_cell.innerText = cell_data;
+                    temp_row.appendChild(temp_cell);
+                });
+                popup_table.appendChild(temp_row);
             }
         }
        }
-      motif_popup.innerHTML = motif_popup_text;
+      motif_popup.innerHTML = popup_table.outerHTML;
       motif_popup.classList.add("pop-up");
       wrapper.appendChild(motif_popup);
     }
@@ -159,6 +174,7 @@ class HighlightWithVariant extends HTMLElement {
       // Variant hat
       const variant_data = JSON.parse(this.dataset.variant);
       const variant = document.createElement('div');
+      variant.setAttribute("id", "variant")
       variant.dataset.ref = variant_data.ref_percent;
       variant.style.color = variant_data.color;
       variant.innerText = "^";
@@ -170,14 +186,12 @@ class HighlightWithVariant extends HTMLElement {
       const variant_popup = document.createElement('span');
       variant_popup.classList.add("pop-up");
       let variant_text = ""
-      variant_text += `Position: ${parseInt(this.dataset.position, 10).toLocaleString("en-US")}\n`
-      variant_text += `Ref Allele Percent: ${variant_data.ref_percent}%\n`
-      variant_text += `Alt Allele Percent: ${variant_data.alt_percent}%\n`
-    //   `
-    //   Position: 155 <br>
-    //   Ref: 32% <br>
-    //   Alt: 68% <br>
-    //   Pi Score: 0.351`
+      variant_text += `Position: ${parseInt(this.dataset.position, 10).toLocaleString("en-US")}
+`
+      variant_text += `Ref Allele Percent: ${variant_data.ref_percent}%
+`
+      variant_text += `Alt Allele Percent: ${variant_data.alt_percent}%
+`
       variant_popup.innerHTML = variant_text;
       wrapper.appendChild(variant_popup);
     }
@@ -189,12 +203,42 @@ class HighlightWithVariant extends HTMLElement {
         position: relative;
       }
 
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border-style: hidden;
+      }
+
+      td, th {
+        border: 1px solid black;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th:first-of-type {
+        border-top-left-radius: 10px;
+      }
+      
+      th:last-of-type {
+        border-top-right-radius: 10px;
+      }
+        
+      tr:last-of-type td:first-of-type {
+        border-bottom-left-radius: 10px;
+      }
+        
+      tr:last-of-type td:last-of-type {
+        border-bottom-right-radius: 10px;
+      }
+        
       .pop-up {
         font-size: 0.8rem;
-        width: 12rem;
-        display: inline-block;
+        width: content-fit;
+        display:table;
+        /*display: inline-block;*/
         border: 1px solid black;
-        padding: 10px;
+        /*padding: 2px;*/
         background: white;
         border-radius: 10px;
         opacity: 0;
@@ -202,6 +246,14 @@ class HighlightWithVariant extends HTMLElement {
         bottom: 20px;
         left: 10px;
         z-index: 1;
+      }
+
+      .hide {
+        visibility: hidden; !important
+      }
+
+      .variant + .pop-up {
+        padding: 10px;
       }
 
       .variant:hover + .pop-up {
@@ -269,7 +321,7 @@ function get_variants(){
     let variantHighlights = document.querySelectorAll('highlight-variant[data-variant]');
     let variantDivs = [];
     for (let variantHighlight of variantHighlights){
-        variantDivs.push(variantHighlight.shadowRoot.querySelector('div'));
+      variantDivs.push(variantHighlight.shadowRoot.getElementById('variant'));
     }
     return variantDivs;
 }
@@ -282,6 +334,8 @@ let purpleSpans = get_spans('purple');
 function toggle_red(){
     redSpans.forEach(function(redSpan){
         redSpan.classList.toggle('red');
+        const popup = redSpan.parentElement.querySelector("#pop-up");
+        popup.classList.toggle("hide");
     });
     purpleSpans.forEach(function(purpleSpan){
         if (purpleSpan.classList.contains('red') || purpleSpan.classList.length === 1){
@@ -296,6 +350,8 @@ function toggle_red(){
 function toggle_blue(){
     blueSpans.forEach(function(blueSpan){
         blueSpan.classList.toggle('blue');
+        const popup = blueSpan.parentElement.querySelector("#pop-up");
+        popup.classList.toggle("hide");
     });
     purpleSpans.forEach(function(purpleSpan){
         if (purpleSpan.classList.contains('blue') || purpleSpan.classList.length === 1){

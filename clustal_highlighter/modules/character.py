@@ -1,6 +1,7 @@
 """Module that contains the character class.
 """
 from clustal_highlighter.modules.data_structures.variant_classes import variant_stats
+from clustal_highlighter.modules.data_structures.motif_classes import Motif
 import json
 
 class Character:
@@ -15,6 +16,7 @@ class Character:
         self.tooltip = None
 
         self.motif_files = {}  # file_name/id -> Set of motifs found at this character
+        self.motif_objects = {} # same as motif files but stores motif objects. Motif_files needs to stay as its relied on in other places in the code base
         self.modified = False
 
         self.is_accessible = "N/A"
@@ -97,7 +99,7 @@ class Character:
     
     def get_motif_dict(self):
         ret_dict = {}
-        for motif, motif_set in self.motif_files.items():
+        for motif, motif_set in self.motif_objects.items():
             ret_dict[motif] = list(motif_set)
         ret_dict['color'] = self.color
         return ret_dict 
@@ -187,7 +189,8 @@ class Character:
 
         self.modified = True
 
-    def add_motif(self, motif_descriptor: str, motif_id: str, color: str):
+    # def add_motif(self, motif_descriptor: str, motif_id: str, color: str):
+    def add_motif(self, motif_data):
         """Adds a motif to the current character. This is motif data from when a highlight is called and a fimo.tsv is passed
 
         Args:
@@ -195,13 +198,19 @@ class Character:
             motif_id (str): The id of the motif currently being presented to this character
             color (str): the color this motif should display in the output file
         """
-        if motif_descriptor in self.motif_files:
-            self.motif_files[motif_descriptor].add(motif_id)
+        motif_obj: Motif = motif_data['motif']
+        
+        if motif_data['desc'] in self.motif_files:
+            self.motif_files[motif_data['desc']].add(motif_obj.motif_alt_id)
+            self.motif_objects[motif_data['desc']].add(motif_obj.as_tuple())
         else:
-            self.motif_files[motif_descriptor] = set()
-            self.motif_files[motif_descriptor].add(motif_id)
+            self.motif_files[motif_data['desc']] = set() # TODO! Go over this with RJ to see if this behavior is okay
+            self.motif_objects[motif_data['desc']] = set()
+            
+            self.motif_files[motif_data['desc']].add(motif_obj.motif_alt_id)
+            self.motif_objects[motif_data['desc']].add(motif_obj.as_tuple())
 
-        self.set_color(color)
+        self.set_color(motif_data['color'])
 
     def set_indel_color(self, char_left, char_right):
         """If this character is an indel, then this character has additional logic to define if it should have a color or not
