@@ -592,7 +592,7 @@ function get_variants(){
     let variantHighlights = document.querySelectorAll('highlight-variant[data-variant]');
     let variantDivs = [];
     for (let variantHighlight of variantHighlights){
-        variantDivs.push(variantHighlight.shadowRoot.querySelector('div'));
+      variantDivs.push(variantHighlight.shadowRoot.getElementById('variant'));
     }
     return variantDivs;
 }

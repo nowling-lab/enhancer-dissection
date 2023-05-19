@@ -21,9 +21,6 @@ inputs = [(summary_df, 'summary'), (counts_df, 'counts'), (coverage_df, 'coverag
 app = Dash(__name__, use_pages=True)
 
 for (df, title) in inputs:
-    if title != "summary":
-        continue
-
     df['report_file_path'] = df['report_file_path'].apply(
         lambda x: f'[Report]({x.split("/")[-1].split(".")[0].lower()})'
     )
@@ -43,7 +40,8 @@ for input in inputs:
                 {'id': x, 'name': x, 'presentation': 'markdown'} if x == 'report_file_path' else {'id': x, 'name': x} for x in df.columns
             ],
             data=df.to_dict('records'),
-            filter_action="native",
+            filter_action="custom",
+            filter_query='',
             sort_action="native",
             page_action="native",
             page_current= 0,
@@ -53,8 +51,9 @@ for input in inputs:
             id='interactive-table'
         )],
         id='table-wrapper'),
-        html.H4("Histograms"),
-        html.Div([
+        html.H3("Data distributions"),
+        html.Div(
+        [
             dcc.RadioItems(options=df.columns, value=df.columns[0], id=f'column-radios'),
             dcc.Graph(figure={}, id=f'column-graph')
         ],
@@ -63,15 +62,54 @@ for input in inputs:
         ])
     )
 
-# Callback for the filtering of the table
+@app.callback(
+    Output('interactive-table', "data", allow_duplicate=True),
+    Input('interactive-table', "filter_query"),
+    Input(component_id='buttons-chart-row', component_property='data-page'),
+    prevent_initial_call=True)
+def update_table(filter, page):
+    df: pd.DataFrame = None
+    match page:
+        case 'summary':
+            df = summary_df
+        case 'counts':
+            df = counts_df
+        case 'coverage':
+            df = coverage_df
+        case 'variant':
+            df = variant_df
+
+    filtering_expressions = filter.split(' && ')
+    dff = df
+    for filter_part in filtering_expressions:
+        col_name, operator, filter_value = split_filter_part(filter_part)
+        if operator in ('eq', 'ne', 'lt', 'le', 'gt', 'ge'):
+            # these operators match pandas series operator method names
+            dff = dff.loc[getattr(dff[col_name], operator)(filter_value)]
+        elif operator == 'contains':
+            if '-' in str(filter_value):
+                filter_split = filter_value.split('-')
+                if len(filter_split) == 2:
+                    start, end = int(filter_split[0]), int(filter_split[1])
+                    dff = dff[(dff[col_name] >= start) & (dff[col_name] <= end)]
+            else:
+                dff = dff.loc[dff[col_name].str.contains(filter_value)]
+        elif operator == 'datestartswith':
+            # this is a simplification of the front-end filtering logic,
+            # only works with complete fields in standard format
+            dff = dff.loc[dff[col_name].str.startswith(filter_value)]
+
+    return dff.to_dict('records')
+
+
+# Callback for the filtering of the table based on clicking a histogram
 @callback(
-    Output(component_id='interactive-table', component_property='data'),
+    Output(component_id='interactive-table', component_property='data', allow_duplicate=True),
     Input(component_id='column-graph', component_property='clickData'),
     Input(component_id='buttons-chart-row', component_property='data-page'),
-    Input('interactive-table', "page_current"),
-    Input('interactive-table', "page_size")
+    prevent_initial_call=True
 )
-def update_graph(click_data, page, page_current, page_size):
+def update_graph(click_data, page):
     df: pd.DataFrame = None
     match page:
         case 'summary':
@@ -135,17 +173,42 @@ for html_file in glob.glob('./assets/*.html'):
     },
     id='highlights'))
 
-pages_to_list = [html.Div("Pages:")]
+pages_to_list = []
 for page in dash.page_registry.values():
     if '-' not in page['name']:
-        pages_to_list.append(html.Div(dcc.Link(f"{page['name']}", href=page["relative_path"])) )
+        if page['name'] == 'Summary':
+            state = 'nav-selected'
+        else:
+            state = 'nav-unselected'
+        pages_to_list.append(dcc.Link(f"{page['name']}",  id=page['name'], href=page["relative_path"], className=state))
+
+# Changing the graph based on selected radio button
+@callback(
+    Output(component_id='Summary', component_property='className'),
+    Output(component_id='Counts', component_property='className'),
+    Output(component_id='Coverage', component_property='className'),
+    Output(component_id='Variant', component_property='className'),
+    Input(component_id='url', component_property='pathname'),
+)
+def update_graph(url):
+    print(url)
+    output = {
+        '/': '',
+        '/counts': '',
+        '/coverage': '',
+        '/variant': ''
+    }
+    
+    output[url] = "selected"
+
+    return output['/'], output['/counts'], output['/coverage'], output['/variant']
 
 app.layout = html.Div([
+    dcc.Location(id='url'),
     html.Div(
         pages_to_list,
-        className='nav-bar'
+        className='nav-bar',
     ),
-    html.Br(),
     dash.page_container
 ])
 
