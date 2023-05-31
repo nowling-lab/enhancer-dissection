@@ -25,6 +25,7 @@ body:has(#highlights){
     display: flex;
     gap: 2rem;
     min-height: 50vh;
+    width: 100%;
 }
 
 #highlights{
@@ -67,4 +68,37 @@ body:has(#highlights){
 .selected{
     background-color: #CEF6FF !important;
     border-radius: 5px;
+}
+
+#reset-button{
+    background-color: #7CAFD4;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+    font-size: large;
+    margin-top: 0px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#button-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#histogram-wrapper{
+    width: 50vw;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+hr{
+    color: gray;
+    border: solid;
+    border-width: 1px;
 }

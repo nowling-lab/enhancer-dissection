@@ -51,24 +51,30 @@ for input in inputs:
             id='interactive-table'
         )],
         id='table-wrapper'),
-        html.H3("Data distributions"),
+        html.H2("Data distributions"),
+        html.Hr(),
         html.Div(
         [
             dcc.RadioItems(options=df.columns, value=df.columns[0], id=f'column-radios'),
-            dcc.Graph(figure={}, id=f'column-graph')
+            html.Div([dcc.Graph(figure={}, id=f'column-graph'), html.Div([html.Button('Remove Histogram Filters', id="reset-button", n_clicks = 0)], id='button-wrapper')], id = 'histogram-wrapper')
         ],
         id="buttons-chart-row", 
-        **{'data-page': title})
+        **{'data-page': title}),
+        html.Div(id='hidden-div', style={'display':'none'})
         ])
     )
 
 @app.callback(
     Output('interactive-table', "data", allow_duplicate=True),
+    Output('reset-button', 'n_clicks'),
     Input('interactive-table', "filter_query"),
     Input(component_id='buttons-chart-row', component_property='data-page'),
+    Input(component_id='column-graph', component_property='clickData'),
+    Input(component_id='reset-button', component_property='n_clicks'),
     prevent_initial_call=True)
-def update_table(filter, page):
+def update_table(filter, page, click_data, reset_button_n_clicks):
     df: pd.DataFrame = None
+
     match page:
         case 'summary':
             df = summary_df
@@ -78,9 +84,18 @@ def update_table(filter, page):
             df = coverage_df
         case 'variant':
             df = variant_df
-
-    filtering_expressions = filter.split(' && ')
+    
     dff = df
+
+    if reset_button_n_clicks == 1:
+        click_data = None
+
+    if click_data != None:
+        points_in_clicked_bucket = click_data['points'][0]['pointNumbers'] 
+        dff = df.iloc[points_in_clicked_bucket] 
+       
+    filtering_expressions = filter.split(' && ')
+    
     for filter_part in filtering_expressions:
         col_name, operator, filter_value = split_filter_part(filter_part)
         if operator in ('eq', 'ne', 'lt', 'le', 'gt', 'ge'):
@@ -99,38 +114,7 @@ def update_table(filter, page):
             # only works with complete fields in standard format
             dff = dff.loc[dff[col_name].str.startswith(filter_value)]
 
-    return dff.to_dict('records')
-
-
-# Callback for the filtering of the table based on clicking a histogram
-@callback(
-    Output(component_id='interactive-table', component_property='data', allow_duplicate=True),
-    Input(component_id='column-graph', component_property='clickData'),
-    Input(component_id='buttons-chart-row', component_property='data-page'),
-    prevent_initial_call=True
-)
-def update_graph(click_data, page):
-    df: pd.DataFrame = None
-    match page:
-        case 'summary':
-            df = summary_df
-        case 'counts':
-            df = counts_df
-        case 'coverage':
-            df = coverage_df
-        case 'variant':
-            df = variant_df
-
-    if click_data == None:
-        return df.to_dict('records')
-
-    # Click_data is a dict with points in it, which is an array that only has one element, which has a dict with pointNumbers in it...
-    # which refers to the different indices in the table aka the dataframe the chart is made out of...
-    points_in_clicked_bucket = click_data['points'][0]['pointNumbers'] 
-
-    column_data = df.iloc[points_in_clicked_bucket] 
-
-    return column_data.to_dict('records')
+    return dff.to_dict('records'), 0
 
 # Changing the graph based on selected radio button
 @callback(
@@ -191,7 +175,6 @@ for page in dash.page_registry.values():
     Input(component_id='url', component_property='pathname'),
 )
 def update_graph(url):
-    print(url)
     output = {
         '/': '',
         '/counts': '',
