@@ -2,6 +2,8 @@ import pandas as pd
 import os 
 import glob
 import shutil
+import dash
+from dash import html, dcc
 
 def read_csv(abs_path: str, file_id: str) -> pd.DataFrame:
     dfs = []
@@ -82,3 +84,18 @@ def split_filter_part(filter_part):
                 return name, operator_type[0].strip(), value
 
     return [None] * 3
+
+def get_nav():
+    pages_to_list = []
+    for page in dash.page_registry.values():
+        if 'Report' not in page['name']:
+            if page['name'] == 'Summary':
+                state = 'nav-selected'
+            else:
+                state = 'nav-unselected'
+            pages_to_list.append(dcc.Link(f"{page['name']}",  id=page['name'], href=page["relative_path"], className=state))
+
+    return html.Div(
+        pages_to_list,
+        className='nav-bar',
+    )

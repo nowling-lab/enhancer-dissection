@@ -18,11 +18,11 @@ args = parser.parse_args()
 summary_df, counts_df, coverage_df, variant_df = load_files(args)
 inputs = [(summary_df, 'summary'), (counts_df, 'counts'), (coverage_df, 'coverage'), (variant_df, 'variant')]
 
-app = Dash(__name__, use_pages=True)
+app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True)
 
 for (df, title) in inputs:
     df['report_file_path'] = df['report_file_path'].apply(
-        lambda x: f'[Report]({x.split("/")[-1].split(".")[0].lower()})'
+        lambda x: f'[Report](/report?report_id={x.split("/")[-1].split(".")[0].lower()})'
     )
 
 for input in inputs:
@@ -108,7 +108,10 @@ def update_table(filter, page, click_data, reset_button_n_clicks):
                     start, end = int(filter_split[0]), int(filter_split[1])
                     dff = dff[(dff[col_name] >= start) & (dff[col_name] <= end)]
             else:
-                dff = dff.loc[dff[col_name].str.contains(filter_value)]
+                if isinstance(filter_value, str):
+                    dff = dff.loc[dff[col_name].str.contains(filter_value)]
+                else:
+                    dff = dff.loc[dff[col_name] == filter_value]
         elif operator == 'datestartswith':
             # this is a simplification of the front-end filtering logic,
             # only works with complete fields in standard format
@@ -144,27 +147,18 @@ def update_graph(col_chosen, page):
         fig = px.histogram(df, x=col_chosen, title=f'Histogram of: {col_chosen}')
     return fig
 
-for html_file in glob.glob('./assets/*.html'):
-    file_name = Path(html_file).stem
-    dash.register_page(file_name, layout= html.Div([
-    html.Iframe(src=html_file[2:],
-                style={"height": "100vh",
-                        "width": "100%",
-                        'overflow':'hidden'})  
-    ],
-    style={
-        "overflow":"hidden"
-    },
-    id='highlights'))
-
-pages_to_list = []
-for page in dash.page_registry.values():
-    if '-' not in page['name']:
-        if page['name'] == 'Summary':
-            state = 'nav-selected'
-        else:
-            state = 'nav-unselected'
-        pages_to_list.append(dcc.Link(f"{page['name']}",  id=page['name'], href=page["relative_path"], className=state))
+# for html_file in glob.glob('./assets/*.html'):
+#     file_name = Path(html_file).stem
+#     dash.register_page(file_name, layout= html.Div([
+#     html.Iframe(src=html_file[2:],
+#                 style={"height": "100vh",
+#                         "width": "100%",
+#                         'overflow':'hidden'})  
+#     ],
+#     style={
+#         "overflow":"hidden"
+#     },
+#     id='highlights'))
 
 # Changing the graph based on selected radio button
 @callback(
@@ -188,10 +182,7 @@ def update_graph(url):
 
 app.layout = html.Div([
     dcc.Location(id='url'),
-    html.Div(
-        pages_to_list,
-        className='nav-bar',
-    ),
+    get_nav(),
     dash.page_container
 ])
 
