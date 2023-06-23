@@ -1,12 +1,7 @@
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
-from dash_dangerously_set_inner_html import DangerouslySetInnerHTML
 import dash 
-import shutil
 from utils import *
-import os 
 import argparse
-import glob
-from pathlib import Path
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -105,8 +100,14 @@ def update_table(filter, page, click_data, reset_button_n_clicks):
             if '-' in str(filter_value):
                 filter_split = filter_value.split('-')
                 if len(filter_split) == 2:
-                    start, end = int(filter_split[0]), int(filter_split[1])
-                    dff = dff[(dff[col_name] >= start) & (dff[col_name] <= end)]
+                    try:
+                        start, end = int(filter_split[0]), int(filter_split[1])
+                        dff = dff[(dff[col_name] >= start) & (dff[col_name] <= end)]
+                    except:
+                        if isinstance(filter_value, str):
+                            dff = dff.loc[dff[col_name].str.contains(filter_value)]
+                        else:
+                            dff = dff.loc[dff[col_name] == filter_value]
             else:
                 if isinstance(filter_value, str):
                     dff = dff.loc[dff[col_name].str.contains(filter_value)]
