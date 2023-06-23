@@ -1,137 +1,98 @@
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.character import Character
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.file_handler import *
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.html_framework import *
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.variant_handler import *
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.data_classes import *
+from collections import deque
 import logging
 import statistics
-from collections import defaultdict
 
-from clustal_highlighter.modules.character import Character
-from clustal_highlighter.modules.data_structures.logger_classes import motif_highlights
-from clustal_highlighter.modules.data_structures.variant_classes import variant_stats
-from clustal_highlighter.modules.file_handler import *
-from clustal_highlighter.modules.html_framework import html_heading
-from clustal_highlighter.modules.html_framework import highlight_variant_class
 from clustal_highlighter.modules.logger import *
-from clustal_highlighter.modules.variant_handler import *
-
-DEFAULT_LOGGER = True
-
+default_logger = True
 
 class Highlights:
-    """This is the main driver class for genome_highlighter and fasta_highlighter.
-    This class generates the required HTML files and CSVS that this program outputs.
-    """
-
     global logger
-    logger = logging.getLogger("generic_highlights")
+    logger = logging.getLogger('generic_highlights')
 
-    def __init__(
-        self, seq_dict: dict, chromosome: str = "unknown", offset=1, seq_end=None
-    ):
+    def __init__(self, seq_dict: dict, chromosome: str = None, offset=1, seq_end=None):
         self.offset = offset
         self.seq_start = offset
         self.seq_end = seq_end
         sequence_dict = seq_dict
         self.has_indels = False
-        # from sequence fasta, compare with: self.num_nucleotides_inaccessible
-        self.sequence_positions_N = 0
-
-        # self.sequences is where the character objects are. 
-        # for genome highlighter list(self.sequences.keys())[0] gives the current sequence
+        #from sequence fasta, compare with: self.num_nucleotides_inaccessible
+        self.sequence_positions_N = 0    
+    
         self.sequences = self._generate_sequence_dictionary(sequence_dict)
-        
-        # Convinience unpacking
-        self.first_sequence_name = list(self.sequences.keys())[0]
-        self.first_sequence_characters = self.sequences[self.first_sequence_name]
-        
         if self.seq_end == None:
             keys = list(self.sequences.keys())
-            max_len = max(
-                [len(self.sequences[key]) for key in keys]
-            )  # list compression getting all seq sizes and calling max
+            max_len = max([len(self.sequences[key]) for key in keys]) #list compression getting all seq sizes and calling max
             self.seq_end = max_len
             if self.seq_start != 0:
                 self.seq_end += self.seq_start + 1
-
-        if chromosome == "unknown":
-            logger.warning(
-                f"Chromosome unknown. Check Highlights file constructor. Sequence start: {self.seq_start}, Sequence end: {self.seq_end}. First key in self.sequences: {list(self.sequences.keys())[0]}"
-            )
-
-        self.outputs = (
-            []
-        )  # array of strings containing full html file outs. Because why not?
+        
+        self.outputs = []  # array of strings containing full html file outs. Because why not?
         self._sequences_grouped = {}
         self.indel_dict = None
         self.variant_data = None
-
-        # Set this flag if variants are added. This does NOT mean that there were
-        # variants found within this region. It just means that they were asked for when the software
-        # was ran
+        
+        #Set this flag if variants are added. This does NOT mean that there were 
+        #variants found within this region. It just means that they were asked for when the software
+        #was ran
         self.variants_given = False
         self.group_all = True
         self.highlight_styles = {}
-
+        
         self.motif_names = []
-
-        # variables for runtime checks
+        
+        #variables for runtime checks
         self.highlights_name = None
         self.variant_matches = 0
         self.variant_mismatches = 0
         self.highlights_requested = {}
         self.wrong_chars = 0
-        self.variants_found = 0
-
-        # Dictionary for motifs_counts csv file
-        self.motif_counts = {}
-        self.individual_motif_coverage = {}
-        self.motif_orientation = defaultdict(lambda: 0)
-
+        self.variants_found = 0   
+        
+        self.motif_counts = {}     
+        
         self.csv_wanted = False
-        # Table data
+        file_path = ""
+        #Table data
         self.name = chromosome
-        # name, sequence_start, sequence_stop, motif, count
+        #name, sequence_start, sequence_stop, motif, count
         self.motif_counts_csv = None
-        # name, sequence_start, sequence_stop, motif_descriptor, coverage
+        #name, sequence_start, sequence_stop, motif_descriptor, coverage
         self.coverage = {}
         self.coverage_csv = None
-        # name, sequence_start, sequence_stop, variant_pos, ref, alt, ref%, alt%
+        #name, sequence_start, sequence_stop, variant_pos, ref, alt, ref%, alt%
         self.varaints_csv = None
         self.variants_with_percent = []
-        # chromosome, sequence_start, sequence_stop, num_variants, num_accessible_variants, num_accessible_nucleotides, accessibility_given, min_motif_percent_coverage, max_motif_percent_coverag, num_motif_matrices_given
+        #chromosome, sequence_start, sequence_stop, num_variants, num_accessible_variants, num_accessible_nucleotides, accessibility_given, min_motif_percent_coverage, max_motif_percent_coverag, num_motif_matrices_given
         self.summary_csv = None
         self.motif_percent_coverage = {}
         self.motif_sets = None
         self.motif_coverage = None
-
-        # accessibility variables
+        
+        #accessibility variables
         self.has_accessibility = False
         self.num_variants_accessible = 0
         self.num_nucleotides_accessible = 0
-
-        # from accessibility fasta
+        
+        #from accessibility fasta
         self.num_nucleotides_inaccessible = 0
-
-        # site pi
+        
+        #site pi
         self.site_pi_dict = None
         self.pi_scores_array = None
-
-        # genotype numbers variables
+        
+        #genotype numbers variables 
         self.genotype_dict = {}
-        
-        # for fimo_sub_table data. List of tuples
-        self.fimo_sub_table = []
-        
-        # global variables for the 3 colors (steps) in the color bar in the HTML pages
-        self.color_bar_val1 = (54, 98, 57)
-        self.color_bar_val2 = (177, 63, 35)
-        self.color_bar_val3 = (288, 98, 17)
-        
-        #Global variable for the addition of p-value for motif from pwm
-        self.pwm_p_values = None
-
+    
     def _generate_sequence_dictionary(self, sequences: dict) -> dict:
-        """Given a dictionary of sequences this transforms them into Character objects in the same format
+        """Given a dictionary of sequences this transforms them into Character objects in the same format 
 
         Args:
-            sequences (dict): A dictionary of sequence_names: sequence
+            sequences (dict): A dictionary of sequence_names: sequence 
 
         Returns:
             dict: The sequence dictionary but made of characters instead
@@ -139,7 +100,8 @@ class Highlights:
         temp_sequences = {}
 
         for sequence in sequences:
-            temp_sequences[sequence] = self._sequence_as_Characters(sequences[sequence])
+            temp_sequences[sequence] = self._sequence_as_Characters(
+                sequences[sequence])
         return temp_sequences
 
     def _sequence_as_Characters(self, sequence: str) -> list:
@@ -151,26 +113,21 @@ class Highlights:
         Returns:
             list: A identical list to the string but made up of Characters
         """
-        char_obj_list = []
+        char_obj_list = deque()
         pos_counter = self.seq_start
         for char in sequence:
             char_obj_list.append(Character(char, pos_counter))
             pos_counter += 1
             if char == "-" and not self.has_indels:
                 self.has_indels = True
-            elif char == "N":
+            elif char =="N":
                 self.sequence_positions_N += 1
-
-        info(
-            logger,
-            f"{logger.name} has {self.sequence_positions_N} nucleotides that have not be sequenced (N)",
-        )
+        
+        info(logger, f"{logger.name} has {self.sequence_positions_N} nucleotides that have not be sequenced (N)")
         return char_obj_list
 
-    def add_highlights(
-        self, motifs_descriptor: str, file_path: str, color: str, html_color: str
-    ):
-        """Adds motifs to character objects at given locations from a given file path.
+    def add_highlights(self, motifs_descriptor: str, file_path: str, color: str, html_color: str):
+        """Adds motifs to character objects at given locations from a given file path. 
 
         Args:
             motifs_descriptor (str): A description of the motifs given. "streme" is a description of motifs for motifs found by running Streme by meme suite
@@ -178,27 +135,25 @@ class Highlights:
             color (str): The color description of what the highlights should be
             html_color (str): The actual HTML color (rbg, name or otherwise) which will be used to color the positions given in the femo results tsv
         """
-
+        
         motifs = read_fimo_file(file_path)
-
+        
         self.motif_names.append(motifs_descriptor)
-
-        if DEFAULT_LOGGER and len(motifs.keys()) == 1:
-            global LOGGER
-            LOGGER = logging.getLogger(list(motifs.keys())[0])
-
+        
+        if(default_logger and len(motifs.keys()) == 1):
+            global logger
+            logger = logging.getLogger(list(motifs.keys())[0])
+        
         for key in motifs:
-            tmp_motif_highlights = motif_highlights(
-                motifs_descriptor, len(motifs[key]), 0
-            )
+            tmp_motif_highlights = motif_highlights(motifs_descriptor, len(motifs[key]), 0)
             self.highlights_requested[motifs_descriptor] = tmp_motif_highlights
-
+        
         if motifs:
             self._add_html_style(color.lower(), html_color, motifs_descriptor)
             self._color_characters(motifs, color, motifs_descriptor)
 
     def _add_html_style(self, color: str, html_color: str, motifs_descriptor: str):
-        """This adds a class based on the color description and actual html color passed in from add_highlights.
+        """This adds a class based on the color description and actual html color passed in from add_highlights. 
 
         Args:
             color (str): The description of the color, used to name the class
@@ -207,9 +162,10 @@ class Highlights:
         """
         class_name = "." + color + "{\n"
         background = f" background:{html_color};"
-        class_string = class_name + background + "\n}\n"
+        class_string = (class_name + background + '\n}\n')
 
-        self.highlight_styles[color] = (class_string, motifs_descriptor, html_color)
+        self.highlight_styles[color] = (
+            class_string, motifs_descriptor, html_color)
 
     def _color_characters(self, motifs: dict, color: str, motifs_descriptor: str):
         """Goes through the provided idecies and adds the motif and its color to the characters there
@@ -221,77 +177,55 @@ class Highlights:
         """
         for sequence in motifs:
             if sequence not in self.sequences:
-                warning(LOGGER, f"Mismatch between supplied FIMO file and sequences in original sequence file (Key mismatch), aborting coloring. Motif keys: {motifs.keys()}, Sequence keys: {self.sequences.keys()}")
+                print(motifs.keys())
+                print(self.sequences.keys())
+                print("Mismatch between supplied FIMO file and sequences in original sequence file, aborting coloring")
                 return
             # Check all keys are valid before applying colors
 
         motif_highlights = self.highlights_requested[motifs_descriptor]
-
+    
         self.motif_counts[motifs_descriptor] = {}
         motif_counts_per_descriptor = self.motif_counts[motifs_descriptor]
-
+    
         for sequence in motifs:
-            motifs = motifs[sequence]
-
-            motif: Motif
-            for motif in motifs:
-                start, end, motif_id, matched_sequence, orientation, p_value = motif.as_tuple()
-                
-                self.motif_orientation[(motif_id, orientation)] += 1
-                self.fimo_sub_table.append((
-                    self.name,
-                    self.seq_start,
-                    self.seq_end,
-                    start,
-                    end,
-                    motif_id,
-                    orientation,
-                    p_value,
-                    matched_sequence
-                ))
-                                
+            highlights = motifs[sequence]
+            
+            for start, end, motif_id, matched_sequence in highlights:
                 if motif_id in motif_counts_per_descriptor:
                     motif_counts_per_descriptor[motif_id] += 1
                 else:
                     motif_counts_per_descriptor[motif_id] = 1
-
+                    
                 motif_highlights.motifs_applied += 1
                 counter = 0
                 for x in range(start - 1, end):  # From 1 base to 0 base
                     current_char = self.sequences[sequence][x]
-                    temp_motif_obj = {
-                        'desc': motifs_descriptor,
-                        'color': color.lower(),
-                        'motif': motif
-                    }
-                    current_char.add_motif(temp_motif_obj)
-
+                    current_char.add_motif(
+                        motifs_descriptor, motif_id, color.lower())
+                    
                     matched_char = matched_sequence[counter]
                     if current_char.character != matched_char:
-                        warning(
-                            logger,
-                            f"In {sequence} a matched highlight overlapped the wrong character!",
-                        )
-
+                        warning(logger, f'In {sequence} a matched highlight overlapped the wrong character!')
+                   
                     counter += 1
         if motif_highlights.is_equal():
             info(logger, motif_highlights.to_string())
         else:
-            warning(
-                logger,
-                f"Mismatch between requested highlights and applied highlights. {motif_highlights.to_string()}",
-            )
+            warning(logger, f'Mismatch between requested highlights and applied highlights. {motif_highlights.to_string()}')
 
     def _group_sequences(self):
-        """Groups sequences by the first part of their name, delimited by -"""
+        """Groups sequences by the first part of their name, delimited by -
+        """
         for key in self.sequences.keys():  # Loop through all of the sequences
             self._find_similar_sequences(key)
 
     def _group_all_sequences(self):
-        """Groups all sequnces together so the clustal output is all of them compared to each other"""
-        self._sequences_grouped["all"] = set()
+        """Groups all sequnces together so the clustal output is all of them compared to each other 
+        """
+        self._sequences_grouped['all'] = set()
         for key in self.sequences.keys():
-            self._sequences_grouped["all"].add(key)
+            self._sequences_grouped['all'].add(key)
 
     def _find_similar_sequences(self, key: str):
         """Finds sequences that are similar to the given keys
@@ -302,7 +236,7 @@ class Highlights:
         Returns:
             None: Breaks early if we've already used this key to form a group
         """
-        key_split = key.split("-")
+        key_split = key.split('-')
         first_part_key = key_split[0]
 
         if len(self._sequences_grouped) > 0:
@@ -320,7 +254,7 @@ class Highlights:
         """Groups sequences by a provided first part key. The whole key is passed just in case this key is not similar to any others
 
         Args:
-            first_part_key (str): The first part of a key Iam-aKey has the first part key of Iam
+            first_part_key (str): The first part of a key Iam-aKey has the first part key of Iam 
             key (str): The entire key of the above example would be Iam-aKey
         """
         self._sequences_grouped[first_part_key] = set()
@@ -347,7 +281,7 @@ class Highlights:
             path_to_indel_file (str): The path to the indel file, this is simply an aligned file in fasta format with -'s where indels have been found in the genomes
 
         Raises:
-            Exception: If the keys in the sequences in this file mismatch the current sequences an exception is raised
+            Exception: If the keys in the sequences in this file mismatch the current sequences an exception is raised 
         """
         indel_fasta = read_fasta_file(path_to_indel_file)
         if not self._verify_matching_keys(indel_fasta):
@@ -356,20 +290,21 @@ class Highlights:
         self.indel_dict = indel_dict
 
     def _append_indels_to_internal_list(self):
-        """Calls the required functions to add indels to the internal sequnece list"""
+        """Calls the required functions to add indels to the internal sequnece list
+        """
         self._add_indels_to_sequences(self.indel_dict)
         self._color_indels()
 
     def _color_indels(self):
-        """Adds indels to the internal list, passing the nearest left and right characters to the Character (new indel) to see if it should be colored or not"""
+        """Adds indels to the internal list, passing the nearest left and right characters to the Character (new indel) to see if it should be colored or not
+        """
         for sequence in self.sequences:
             sequence_character_list = self.sequences[sequence]
             for index, character in enumerate(sequence_character_list):
-                if character.character == "-":
+                if character.character == '-':
                     if index > 0 and index < (len(sequence_character_list) - 1):
                         left_char, right_char = self._find_nearest_non_indels(
-                            index, sequence_character_list
-                        )
+                            index, sequence_character_list)
                         character.set_indel_color(left_char, right_char)
 
     def _find_nearest_non_indels(self, index, sequence: list):
@@ -380,25 +315,25 @@ class Highlights:
             sequence (list): The sequence of Characters that this indel is being inserted into
 
         Returns:
-            Tuple (left, right): Tuple of Characters (1 left and right) of nearerst non-indels, or None in those spots if the end of the list happens before a non-indel
+            Tuple (left, right): Tuple of Characters (1 left and right) of nearerst non-indels, or None in those spots if the end of the list happens before a non-indel 
         """
         output_tuple = [None, None]
         left_copy = index
         right_copy = index
 
         found_left = False
-        while left_copy > 0 and not found_left:
+        while(left_copy > 0 and not found_left):
             left_copy -= 1
             character_at_index = sequence[left_copy]
-            if character_at_index.character != "-":
+            if character_at_index.character != '-':
                 output_tuple[0] = character_at_index
                 found_left = True
 
         found_right = False
-        while right_copy < (len(sequence) - 1) and not found_right:
+        while(right_copy < (len(sequence) - 1) and not found_right):
             right_copy += 1
             character_at_index = sequence[right_copy]
-            if character_at_index.character != "-":
+            if character_at_index.character != '-':
                 output_tuple[1] = character_at_index
                 found_right = True
 
@@ -431,7 +366,7 @@ class Highlights:
         for sequence in indel_fasta:
             indel_dict[sequence] = []
             for index, character in enumerate(indel_fasta[sequence]):
-                if character == "-":
+                if character == '-':
                     indel_dict[sequence].append((index, character))
         return indel_dict
 
@@ -455,69 +390,63 @@ class Highlights:
         for sequence in self.sequences:
             for index, accessability_char in enumerate(accessibility_seq):
                 index_char_obj = self.sequences[sequence][index]
-                if accessability_char == "N":
+                if accessability_char == 'N':
                     index_char_obj.is_accessible = False
                     self.num_nucleotides_inaccessible += 1
                 else:
                     index_char_obj.is_accessible = True
                     self.num_nucleotides_accessible += 1
 
-        info(
-            logger,
-            f"{logger.name} has {self.num_nucleotides_inaccessible} nucleotides inaccessible",
-        )
+        info(logger, f'{logger.name} has {self.num_nucleotides_inaccessible} nucleotides inaccessible')
+
 
     def _get_length(self):
-        return self.seq_end - self.seq_start + 1  # +1 because inclusive on both sides
-
-    # CSV related CSV methods
+        return self.seq_end - self.seq_start + 1
+    
+    #CSV related CSV methods
     def enable_csv(self, file_path):
         self.csv_wanted = True
         self.file_path = file_path
-
+    
     def chromosome_name(self, name):
         return name
-
-    def _fimo_sub_table(self):
-        return self.fimo_sub_table
-
+        
     def _motif_and_count_rows(self):
         self.motif_counts_csv = []
         for motif_descriptor in self.motif_counts:
             for motif in self.motif_counts[motif_descriptor]:
-                coverage = self.individual_motif_coverage[motif]
-                self.motif_counts_csv.append(
-                    (
-                        self.file_path,
-                        self.name,
-                        self.seq_start,
-                        self.seq_end,
-                        motif,
-                        self.motif_counts[motif_descriptor][motif],
-                        coverage,
-                        round(coverage/self._get_length(), 3),
-                        self.motif_orientation[(motif, '+')],
-                        self.motif_orientation[(motif, '-')]
-                    )
-                )
+                self.motif_counts_csv.append((self.name,
+                                              self.seq_start,
+                                              self.seq_end,
+                                              motif,
+                                              self.motif_counts[motif_descriptor][motif]))
 
     def _motif_descriptor_coverage(self):
         tmp_array = []
         for motif_descriptor in self.coverage:
-            tmp_array.append(
-                (
-                    self.file_path,
-                    self.name,
-                    self.seq_start,
-                    self.seq_end,
-                    motif_descriptor,
-                    self.coverage[motif_descriptor],
-                )
-            )
-
-        self.coverage_csv = tmp_array
-
-    def _get_pi_scores_mean_stdev(self):
+            tmp_array.append((self.name,
+                              self.seq_start,
+                              self.seq_end,
+                              motif_descriptor,
+                              self.coverage[motif_descriptor]))
+            
+        self.coverage_csv = tmp_array    
+        
+    def _summary_stats(self):
+        #fill with NaN if variants were not given
+        if not self.variants_given:
+            variants_found = "NaN"
+        else:
+            variants_found = self.variants_found
+        
+        #fill with NaN if accessibility was not given
+        if not self.has_accessibility:
+            num_variants_accessible = "NaN"
+            num_nucleotides_accessible = "NaN"
+        else:
+            num_variants_accessible = self.num_variants_accessible
+            num_nucleotides_accessible = self.num_nucleotides_accessible
+        
         if self.pi_scores_array != None and len(self.pi_scores_array) >= 2:
             pi_scores_mean = round(statistics.mean(self.pi_scores_array), 3)
             pi_scores_stdev = round(statistics.stdev(self.pi_scores_array), 3)
@@ -528,78 +457,44 @@ class Highlights:
             pi_scores_mean = "NaN"
             pi_scores_stdev = "NaN"
         
-        return pi_scores_mean, pi_scores_stdev
-
-    def _summary_stats(self):
-        # fill with NaN if variants were not given
-        if not self.variants_given:
-            variants_found = "NaN"
-        else:
-            variants_found = self.variants_found
-
-        # fill with NaN if accessibility was not given
-        if not self.has_accessibility:
-            num_variants_accessible = "NaN"
-            num_nucleotides_accessible = "NaN"
-        else:
-            num_variants_accessible = self.num_variants_accessible
-            num_nucleotides_accessible = self.num_nucleotides_accessible
-
-        pi_scores_mean, pi_scores_stdev = self._get_pi_scores_mean_stdev()
-
         mean_missing, std_missing = self._calculate_genotype_stats()
-
-        total_highlight_coverage = self._calculate_total_coverage()
-
-        self.summary_csv = [
-            [
-                self.file_path,
-                self.name,
-                self.seq_start,
-                self.seq_end,
-                variants_found,
-                num_variants_accessible,
-                num_nucleotides_accessible,
-                pi_scores_mean,
-                pi_scores_stdev,
-                mean_missing,
-                std_missing,
-                self.sequence_positions_N,
-                total_highlight_coverage,
-            ]
-        ]
         
-        for motif_descriptor in self.motif_counts:                        
-            motif_appearances = self.motif_counts[motif_descriptor]
-            # Unique
-            self.summary_csv[0].append(len(motif_appearances))
-
-            # Total
-            self.summary_csv[0].append(self._calculate_total_motif_appearances(motif_appearances))
+        total_highlight_coverage = self._calculate_total_coverage()
+        
+        self.summary_csv = [[self.file_path,
+                             self.name,
+                             self.seq_start,
+                             self.seq_end,
+                             self._get_length(),
+                             variants_found,
+                             num_variants_accessible,
+                             num_nucleotides_accessible,
+                             pi_scores_mean,
+                             pi_scores_stdev,
+                             mean_missing,
+                             std_missing,
+                             self.sequence_positions_N,
+                             total_highlight_coverage]]
+        
+        for motif_name in self.motif_counts:
+            self.summary_csv[0].append(len(self.motif_counts[motif_name]))
             
-            # Coverage
             this_sequence = list(self.motif_coverage.keys())[0]
-            self.summary_csv[0].append(self.motif_coverage[this_sequence][motif_descriptor])
-
-    def _calculate_total_motif_appearances(self, motif_dict):
-        total_motif_appearances = 0
-        for motif, appearances in motif_dict.items():
-            total_motif_appearances += appearances
+            self.summary_csv[0].append(self.motif_coverage[this_sequence][motif_name])
             
-        return total_motif_appearances
-
     def _calculate_total_coverage(self):
-        # there should only be 1 sequence when this is called.
-        # this method does not get called for fasta highlighter
-        # maybe inforce this by just grabbing the 0th?
+        #there should only be 1 sequence when this is called.
+        #this method does not get called for fasta highlighter
+        #maybe inforce this by just grabbing the 0th?
         num_highlighted = 0
         for seq in self.sequences:
             for char in self.sequences[seq]:
                 if char.modified:
                     num_highlighted += 1
-
+            
         return num_highlighted
-
+            
+    
     def _calculate_genotype_stats(self):
         """This function returns the mean of the number of samples that are valid for each variant. It also returns the standard deviation of that number
 
@@ -609,45 +504,31 @@ class Highlights:
         num_missing_samples = []
         for _, (num_samples, num_invalid) in self.genotype_dict.items():
             num_missing_samples.append(num_invalid)
-            
         if len(num_missing_samples) >= 2:
-            mean_missing = round(statistics.mean(num_missing_samples), 3)
-            std_missing = round(statistics.stdev(num_missing_samples), 3)
-        elif len(num_missing_samples) == 1:
+            mean_missing = round(statistics.mean(num_missing_samples),3)
+            std_missing = round(statistics.stdev(num_missing_samples),3)
+        elif len(num_missing_samples) == 1:   
             mean_missing = num_missing_samples[0]
             std_missing = 0
         else:
-            mean_missing = "NaN"
-            std_missing = "NaN"
-
+            mean_missing = 'NaN'
+            std_missing = 'NaN'
+        
         return (mean_missing, std_missing)
-
+            
     def _calc_percentage(self, numerator, decimal_places):
-        return round((numerator / self._get_length()) * 100, decimal_places)
-
+        return round((numerator/self._get_length())*100, decimal_places)
+            
     def _variant_statistics(self):
-        self.varaints_csv = self.variants_with_percent
-
-    def _calc_individual_motif_coverage(self):
-        char: Character
-        for char in self.first_sequence_characters:
-            for description in char.motif_files:
-                for motif in char.motif_files[description]:
-                    if motif in self.individual_motif_coverage:
-                        self.individual_motif_coverage[motif] += 1
-                    else:
-                        self.individual_motif_coverage[motif] = 0
-
-
+        self.varaints_csv = self.variants_with_percent 
+   
     def _save_csv_data(self):
         self._motif_and_count_rows()
         self._motif_descriptor_coverage()
         self._summary_stats()
         if self.variant_data != None:
             self._variant_statistics()
-            
-    ## End CSV related methods
-
+        
     def _add_html_classes(self):
         """Adds html classes to the html file
 
@@ -663,14 +544,15 @@ class Highlights:
             html_class_string += class_string
 
         html_class_string += """.clear{
-            background:#D5D8DC !important;
+            background:white !important;
         }"""
 
         html_class_string += "</style>\n"
         return html_class_string
 
     def _add_html_legend(self):
-        """Adds the legend describing what highlights and other additions are within the file"""
+        """Adds the legend describing what highlights and other additions are within the file
+        """
         keys = list(self.highlight_styles.keys())
         keys.sort()
 
@@ -691,31 +573,17 @@ class Highlights:
             legend_string += f'<div class = "purple heading"> This is for overlapping highlights </div>\n'
 
         if self.indel_dict != None:
-            legend_string += """<div class = "clear" style="width: 46rem%; word-wrap: break-word;"> Colored &#8209;'s indicate that the indel is between 2 characters that have an identical set of motifs. If they are not colored, then that means the character to the left has a different set of motifs than the one to the right of the indel. </div>"""
+            legend_string += """<div class = "clear" style="width:75%; word-wrap: break-word;"> Colored &#8209;'s indicate that the indel is between 2 characters that have an identical set of motifs. If they are not colored, then that means the character to the left has a different set of motifs than the one to the right of the indel. </div>"""
 
         if self.variant_data != None:
-            legend_string += """<div style="width:75%; word-wrap: break-word;"> ^'s indicate that Variant data is available for that position. Mouse over to view stats </div>"""
+            legend_string += """<div class = "clear" style="width:75%; word-wrap: break-word;"> ^'s indicate that Variant data is available for that position. Mouse over to view stats </div>"""
 
         return legend_string
 
-    def _add_filters(self):
-        if self.variant_data != None:
-            return """
-            \n<div>
-                <br/>
-                <details id="filters" open>
-                    <summary>Filters</summary>
-                    <p>Filter out variants with reference frequency less than:</p>
-                    <input id="variant_input" type="range" min="0" max="100" step="1" name="variant_filter" value="100"/>
-                    <label for="variant_filter">Percentage: <output id="variant_value"></output></label>
-                    </details>
-            </div>\n"""
-        else:
-            return ""
-
-    def _add_html_buttons_and_javascript(self):
-        """Adds buttons to toggle different features if they are toggleable"""
-        button_string = "<div>"
+    def _add_html_buttons(self):
+        """Adds buttons to toggle different features if they are toggleable
+        """
+        button_string = "<span>"
         keys = list(self.highlight_styles.keys())
         keys.sort()
 
@@ -725,26 +593,18 @@ class Highlights:
 
         if self.variant_data != None:
             button_string += """\n<button id="toggle_variant" type="button" class="btn btn-secondary">Toggle Variant ^'s</button>"""
-            button_string += """\n<div id="colorbar_wrapper">
-                                    <div id="colorbar_top_text">Variant(^) reference allele %</div>
-                                        <div id="colorbar_with_text">
-                                            <span>0%</span>
-                                            <div id="colorbar"></div>
-                                            <span>100%</span>
-                                        </div>
-                                    </div>"""
 
-        button_string += "\n</div>"
+        button_string += "\n</span>"
 
-        button_string += '\n<script type="text/javascript">\n'        
-        
+        button_string += '\n<script type="text/javascript">\n'
         button_string += "$(document).ready(function () {\n"
+
         button_string += """$('[data-toggle="tooltip"]').tooltip();\n"""
 
         keys_reverse = keys[::-1]
-
+    
         opposite_lookup_table = {}
-
+        
         for index, key in enumerate(keys):
             opposite_lookup_table[key] = keys_reverse[index]
 
@@ -755,31 +615,15 @@ class Highlights:
             button_string += "});\n\n"
 
         if len(keys) > 1:
-            button_string += f"""$("#toggle_purple").click(function() """ + "{\n"
+            button_string += f"""$("#toggle_purple").click(function() """ + \
+                "{\n"
             button_string += f"""   $( "span.purple" ).toggleClass( "clear" );\n"""
             button_string += "});\n\n"
 
         if self.variant_data != None:
             button_string += """$('#toggle_variant').click(function(){
-                $( "div.variant_hat" ).toggleClass( "hidden" );
+                $( "span.variant" ).toggleClass( "hidden" );
             });
-            
-            const variant_value = document.querySelector("#variant_value");
-            const variant_input = document.querySelector("#variant_input");
-            variant_value.textContent = variant_input.value;
-
-            const all_variants = document.getElementsByClassName("variant_hat");
-
-            variant_input.addEventListener("input", (event) => {
-                variant_value.textContent = event.target.value;
-                for (var variant of all_variants){
-                    if (parseFloat(variant.dataset.ref) <= event.target.value){
-                        variant.hidden = false;
-                    }else{
-                        variant.hidden = true;
-                    }
-                }    
-            })
             """
         button_string += "}); \n</script>"
         return button_string
@@ -793,35 +637,23 @@ class Highlights:
         html_string = html_heading()
         html_string += self._add_html_classes()
         html_string += self._add_html_legend()
-        html_string += self._add_html_buttons_and_javascript()
-        html_string += self._add_filters()
+        html_string += self._add_html_buttons()
         return html_string
-
+    
     def _log_variants(self, seq_name, chars):
-        """Logs variant data gathered over the course of the generating the html for this highlight"""
-        # guard clause in case I do an oops and put this in the wrong spot
+        """Logs variant data gathered over the course of the generating the html for this highlight
+        """
+        #guard clause in case I do an oops and put this in the wrong spot
         if self.variant_data == None:
             raise Exception("Cannot run log variants without variant data loaded")
-
+        
         if self.wrong_chars == 0:
-            info(
-                logger,
-                f"All variants in {seq_name} match with the reference allele at their positions",
-            )
+            info(logger, f'All variants in {seq_name} match with the reference allele at their positions')
         else:
-            warning(
-                logger,
-                f"{self.wrong_chars} Variants out of {len(self.variant_data)} have been found in {seq_name} which the reference allele does not match the underlying sequence. This is {round(self.wrong_chars/len(self.variant_data), 3)} percent",
-            )
+            warning(logger, f'{self.wrong_chars} Variants out of {len(self.variant_data)} have been found in {seq_name} which the reference allele does not match the underlying sequence. This is {round(self.wrong_chars/len(self.variant_data), 3)} percent')
 
-        info(
-            logger,
-            f"Num variants found: {self.variants_found} within a region containing {len(chars)} nucleotides",
-        )
-        info(
-            logger,
-            f"Percent of variable nucleotides in region: {self.variants_found/len(chars)}",
-        )
+        info(logger, f'Num variants found: {self.variants_found} within a region containing {len(chars)} nucleotides')
+        info(logger, f'Percent of variable nucleotides in region: {self.variants_found/len(chars)}')
 
     def _append_stars(self, max_len, rows_to_compare):
         """Adds the continunity stars to the html file
@@ -833,26 +665,26 @@ class Highlights:
         Returns:
             String: The string of stars which show the continunity of some columns
         """
-        padding = self._generate_padding_string(max_len, "Stars")
+        padding = self._generate_padding_string(max_len, 'Stars')
 
-        star_str = "stars" + padding + ": "
+        star_str = 'stars' + padding + ': '
         check_list = set()
         for row in rows_to_compare:
             check_list.add(len(row))
         if len(rows_to_compare) > 0:
             star_str += self._generate_continuity_stars(rows_to_compare)
-        star_str += "<br>"
+        star_str += '<br>'
 
         return star_str
 
     def _generate_continuity_stars(self, row_list):
-        """Compares up the row to see if the specific column is continuous or not
+        """Compares up the row to see if the specific column is continuous or not 
 
         Args:
             row_list (List): A list of 70 Character rows that is being compared
 
         Returns:
-            String: *'s that define if a column is a continuous or not.
+            String: *'s that define if a column is a continuous or not. 
         """
         # Generates the stars for a list of 70 length strings
         star_string = ""
@@ -866,7 +698,7 @@ class Highlights:
                     pass
                 # If we have multiple chars at an index then we want empty
             if len(chars_at_index) > 1:
-                star_string += " "
+                star_string += ' '
             else:  # else put a star there
                 star_string += "*"
 
@@ -891,7 +723,8 @@ class Highlights:
         return padding_str
 
     def _calculate_position(self, row_size, row_start: int):
-        """Keeps track of the end of the row in order to track position to place the clustal positions at the end of the sequences"""
+        """Keeps track of the end of the row in order to track position to place the clustal positions at the end of the sequences
+        """
         # Just an easy way to keep the loop more simple since it's +1 in the loop
         row_end_position = row_start + row_size
 
@@ -911,9 +744,7 @@ class Highlights:
             html_out += character.to_string()
         return html_out
 
-    def _compare_append_rows(
-        self, row: list, counter: int, max_len: int, key: str, row_end_position: int
-    ):
+    def _compare_append_rows(self, row: list, counter: int, max_len: int, key : str, row_end_position: int):
         """Converts a row to an html row with a name on the left and position at the right.
            Creates a singsequence_name     : sequence 70 Character lengthed html string with position at the end
 
@@ -935,12 +766,10 @@ class Highlights:
         row_string += key + padding_str + ": "
         row_string += self._convert_line_to_html(row[counter])
         row_string += " " + str(row_end_position)
-        row_string += "<br>"
+        row_string += '<br>'
         return row_string
 
-    def _normalize_line_length(
-        self, key_list: list, list_of_lines: list, line_length: int
-    ):
+    def _normalize_line_length(self, key_list: list, list_of_lines: list, line_length: int):
         """Normalizes line length to be consistent. 70 is the current standard that is being used
 
         Args:
@@ -979,7 +808,7 @@ class Highlights:
         for key, row in list_of_lines:
             keys_lengths.append(len(key))
 
-        keys_lengths.append(len("stars"))
+        keys_lengths.append(len('stars'))
 
         max_len = max(keys_lengths)
         return max_len
@@ -990,60 +819,15 @@ class Highlights:
         """Adds variant data to the object
             NOTE: current variants are only SNPs
         Args:
-            file_path (str): A file path to variant data. This returns a dict of positions and what variations could be there and their positions
+            file_path (str): A file path to variant data. This returns a dict of positions and what variations could be there and their positions 
         """
         self.variants_given = True
-        variant_data = generate_variant_dict(
-            self.seq_start, self.seq_end, df, logger, max_missing_frac, min_allele_freq
-        )
+        variant_data = generate_variant_dict(self.seq_start, self.seq_end, df, logger, max_missing_frac, min_allele_freq)
         if len(variant_data) > 0:
             self.variant_data = variant_data
-            for char in self.first_sequence_characters:
-                if char.position in self.variant_data:
-                    var_stats = self.variant_data[char.position]
-                    
-                    # Increment counter of how many variants are found in sequence
-                    self.variants_found += 1
-                    
-                    # Give variant_stats Object to character Object
-                    char.add_variant(var_stats)
-                    
-                    (
-                    ref,
-                    alt,
-                    ref_percent, #this is 0 <= x <= 1
-                    alt_percent, #this is 0 <= x <= 1
-                    total_samples,
-                    samples_invalid,
-                    ) = var_stats.as_tuple()
-                    
-                    # Fill in the genotype_dict so that calculate_genotype_stats can use it later...
-                    self.genotype_dict[char.position] = (total_samples, samples_invalid)
-                    
-                    # Add data to variants_with_percent for csv and table info
-                    # Yes. This calculation of ref and alt percent 100 is done
-                    # again in character. Fite me about it!
-                    ref_percent = float(round(ref_percent, 3))
-                    ref_percent_100 = float(round((ref_percent*100),3))
-                    alt_percent_100 = float(round((alt_percent*100),3))
-                    
-                    self.variants_with_percent.append(
-                    (
-                        self.file_path,
-                        self.name,
-                        self.seq_start,
-                        self.seq_end,
-                        char.position,
-                        ref,
-                        alt,
-                        ref_percent_100,
-                        alt_percent_100,
-                        char.is_accessible,
-                    )
-                )
-
+            
     def add_pi_data(self, site_pi_dict):
-        self.site_pi_dict = site_pi_dict
+        self.site_pi_dict = site_pi_dict  
         self.pi_scores_array = []
         if self.variant_data != None:
             for pos in self.variant_data:
@@ -1060,95 +844,65 @@ class Highlights:
         Returns:
             String: A string that contains ^'s for where variants are found with tool tips at those spots
         """
-        padding = self._generate_padding_string(max_len, "Variant")
+        padding = self._generate_padding_string(max_len, 'Variant')
         position = 1
         if row > 1:
-            position = (row - 1) * 70
+            position = (row-1) * 70
             position += 1
-
-        variant_string = "Variant" + padding + ": " + '<span class="variant">'
-
+        
+        variant_string = 'Variant' + padding + ": " + '<span class="variant">'
+        
         seq_name = list(self.sequences.keys())[0]
         chars = self.sequences[seq_name]
         max = self.seq_start + len(chars)
-
+        
         for x in range(position, position + 70):  # 70 is line width...
-            x_offset = x + self.offset - 1
+            x_offset = (x + self.offset - 1)
             if x_offset in self.variant_data:
-                (
-                    ref,
-                    alt,
-                    ref_percent, #this is 0 <= x <= 1
-                    alt_percent, #this is 0 <= x <= 1
-                    total_samples,
-                    samples_invalid,
-                ) = self.variant_data[x_offset].as_tuple()
+                ref, alt, chance1, chance2, total_samples, samples_invalid = self.variant_data[x_offset]
                 self.genotype_dict[x_offset] = (total_samples, samples_invalid)
-
-                current_char = chars[x_offset - self.seq_start]
+                
+                current_char = chars[x_offset-self.seq_start]
                 if current_char.position != x_offset:
-                    warning(
-                        logger,
-                        f"Variant not lined up with character position! Character position: {current_char.position}, Variant position: {x_offset}, Character in Object: {current_char.character}, Ref: {ref}, Alt: {alt}",
-                    )
+                    warning(logger, f'Variant not lined up with character position! Character position: {current_char.position}, Variant position: {x_offset}, Character in Object: {current_char.character}, Ref: {ref}, Alt: {alt}')
 
-                if (x_offset - self.seq_start) < max:
-                    if ref != current_char.character:
+                if (x_offset-self.seq_start) < max:
+                    if (ref != current_char.character):
                         self.wrong_chars += 1
                 self.variants_found += 1
-
-                ref_percent = float(round(ref_percent, 3))
-                ref_percent_100 = float(round((ref_percent*100),3))
-                alt_percent_100 = float(round((alt_percent*100),3))
-                #colorbar color match with variant percent...
-                new_color = None
-                if ref_percent <= 0.5:
-                    relative_percent = ref_percent/0.5
-                    new_color = self._calculate_color(relative_percent, self.color_bar_val1, self.color_bar_val2)
+            
+                chance1 = float(round((chance1 * 100), 3))
+                chance2 = float(round((chance2 * 100), 3))
+                normalized_chance = None
+                if chance1 >= 50.0:
+                    normalized_chance = (chance1 - 50)/(100 - 50)
                 else:
-                    relative_percent = (ref_percent-0.5)/0.5
-                    new_color = self._calculate_color(relative_percent, self.color_bar_val2, self.color_bar_val3)
+                    normalized_chance = (chance2 - 50)/(100 - 50)
 
-                self.variants_with_percent.append(
-                    (
-                        self.name,
-                        self.seq_start,
-                        self.seq_end,
-                        current_char.position,
-                        ref,
-                        alt,
-                        ref_percent_100,
-                        alt_percent_100,
-                        current_char.is_accessible,
-                    )
-                )
+                red = 255 * (1 - normalized_chance)
+                green = 255 * normalized_chance
+                blue = 0
 
+                self.variants_with_percent.append((self.name, self.seq_start, self.seq_end, current_char.position, ref, alt, chance1, chance2, current_char.is_accessible))
+                
                 if current_char.is_accessible == True:
                     self.num_variants_accessible += 1
                     accessibility = "accessible"
                 elif current_char.is_accessible == False:
                     accessibility = "not accessible"
-
+                    
                 if current_char.is_accessible != None:
                     accessibility_string = f" and is {accessibility}"
                 else:
                     accessibility_string = ""
-
-                variant_string += f'<span class="variant_hat" style="color:hsl({new_color[0]},{new_color[1]}%,{new_color[2]}%)" data-toggle="tooltip" data-animation="false" title ="{ref}: {ref_percent_100}% {alt}: {alt_percent_100}%{accessibility_string}">^</span>'
+                
+                variant_string += f'<span style="color:rgb({red},{green},{blue})" data-toggle="tooltip" data-animation="false" title ="{ref}: {chance1}% {alt}: {chance2}%{accessibility_string}">^</span>'
             else:
-                variant_string += " "
+                variant_string += ' '
 
         variant_string += "</span>" + "<br>"
 
         return variant_string
-
-    def _calculate_color(self, ref_percent, color1, color2):
-            hue_diff = color2[0] - color1[0]
-            sat_diff = color2[1] - color1[1]
-            lumen_diff = color2[2] - color1[2]
-            return (color1[0] + (hue_diff*ref_percent),
-                    color1[1] + (sat_diff*ref_percent),
-                    color1[2] + (lumen_diff*ref_percent))
 
     def _to_string(self):
         """Generates HTML 70 blocked strings using the to_string of the Characters. This is used for testing
@@ -1158,28 +912,28 @@ class Highlights:
         """
         keys = list(self.sequences.keys())
         keys.sort()
-        output_string = ""
+        output_string = ''
         for key in keys:
-            output_string += f"{key}\n"
+            output_string += f'{key}\n'
             for index, character in enumerate(self.sequences[key]):
                 output_string += character.to_string()
                 if index == 69:  # Breaks after 70 char, 0 indexed
-                    output_string += "\n"
-            output_string += "\n"
+                    output_string += '\n'
+            output_string += '\n'
         output_string = output_string[:-2]  # getting rid of last newline
 
         return output_string
-
+    
     def _calculate_motif_stats(self):
         keys = self.sequences.keys()
         motif_coverage = {}
         motif_sets = {}
         for motif_name in self.motif_names:
             motif_sets[motif_name] = set()
-
+            
         for key in keys:
             sequence = self.sequences[key]
-            motif_coverage[key] = {"length": len(sequence)}
+            motif_coverage[key] = {'length': len(sequence)}
             for name in self.motif_names:
                 motif_coverage[key][name] = 0
             for char in sequence:
@@ -1189,17 +943,14 @@ class Highlights:
                             motif_sets[motif_name].add(motif)
                         if motif_name in motif_coverage[key]:
                             motif_coverage[key][motif_name] += 1
-
+                            
         for key, value in motif_coverage.items():
             for motif_name in self.motif_names:
                 if value[motif_name] == 0:
-                    warning(
-                        logger,
-                        f"Sequence {key} did not have any found motifs for {motif_name}",
-                    )
-
+                    warning(logger, f'Sequence {key} did not have any found motifs for {motif_name}')
+        
         return (motif_sets, motif_coverage)
-
+    
     def _pretty_print_motifs(self):
         table_string = ""
         for motif_descriptor in self.motif_counts:
@@ -1208,14 +959,11 @@ class Highlights:
             <table>
                 <thead>
                 <tr>
-                    {motif_descriptor} Motif Stats
+                    {motif_descriptor} Motif Apperances
                 </tr> 
                 <tr>
                     <td>Motif</td>
                     <td>Count</td>    
-                    <td>Coverage</td>
-                    <td>Forward(+)</td>
-                    <td>Reverse(-)</td>
                 </tr> 
                 </thead>
                 <tbody>"""
@@ -1223,28 +971,22 @@ class Highlights:
             for motif in self.motif_counts[motif_descriptor]:
                 count = self.motif_counts[motif_descriptor][motif]
                 motif_counts.append((motif, count))
-            motif_counts.sort(key=lambda x: x[1], reverse=True)
-
+            motif_counts.sort(key=lambda x:x[1], reverse=True)    
+            
             for motif, count in motif_counts:
-                nucleotide_coverage = self.individual_motif_coverage[motif]
-                coverage = round((nucleotide_coverage/self._get_length())*100,1)
-                
                 row = f"""<tr>
                     <td>{motif}</td>
                     <td>{count}</td>
-                    <td>{coverage}%</td>
-                    <td>{self.motif_orientation[(motif,'+')]}</td>
-                    <td>{self.motif_orientation[(motif,'-')]}</td>
                     </tr> """
-                table_string += row
+                table_string += row    
             table_string += "</tbody> </table>"
         return table_string
-
-    def _generate_table(
-        self, num_variants, percent_variable, motifs_found, motif_coverage
-    ):
-        spacer = None
-        
+    
+    def _pretty_print_variants(self, length):
+        #print(self.variants_found, self.variants_found/length)
+        return
+    
+    def _generate_table(self, num_variants, percent_variable, motifs_found, motif_coverage):
         unique_motifs_rows = self._unique_motifs_table(motifs_found)
         motif_coverage_table = self._motif_coverage_table(motif_coverage)
         if self.has_accessibility and self.variants_found > 0:
@@ -1260,17 +1002,7 @@ class Highlights:
             """
         else:
             accessibility_string = ""
-
-        if self.pi_scores_array == None:
-            pass
-
-        mean_missing, std_missing = self._calculate_genotype_stats()
-
-        if self.pi_scores_array != None:
-           pi_scores_table = self._pi_scores_table()
-        else:
-            pi_scores_table = ""
-
+        
         table_string = f"""<table>
             <thead>
             <tr>
@@ -1283,101 +1015,43 @@ class Highlights:
                 <td>{num_variants}</td>
             </tr>
             <tr>
-                <td>Mean number of alleles missing per sample:</td>
-                <td>{mean_missing}</td>
-            </tr>
-            <tr>
-                <td>Stdev of number alleles missing per sample:</td>
-                <td>{std_missing}</td>
-            </tr>
-            <tr>
                 <td>Percent of nucleotides with variants:</td>
                 <td>{percent_variable}%</td>
             </tr>
-            {pi_scores_table}
             {accessibility_string}
             {unique_motifs_rows}
             {motif_coverage_table}
             </tbody>
         </table>
         """
-
+        
         return table_string
     
-    def _per_motif_p_values_pwm(self):
-        table_string = f"""<table>
-            <thead>
-            <tr>
-                Position Weight Matrix P Values
-            </tr> 
-            </thead>
-            <tbody>
-                {self._find_motifs_generate_row()}
-            </tbody>
-        </table>
-        """
-        return table_string
-    
-    def _find_motifs_generate_row(self):
-        table_rows = ""
-        for motif, p_val in self.pwm_p_values:
-            for motif_source in self.motif_sets:
-                if motif in self.motif_sets[motif_source]:
-                    if p_val == "NaN":
-                        p_val_string = "No P Value Found"
-                    else:
-                        p_val_string = f"{p_val}"
-                    
-                    table_rows += f"""
-                    <tr>
-                        <td>{motif}:</td>
-                        <td>{p_val_string}</td>
-                    </tr>\n
-                    """
-        return table_rows
-    
-    def _pi_scores_table(self):
-         pi_scores_mean, pi_scores_stev = self._get_pi_scores_mean_stdev()
-         table = f"""
-         <tr>
-            <td>Mean Pi score:</td>
-            <td>{pi_scores_mean}</td>
-         </tr>
-         <tr>
-            <td>Stdev of Pi scores:</td>
-            <td>{pi_scores_stev}</td>
-         </tr>
-         """
-         return table
-
     def _unique_motifs_table(self, motifs_sets):
-        table_rows = ""
+        table_rows = ''
         for motif_name in motifs_sets:
-            row_string = self._stats_row_template(
-                motif_name, len(motifs_sets[motif_name])
-            )
+            row_string = self._stats_row_template(motif_name, len(motifs_sets[motif_name])) 
             table_rows += row_string
-
+                    
         return table_rows
-
+    
     def _motif_coverage_table(self, motif_coverage):
-        table_string = ""
+        table_string = ''
         for sequence_motif_info in motif_coverage:
-            table_string += self._motif_row_template(
-                motif_coverage[sequence_motif_info], sequence_motif_info
-            )
-
-        return table_string
-
+            table_string += self._motif_row_template(motif_coverage[sequence_motif_info], sequence_motif_info)
+        
+        return table_string  
+        
+        
     def _motif_row_template(self, motif_info, sequence_name):
-        length = motif_info["length"]
+        length = motif_info['length']
         table_string = ""
         if len(list(self._sequences_grouped.keys())[-1]) == 1:
             table_string += f"""<tr>
                 <td><b>{sequence_name}</b></td>
                 </tr>"""
         for motif_name in self.motif_names:
-            coverage = round((motif_info[motif_name] / length) * 100, 1)
+            coverage =  round((motif_info[motif_name]/length) * 100, 1)
             self.coverage[motif_name] = coverage
             self.motif_percent_coverage[motif_name] = coverage
             table_string += f"""
@@ -1387,7 +1061,7 @@ class Highlights:
                 </tr>
             """
         return table_string
-
+    
     def _stats_row_template(self, motif_description, uniq_found):
         row = f"""
             <tr>
@@ -1395,7 +1069,7 @@ class Highlights:
                 <td>{uniq_found}</td>
             </tr>"""
         return row
-
+    
     def generate_html_file(self):
         """Generates the entire html file and returns that string as output
 
@@ -1430,7 +1104,7 @@ class Highlights:
             line_length = 70
             self._normalize_line_length(key_list, list_of_lines, line_length)
 
-            if len(list_of_lines) == 0:
+            if(len(list_of_lines) == 0):
                 stop = 1
             else:
                 stop = len(list_of_lines[0][1])
@@ -1440,83 +1114,65 @@ class Highlights:
             while counter < stop:  # Loop through however many lines we got
                 max_len = self._find_max_key_length(list_of_lines)
 
-                dynamic_html_string += "<pre>"
+                dynamic_html_string += '<pre>'
                 rows_to_compare = []
 
-                # if self.variant_data != None:
-                #     dynamic_html_string += self._append_variant_data(
-                #         max_len, counter + 1
-                #     )
+                if self.variant_data != None:
+                    dynamic_html_string += self._append_variant_data(
+                        max_len, counter+1)
 
                 row_end_position = None
                 for key, row in list_of_lines:
                     rows_to_compare.append(row[counter])
 
                     row_end_position = self._calculate_position(
-                        len(row[counter]), position
-                    )
+                        len(row[counter]), position)
 
                     if counter + 1 >= stop:
                         row_end_position -= 1
 
                     dynamic_html_string += self._compare_append_rows(
-                        row, counter, max_len, key, row_end_position
-                    )
+                        row, counter, max_len, key, row_end_position)
 
                 if row_end_position != None:
                     position = row_end_position + 1
-
+                
                 if len(rows_to_compare) > 1:
-                    dynamic_html_string += self._append_stars(max_len, rows_to_compare)
+                    dynamic_html_string += self._append_stars(
+                        max_len, rows_to_compare)
 
-                dynamic_html_string += (
-                    "</pre>"  # this is the last block since it's excluded
-                )
+                dynamic_html_string += '</pre>'  # this is the last block since it's excluded
                 counter += 1  # From the list.
 
         html_string += dynamic_html_string
-
-        # End basic HTML generation. Below here is to gather statistics!
-
+        
         seq_name = list(self.sequences.keys())[0]
         chars = self.sequences[seq_name]
-
-        if self.variant_data != None:
+        
+        if self.variant_data != None:   
             self._log_variants(seq_name, chars)
         else:
             num_sequnces = len(self.sequences.keys())
             if num_sequnces == 1:
-                info(logger, f"{seq_name} has a region of length {len(chars)}")
+                info(logger, f'{seq_name} has a region of length {len(chars)}')
             else:
-                info(
-                    logger,
-                    f"{self.sequences.keys()} when alined are of length {len(chars)}",
-                )
-        # General motif statistics
+                info(logger, f'{self.sequences.keys()} when alined are of length {len(chars)}')
+        
+                
         self.motif_sets, self.motif_coverage = self._calculate_motif_stats()
-        
-        #Populat individual motif coverage variable
-        self._calc_individual_motif_coverage()
-        
-        # Generate table that says how many of what motifs are in a sequence
         motif_count_table = self._pretty_print_motifs()
         
-        # Generate table that shows the p value for each match
-        pwm_motif_p_vals = self._per_motif_p_values_pwm()
+        html_string += f'\n{self._generate_table(self.variants_found, round(self.variants_found/len(chars) * 100, 3), self.motif_sets, self.motif_coverage)}'        
+        html_string += f'\n{motif_count_table}'
         
-        # Appending statistics to the bottom of the page here
-        html_string += f"\n{self._generate_table(self.variants_found, round(self.variants_found/len(chars) * 100, 3), self.motif_sets, self.motif_coverage)}"
-        html_string += f"\n{motif_count_table}"
-        html_string += f"<br>\n{pwm_motif_p_vals}"
+        # if self.variant_data != None:
+        #     variant_stats = self._pretty_print_variants(len(chars))
+        #     html_string += f'\n{variant_stats}'
+        html_string += '\n</body>'
         
-        html_string += '\n<div class = "spacer"> </div>'
-        html_string += "\n</body>"
-
-        # Save csv data
         if self.csv_wanted:
             self._save_csv_data()
-
-        # This must be deferred or else the data attributes break lol
-        html_string += f"\n<script>\n{highlight_variant_class()}\n</script>"
-        self.outputs.append(html_string)
+        
+        self.outputs.append(html_string)     
         return self.outputs[-1]
+    

@@ -1,0 +1,1 @@
+# Legacy files for fasta_highlighter to work
