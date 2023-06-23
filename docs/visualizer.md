@@ -29,35 +29,27 @@ for numeric columns. Additionally, for string columns, simply typing in them wil
 
 Some examples of this type of filtering are like so:
 
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/4d4b16d9-e91b-4226-be5e-5847f056eb81)
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/1a386e64-38cc-42d6-9c9c-640009117a15)
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/d3d90d74-e862-4825-a305-8f561d70786d)
+![image](./pictures/streme_3_filtering.jpg)
+![image](./pictures/between_600_650_filtering.jpg)
+![image](./pictures/greater_700_filtering.jpg)
 
 The datatable also supports sorting by ascending or descending:
 
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/91df0397-3a2d-478c-8e4a-22a51ceb903e)
-
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/75a040d8-ecec-442a-b410-b746f487778b)
-
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/fd0676f5-c59b-449f-b11a-340601157cb0)
+![image](./pictures/neutral_sorting.jpg)
+![image](./pictures/ascending_sorting.jpg)
+![image](./pictures/descending_sorting.jpg)
 
 Lastly there are histograms provided to allow for easily selecting outliers and viewing the distributions of various columns.
 
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/d18bdd57-ba8d-4387-ae98-5140c2d9d249)
+![image](./pictures/histogram.jpg)
 
-Clicking on any of those columns will filter the table based on the column. If I click on Ubx for example: 
-
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/ca8759dc-e0d7-45e5-baf1-97a543af994f)
-
+Clicking on any of those columns will filter the table based on the column.
 Because bucket size sometimes is very narrow, clicking and dragging will zoom in the table to allow ease of access:
 
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/78f354da-ed5d-4646-b743-5d8523eb026d)
+![image](./pictures/click_drag_histogram_action.jpg)
 
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/a4069ef4-2390-4525-906c-423b9ce64419)
+![image](./pictures/click_drag_histogram_result.jpg)
 
 Double click on the chart to reset the zoom of the chart.
 
-However, note that if using the historgram to filter, normal filtering will become unavailable Trying to filter any column will undo the filtering supplied by the histogram, and will apply to the entire table. Sorting is still available though:
-
-![image](https://github.com/nowling-lab/enhancer-dissection/assets/40255508/6b6ee9e3-06e4-4a8b-aa4b-f7351f4dd4a5)
-
+See [dash](https://plotly.com/) for more information about the table and the charts. They are mostly stock, with some custom interactive additions like the click to filiter.
