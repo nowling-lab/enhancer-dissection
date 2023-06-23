@@ -15,23 +15,11 @@ from clustal_highlighter.modules.file_handler import pwm_p_value_parse
 from clustal_highlighter.modules.logger import *
 LOGGER = logging.getLogger('genome_highlighter')
 
-def generate_dependencies(args) -> Highlights:
+def generate_dependencies(args, working_directory, peaks=None) -> Highlights:
     colors = ['blue', 'red']
     html_colors = ['Aqua', 'PaleVioletRed']
-    working_directory = None
     reports_generated = 0
     reports_requested = 0
-
-    if args.output_dir != None:
-        os.makedirs(args.output_dir, exist_ok=True)
-        absolute_path = os.path.expanduser(args.output_dir)
-        working_directory = os.path.abspath(absolute_path)
-    else:
-        global_home = os.path.expanduser('~/highlights_output')
-        args.output_dir = global_home
-        if not os.path.exists(global_home):
-            os.makedirs(global_home)
-        working_directory = global_home
     
     per_motif_p_values = []
     if args.motif_files:
@@ -114,8 +102,12 @@ def generate_dependencies(args) -> Highlights:
     
     print("Output and Working directory is at: " + working_directory)
     
-    peak_locations = get_peak_locations(args.peaks)
-    keys = list(peak_locations.keys())
+    if peaks:
+        peak_locations = peaks
+        keys = list(peak_locations.keys())
+    else:
+        peak_locations = get_peak_locations(args.peaks)
+        keys = list(peak_locations.keys())
     
     info(LOGGER, f'Successfully read in peaks from {args.peaks}. Peak keys as list: {keys}')
     for key in peak_locations:
@@ -169,7 +161,7 @@ def generate_dependencies(args) -> Highlights:
         
     vcf_df = pd.DataFrame()
     if args.variant_data:
-        print("Loading VCF...")
+        print(f"Loading VCF from {args.variant_data}")
         
         info(LOGGER, f'VCF added. Loading variant data from {args.variant_data}')
         
@@ -233,7 +225,6 @@ def generate_dependencies(args) -> Highlights:
         
         if args.motif_files:
             print("Generating fimo tsv")
-
             for motif_name, motif_path in motifs:
                 motif_and_df, file_paths = generate_fimo_output(
                     file_path, motif_path, motif_name, working_directory)
@@ -277,9 +268,9 @@ def generate_dependencies(args) -> Highlights:
             if fimo_highlights != []:
                 for index, (motif_name, motif_df, working_directory) in enumerate(fimo_highlights):
                     seq_name = list(single_seq_dict.keys())[0]
-                    motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
+                    temp_motifs = motif_df.loc[motif_df['sequence_name'] == seq_name]
                     
-                    motif_path = print_fimo_subset(motifs, working_directory)
+                    motif_path = print_fimo_subset(temp_motifs, working_directory)
                     temp_highlight.add_highlights(
                         motif_name, motif_path, colors[index], html_colors[index])
                     
@@ -479,8 +470,46 @@ def html_string_to_output(html_string, output_dir):
 
 if __name__ == "__main__":
     args = parseargs()
+
+    if args.output_dir != None:
+            os.makedirs(args.output_dir, exist_ok=True)
+            absolute_path = os.path.expanduser(args.output_dir)
+            working_directory = os.path.abspath(absolute_path)
+    else:
+        global_home = os.path.expanduser('~/highlights_output')
+        args.output_dir = global_home
+        if not os.path.exists(global_home):
+            os.makedirs(global_home)
+        working_directory = global_home
+
     if (args.motif_files != None) and (len(args.motif_files) % 2 != 0):
         print("\n--motif-files flag given an odd number of inputs, please use -h for more info")
         exit(0)
-    else:
-        generate_dependencies(args)
+    else:   
+        print("Reading peaks file to check chromosome counts")
+        peak_locations = get_peak_locations(args.peaks)
+        keys = list(peak_locations.keys())
+        if len(keys) > 1:
+            print("Multiple chromosomes found. Splitting VCF and Bed Files")
+            if args.variant_data:
+                print("Variant data given, loading VCF")
+                vcf_df = read_vcf_into_dataframe(args.variant_data)
+                print("VCF loaded, grouping by Chromsome")
+                vcf_groups = vcf_df.groupby('#CHROM')
+
+                file_path_group = []
+                for group in vcf_groups.groups:
+                    vcf_file_path = f'{working_directory}/{group}.vcf'
+
+                    file_path_group.append((vcf_file_path, group))
+
+                    group_df = vcf_groups.get_group(group)
+                    group_df.to_csv(vcf_file_path, index=False, sep='\t', header=True)
+                
+                for vcf_path, group in file_path_group:
+                    if group not in peak_locations:
+                        continue
+                    args.variant_data = vcf_path
+                    generate_dependencies(args, working_directory, {group: peak_locations[group]})
+        else:
+            generate_dependencies(args, working_directory)

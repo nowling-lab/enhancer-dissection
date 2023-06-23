@@ -1,6 +1,6 @@
-from clustal_highlighter.modules.highlights import Highlights
-from clustal_highlighter.modules.file_handler import read_fasta_file
-from clustal_highlighter.modules.file_handler import read_diverse_fimo_file
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.highlights import Highlights
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.file_handler import read_fasta_file
+from clustal_highlighter.modules.fasta_highlighter_LEGACY.modules.file_handler import read_diverse_fimo_file
 import argparse
 import os
 from subprocess import call

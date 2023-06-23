@@ -1,0 +1,1 @@
+# Legacy modules folder for fasta highlighter

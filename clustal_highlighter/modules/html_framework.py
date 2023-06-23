@@ -246,6 +246,7 @@ class HighlightWithVariant extends HTMLElement {
         bottom: 20px;
         left: 10px;
         z-index: 1;
+        visibility:hidden;
       }
 
       .hide {
@@ -259,11 +260,13 @@ class HighlightWithVariant extends HTMLElement {
       .variant:hover + .pop-up {
         opacity: 1;
         z-index: 4;
+        visibility: visible;
       }
 
       .motif:hover + .pop-up {
         opacity: 1;
         z-index: 4;
+        visibility: visible;
       }
 
       .variant{
