@@ -8,7 +8,7 @@ setup(
     author='John Peters',
     author_email='John.Geraldo.Peters@gmail.com',
     license='Apache-2.0',
-    packages=['clustal_highlighter', 'clustal_highlighter/modules', 'clustal_highlighter/modules/data_structures'],
+    packages=['clustal_highlighter', 'clustal_highlighter/modules', 'clustal_highlighter/modules/data_structures', 'clustal_highlighter/modules/fasta_highlighter_LEGACY', 'clustal_highlighter/modules/fasta_highlighter_LEGACY/modules'],
     zip_safe=False,
     python_requires=">=3.10",
     scripts=[
