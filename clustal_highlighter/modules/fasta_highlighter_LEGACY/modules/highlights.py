@@ -223,9 +223,9 @@ class Highlights:
     def _group_all_sequences(self):
         """Groups all sequnces together so the clustal output is all of them compared to each other 
         """
-        self._sequences_grouped['all'] = set()
+        self._sequences_grouped['all'] = list()
         for key in self.sequences.keys():
-            self._sequences_grouped['all'].add(key)
+            self._sequences_grouped['all'].append(key)
 
     def _find_similar_sequences(self, key: str):
         """Finds sequences that are similar to the given keys
